@@ -32,7 +32,7 @@ app.use(express.json())
 app.use('/img', express.static('./upload'))
 
 // Check Authentication:
-app.use(require('./src/middlewares/authentication'))
+//app.use(require('./src/middlewares/authentication'))
 
 // Run Logger:
 app.use(require('./src/middlewares/logger'))
