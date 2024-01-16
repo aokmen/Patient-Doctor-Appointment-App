@@ -1,20 +1,21 @@
-for backend
-* create "logs" folder
-* chanege .env name
-* npm i
-* nodemon swaggerAutogen.js
-* nodemon
-for frontend
-* chanege .env name
-* check BASE_URL=http://127.0.0.1:8000
-* npm i
-* npm run dev
-for CORS
-* npm i cors
-* add cors code to index.js
-```js
-  app.use(cors({
-    "origin":[ "http://localhost:5173",  "http://localhost:3000"],
-    "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
-  }))
-```
+# Patient - Doctor Appointment App (Backend)
+
+This repository contains the backend implementation of a Patient-Doctor Appointment web application.
+
+## Technologies
+
+- **Node.js and Express.js:** Backend server is built using Node.js and Express.js.
+- **MongoDB:** MongoDB is used as the database, and Mongoose is integrated for data modeling.
+
+## Project Structure
+
+- **controllers:** Contains modules for handling MongoDB operations and business logic.
+- **models:** Defines MongoDB schemas for data modeling.
+- **routes:** Contains API routes for different functionalities.
+- **config:** Configuration files for Firebase and other settings.
+
+## Installation
+
+1. **Dependencies Installation:**
+   ```bash
+   npm install
