@@ -27,6 +27,9 @@ router.use('/complaints', require('./complaint'))
 // doctor:
 router.use('/doctors', require('./doctor'))
 
+// patient:
+router.use('/patients', require('./patient'))
+
 // city:
 router.use('/cities', require('./city'))
 
