@@ -1,6 +1,6 @@
 # Patient - Doctor Appointment App
 
-This project includes a full-stack web application that allows patients and doctors to schedule and manage appointments.
+This project includes a full-stack web application that allows patients and doctors to schedule and manage appointments. 
 
 ## Technologies
 
