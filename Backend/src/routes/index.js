@@ -30,6 +30,9 @@ router.use('/doctors', require('./doctor'))
 // patient:
 router.use('/patients', require('./patient'))
 
+// appointment:
+router.use('/appointments', require('./appointment'))
+
 // city:
 router.use('/cities', require('./city'))
 
