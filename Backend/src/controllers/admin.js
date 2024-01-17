@@ -1,13 +1,18 @@
 "use strict"
 
 
+// User Controller:
+
+
 const Admin = require('../models/admin')
 const Token = require('../models/token')
 const passwordEncrypt = require('../helpers/passwordEncrypt')
+const sendMail = require('../helpers/sendMail')
 
-module.exports = {
 
+module.exports={
     list: async (req, res) => {
+
         /*
             #swagger.tags = ["Admins"]
             #swagger.summary = "List Admins"
@@ -21,80 +26,69 @@ module.exports = {
             `
         */
 
-        //const filters = (req.admin?.isAdmin) ? {} : { _id: req.admin._id }
+        const data = await res.getModelList(Admin)   //find yerine bunu yapiyoruz cünkü pagination sayfasindaki search sort gibi seylerin aktif olabilmesi icin getModelList kullaniyoruz.
 
-        const data = await res.getModelList(Admin, /* filters */)
-
-        // res.status(200).send({
-        //     error: false,
-        //     details: await res.getModelListDetails(Admin),
-        //     data
-        // })
-
-        // FOR REACT PROJECT:
-        res.status(200).send(data)
+        res.status(200).send({
+            error: false,
+            detail: await res.getModelListDetails(Admin),
+            data
+        })
     },
-
     create: async (req, res) => {
+
         /*
             #swagger.tags = ["Admins"]
             #swagger.summary = "Create Admin"
             #swagger.parameters['body'] = {
                 in: 'body',
                 required: true,
-                schema: {
-                    "username": "test",
-                    "password": "1234",
-                    "email": "test@site.com",
-                    "first_name": "test",
-                    "last_name": "test",
-                }
+                schema: { }
             }
         */
 
-        // Disallow setting himself admin/staff:
-    
-        req.body.isAdmin = false
-
         const data = await Admin.create(req.body)
 
-        // Create token for auto-login:
-        const tokenData = await Token.findOne({
-            userId: data._id,
-            token: passwordEncrypt(data._id + Date.now())
-        })
+        let tokenKey = passwordEncrypt(data._id + Date.now())
+        let tokenData = await Token.create({ userId: data._id, token:tokenKey })
 
-        // res.status(201).send({
-        //     error: false,
-        //     token: tokenData.token,
-        //     data
-        // })
+        //sendMail
+        // sendMail(
+        //     data.email,    //to
+        //     'Welcome',     //subject
+        //     `<h1>Welcome to our API</h1>
+        //     <p>Your username: ${data.username}</p>
+        //     `
+        // )
 
-        // FOR REACT PROJECT:
         res.status(201).send({
             error: false,
             token: tokenData.token,
-            ...data._doc
+            data
         })
     },
-
     read: async (req, res) => {
+
         /*
             #swagger.tags = ["Admins"]
             #swagger.summary = "Get Single Admin"
         */
 
-        const filters = (req.admin?.iAdmin) ? { _id: req.params.id } : { _id: req.admin._id }
+        // Filters:
+        // let filters = {}
+        // console.log(req)
 
-        const data = await Admin.findOne(filters)
+        // if(!req?.admin.isAdmin) filters._id = req.admin._id
+
+
+        const data = await Admin.findOne({_id: req.params.id, /* ...filters */})
 
         res.status(200).send({
             error: false,
             data
         })
     },
-
     update: async (req, res) => {
+
         /*
             #swagger.tags = ["Admins"]
             #swagger.summary = "Update Admin"
@@ -102,39 +96,31 @@ module.exports = {
                 in: 'body',
                 required: true,
                 schema: {
-                    "username": "test",
-                    "password": "1234",
-                    "email": "test@site.com",
-                    "first_name": "test",
-                    "last_name": "test",
                 }
             }
         */
 
-        const filters = (req.admin?.isAdmin) ? { _id: req.params.id } : { _id: req.admin._id }
-        req.body.isAdmin = (req.admin?.isAdmin) ? req.body.isAdmin : false
+        // Filters:
+        let filters = {}
 
-        const data = await Admin.updateOne(filters, req.body, { runValidators: true })
+        if(!req?.admin?.isAdmin) {
+            filters._id = req.admin._id
+            req.body.isAdmin = false           // Kendisini admin yapamasin diye
+        }
+
+        const data = await Admin.updateOne({_id: req.params.id, ...filters}, req.body, {runValidators: true})
 
         res.status(202).send({
             error: false,
             data,
-            new: await Admin.findOne(filters)
+            new: await Admin.findOne({_id: req.params.id})
         })
     },
-
     delete: async (req, res) => {
-        /*
-            #swagger.tags = ["Admins"]
-            #swagger.summary = "Delete Admin"
-        */
+        const data = await Admin.deleteOne({_id: req.params.id})
 
-        const filters = (req.admin?.isAdmin) ? { _id: req.params.id } : { _id: req.admin._id }
-
-        const data = await Admin.deleteOne(filters)
-
-        res.status(data.deletedCount ? 204 : 404).send({
-            error: !data.deletedCount,
+        res.status(data.deletedCount ? 202 : 404).send({
+            error: false,
             data
         })
     },

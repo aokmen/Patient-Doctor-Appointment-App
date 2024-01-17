@@ -45,7 +45,7 @@ module.exports = (req, res, next) => {
 
         const filtersAndSearch = { ...filters, ...search }
 
-        const dataCount = await Model.count(filtersAndSearch)
+        //const dataCount = await Model.count(filtersAndSearch)
 
         let details = {
             search,
@@ -57,9 +57,9 @@ module.exports = (req, res, next) => {
                 previous: (page > 0 ? page : false),
                 current: page + 1,
                 next: page + 2,
-                total: Math.ceil(dataCount / limit)
+                //total: Math.ceil(dataCount / limit)
             },
-            totalRecords: dataCount,
+            //totalRecords: dataCount,
         }
         details.pages.next = (details.pages.next > details.pages.total ? false : details.pages.next)
         if (details.totalRecords <= limit) details.pages = false
