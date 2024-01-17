@@ -91,7 +91,13 @@ const DoctorSchema = new mongoose.Schema({
     website: {
         type: String,
         trim: true
-    }
+    },
+    complaints: [{            
+        type: mongoose.Schema.Types.ObjectId,
+        ref:'Complaint',
+        trim: true,
+        required: true,
+    }],
     
 }, { collection: 'doctors', timestamps: true })
 

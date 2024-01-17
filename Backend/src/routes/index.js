@@ -21,6 +21,9 @@ router.use('/tokens', require('./token'))
 // branch:
 router.use('/branches', require('./branch'))
 
+// complaint:
+router.use('/complaints', require('./complaint'))
+
 // doctor:
 router.use('/doctors', require('./doctor'))
 
