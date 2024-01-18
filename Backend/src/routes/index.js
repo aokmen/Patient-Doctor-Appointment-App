@@ -17,6 +17,25 @@ router.use('/admins', require('./admin'))
 // token:
 router.use('/tokens', require('./token'))
 
+// category:
+router.use('/contentCategories', require('./contentCategories'))
+// contribution:
+router.use('/contents', require('./contents'))
+
+/*
+// comment:
+router.use('/comments', require('./comment'))
+// likes:
+router.use('/likes', require('./likes'))
+// commentlikes:
+router.use('/commentlikes', require('./commentLikes'))
+// commentlikes:
+router.use('/commentdislikes', require('./commentDislikes'))
+// commentlikes:
+router.use('/status', require('./status'))
+//documnets */
+=======
+
 
 // branch:
 router.use('/branches', require('./branch'))
@@ -37,6 +56,7 @@ router.use('/appointments', require('./appointment'))
 router.use('/cities', require('./city'))
 
 // documents:
+
 router.use('/documents', require('./document'))
 
 
