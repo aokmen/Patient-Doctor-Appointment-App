@@ -17,24 +17,10 @@ router.use('/admins', require('./admin'))
 // token:
 router.use('/tokens', require('./token'))
 
-// category:
+// contentCategories:
 router.use('/contentCategories', require('./contentCategories'))
-// contribution:
+// contents:
 router.use('/contents', require('./contents'))
-
-/*
-// comment:
-router.use('/comments', require('./comment'))
-// likes:
-router.use('/likes', require('./likes'))
-// commentlikes:
-router.use('/commentlikes', require('./commentLikes'))
-// commentlikes:
-router.use('/commentdislikes', require('./commentDislikes'))
-// commentlikes:
-router.use('/status', require('./status'))
-//documnets */
-=======
 
 
 // branch:
