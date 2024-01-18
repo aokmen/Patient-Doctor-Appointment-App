@@ -1,4 +1,16 @@
 {
+  "title": "Doctor Appointment API",
+  "name": "stockapi",
+  "version": "1.0.0",
+  "description": "Doctor Appointment System",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon",
+    "debug": "DEBUG=* nodemon"
+  },
+  "keywords": [],
+  "author": "Clarusway",
+  "license": "ISC Licence",
   "dependencies": {
     "cookie-session": "^2.0.0",
     "dotenv": "^16.3.1",
