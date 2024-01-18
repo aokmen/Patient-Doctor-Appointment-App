@@ -44,9 +44,10 @@ const AppointmentSchema = new mongoose.Schema({
         enum: ["Private", "Compulsory"],
         trim: true
     },
-    documents: {
-        type: Array,
-    },
+    papers: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Paper'
+    }],
     doctorOpinion: [{
         type: String,
     }],
