@@ -1,7 +1,7 @@
 {
 
   "title": "Doctor Appointment API",
-  "name": "stockapi",
+  "name": "appointmentapi",
   "version": "1.0.0",
   "description": "Doctor Appointment System",
   "main": "index.js",
@@ -12,17 +12,6 @@
   "keywords": [],
   "author": "Clarusway",
   "license": "ISC Licence",
-  "name": "backend",
-  "description": "This repository contains the backend implementation of a Patient-Doctor Appointment web application.",
-  "version": "1.0.0",
-  "main": "index.js",
-  "devDependencies": {},
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
 
   "dependencies": {
     "cookie-session": "^2.0.0",
