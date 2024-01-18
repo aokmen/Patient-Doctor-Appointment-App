@@ -7,6 +7,8 @@ const { mongoose } = require('../configs/dbConnection')
 /* ------------------------------------------------------- */
 // Appointment Model:
 
+const { userTypes } = require('../configs/constraints')
+
 const AppointmentSchema = new mongoose.Schema({
 
     doctorId: {
@@ -44,9 +46,9 @@ const AppointmentSchema = new mongoose.Schema({
         enum: ["Private", "Compulsory"],
         trim: true
     },
-    papers: [{
+    files: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Paper'
+        ref: 'File'
     }],
     doctorOpinion: [{
         type: String,
@@ -60,7 +62,7 @@ const AppointmentSchema = new mongoose.Schema({
     },
     cancelUserType:{
         type: String,
-        enum: ["Admin", "Staff", "Doctor", "Patient"]
+        enum: userTypes
     }, 
     cancelDate: {
         type: Date,
