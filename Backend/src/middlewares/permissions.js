@@ -6,7 +6,7 @@ module.exports = {
 
     isLogin: (req, res, next) => {
 
-        if (req.admin && req.admin.isActive) {
+        if (req.admin?.isActive && (req.admin?.isStaff || req.admin?.isAdmin)) {
 
             next()
 

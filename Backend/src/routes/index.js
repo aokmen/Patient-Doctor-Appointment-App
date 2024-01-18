@@ -16,6 +16,7 @@ router.use('/auth', require('./auth'))
 router.use('/admins', require('./admin'))
 // token:
 router.use('/tokens', require('./token'))
+
 // category:
 router.use('/contentCategories', require('./contentCategories'))
 // contribution:
@@ -33,6 +34,29 @@ router.use('/commentdislikes', require('./commentDislikes'))
 // commentlikes:
 router.use('/status', require('./status'))
 //documnets */
+=======
+
+
+// branch:
+router.use('/branches', require('./branch'))
+
+// complaint:
+router.use('/complaints', require('./complaint'))
+
+// doctor:
+router.use('/doctors', require('./doctor'))
+
+// patient:
+router.use('/patients', require('./patient'))
+
+// appointment:
+router.use('/appointments', require('./appointment'))
+
+// city:
+router.use('/cities', require('./city'))
+
+// documents:
+
 router.use('/documents', require('./document'))
 
 
