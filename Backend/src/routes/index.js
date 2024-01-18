@@ -36,8 +36,8 @@ router.use('/appointments', require('./appointment'))
 // city:
 router.use('/cities', require('./city'))
 
-// paper:
-router.use('/papers', require('./paper'))
+// file:
+router.use('/files', require('./file'))
 
 // documents:
 router.use('/documents', require('./document'))
