@@ -22,7 +22,7 @@ const BranchSchema = new mongoose.Schema({
 BranchSchema.pre('init', function (data) {
 
     data.id = data._id
-    data.createds = data.createdAt.toLocaleDateString('tr-tr')
+    data.createds = data.createdAt.toLocaleDateString('de-de')
 })
 /* ------------------------------------------------------- */
 module.exports = mongoose.model('Branch', BranchSchema)
