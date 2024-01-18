@@ -50,7 +50,7 @@ module.exports = {
             req.body.extention = req.body.fileName.split('.').pop()
             // console.log(req.body.fileName.split('.'))
             // console.log(req.body.fileName.split('.').pop())
-            // console.log(req.body);
+            // console.log(req.file);
             // console.log(req.file);
             // console.log(req.files);
 
