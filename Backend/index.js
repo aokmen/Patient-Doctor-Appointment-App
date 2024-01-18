@@ -11,6 +11,9 @@ const app = express()
 require('dotenv').config()
 const HOST = process.env?.HOST || '127.0.0.1'
 const PORT = process.env?.PORT || 8000
+const MODE = process.env.MODE || "Product"
+
+
 
 // asyncErrors to errorHandler:
 require('express-async-errors')
