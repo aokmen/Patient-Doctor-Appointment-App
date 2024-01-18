@@ -2,6 +2,7 @@
 
 
 const { mongoose } = require('../configs/dbConnection')
+const { userTypes } = require('../configs/constraints')
 /* ------------------------------------------------------- *
 
 /* ------------------------------------------------------- */
@@ -14,10 +15,11 @@ const FileSchema = new mongoose.Schema({
         index: true,
     },
     userType: {
-
+        type: String,
+        enum: userTypes
     },
     
-    filename: {
+    fileName: {
         type: String,
         trim: true
     },
@@ -33,7 +35,7 @@ const FileSchema = new mongoose.Schema({
         type: String,
         trim: true
     },
-    mimetype: {
+    mimeType: {
         type: String,
         trim: true
     }

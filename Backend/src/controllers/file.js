@@ -4,6 +4,7 @@
 
 const File = require('../models/file')
 
+
 module.exports = {
 
     list: async (req, res) => {
@@ -42,16 +43,16 @@ module.exports = {
                 schema: { $ref: '#/definitions/File' }
             }
         */
-            // req.body.fileName = req.file.filename;
-            // req.body.path = req.file.path;
-            // req.body.mimeType = req.file.mimetype;
-            req.body = { ...req.body, ...req.file }
-            req.body.extention = req.body.filename.split('.').pop()
-            console.log(req.body.filename.split('.'))
-            console.log(req.body.filename.split('.').pop())
-            console.log(req.body);
-            console.log(req.file);
-            console.log(req.files);
+             req.body.fileName = req.file.filename;
+             req.body.path = req.file.path;
+             req.body.mimeType = req.file.mimetype;
+            //req.body = { ...req.body, ...req.file }          Hepsini tek elde hizlica yapmak icin
+            req.body.extention = req.body.fileName.split('.').pop()
+            // console.log(req.body.fileName.split('.'))
+            // console.log(req.body.fileName.split('.').pop())
+            // console.log(req.file);
+            // console.log(req.file);
+            // console.log(req.files);
 
 
         /* if (req?.admin) {

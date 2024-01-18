@@ -69,9 +69,9 @@ const DoctorSchema = new mongoose.Schema({
         type: String,
         trim: true
     },
-    papers: [{
+    files: [{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Paper'
+        ref: 'File'
     }],
     isActive: {
         type: Boolean,
