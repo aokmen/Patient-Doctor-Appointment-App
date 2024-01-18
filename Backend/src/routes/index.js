@@ -16,12 +16,12 @@ router.use('/auth', require('./auth'))
 router.use('/admins', require('./admin'))
 // token:
 router.use('/tokens', require('./token'))
-/*
-
 // category:
-router.use('/categories', require('./category'))
+router.use('/contentCategories', require('./contentCategories'))
 // contribution:
-router.use('/blogs', require('./contribution'))
+router.use('/contents', require('./contents'))
+
+/*
 // comment:
 router.use('/comments', require('./comment'))
 // likes:
