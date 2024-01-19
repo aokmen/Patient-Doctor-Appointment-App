@@ -48,6 +48,9 @@ router.use('/files', require('./file'))
 
 router.use('/documents', require('./document'))
 
+//messages
+router.use("/messages", require("./messages"))
+
 
 
 /* ------------------------------------------------------- */
