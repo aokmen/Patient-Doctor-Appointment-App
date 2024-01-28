@@ -2,6 +2,8 @@
 
 This project includes a full-stack web application that allows patients and doctors to schedule and manage appointments. 
 
+<img alt="alt_text" src="./Frontend/projectIMG.jpg"/>
+
 ## Technologies
 
 - **Frontend:**
