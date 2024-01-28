@@ -12,7 +12,7 @@ require('dotenv').config()
 const HOST = process.env?.HOST || '127.0.0.1'
 const PORT = process.env?.PORT || 8000
 const MODE = process.env.MODE || "Product"
-
+ 
 
 
 // asyncErrors to errorHandler:
@@ -30,6 +30,20 @@ dbConnection()
 // import express from 'express';   export >>>  "type":"module"
 // Accept JSON and convert to Object:
 app.use(express.json())
+
+/* ------------------------------------------------------- */
+
+// CORS
+const cors = require('cors')
+app.use(cors({
+    //"origin": "*",
+    // "origin": "http://localhost:5173/",
+    "origin": ["http://localhost:5173", "http://localhost:3000"],
+    "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
+  }))
+
+/* ------------------------------------------------------- */
+
 
 // Call Static Files from uploadFile
 app.use('/img', express.static('./upload'))
@@ -74,4 +88,4 @@ app.listen(PORT, HOST, () => console.log(`http://${HOST}:${PORT}`))
 
 /* ------------------------------------------------------- */
 // Syncronization (must be in commentLine):
-// require('./src/helpers/sync')()
+//  require('./src/helpers/sync')()

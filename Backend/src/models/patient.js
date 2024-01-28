@@ -2,7 +2,7 @@
 
 
 const { mongoose } = require('../configs/dbConnection')
-
+const { genders } = require('../configs/constraints')
 // Patient Model:
 
 const PatientSchema = new mongoose.Schema({
@@ -18,6 +18,12 @@ const PatientSchema = new mongoose.Schema({
         type: String,
         trim: true,
         required: true
+    },
+    username: {
+        type: String,
+        trim: true,
+        unique: true,
+        index: true
     },
     firstName: {
         type: String,
@@ -53,13 +59,22 @@ const PatientSchema = new mongoose.Schema({
     },
     gender: {
         type: String,
-        enum: ["male", "female", "others"],
+        enum: genders,
         trim: true
     },
     isActive: {
         type: Boolean,
         default: true
     },
+    messages: [{            
+        type: mongoose.Schema.Types.ObjectId,
+        ref:'Message',
+        required: true,
+    }],
+    messageCount: {
+        type: Number,
+        default: 0
+    }
     
 }, { collection: 'patients', timestamps: true })
 

@@ -1,0 +1,109 @@
+.sidebar-nav{
+    background-color: #38638D;
+    min-width: 15rem;
+    box-shadow: 3px 0px 6px lightgray;
+}
+.sidebar-nav-logo img{ 
+    color: white;
+}
+.sidebar-nav-upper li a, .sidebar-nav-below li a{
+    color: white;
+}
+.sidebar-nav-upper li a:hover, .sidebar-nav-below li a:hover{
+    color: #38638D;
+    background-color: #B7D8F8;
+}
+.sidebar-nav-upper li a:hover .icons, .sidebar-nav-below li a:hover .icons{
+    color: #38638D;
+}
+.sidebar-nav-upper li a .icons, .sidebar-nav-below li a .icons{
+    color: #B7D8F8;
+}
+a.view-profile:hover{
+    color: #B7D8F8;
+}
+.sypmtoms{
+    background-color: #B7D8F8;
+    padding: 1rem;
+    box-shadow: 0px 3px 7px lightgray;
+}
+.symptom-buttons{
+    padding: .5rem 2rem;
+    background-color: #38638D;
+    color: white;
+    border-radius: 10px;
+    margin: .5rem 1rem;
+}
+.symptoms-title{
+    margin: 1rem 0 0 0;
+    color: #38638D;
+}
+.doctor-image{
+    margin-top: 2rem;
+    max-height: 20rem;
+    max-width:min-content ;
+}
+.doctor-profil-name{
+    color: #38638D;
+    margin: 1rem 0 0 0;
+}
+.doctor-profil-location{
+    color: #38638D;
+    margin-top: 1rem;
+    margin-left: 8rem;
+}
+.doctor-profil-phone{
+    color: #38638D;
+    margin-top: 1rem;
+    margin-left: 8rem;
+}
+.doctor-profil-website{
+    color: #38638D;
+    margin-top: 1rem;
+    margin-left: 8rem;
+}
+.termin-button{
+    margin-top: 3rem;
+    padding: 1rem 2rem;
+    background-color: #38638D;
+    color: white;
+    border-radius: 15px;
+}
+.termin-button:hover{
+    background-color: #5999D7;
+    scale: 1.03;
+    border: 1 px solid #38638D;
+}
+.appointments-calendar{
+    margin: 3rem 0;
+    padding: 2rem;
+    border-left: 10px solid rgb(241, 240, 240);
+    border-right: 10px solid rgb(241, 240, 240);
+}
+.hour-buttons{
+    margin-top: 4rem;
+}
+.hour-buttons button{
+    padding: .5rem 1rem;
+    font-size: large;
+    background-color: #5999D7;
+    border-radius: 5px;
+    margin: 0.3rem .3rem;
+    width: 4.5rem;
+}
+.about-doctor{
+    padding: 1rem 3rem 1rem 3rem;
+    
+}
+.about-doctor button{
+    padding: .5rem 1rem;
+    background-color: #38638D;
+    color: white;
+    border-radius: 10px;
+    margin: 4rem 0;
+    cursor: default;
+}
+.uber-mich{
+    color:#38638D;
+    margin-top: 4rem;
+}

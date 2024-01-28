@@ -8,7 +8,16 @@ module.exports = (req, res, next) => {
 
     // SEARCHING: URL?search[key1]=value1&search[key2]=value2
     let search = req.query?.search || {}
-    for (let key in search) search[key] = { $regex: search[key], $options: 'i' }
+    for (let key in search) {
+        // Check if the value is an object with $regex property
+        if (typeof search[key] === 'object' && '$regex' in search[key]) {
+          search[key] = search[key]; // Leave it as is
+        } else {
+          // Convert the value to a regex object
+          search[key] = { $regex: search[key], $options: 'i' };
+        }
+      }
+
     /* Alternative Searching: *
     let where = [];
     for (let key in search) where.push(`this.${key}.toString().includes('${search[key]}')`)

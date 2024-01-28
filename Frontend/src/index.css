@@ -1,3 +1,34 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+/* -------------------------------------------------------------------------- */
+/*                                   Navbar                                   */
+/* -------------------------------------------------------------------------- */
+/* "bg-main-dark-blue self-stretch w-full px-20 py-5 max-md:max-w-full max-md:px-5" */
+@layer components {
+    /*
+    nav {
+        @apply bg-main-dark-blue self-stretch w-full px-20 py-5 max-md:max-w-full max-md:px-5 border border-solid border-[red] flex ;
+    }
+    form {
+        width: 500px;
+        margin: 0 auto;
+    }
+ 
+    .nav-logo{
+        @apply flex-initial w-3/12 border border-solid border-[red]
+    }
+    .nav-menu ul{
+        @apply flex flex-initial w-6/12 
+    }
+    .nav-login{
+        @apply flex flex-initial w-3/12
+    } */
+}

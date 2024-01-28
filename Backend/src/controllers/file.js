@@ -3,7 +3,7 @@
 // File Controller:
 
 const File = require('../models/file')
-
+const Doctor = require('../models/doctor')
 
 module.exports = {
 
@@ -54,27 +54,10 @@ module.exports = {
             // console.log(req.file);
             // console.log(req.files);
 
-
-        /* if (req?.admin) {
-            // Set userIds from login info: 
-            req.body.userId = req.admin._id             // burasi düzenlenecek. File'i olusturan id'yi otomatik aldirmak istiyoruz
-
-            }
-            else if(req?.doctor) {
-            // Set userIds from login info: 
-            req.body.userId = req.doctor._id             
-
-            }
-            else if(req?.patient) {
-            // Set userIds from login info: 
-            req.body.userId = req.patient._id             
-
-            }
         
-        
-        */
-
         const data = await File.create(req.body)
+
+        await Doctor.updateOne({_id: data.userId}, {$push: {files: data.id}})
 
         res.status(201).send({
             error: false,
@@ -112,7 +95,7 @@ module.exports = {
         for(let file of req.files){
             req.body.images.push('/img/' + file.originalname)
         }
-        console.log(req.body.images);
+        // console.log(req.body.images);
 
 
         const data = await File.updateOne({ _id: req.params.id }, req.body, { runValidators: true })
@@ -129,6 +112,10 @@ module.exports = {
             #swagger.tags = ["Files"]
             #swagger.summary = "Delete File"
         */
+
+        const file = await File.findOne({ _id: req.params.id })
+
+        await Doctor.updateOne({_id: file.userId}, {$pull: {files: file.id}})
 
         const data = await File.deleteOne({ _id: req.params.id })
 

@@ -18,9 +18,9 @@ router.use('/admins', require('./admin'))
 router.use('/tokens', require('./token'))
 
 // contentCategories:
-router.use('/contentCategories', require('./contentCategories'))
+router.use('/contentCategories', require('./contentCategory'))
 // contents:
-router.use('/contents', require('./contents'))
+router.use('/contents', require('./content'))
 
 
 // branch:
@@ -49,7 +49,7 @@ router.use('/files', require('./file'))
 router.use('/documents', require('./document'))
 
 //messages
-router.use("/messages", require("./messages"))
+router.use("/messages", require("./message"))
 
 
 

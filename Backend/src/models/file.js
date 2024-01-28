@@ -18,7 +18,6 @@ const FileSchema = new mongoose.Schema({
         type: String,
         enum: userTypes
     },
-    
     fileName: {
         type: String,
         trim: true

@@ -8,6 +8,7 @@ const { mongoose } = require('../configs/dbConnection')
 // Appointment Model:
 
 const { userTypes } = require('../configs/constraints')
+const { insurance } = require('../configs/constraints')
 
 const AppointmentSchema = new mongoose.Schema({
 
@@ -43,8 +44,7 @@ const AppointmentSchema = new mongoose.Schema({
     }],
     insurance: {
         type: String,
-        enum: ["Private", "Compulsory"],
-        trim: true
+        enum: insurance,
     },
     files: [{
         type: mongoose.Schema.Types.ObjectId,

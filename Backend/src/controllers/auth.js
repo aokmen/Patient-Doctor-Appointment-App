@@ -4,6 +4,8 @@
 // Auth Controller:
 
 const Admin = require('../models/admin')
+const Doctor = require('../models/doctor')
+const Patient = require('../models/patient')
 const Token = require('../models/token')
 const passwordEncrypt = require('../helpers/passwordEncrypt')
 
@@ -28,32 +30,31 @@ module.exports = {
 
         if ((username || email) && password) {
 
-            const admin = await Admin.findOne({ $or: [{ username }, { email }] })
+            const user = await Admin.findOne({ $or: [{ username }, { email }] }) || await Doctor.findOne({ $or: [{ username }, { email }] })|| await Patient.findOne({ $or: [{ username }, { email }] })
 
-            if (admin && admin.password == passwordEncrypt(password)) {
+            if (user && user.password == passwordEncrypt(password)) {
 
-                if (admin.isActive) {
+                if (user.isActive) {
 
                     // Use UUID:
                     // const { randomUUID } = require('crypto')
-                    // let tokenData = await Token.findOne({ admin_id: admin._id })
+                    // let tokenData = await Token.findOne({ user_id: user._id })
                     // if (!tokenData) tokenData = await Token.create({
-                    //     admin_id: admin._id,
+                    //     user_id: user._id,
                     //     token: randomUUID()
                     // })
 
                     // TOKEN:
-                    let tokenData = await Token.findOne({ userId: admin._id })
+                    let tokenData = await Token.findOne({ userId: user._id })
                     if (!tokenData) tokenData = await Token.create({
-                        userId: admin._id,
-                        token: passwordEncrypt(admin._id + Date.now())
+                        userId: user._id,
+                        token: passwordEncrypt(user._id + Date.now())
                     })
 
                     res.send({
                         error: false,
                         key: tokenData.token,
-                        // token: tokenData.token,
-                        admin,
+                        user,
                     })
 
                 } else {

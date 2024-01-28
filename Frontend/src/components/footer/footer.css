@@ -1,0 +1,18 @@
+.footer{
+    display: flex;
+    justify-content: space-around;
+    background-color: #38638D;
+    height: 103px;
+    padding-left: 50px;
+    width: 100%;
+    padding-top: 40px;
+    color: white;
+}
+
+.footer-links ul {
+    display: flex;
+    gap: 15px;
+}
+.footer-links button:hover {
+color:#5999D7 ;
+}

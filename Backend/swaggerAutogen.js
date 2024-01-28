@@ -33,6 +33,16 @@ const document = {
 	definition: {
 		// Models:
 		"Admin": require('./src/models/admin').schema.obj,
+		"Appointment": require('./src/models/appointment').schema.obj,
+		"Branch": require('./src/models/branch').schema.obj,
+		"City": require('./src/models/city').schema.obj,
+		"Complaint": require('./src/models/complaint').schema.obj,
+		"Content": require('./src/models/content').schema.obj,
+		"ContentCategory": require('./src/models/contentCategory').schema.obj,
+		"Doctor": require('./src/models/doctor').schema.obj,
+		"File": require('./src/models/file').schema.obj,
+		"Message": require('./src/models/message').schema.obj,
+		"Patient": require('./src/models/patient').schema.obj,
 		
 	}
 }
