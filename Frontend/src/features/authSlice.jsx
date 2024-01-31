@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { createSlice } from "@reduxjs/toolkit";
 
 
@@ -46,6 +47,13 @@ const authSlice = createSlice({
 // } = authSlice.actions
 
 export const { reducer, actions: { fetchStart, loginSuccess, logoutSuccess, registerSuccess, fetchFail }} = authSlice;
+=======
+import React from "react";
+ 
+const authSlice = () => {
+  return <div></div>;
+};
+>>>>>>> 46cf13b91dfa20348787a3fa593cd4a8efa74f0d
 
 export default authSlice;
 

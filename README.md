@@ -2,6 +2,8 @@
 
 This project includes a full-stack web application that allows patients and doctors to schedule and manage appointments. 
 
+<img alt="alt_text" src="./Frontend/projectIMG.jpg"/>
+
 ## Technologies
 
 - **Frontend:**
@@ -13,7 +15,7 @@ This project includes a full-stack web application that allows patients and doct
   - Utilizes MongoDB as the database, integrated with Mongoose.
   
 - **Authentication and Authorization:**
-  - User authentication is managed using Firebase Authentication.
+  - User authentication is managed using Token Authentication.
   - Authorization is implemented using React Router's security features.
 
 ## Project Structure
