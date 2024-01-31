@@ -1,9 +1,7 @@
 import { Provider } from "react-redux";
-import { store } from "./app/store";
-import SearchDoctor from "./pages/searchDoctor/SearchDoctor";
+import store, { persistor } from "./app/store";
 import AppRouter from "./router/AppRouter";
-import DetailDoctor from "./pages/detailDoctor/DetailDoctor";
-//import Home from "./pages/Home";
+import { PersistGate } from "redux-persist/integration/react"
 
 
 
@@ -11,9 +9,10 @@ function App() {
   
   return (
     <div className="App">
-       <Provider store={store}>
-        <AppRouter/>
-        {/* <DetailDoctor/> */}
+      <Provider store={store}>
+        <PersistGate loading={null} persistor={persistor}>
+          <AppRouter />
+        </PersistGate>
       </Provider>
     </div>
   );

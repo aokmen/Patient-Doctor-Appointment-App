@@ -20,7 +20,7 @@ module.exports = {
             `
         */
 
-        const data = await res.getModelList(Doctor, {}, ["branchId", "cityId"])
+        const data = await res.getModelList(Doctor, {}, ["branchId", "cityId", "complaints"])
 
         // res.status(200).send({
         //     error: false,

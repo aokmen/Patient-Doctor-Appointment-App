@@ -1,13 +1,13 @@
 import axios from "axios";
 import { fetchFail, fetchStart, loginSuccess, logoutSuccess, registerSuccess } from "../features/authSlice";
-// import { useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import { useDispatch } from "react-redux"
 
 
 const url = process.env.REACT_APP_BASE_URL
 
 const useAuthCall = () => {
-    // const navigate = useNavigate()
+    const navigate = useNavigate()
     const dispatch = useDispatch()
 
     /* -------------------------------------------------------------------------- */
@@ -19,6 +19,7 @@ const useAuthCall = () => {
         try {
             const { data } = await axios.post(`${url}/auth/login`,userData)
             dispatch(loginSuccess(data))
+            navigate("/")
         } catch (error) {
             console.log(error.message);
             dispatch(fetchFail())
@@ -49,6 +50,8 @@ const useAuthCall = () => {
         try {
             const { data } = await axios.post(`${url}/patients`, userData)
             dispatch(registerSuccess(data))
+            console.log("loginData:",data);
+            navigate("/login")
         } catch (error) {
             dispatch(fetchFail())
             console.log(error);
@@ -64,6 +67,7 @@ const useAuthCall = () => {
         try {
             const { data } = await axios.post(`${url}/doctors`, userData)
             dispatch(registerSuccess(data))
+            navigate("/login")
         } catch (error) {
             dispatch(fetchFail())
             console.log(error);

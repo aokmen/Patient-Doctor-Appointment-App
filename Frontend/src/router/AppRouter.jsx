@@ -9,17 +9,19 @@ import PrivateRouter from "./PrivateRouter";
 import AdminPanel from "../pages/panels/AdminPanel";
 import DoctorPanel from "../pages/panels/DoctorPanel";
 import PatientPanel from "../pages/panels/PatientPanel";
+import About from "../pages/about/About";
 
 const AppRouter = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home/>} />
         <Route path="/search" element={<SearchDoctor/>} />
-        <Route path="/search/:id" element={<DetailDoctor />} />
+        <Route path="/search/:id" element={<DetailDoctor/>} />
         <Route path="/login" element={<Login />} />
         <Route path="/regdoctor" element={<RegisterDoctor />} />
         <Route path="/regpatient" element={<RegisterPatient />} />
+        <Route path="/about" element={<About/>} />
         <Route element={<PrivateRouter />}>
           <Route path="/admin" element={<AdminPanel />} />
           <Route path="/doctor" element={<DoctorPanel />} />

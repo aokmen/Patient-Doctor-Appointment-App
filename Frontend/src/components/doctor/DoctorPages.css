@@ -28,7 +28,7 @@ a.view-profile:hover{
     box-shadow: 0px 3px 7px lightgray;
 }
 .symptom-buttons{
-    padding: .5rem 2rem;
+    padding: 0.5rem 1rem;
     background-color: #38638D;
     color: white;
     border-radius: 10px;
@@ -83,13 +83,27 @@ a.view-profile:hover{
 .hour-buttons{
     margin-top: 4rem;
 }
-.hour-buttons button{
+
+.hour-buttons button.free{
     padding: .5rem 1rem;
     font-size: large;
     background-color: #5999D7;
     border-radius: 5px;
     margin: 0.3rem .3rem;
     width: 4.5rem;
+}
+.hour-buttons button.free:hover{
+    background-color: #93c3f4;
+}
+.hour-buttons button.reserved{
+    padding: .5rem 1rem;
+    font-size: large;
+    background-color: tomato;
+    color: white;
+    border-radius: 5px;
+    margin: 0.3rem .3rem;
+    width: 4.5rem;
+    cursor: default;
 }
 .about-doctor{
     padding: 1rem 3rem 1rem 3rem;

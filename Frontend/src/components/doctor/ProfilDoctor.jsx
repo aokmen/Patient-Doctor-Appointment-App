@@ -3,16 +3,23 @@ import React from 'react'
 import locationIcon from '../../assets/locationIcon.png'
 import phoneIcon from '../../assets/phone.png'
 import webIcon from '../../assets/web.png'
+import { useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
 
 
-const DoctorProfil = ({branchId, cityId, phone, website, title, firstName, lastName}) => {
+const DoctorProfil = ({ branchId, cityId, phone, website, title, firstName, lastName, avatar }) => {
 
+  const { currentUser } = useSelector((state) => state.auth)
+  const navigate = useNavigate()
+  const check = () => {
+    currentUser ? navigate("/patient") : navigate("/login")
+  }
 
   return (
     <>
     <div className='flex flex-col justify-center items-center p-1 profil-doctor'>
-      <img className='doctor-image' src='https://www.thewmch.com/wp-content/uploads/2023/02/female-doctor-using-her-digital-tablet-free-vector.jpg' alt="doctor-pic"/>
+      <img className='doctor-image' src={avatar ? avatar : 'https://www.thewmch.com/wp-content/uploads/2023/02/female-doctor-using-her-digital-tablet-free-vector.jpg'} alt="doctor-pic"/>
       <h1 className='text-xl font-bold doctor-profil-name'> {title}. {firstName} {lastName}</h1>
       <h2 className='text-xl doctor-profil-name'>{branchId?.name}</h2>
       </div>  
@@ -28,7 +35,7 @@ const DoctorProfil = ({branchId, cityId, phone, website, title, firstName, lastN
       <img src={webIcon} className="me-1 w-6 h-6" alt="webIcon" />
       {website ? <a href="www.example.com"> {website}</a> : "Keine Webseite Vorhanden"}
       </div>
-      <button className='flex justify-center termin-button duration-150 mx-auto'>TERMIN VEREINBAREN</button>
+      <button className='flex justify-center termin-button duration-150 mx-auto' onClick={() => check()}>TERMIN VEREINBAREN</button>
       
     
     </>

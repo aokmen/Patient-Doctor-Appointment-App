@@ -1,3 +1,34 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.register-page{
+    background-color: #B7D8F8;
+    height: 100vh;
+}
+.reg-title{
+    font-size: 2.5em;
+    color: white;
+    font-weight: bold;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.register-form-page{
+    background-color: #38638D;
+    height: 100vh;
+}
+.register-form{
+    width: 35vw;
+    height: 60vh;
+}
+.register-button{
+    margin-top: 3rem;
+    padding: 1rem 2rem;
+    background-color: #5999D7;
+    color: white;
+    border-radius: 15px;
+}
+.register-button:hover{
+    background-color: #6ea9e5;
+    scale: 1.03;
+    border: 1 px solid #38638D;
+}

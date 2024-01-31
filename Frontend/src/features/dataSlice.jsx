@@ -15,6 +15,7 @@ const dataSlice = createSlice({
     appointments:[],
     cities:[],
     messages:[],
+    daySchedules: []
   },
   reducers:{
     fetchStart: (state) => {

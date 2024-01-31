@@ -1,0 +1,14 @@
+#verticle {
+  border-left: 1px solid #b7d8f8;
+  height: 200px;
+  position: absolute;
+  margin-top: 20px;
+  left: 650px;
+}
+#verticle2 {
+  border-left: 1px solid #b7d8f8;
+  height: 200px;
+  position: absolute;
+  margin-top: 20px;
+  right: 650px;
+}

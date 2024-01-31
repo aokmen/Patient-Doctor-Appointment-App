@@ -18,7 +18,7 @@ const AppointmentSchema = new mongoose.Schema({
         required: true
     },
     date: {
-        type: Date,
+        type: String,
         trim: true,
         required: true
     },
@@ -27,20 +27,18 @@ const AppointmentSchema = new mongoose.Schema({
         trim: true,
         required: true
     },
-    timeEnd: {
-        type: String,
-        trim: true,
-        required: true
-    },
+    // timeEnd: {
+    //     type: String,
+    //     trim: true,
+    //     required: true
+    // },
     patientId: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Patient',
-        required: true
+        ref: 'Patient'
     },
     complaints: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Complaint',
-        required: true
     }],
     insurance: {
         type: String,

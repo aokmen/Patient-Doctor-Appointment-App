@@ -11,6 +11,13 @@ module.exports = async function () {
     //  await mongoose.connection.dropDatabase()
     //  console.log('- Database and all data DELETED!')
      
+    const WeekDay = require('../models/weekDay')
+    await WeekDay.deleteMany()
+    const DaySchedule = require('../models/daySchedule')
+    await DaySchedule.deleteMany()
+    const Appointment = require('../models/appointment')
+    await Appointment.deleteMany()
+
 
     /* Admin */
     const Admin = require('../models/admin')
@@ -420,8 +427,8 @@ module.exports = async function () {
     const Patient = require('../models/patient')
     await Patient.deleteMany() // !!! Clear collection.
 
-    const Appointment = require('../models/appointment')
-    await Appointment.deleteMany() // !!! Clear collection.
+    // const Appointment = require('../models/appointment')
+    // await Appointment.deleteMany() // !!! Clear collection.
 
 
     for(let k = 0; k < cityIds.length; k++) {
@@ -459,17 +466,18 @@ module.exports = async function () {
                         phone: "+099879123218",
                         birthDate: "1980-08-23",
                         gender: genders[j]
-                    }).then((patient) => {
-                        Appointment.create({
-                            doctorId: doctor._id,
-                            date: "2024-03-21",
-                            timeStart: "13.55",
-                            timeEnd: "14.15",
-                            patientId: patient._id,
-                            complaints: [complaintIds[j]],
-                            insurance: "Compulsory"
-                        })
                     })
+                    // .then((patient) => {
+                    //     Appointment.create({
+                    //         doctorId: doctor._id,
+                    //         date: "2024-03-21",
+                    //         timeStart: "13.55",
+                    //         timeEnd: "14.15",
+                    //         patientId: patient._id,
+                    //         complaints: [complaintIds[j]],
+                    //         insurance: "Compulsory"
+                    //     })
+                    // })
                 })    
             }
         }

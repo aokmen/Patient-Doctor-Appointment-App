@@ -16,7 +16,7 @@ const authSlice = createSlice({
     },
     loginSuccess: (state,action) => {
       state.loading = false;
-      state.currentUser = action.payload?.email;
+      state.currentUser = action.payload?.user?.email;
       state.token = action.payload?.key;
     },
     logoutSuccess: (state) => {
@@ -26,8 +26,8 @@ const authSlice = createSlice({
     },
     registerSuccess: (state, { payload }) => {
       state.loading = false;
-      state.currentUser = payload?.email;
-      state.token = payload?.token;
+      state.currentUser = payload?.data?.email;
+      state.token = payload?.key;
       state.error = false;
     },
     fetchFail: (state) => {
@@ -36,13 +36,16 @@ const authSlice = createSlice({
     },
   },
 });
+// export const { reducer } = authSlice; 
+// export const {
+//   fetchStart,
+//   loginSuccess,
+//   logoutSuccess,
+//   registerSuccess,
+//   fetchFail,
+// } = authSlice.actions
 
-export const {
-  fetchStart,
-  loginSuccess,
-  logoutSuccess,
-  registerSuccess,
-  fetchFail,
-} = authSlice.actions
+export const { reducer, actions: { fetchStart, loginSuccess, logoutSuccess, registerSuccess, fetchFail }} = authSlice;
 
 export default authSlice;
+

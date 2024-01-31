@@ -41,6 +41,12 @@ router.use('/appointments', require('./appointment'))
 // city:
 router.use('/cities', require('./city'))
 
+// weekDay:
+router.use('/weekdays', require('./weekDay'))
+
+// daySchedule:
+router.use('/dayschedules', require('./daySchedule'))
+
 // file:
 router.use('/files', require('./file'))
 
