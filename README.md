@@ -7,7 +7,7 @@ This project includes a full-stack web application that allows patients and doct
 ## Technologies
 
 - **Frontend:**
-  - Created using React.
+  - Created using React. 
   - Utilizes libraries such as React Router, Tailwind, Formik, Yup, and Toastify.
 
 - **Backend:**
