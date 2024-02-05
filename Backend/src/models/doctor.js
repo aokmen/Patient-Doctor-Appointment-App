@@ -20,6 +20,15 @@ const DoctorSchema = new mongoose.Schema({
         unique: true,
         index: true
     },
+<<<<<<< HEAD
+=======
+    // username: {
+    //     type: String,
+    //     trim: true,
+    //     unique: true,
+    //     index: true
+    // },
+>>>>>>> d5ad317828b9c1ee1dbeec1685c81b696ba508fb
     password: {
         type: String,
         trim: true,

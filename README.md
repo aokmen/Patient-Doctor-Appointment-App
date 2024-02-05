@@ -7,14 +7,14 @@ This project includes a full-stack web application that allows patients and doct
 ## Technologies
 
 - **Frontend:**
-  - Created using React.
+  - Created using React. 
   - Utilizes libraries such as React Router, Tailwind, Formik, Yup, and Toastify.
 
 - **Backend:**
   - Developed with Node.js and Express.js.
   - Utilizes MongoDB as the database, integrated with Mongoose.
   
-- **Authentication and Authorization:**
+- **Authentication and Authorization:** 
   - User authentication is managed using Token Authentication.
   - Authorization is implemented using React Router's security features.
 
