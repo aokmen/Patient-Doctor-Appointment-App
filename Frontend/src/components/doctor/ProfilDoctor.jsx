@@ -24,15 +24,15 @@ const DoctorProfil = ({ branchId, cityId, phone, website, title, firstName, last
       <h2 className='text-xl doctor-profil-name'>{branchId?.name}</h2>
       </div>  
       <div className='flex justify-start doctor-profil-location'>
-        <img src={locationIcon} className="me-2 w-4 h-6" alt="locationIcon" />
+        <img src={locationIcon} className="mr-2 w-4 h-6" alt="locationIcon" />
         <h3>{cityId?.name}</h3>
       </div>
       <div className='flex doctor-profil-phone'>
-        <img src={phoneIcon} className="me-1 w-5 h-5" alt="phoneIcon" />
+        <img src={phoneIcon} className="mr-1 w-5 h-5" alt="phoneIcon" />
         <h3>{phone}</h3>
       </div>
       <div className='flex doctor-profil-website'>
-      <img src={webIcon} className="me-1 w-6 h-6" alt="webIcon" />
+      <img src={webIcon} className="mr-1 w-6 h-6" alt="webIcon" />
       {website ? <a href="www.example.com"> {website}</a> : "Keine Webseite Vorhanden"}
       </div>
       <button className='flex justify-center termin-button duration-150 mx-auto' onClick={() => check()}>TERMIN VEREINBAREN</button>

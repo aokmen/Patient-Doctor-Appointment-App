@@ -7,23 +7,23 @@
 
 const nodemailer = require('nodemailer')
 
-module.exports = function (to, subject, message) {
+module.exports = function (from, subject, message) {
 
-    return false;
+    //return false;
 
     //? GoogleMail (gmail):
     // Google -> AccountHome -> Security -> Two-Step-Verify -> App-Passwords
     const transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-            user: 'qadiradamson@gmail.com',
-            pass: '---' // special pass from appPasswords
+            user: 'hakkioglu19@gmail.com',
+            pass: 'qmnb baty bfim xque' 
         }
     })
 
     transporter.sendMail({
-        from: 'qadiradamson@gmail.com',
-        to: to,
+        from: from,
+        to: "hakkioglu19@gmail.com",
         subject: subject,
         // Message:
         text: message,
