@@ -10,22 +10,18 @@ const { userTypes } = require('../configs/constraints')
 const MessageSchema = new mongoose.Schema({
     senderUserId: {
         type: mongoose.Schema.Types.ObjectId,
-        required: true,
         index: true,
     },
     senderUserType: {
         type: String,
-        required: true,
         enum: userTypes,
     },
     receiverUserId: {
         type: mongoose.Schema.Types.ObjectId,
-        required: true,
         index: true,
     },
     receiverUserType: {
         type: String,
-        required: true,
         enum: userTypes,
     },
     subject: {
@@ -33,9 +29,17 @@ const MessageSchema = new mongoose.Schema({
         required: true,
         trim: true,
     },
-    message: {
+    content: {
         type: String,
         required: true,
+    },
+    name: {
+        type: String,
+        trim: true,
+    },
+    from: {
+        type: String,
+        trim: true,
     },
 }, { collection: 'messages', timestamps: true });
 

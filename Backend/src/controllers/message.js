@@ -5,6 +5,7 @@ const Message = require('../models/message');
 const Doctor = require('../models/doctor')
 const Patient = require('../models/patient')
 const Admin = require('../models/admin')
+const sendMail = require('../helpers/sendMail')
 
 module.exports = {
 
@@ -48,7 +49,15 @@ module.exports = {
 
         const data = await Message.create(req.body);
 
-        if(req.body.senderUserType === "Admin"){
+        if(req.body.from){
+            sendMail(
+                req.body.from,    //from
+                req.body.subject,     //subject
+                req.body.content
+            )
+        }
+        else{
+           if(req.body.senderUserType === "Admin"){
             await Admin.updateOne({_id: data.senderUserId}, {$push: {messages: data.id}})
 
             if(req.body.receiverUserType === "Doctor"){
@@ -95,7 +104,9 @@ module.exports = {
                 await Admin.updateOne({_id: data.receiverUserId}, {$push: {messages: data.id}})
                 await Admin.updateOne({_id: data.receiverUserId}, {$inc: {messageCount: +1}})
             }
+        } 
         }
+        
 
         // await Contribution.updateOne({_id: data.contribution_id}, {$push: {comments: data.id}})
         // await Contribution.updateOne({_id: data.contribution_id}, {$inc: {comment_count: +1}})

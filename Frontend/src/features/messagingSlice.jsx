@@ -1,7 +1,34 @@
-import React from "react";
+import { createSlice } from "@reduxjs/toolkit";
+//import React from "react";
 
-const messagingSlice = () => {
-  return <div></div>;
-};
+const messagingSlice = createSlice({
+  name: "message",
 
-export default messagingSlice;
+  initialState: {
+    subject: "",
+    content: ""
+  },
+  reducers:{
+    fetchStart: (state) => {
+      state.loading = true;
+      state.error = false;
+    },
+    getDataSuccess: (state, {payload}) => {
+      state.loading = false;
+      state[payload.res] = payload.data;
+    },
+
+    fetchFail: (state) => {
+      state.loading = false;
+      state.error = true;
+    },
+  }
+
+});
+export const {
+  fetchStart,
+  getDataSuccess,
+  fetchFail,
+} = messagingSlice.actions
+
+export default messagingSlice.reducer;

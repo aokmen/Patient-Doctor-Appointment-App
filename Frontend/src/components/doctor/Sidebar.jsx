@@ -5,6 +5,7 @@ import React, { useEffect } from 'react'
 
 import logo2 from "../../assets/Logo2.png"
 import userIcon from '../../assets/user.png'
+import userIcon2 from '../../assets/user2.png'
 import { useSelector } from 'react-redux';
 import useDataCall from '../../hooks/useDataCall';
 
@@ -15,7 +16,8 @@ const Sidebar = () => {
 
     const {patients} = useSelector((state)=>state.data)
 
-    const thisPatient = patients?.data?.filter((item, i) => {return item.username === currentUser})
+    const thisPatient = patients?.data?.filter((item) => {return item.email === currentUser.currentUser})
+    //console.log(currentUser.currentUser)
 
     useEffect(() => {
     
@@ -135,9 +137,9 @@ const Sidebar = () => {
                                     currentUser ? 
                                     <div className="flex items-center gap-x-4">
                                     
-                                        <img src={thisPatient?.profilePic} className="w-12 h-12 rounded-full" />
+                                        <img src={thisPatient?.profilePic || userIcon2} className="hover:opacity-50 hover:cursor-pointer w-12 h-12 rounded-full bg-white" />
                                         <div>
-                                            <span className="block text-white text-sm font-semibold">{currentUser}</span>
+                                            <span className="block text-white text-sm font-semibold">{currentUser.currentUser.split('@')[0]}</span>
                                             <a
                                                 href="#"
                                                 className="block mt-px text-white text-xs view-profile"
