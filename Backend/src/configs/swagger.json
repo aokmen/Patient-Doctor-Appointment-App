@@ -34,7 +34,7 @@
           "Authentication"
         ],
         "summary": "Login",
-        "description": "Login with username (or email) and password for get simpleToken and JWT",
+        "description": "Login with email and password for get simpleToken and JWT",
         "parameters": [
           {
             "name": "body",
@@ -43,7 +43,7 @@
             "schema": {
               "type": "object",
               "properties": {
-                "username": {
+                "email": {
                   "type": "string",
                   "example": "test"
                 },
@@ -1368,6 +1368,254 @@
         }
       }
     },
+    "/weekdays/": {
+      "get": {
+        "tags": [
+          "Cities"
+        ],
+        "summary": "List Cities",
+        "description": "  You can send query with endpoint for search[], sort[], page and limit.  <ul> Examples:   <li>URL/?<b>search[field1]=value1&search[field2]=value2</b></li>   <li>URL/?<b>sort[field1]=1&sort[field2]=-1</b></li>   <li>URL/?<b>page=2&limit=1</b></li>  </ul>  ",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Cities"
+        ],
+        "summary": "Create WeekDay",
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/WeekDay"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        }
+      }
+    },
+    "/weekdays/{id}": {
+      "get": {
+        "tags": [
+          "Cities"
+        ],
+        "summary": "Get Single WeekDay",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Cities"
+        ],
+        "summary": "Update WeekDay",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/WeekDay"
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Cities"
+        ],
+        "summary": "Delete WeekDay",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Cities"
+        ],
+        "summary": "Update WeekDay",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/WeekDay"
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          }
+        }
+      }
+    },
+    "/dayschedules/": {
+      "get": {
+        "tags": [
+          "DaySchedules"
+        ],
+        "summary": "List DaySchedules",
+        "description": "  You can send query with endpoint for search[], sort[], page and limit.  <ul> Examples:   <li>URL/?<b>search[field1]=value1&search[field2]=value2</b></li>   <li>URL/?<b>sort[field1]=1&sort[field2]=-1</b></li>   <li>URL/?<b>page=2&limit=1</b></li>  </ul>  ",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "DaySchedules"
+        ],
+        "summary": "Create DaySchedule",
+        "description": "",
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        }
+      }
+    },
+    "/dayschedules/{id}": {
+      "get": {
+        "tags": [
+          "DaySchedules"
+        ],
+        "summary": "Get Single DaySchedule",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "DaySchedules"
+        ],
+        "summary": "Update DaySchedule",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "DaySchedules"
+        ],
+        "summary": "Delete DaySchedule",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "DaySchedules"
+        ],
+        "summary": "Update DaySchedule",
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          }
+        }
+      }
+    },
     "/files/": {
       "get": {
         "tags": [
@@ -1802,22 +2050,6 @@
             }
           }
         },
-        "timeEnd": {
-          "type": "object",
-          "properties": {
-            "type": {
-              "type": "function"
-            },
-            "trim": {
-              "type": "boolean",
-              "example": true
-            },
-            "required": {
-              "type": "boolean",
-              "example": true
-            }
-          }
-        },
         "patientId": {
           "type": "object",
           "properties": {
@@ -1827,10 +2059,6 @@
             "ref": {
               "type": "string",
               "example": "Patient"
-            },
-            "required": {
-              "type": "boolean",
-              "example": true
             }
           }
         },
@@ -1845,10 +2073,6 @@
               "ref": {
                 "type": "string",
                 "example": "Complaint"
-              },
-              "required": {
-                "type": "boolean",
-                "example": true
               }
             }
           }
@@ -2115,10 +2339,6 @@
             "ref": {
               "type": "string",
               "example": "Branch"
-            },
-            "required": {
-              "type": "boolean",
-              "example": true
             }
           }
         },
@@ -2133,26 +2353,6 @@
               "example": true
             },
             "required": {
-              "type": "boolean",
-              "example": true
-            },
-            "unique": {
-              "type": "boolean",
-              "example": true
-            },
-            "index": {
-              "type": "boolean",
-              "example": true
-            }
-          }
-        },
-        "username": {
-          "type": "object",
-          "properties": {
-            "type": {
-              "type": "function"
-            },
-            "trim": {
               "type": "boolean",
               "example": true
             },
@@ -2203,6 +2403,10 @@
             "trim": {
               "type": "boolean",
               "example": true
+            },
+            "required": {
+              "type": "boolean",
+              "example": true
             }
           }
         },
@@ -2215,10 +2419,14 @@
             "trim": {
               "type": "boolean",
               "example": true
+            },
+            "required": {
+              "type": "boolean",
+              "example": true
             }
           }
         },
-        "address": {
+        "street": {
           "type": "object",
           "properties": {
             "type": {
@@ -2255,8 +2463,16 @@
             "ref": {
               "type": "string",
               "example": "City"
+            }
+          }
+        },
+        "cityName": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "function"
             },
-            "required": {
+            "trim": {
               "type": "boolean",
               "example": true
             }
@@ -2271,10 +2487,6 @@
             "trim": {
               "type": "boolean",
               "example": true
-            },
-            "required": {
-              "type": "boolean",
-              "example": true
             }
           }
         },
@@ -2285,10 +2497,6 @@
               "type": "function"
             },
             "trim": {
-              "type": "boolean",
-              "example": true
-            },
-            "required": {
               "type": "boolean",
               "example": true
             }
@@ -2398,10 +2606,6 @@
               "ref": {
                 "type": "string",
                 "example": "Complaint"
-              },
-              "required": {
-                "type": "boolean",
-                "example": true
               }
             }
           }
@@ -2417,10 +2621,6 @@
               "ref": {
                 "type": "string",
                 "example": "Message"
-              },
-              "required": {
-                "type": "boolean",
-                "example": true
               }
             }
           }
@@ -2693,26 +2893,6 @@
             }
           }
         },
-        "username": {
-          "type": "object",
-          "properties": {
-            "type": {
-              "type": "function"
-            },
-            "trim": {
-              "type": "boolean",
-              "example": true
-            },
-            "unique": {
-              "type": "boolean",
-              "example": true
-            },
-            "index": {
-              "type": "boolean",
-              "example": true
-            }
-          }
-        },
         "firstName": {
           "type": "object",
           "properties": {
@@ -2720,6 +2900,10 @@
               "type": "function"
             },
             "trim": {
+              "type": "boolean",
+              "example": true
+            },
+            "required": {
               "type": "boolean",
               "example": true
             }
@@ -2734,10 +2918,14 @@
             "trim": {
               "type": "boolean",
               "example": true
+            },
+            "required": {
+              "type": "boolean",
+              "example": true
             }
           }
         },
-        "address": {
+        "street": {
           "type": "object",
           "properties": {
             "type": {
@@ -2765,6 +2953,14 @@
             }
           }
         },
+        "profilePic": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "function"
+            }
+          }
+        },
         "cityId": {
           "type": "object",
           "properties": {
@@ -2774,8 +2970,16 @@
             "ref": {
               "type": "string",
               "example": "City"
+            }
+          }
+        },
+        "cityName": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "function"
             },
-            "required": {
+            "trim": {
               "type": "boolean",
               "example": true
             }
@@ -2790,10 +2994,6 @@
             "trim": {
               "type": "boolean",
               "example": true
-            },
-            "required": {
-              "type": "boolean",
-              "example": true
             }
           }
         },
@@ -2804,10 +3004,6 @@
               "type": "function"
             },
             "trim": {
-              "type": "boolean",
-              "example": true
-            },
-            "required": {
               "type": "boolean",
               "example": true
             }
@@ -2859,10 +3055,6 @@
               "ref": {
                 "type": "string",
                 "example": "Message"
-              },
-              "required": {
-                "type": "boolean",
-                "example": true
               }
             }
           }

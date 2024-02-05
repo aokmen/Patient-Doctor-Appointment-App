@@ -1,0 +1,11 @@
+@media (min-width: 1024px) {
+  .large-screen {
+    margin-left: -520px;
+  }
+  .button-right {
+    margin-left: -420px;
+  }
+  .center-ul {
+    gap: 60px;
+  }
+}

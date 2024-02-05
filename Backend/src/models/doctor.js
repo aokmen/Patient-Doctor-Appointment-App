@@ -11,19 +11,12 @@ const DoctorSchema = new mongoose.Schema({
 
     branchId: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Branch',
-        required: true
+        ref: 'Branch'
     },
     email: {
         type: String,
         trim: true,
         required: true,
-        unique: true,
-        index: true
-    },
-    username: {
-        type: String,
-        trim: true,
         unique: true,
         index: true
     },
@@ -39,12 +32,14 @@ const DoctorSchema = new mongoose.Schema({
     firstName: {
         type: String,
         trim: true,
+        required: true
     },
     lastName: {
         type: String,
         trim: true,
+        required: true
     },
-    address: {
+    street: {
         type: String,
         trim: true,
         required: true
@@ -55,18 +50,19 @@ const DoctorSchema = new mongoose.Schema({
     },
     cityId: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'City',
-        required: true
+        ref: 'City'
+    },
+    cityName: {
+        type: String,
+        trim: true
     },
     phone: {
         type: String,
         trim: true,
-        required: true
     },
     birthDate: {
-        type: Date,
-        trim: true,
-        required: true
+        type: String,
+        trim: true
     },
     gender: {
         type: String,
@@ -97,13 +93,11 @@ const DoctorSchema = new mongoose.Schema({
     },
     complaints: [{            
         type: mongoose.Schema.Types.ObjectId,
-        ref:'Complaint',
-        required: true,
+        ref:'Complaint'
     }],
     messages: [{            
         type: mongoose.Schema.Types.ObjectId,
-        ref:'Message',
-        required: true,
+        ref:'Message'
     }],
     messageCount: {
         type: Number,

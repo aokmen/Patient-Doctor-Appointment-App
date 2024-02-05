@@ -6,7 +6,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 
 
 
-const CardDoctor = ({id, address, title, firstName, lastName, zipCode, branchId, cityId}) => {
+const CardDoctor = ({id, street, title, firstName, lastName, zipCode, branchId, cityId}) => {
   const navigate = useNavigate()
 
   return (
@@ -20,7 +20,7 @@ const CardDoctor = ({id, address, title, firstName, lastName, zipCode, branchId,
           <div className="doctorName">
             <h2><span>{title}.</span>  {firstName} {lastName}</h2>
             <h3>{branchId?.name}</h3>
-            <p className='address'><span>Adresse: </span>{address.split(" ").slice(0, 2).join(" ")} </p>
+            <p className='address'><span>Adresse: </span>{street.split(" ").slice(0, 2).join(" ")} </p>
             <p className='city'>{zipCode}, {cityId?.name} </p>
           </div>
 

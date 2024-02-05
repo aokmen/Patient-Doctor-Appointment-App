@@ -15,22 +15,22 @@ module.exports = {
         /*
             #swagger.tags = ["Authentication"]
             #swagger.summary = "Login"
-            #swagger.description = 'Login with username (or email) and password for get simpleToken and JWT'
+            #swagger.description = 'Login with email and password for get simpleToken and JWT'
             #swagger.parameters["body"] = {
                 in: "body",
                 required: true,
                 schema: {
-                    "username": "test",
+                    "email": "test",
                     "password": "1234",
                 }
             }
         */
 
-        const { username, email, password } = req.body
+        const { email, password } = req.body
 
-        if ((username || email) && password) {
+        if (email && password) {
 
-            const user = await Admin.findOne({ $or: [{ username }, { email }] }) || await Doctor.findOne({ $or: [{ username }, { email }] })|| await Patient.findOne({ $or: [{ username }, { email }] })
+            const user = await Admin.findOne({email}) || await Doctor.findOne({email}) || await Patient.findOne({email})
 
             if (user && user.password == passwordEncrypt(password)) {
 
@@ -65,12 +65,67 @@ module.exports = {
             } else {
 
                 res.errorStatusCode = 401
-                throw new Error('Wrong username/email or password.')
+                throw new Error('Wrong email or password.')
             }
         } else {
 
             res.errorStatusCode = 401
-            throw new Error('Please enter username/email and password.')
+            throw new Error('Please enter email and password.')
+        }
+    },
+    register: async (req, res) => {
+        const {email} = req.body
+
+        if(req.body.branch){
+            await Doctor.create(req.body)
+
+            const doctor = await Doctor.findOne({email})
+
+            let tokenData = await Token.findOne({ userId: doctor._id })
+            if (!tokenData) tokenData = await Token.create({
+                userId: doctor._id,
+                token: passwordEncrypt(doctor._id + Date.now())
+            })
+
+            res.send({
+                error: false,
+                key: tokenData.token,
+                doctor,
+            })
+        }
+        else if(req.body.username){
+            await Admin.create(req.body)
+
+            const admin = await Admin.findOne({email})
+
+            let tokenData = await Token.findOne({ userId: admin._id })
+            if (!tokenData) tokenData = await Token.create({
+                userId: admin._id,
+                token: passwordEncrypt(admin._id + Date.now())
+            })
+
+            res.send({
+                error: false,
+                key: tokenData.token,
+                admin,
+            })
+        }
+        else{
+            await Patient.create(req.body)
+
+            const patient = await Patient.findOne({email})
+
+            let tokenData = await Token.findOne({ userId: patient._id })
+            if (!tokenData) tokenData = await Token.create({
+                userId: patient._id,
+                token: passwordEncrypt(patient._id + Date.now())
+            })
+
+            res.send({
+                error: false,
+                key: tokenData.token,
+                patient,
+            })
         }
     },
 

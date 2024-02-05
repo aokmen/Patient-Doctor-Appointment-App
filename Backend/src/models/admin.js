@@ -13,7 +13,8 @@ const AdminSchema = new mongoose.Schema({
         type: String,
         trim: true,
         unique: true,
-        index: true
+        index: true,
+        required: true
     },
     firstName: {
         type: String,

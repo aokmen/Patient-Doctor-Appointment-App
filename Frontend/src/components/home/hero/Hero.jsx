@@ -13,10 +13,6 @@ const Hero = () => {
   const handleSearch = (event) => {
     event.preventDefault()
     navigate("/search")
-    // navigate("/search",{state:{
-    //   name:"hans",
-    //   city:"berlin"
-    // }})
   }
 
   return (

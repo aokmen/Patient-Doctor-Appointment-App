@@ -1,11 +1,27 @@
 /* eslint-disable no-script-url */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable jsx-a11y/alt-text */
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import logo2 from "../../assets/Logo2.png"
+import userIcon from '../../assets/user.png'
+import { useSelector } from 'react-redux';
+import useDataCall from '../../hooks/useDataCall';
 
 const Sidebar = () => {
+
+    const currentUser = useSelector((state) => state.auth)
+    const {getData} = useDataCall()
+
+    const {patients} = useSelector((state)=>state.data)
+
+    const thisPatient = patients?.data?.filter((item, i) => {return item.username === currentUser})
+
+    useEffect(() => {
+    
+        getData("patients")
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
     const navigation = [
         {
@@ -60,13 +76,21 @@ const Sidebar = () => {
             </svg>
             ,
         },
+        currentUser ? 
         {
             href: 'javascript:void(0)',
             name: 'Logout',
             icon: <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15m3 0l3-3m0 0l-3-3m3 3H9" />
             </svg>
-            ,
+        } 
+        :
+        {
+            href: 'javascript:void(0)',
+            name: 'Login',
+            icon: <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-5 h-5">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15m3 0l3-3m0 0l-3-3m3 3H9" />
+            </svg>
         }
     ]
 
@@ -99,26 +123,45 @@ const Sidebar = () => {
                                     navsFooter.map((item, idx) => (
                                         <li key={idx}>
                                             <a href='#' className="flex items-center gap-x-2 text-gray-600 p-2 text-lg duration-150">
-                                                <div className="icons">{item.icon}</div>
-                                                {item.name}
+                                                <div className="icons">{item?.icon}</div>
+                                                {item?.name}
                                             </a>
                                         </li>
                                     ))
                                 }
                             </ul>
                             <div className="py-4 px-4 border-t">
-                                <div className="flex items-center gap-x-4">
-                                    <img src="https://randomuser.me/api/portraits/women/79.jpg" className="w-12 h-12 rounded-full" />
-                                    <div>
-                                        <span className="block text-white text-sm font-semibold">Alivika tony</span>
-                                        <a
-                                            href="#"
-                                            className="block mt-px text-white text-xs view-profile"
-                                        >
-                                            View profile
-                                        </a>
+                                {
+                                    currentUser ? 
+                                    <div className="flex items-center gap-x-4">
+                                    
+                                        <img src={thisPatient?.profilePic} className="w-12 h-12 rounded-full" />
+                                        <div>
+                                            <span className="block text-white text-sm font-semibold">{currentUser}</span>
+                                            <a
+                                                href="#"
+                                                className="block mt-px text-white text-xs view-profile"
+                                            >
+                                                View your profile
+                                            </a>
+                                        </div>
                                     </div>
-                                </div>
+                                    :
+                                    <div className="flex items-center gap-x-4">
+                                    
+                                        <img src={userIcon} className="w-12 h-12 rounded-full" />
+                                        <div>
+                                            <span className="block text-white text-sm font-semibold">Unknown User</span>
+                                            <a
+                                                href="#"
+                                                className="block mt-px text-white text-xs view-profile"
+                                            >
+                                                Patient Login
+                                            </a>
+                                        </div>
+                                    </div>
+                                }
+                                
                             </div>
                         </div>
                     </div >
