@@ -5,6 +5,7 @@ import Header from "../../components/header/Header";
 import Hero from "../../components/home/hero/Hero";
 import HomeSection from "../../components/home/homeSection/HomeSection";
 import Contact from "../../components/home/contact/Contact";
+import About from "../about/About";
 
 
 const Home = () => {
@@ -25,6 +26,7 @@ const Home = () => {
       <Hero/>
       <HomeSection/>
       <Contact/>
+      <About/>
     </div>
   );
 };

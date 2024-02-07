@@ -42,18 +42,18 @@ const useDataCall = () => {
     /*                           Update Data with Axios                           */
     /* -------------------------------------------------------------------------- */
 
-    const putData = async (res, info) => { 
+    const putData = async (res,id,info) => { 
         dispatch(fetchStart())
         try {
-            const { data } = await axios.put(`${url}/${res}/${info.id}`, info)
-            dispatch(getDataSuccess({ data, res }))
+            await axios.put(`${url}/${res}/${id}`, info)
             getData(res)
         } catch (error) {
             dispatch(fetchFail())
             console.log(error);
         }
     }
-
+    
+  
     /* -------------------------------------------------------------------------- */
     /*                            Delete Data with Axios                          */
     /* -------------------------------------------------------------------------- */

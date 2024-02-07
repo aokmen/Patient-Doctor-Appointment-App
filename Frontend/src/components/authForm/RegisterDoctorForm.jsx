@@ -14,7 +14,7 @@ export const registerSchema = object().shape({
   lastName: string()
     .max(20, "Maximum 20 Buchstaben")
     .required("Nachname ist verpflichted"),
-  email: string().email().required("Email ist verpflichted").email("Bitte geben Sie eine gültige Email Adresse"),
+  email: string().email().required("Email ist verpflichted"),
   password: string()
     .required("Email ist verpflichted")
     .min(8, "Minimum 8 Zeichen")
@@ -30,6 +30,9 @@ export const registerSchema = object().shape({
   branch: string()
     .required("PLZ ist verpflichted"),
 })
+
+
+
 
 
 const RegisterDoctorForm = () => {
