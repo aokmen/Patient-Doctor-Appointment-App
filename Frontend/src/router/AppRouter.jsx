@@ -6,9 +6,9 @@ import DetailDoctor from "../pages/detailDoctor/DetailDoctor";
 import SearchDoctor from "../pages/searchDoctor/SearchDoctor";
 import Login from "../pages/auth/Login";
 import PrivateRouter from "./PrivateRouter";
-import AdminPanel from "../pages/panels/AdminPanel";
-import DoctorPanel from "../pages/panels/DoctorPanel";
-import PatientPanel from "../pages/panels/PatientPanel";
+import AdminPanel from "../pages/panels/adminPanel/AdminPanel";
+import DoctorPanel from "../pages/panels/doctorPanel/DoctorPanel";
+import PatientPanel from "../pages/panels/patientPanel/PatientPanel";
 import About from "../pages/about/About";
 
 const AppRouter = () => {

@@ -73,14 +73,14 @@ const Header = () => {
                     loading="lazy"
                   />
                   <div className="px-4 py-2 text-white text-[32px] font-light">
-                    termin<span className="text-main-light-blue">uns</span>
+                    termin<span className="text-main-light-blue font-medium">uns</span>
                   </div>
                 </button>
               </li>
 
               <li className="mb-2 lg:mb-0 lg:pr-2 ">
                 <button
-                  className="lg:px-2 px-4 py-3  hover:bg-main-light-blue text-white rounded-2xl text-bg-main-dark-blue text-[20px] font-light"
+                  className="lg:px-2 px-4 py-3  hover:bg-main-light-blue hover:text-main-dark-blue text-white rounded-2xl text-bg-main-dark-blue text-[20px] font-light"
                   onClick={() => navigate("/")}
                 >
                   Home
@@ -88,26 +88,26 @@ const Header = () => {
               </li>
               <li className="mb-2 lg:mb-0 lg:pr-2">
                 <button
-                  className="lg:px-2 px-4 py-3 hover:bg-main-light-blue text-white rounded-2xl text-bg-main-dark-blue text-[20px] font-light"
+                  className="lg:px-2 px-4 py-3 hover:bg-main-light-blue  hover:text-main-dark-blue text-white rounded-2xl text-bg-main-dark-blue text-[20px] font-light"
                   onClick={() => navigate("/about")}
                 >
                   Über uns
                 </button>
               </li>
               <li className="mb-2 lg:mb-0 lg:pr-2">
-                <button className="lg:px-2 px-4 py-3 hover:bg-main-light-blue text-white rounded-2xl text-bg-main-dark-blue text-[20px] font-light">
+                <button className="lg:px-2 px-4 py-3 hover:bg-main-light-blue  hover:text-main-dark-blue text-white rounded-2xl text-bg-main-dark-blue text-[20px] font-light">
                   Service
                 </button>
               </li>
               <li className="mb-2 lg:mb-0 lg:pr-2">
-                <button className="lg:px-2 px-4 py-3 hover:bg-main-light-blue text-white rounded-2xl text-bg-main-dark-blue text-[20px] font-light">
+                <button className="lg:px-2 px-4 py-3 hover:bg-main-light-blue  hover:text-main-dark-blue text-white rounded-2xl text-bg-main-dark-blue text-[20px] font-light">
                   Kontakt
                 </button>
               </li>
               {currentUser ? (
                 <li>
                   <button
-                    className="px-4 py-3 hover:bg-main-light-blue rounded-2xl text-white text-[20px] font-light"
+                    className="px-4 py-3 hover:bg-main-light-blue hover:text-main-dark-blue rounded-2xl text-white text-[20px] font-light"
                     onClick={() => closed()}
                   >
                     Ausloggen

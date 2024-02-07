@@ -8,7 +8,7 @@ const HomeSection = () => {
     <div className="bg-main-dark-blue w-full h-[350px]   ">
       <h1 className="mx-[100px] my-[10px] text-white font-normal text-[40px] tracking-widest  ">
         Warum Sie uns{" "}
-        <span className="text-main-light-blue">wählen sollten?</span>
+        <span className="text-main-light-blue font-medium">wählen sollten?</span>
       </h1>
       <div>
         <div className="grid grid-cols-3">

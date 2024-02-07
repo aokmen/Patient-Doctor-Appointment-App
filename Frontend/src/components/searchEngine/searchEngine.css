@@ -17,7 +17,7 @@
     display: flex;
     justify-content: center;
     align-content: center ;
-    position: fixed;
+    /* position: fixed; */
     z-index: 2;
    
 }
@@ -27,7 +27,7 @@
     background-color: #B7D8F8;
     width: 100%;
     z-index: 1;
-    position: fixed;
+    /* position: fixed; */
 }
 .input-left, .input-right{
     height: 75px;

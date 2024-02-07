@@ -5,28 +5,28 @@ import locationIcon from "../../../assets/locationIcon.png";
 import "./Hero.css";
 import { useNavigate } from "react-router-dom";
 
-
 const Hero = () => {
-
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleSearch = (event) => {
-    event.preventDefault()
-    navigate("/search")
-  }
+    event.preventDefault();
+    navigate("/search");
+  };
 
   return (
     <>
-      <section className="bg-main-light-blue w-full h-[485.2px] ">
-        <div className="flex ">
-          <div className="grid items-center gap-[800px] grid-cols-2">
-            <div className="mb-[200px] mt-[100px] mx-[120px] w-[580px] ">
-              <h1 className="text-[40px] leading-[48px] font-sans font-extrabold tracking-[3px] text-main-dark-blue">
+      <section className="bg-main-light-blue w-full h-[453px] ">
+        <div className=" container flex flex-col px-6 py-10 mx-auto space-y-6 lg:h-[32rem] lg:py-16 lg:flex-row lg:items-center">
+          <div className="w-full lg:w-1/2">
+            <div className="lg:max-w-lg   ">
+              <h1 className=" lg:text-4xl  text-3xl leading-[48px] font-sans font-extrabold tracking-[3px] text-main-dark-blue">
                 Vereinbaren Sie ganz einfach{" "}
                 <span className="text-main-blue">Ihren Termin</span>
               </h1>
-              <form action="" className="mx-[-16px] ">
-                <div className="input">
+            </div>
+            <div className="w-full mt-8   rounded-md lg:max-w-sm   ">
+              <form action="" className="flex flex-col lg:flex-row ">
+                <div className="input1">
                   <div className="input-left-box">
                     <img
                       src={searchIcon}
@@ -53,8 +53,11 @@ const Hero = () => {
                     />
                   </div>
                   <div className="input-right-box">
-                  
-                    <button type="submit" className="input-btn" onClick={(e)=>handleSearch(e)}> 
+                    <button
+                      type="submit"
+                      className="input-btn"
+                      onClick={(e) => handleSearch(e)}
+                    >
                       Suchen
                     </button>
                   </div>
@@ -62,11 +65,11 @@ const Hero = () => {
               </form>
             </div>
           </div>
-          <div className="w-full relative">
+          <div className="flex w-full  items-center justify-center   lg:w-1/2">
             <img
-              src={foto}
               alt="foto"
-              className="rounded-lg w-[800px] mt-[-50px]"
+              className=" object-cover w-full h-full mx-auto mr-[-100px]  mb-[120px] lg:max-w-5xl md:max-w-3xl sm:max-w-xl"
+              src={foto}
             />
           </div>
         </div>

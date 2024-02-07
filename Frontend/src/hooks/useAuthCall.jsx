@@ -51,7 +51,7 @@ const useAuthCall = () => {
             const { data } = await axios.post(`${url}/auth/register`, userData)
             dispatch(registerSuccess(data))
             console.log(data)
-            navigate("/")
+            navigate("/patient")
         } catch (error) {
             dispatch(fetchFail())
             console.log(error);
@@ -68,7 +68,7 @@ const useAuthCall = () => {
             const { data } = await axios.post(`${url}/auth/register`, userData)
             dispatch(registerSuccess(data))
             console.log(data)
-            navigate("/")
+            navigate("/doctor")
         } catch (error) {
             dispatch(fetchFail())
             console.log(error);
