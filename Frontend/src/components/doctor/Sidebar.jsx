@@ -139,7 +139,7 @@ const Sidebar = () => {
                                     
                                         <img src={thisPatient?.profilePic || userIcon2} className="hover:opacity-50 hover:cursor-pointer w-12 h-12 rounded-full bg-white" />
                                         <div>
-                                            <span className="block text-white text-sm font-semibold">{currentUser.currentUser.split('@')[0]}</span>
+                                            <span className="block text-white text-sm font-semibold">{currentUser?.currentUser?.split('@')[0]}</span>
                                             <a
                                                 href="#"
                                                 className="block mt-px text-white text-xs view-profile"
