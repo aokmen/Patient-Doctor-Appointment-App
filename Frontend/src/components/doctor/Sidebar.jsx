@@ -137,7 +137,9 @@ const Sidebar = () => {
                                     
                                         <img src={thisPatient?.profilePic} className="w-12 h-12 rounded-full" />
                                         <div>
+
                                             <span className="block text-white text-sm font-semibold">{currentUser}</span>
+
                                             <a
                                                 href="#"
                                                 className="block mt-px text-white text-xs view-profile"
