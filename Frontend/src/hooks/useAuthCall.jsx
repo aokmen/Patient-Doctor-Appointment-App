@@ -31,17 +31,6 @@ const useAuthCall = () => {
     /*                              The Logout Process                            */
     /* -------------------------------------------------------------------------- */
     
-    // const logout = async () => {  
-    //     dispatch(fetchStart())
-    //     try {
-    //         await axios.post(`${url}/auth/logout`)
-    //         dispatch(logoutSuccess())
-    //     } catch (error) {
-    //         dispatch(fetchFail())
-    //         console.log(error);
-    //     }
-    // }
-
     const logout = async () => {  
         dispatch(fetchStart())
         try {
