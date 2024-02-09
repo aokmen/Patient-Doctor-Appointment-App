@@ -7,9 +7,9 @@
 
 const nodemailer = require('nodemailer')
 
-module.exports = function (from, subject, message) {
+module.exports = function (from, to, subject, message) {
 
-    //return false;
+    return false;
 
     //? GoogleMail (gmail):
     // Google -> AccountHome -> Security -> Two-Step-Verify -> App-Passwords
@@ -22,8 +22,9 @@ module.exports = function (from, subject, message) {
     })
 
     transporter.sendMail({
+        replyTo: from,
         from: from,
-        to: "hakkioglu19@gmail.com",
+        to: to,
         subject: subject,
         // Message:
         text: message,

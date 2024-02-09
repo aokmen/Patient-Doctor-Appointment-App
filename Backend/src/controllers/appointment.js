@@ -3,6 +3,7 @@
 // Appointment Controller:
 
 const Appointment = require('../models/appointment')
+const sendMail = require('../helpers/sendMail')
 
 module.exports = {
 
@@ -20,7 +21,7 @@ module.exports = {
             `
         */
 
-        const data = await res.getModelList(Appointment)
+        const data = await res.getModelList(Appointment, [], ["patientId"])
 
         // res.status(200).send({
         //     error: false,
@@ -45,6 +46,7 @@ module.exports = {
 
         const data = await Appointment.create(req.body)
 
+
         res.status(201).send({
             error: false,
             data
@@ -57,7 +59,7 @@ module.exports = {
             #swagger.summary = "Get Single Appointment"
         */
 
-        const data = await Appointment.findOne({ _id: req.params.id })
+        const data = await Appointment.findOne({ _id: req.params.id }).populate("doctorId")
 
         res.status(200).send({
             error: false,
@@ -76,12 +78,28 @@ module.exports = {
             }
         */
 
-        const data = await Appointment.updateOne({ _id: req.params.id }, req.body, { runValidators: true })
+        const data = await Appointment.updateOne({ _id: req.params.id }, req.body, { runValidators: true }).populate('doctorId')
+        const dataNew = await Appointment.findOne({ _id: req.params.id }).populate(["doctorId", "patientId"])
+
+        console.log(dataNew)
+        sendMail(
+            "hakkioglu19@gmail.com",    //from
+            /* data?.patientId?.email */"hakkioglu19@gmail.com",
+            "Termin Bestätigung",     //subject
+            `
+                <h2>Arzt/Ärztin:</h2> <p>${dataNew?.doctorId?.title}. ${dataNew?.doctorId?.firstName} ${dataNew?.doctorId?.lastName}</p>
+                <h2>Zeit:</h2> <p>${dataNew?.date} - ${dataNew?.timeStart}</p>
+                <h2>Addresse:</h2> <p>${dataNew?.doctorId?.street}, ${dataNew?.doctorId?.zipCode}</p>
+                <h2>Name der Patientin / des Patients:</h2> <p>${dataNew?.patientId?.firstName} ${dataNew?.patientId?.lastName}</p>
+                <hr/>
+                <h2>Mitteilung:</h2> <p>Ihr Termin ist vereinbart worden. Bitte kommen Sie pünktlich. Um den Termin zu stornieren, bitte besuchen Sie wieder Ihre TerminUns-App Konto</p>
+            `
+        )
 
         res.status(202).send({
             error: false,
             data,
-            new: await Appointment.findOne({ _id: req.params.id })
+            newData: await Appointment.findOne({ _id: req.params.id })
         })
     },
 

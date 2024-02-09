@@ -4,13 +4,22 @@ import 'react-calendar/dist/Calendar.css';
 import useDataCall from "../../hooks/useDataCall";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
+import Modal from './Appomodal.jsx'
 
 
 const AppointmentCalendar = ({id}) => {
 
+  const [showModal, setShowModal] = React.useState(false);
+  const [uhrZeit, setUhrZeit] = React.useState("");
+  const [appoId, setAppoId] = React.useState("");
+  const [datum, setDatum] = React.useState("");
+
   const {getData} = useDataCall()
   const {appointments} = useSelector((state) => state.data)                   
-
+  const {doctors} = useSelector((state) => state.data)                   
+  const {patients} = useSelector((state) => state.data)                   
+  //const {currentUser} = useSelector((state) => state.auth)                   
+let currentUser = "Jessica.Yvonne11pat@site.com"
   
   let day = []
   const [appArr, setAppArr] = useState([])
@@ -21,11 +30,22 @@ const AppointmentCalendar = ({id}) => {
   useEffect(() => {
     getData("appointments")
     getData("doctors")
-    getData("dayschedules")
+    getData("patients")
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
+  const thisDoc = doctors.data.filter((doc) => {return doc.id === id}) 
+  const thisPatient = patients.filter((pat) => {return pat.email === currentUser}) 
+  //console.log(thisPatient)
+  const patientName = thisPatient[0]?.firstName + " " + thisPatient[0]?.lastName
+  const patientId = thisPatient[0]?.id
+  
+
+  const doctorName = thisDoc[0]?.title+ ". " + thisDoc[0]?.firstName + " " + thisDoc[0]?.lastName
+  const doctorAdress = thisDoc[0]?.street + ", " + thisDoc[0]?.zipCode/*  + thisDoc[0]?.cityId */
+  //console.log(doctorName)
+  
 
   const handleDateSelect = async (value) => {
     
@@ -48,28 +68,31 @@ const AppointmentCalendar = ({id}) => {
 
     day = daysArray[3]+"-"+month+"-"+daysArray[2]
     //console.log(day)
+    setDatum(daysArray[3]+"-"+month+"-"+daysArray[2])
 
     appThisDoctorThisDay = await appointments.filter((sch) => {return sch.doctorId === id}).filter((app) => {return app.date === day})
     setAppArr(appThisDoctorThisDay)
   }
   
-  useEffect(() => {
-    getData("appointments")
-    getData("doctors")
-    getData("dayschedules")
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  const handleHourClick = (uhr, appoId) => {
+    //console.log(uhr)
+    setShowModal(true)
+    setUhrZeit(uhr)
+    setAppoId(appoId)
+  }
+  
 
   return <div className="appointments-calendar flex flex-col justify-center items-center">
     <Calendar className="react-calendar" defaultView="month" locale="de-DE" onChange={handleDateSelect}/>
     <div className="hour-buttons text-center">
       {
         appArr?.map((app, index) => {
-          return <button className={app.patientId ? "reserved" : "free duration-150"} key={index}>{app.timeStart}</button>
+          return <button onClick={() => handleHourClick(app.timeStart, app.id)} className={app.patientId ? "reserved" : "free duration-150"} key={index}>{app.timeStart}</button>
         })
       }
     </div>
+    <Modal showModal={showModal} setShowModal={setShowModal} doctorName={doctorName} date={datum} address={doctorAdress} uhrZeit={uhrZeit} appoId={appoId} patientName={patientName} patientId={patientId}/>
+    
     
     
   </div>;

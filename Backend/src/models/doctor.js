@@ -111,6 +111,10 @@ const DoctorSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref:'Message'
     }],
+    appointments:[{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Appointment'
+    }],
     messageCount: {
         type: Number,
         default: 0
