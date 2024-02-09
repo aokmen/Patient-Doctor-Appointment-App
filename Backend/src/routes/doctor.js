@@ -4,32 +4,21 @@ const router = require('express').Router()
 /* ------------------------------------------------------- */
 // routes/doctor:
 
-// const permissions = require('../middlewares/permissions')
+const permissions = require('../middlewares/permissions')
 const doctor = require('../controllers/doctor')
 
 const upload = require('../middlewares/upload')
 
-// URL: /doctors
-
+   
 router.route('/')
     .get(doctor.list)
-    .post(upload.single('avatar'), doctor.create)
+    .post(doctor.create)
 
 router.route('/:id')
-    .get(doctor.read)
-    .put(upload.single('avatar'), doctor.update)
-    .patch(upload.single('avatar'), doctor.update)
-    .delete(doctor.delete)
-    
-// router.route('/')
-//     .get(doctor.list)
-//     .post( upload.single('avatar'), doctor.create)
-
-// router.route('/:id')
-//     .get(permissions.isLogin, doctor.read)
-//     .put(permissions.isLogin, upload.single('avatar'), doctor.update)
-//     .patch(permissions.isLogin, upload.single('avatar'), doctor.update)
-//     .delete(permissions.isAdmin, doctor.delete)
+    .get( doctor.read)
+    .put(permissions.isDoctor, upload.single('avatar'), doctor.update)
+    .patch(permissions.isDoctor, upload.single('avatar'), doctor.update)
+    .delete(permissions.isDoctor, doctor.delete)
 
 /* ------------------------------------------------------- */
 module.exports = router

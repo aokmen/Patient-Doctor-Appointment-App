@@ -21,7 +21,7 @@ const DoctorPanel = () => {
 
   const doctorProfile = doctors?.data?.filter((item) => (currentUser === item.email))
 
-
+console.log("doctors:",doctors);
   return (
 
     <>

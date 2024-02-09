@@ -12,7 +12,7 @@ module.exports = async (req, res, next) => {
   
     if(tokenKey && tokenKey[0] == 'Token'){
         const tokenData = await Token.findOne({ token: tokenKey[1] })
-        // console.log("tokenData:",tokenData);
+         console.log("tokenData:",tokenData);
         if (tokenData) {
             const userModel = require("../models/"+tokenData.userType)
             console.log("userModel",userModel);

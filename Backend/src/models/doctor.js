@@ -85,6 +85,10 @@ const DoctorSchema = new mongoose.Schema({
         type: Boolean,
         default: true
     },
+    isApproved: {
+        type: Boolean,
+        default: false
+    },
     about: {
         type: String,
         trim: true

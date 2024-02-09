@@ -1,3 +1,6 @@
+
+
+
 "use strict"
 
 
@@ -88,14 +91,14 @@ module.exports = {
 
         if(req.body.branch){
             await Doctor.create(req.body)
-
+            req.body.userType="doctor"
             const doctor = await Doctor.findOne({email})
 
             let tokenData = await Token.findOne({ userId: doctor._id })
             if (!tokenData) tokenData = await Token.create({
                 userId: doctor._id,
-                token: passwordEncrypt(doctor._id + Date.now())
-                
+                token: passwordEncrypt(doctor._id + Date.now()),
+                userType : 'doctor'
             })
 
             res.send({
@@ -106,13 +109,14 @@ module.exports = {
         }
         else if(req.body.username){
             await Admin.create(req.body)
-
+            req.body.userType="admin"
             const admin = await Admin.findOne({email})
-
+         
             let tokenData = await Token.findOne({ userId: admin._id })
             if (!tokenData) tokenData = await Token.create({
                 userId: admin._id,
-                token: passwordEncrypt(admin._id + Date.now())
+                token: passwordEncrypt(admin._id + Date.now()),
+                userType : 'admin'
             })
 
             res.send({
@@ -123,13 +127,14 @@ module.exports = {
         }
         else{
             await Patient.create(req.body)
-
+            req.body.userType="patient"
             const patient = await Patient.findOne({email})
 
             let tokenData = await Token.findOne({ userId: patient._id })
             if (!tokenData) tokenData = await Token.create({
                 userId: patient._id,
-                token: passwordEncrypt(patient._id + Date.now())
+                token: passwordEncrypt(patient._id + Date.now()),
+                userType : 'patient'
             })
 
             res.send({

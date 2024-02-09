@@ -4,9 +4,9 @@
 
 module.exports = {
 
-    isLogin: (req, res, next) => {
+    isPatient: (req, res, next) => {
 
-        if (req.admin?.isActive ) {
+        if (req.user && req.user?.isActive && req.user?.userType==="patient") {
 
             next()
 
@@ -17,21 +17,21 @@ module.exports = {
         }
     },
 
-    // isStaff: (req, res, next) => {
+    isStaff: (req, res, next) => {
 
-    //     if (req.admin && req.admin.isActive && req.admin.isStaff) {
+        if (req.user && req.user?.isActive && req.user?.isStaff) {
 
-    //         next()
+            next()
 
-    //     } else {
+        } else {
 
-    //         res.errorStatusCode = 403
-    //         throw new Error('NoPermission: You must log in and be staff.')
-    //     }
-    // },
+            res.errorStatusCode = 403
+            throw new Error('NoPermission: You must log in and be staff.')
+        }
+    },
     isAdmin: (req, res, next) => {
 
-        if (req.admin && req.admin.isActive && req.admin.isAdmin) {
+        if (req.user && req.user?.isActive && req.user?.userType==="admin") {
 
             next()
 
@@ -39,6 +39,18 @@ module.exports = {
 
             res.errorStatusCode = 403
             throw new Error('NoPermission: You must login and be admin.')
+        }
+    },
+    isDoctor: (req, res, next) => {
+        
+        if (req.user && req.user?.isActive && req.user?.userType==="doctor") {
+            console.log("req.user:",req.user);
+            next()
+
+        } else {
+
+            res.errorStatusCode = 403
+            throw new Error('NoPermission: You must login and be doctor.')
         }
     }
 }

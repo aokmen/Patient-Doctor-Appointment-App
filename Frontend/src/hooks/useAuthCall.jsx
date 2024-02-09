@@ -31,31 +31,31 @@ const useAuthCall = () => {
     /*                              The Logout Process                            */
     /* -------------------------------------------------------------------------- */
     
-    const logout = async () => {  
-        dispatch(fetchStart())
-        try {
-            await axios.post(`${url}/auth/logout`)
-            dispatch(logoutSuccess())
-        } catch (error) {
-            dispatch(fetchFail())
-            console.log(error);
-        }
-    }
-
     // const logout = async () => {  
     //     dispatch(fetchStart())
     //     try {
-    //         await axios.post(`${url}/auth/logout`, null,{
-    //             headers: {
-    //                 Authorization: `Token ${token}`,
-    //               },
-    //         })
+    //         await axios.post(`${url}/auth/logout`)
     //         dispatch(logoutSuccess())
     //     } catch (error) {
     //         dispatch(fetchFail())
     //         console.log(error);
     //     }
     // }
+
+    const logout = async () => {  
+        dispatch(fetchStart())
+        try {
+            await axios.post(`${url}/auth/logout`, null,{
+                headers: {
+                    Authorization: `Token ${token}`,
+                  },
+            })
+            dispatch(logoutSuccess())
+        } catch (error) {
+            dispatch(fetchFail())
+            console.log(error);
+        }
+    }
 
     /* -------------------------------------------------------------------------- */
     /*                            The Patient Registration                        */
