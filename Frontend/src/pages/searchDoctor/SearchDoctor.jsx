@@ -39,7 +39,7 @@ const SearchDoctor = () => {
       [field]: value,
     };
   };
-  console.log("Render:");
+  //console.log("Render:");
 
   const handleSearch = (event) => {
     event.preventDefault();
@@ -61,7 +61,7 @@ const SearchDoctor = () => {
         return (firstNameMatch || lastNameMatch || branchMatch) && (cityMatch || zipCodeMatch);
       });
   
-      console.log("filteredResults:", filteredResults)
+      //console.log("filteredResults:", filteredResults)
   
       setfilteredDoctors(filteredResults);
       

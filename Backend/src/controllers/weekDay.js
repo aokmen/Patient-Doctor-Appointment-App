@@ -6,6 +6,7 @@ const WeekDay = require('../models/weekDay')
 
 const Appointment = require('../models/appointment')
 const DaySchedule = require('../models/daySchedule')
+const Doctor = require('../models/doctor')
 
 module.exports = {
 
@@ -173,6 +174,7 @@ module.exports = {
                                 timeStart: appoArray[j]
                             })
                             appointmentsOfTheDay.push(newApp._id)
+                            await Doctor.updateOne({_id: data.doctorId}, {$push: {appointments: newApp._id}})
                         }
                         await DaySchedule.create({
                             doctorId: data.doctorId, 
@@ -195,7 +197,9 @@ module.exports = {
                                 timeStart: appoArray[j]
                             })
                             appointmentsOfTheDay.push(newApp._id)
+                            await Doctor.updateOne({_id: data.doctorId}, {$push: {appointments: newApp._id}})
                         }
+                        
 
                         await DaySchedule.create({
                             doctorId: data.doctorId, 

@@ -7,6 +7,7 @@ import HomeSection from "../../components/home/homeSection/HomeSection";
 import Contact from "../../components/home/contact/Contact";
 import Services from "../services/Services";
 import About from "../about/About";
+import DailyCalendar from "../../components/dailyCalendar/DailyCalendar";
 
 
 const Home = () => {
@@ -27,8 +28,9 @@ const Home = () => {
       <Hero/>
       <HomeSection/>
       <Services/>
-      <Contact/>
       <About/>
+      <Contact/>
+      <DailyCalendar/>
     </div>
   );
 };

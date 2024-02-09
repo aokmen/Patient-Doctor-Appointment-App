@@ -23,7 +23,7 @@ const Services = () => {
       serImg: serviceImgArr[i]
     })
   }
-  console.log(serviceObjArr)
+  //console.log(serviceObjArr)
   
   return (
     <div className='flex flex-col justify-center items-center w-full h-[140vh] md:h-[150vh] lg:h-[140vh] bg-[#F1F7FE]'>
