@@ -1,7 +1,7 @@
 'use strict'
 
 module.exports = {
-    userTypes : ["Admin", "Doctor", "Patient"],
+    userTypes : ["admin", "doctor", "patient"],
     genders : ["Male", "Female", "Others"],
     insurance : ["Private", "Compulsory"],
     dayNames: ["Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag", "Sonntag"]

@@ -15,7 +15,7 @@ const Hero = () => {
 
   return (
     <>
-      <section className="bg-main-light-blue w-full h-[453px] ">
+      <section className="bg-main-light-blue w-full h-[453px] mt-20">
         <div className=" container flex flex-col px-6 py-10 mx-auto space-y-6 lg:h-[32rem] lg:py-16 lg:flex-row lg:items-center">
           <div className="w-full lg:w-1/2">
             <div className="lg:max-w-lg   ">
@@ -26,7 +26,7 @@ const Hero = () => {
             </div>
             <div className="w-full mt-8   rounded-md lg:max-w-sm   ">
               <form action="" className="flex flex-col lg:flex-row ">
-                <div className="input1">
+                <div className="hero-search input1">
                   <div className="input-left-box">
                     <img
                       src={searchIcon}

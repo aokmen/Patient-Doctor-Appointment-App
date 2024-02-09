@@ -30,8 +30,17 @@ module.exports = {
 
         if (email && password) {
 
-            const user = await Admin.findOne({email}) || await Doctor.findOne({email}) || await Patient.findOne({email})
-
+            let userType = 'admin'
+            let user = await Admin.findOne({email})
+            if (!user) {
+                 userType = 'doctor'
+                 user = await Doctor.findOne({email})
+            }
+            if (!user) {
+                 userType = 'patient'
+                 user = await Patient.findOne({email})
+            }
+         
             if (user && user.password == passwordEncrypt(password)) {
 
                 if (user.isActive) {
@@ -48,7 +57,8 @@ module.exports = {
                     let tokenData = await Token.findOne({ userId: user._id })
                     if (!tokenData) tokenData = await Token.create({
                         userId: user._id,
-                        token: passwordEncrypt(user._id + Date.now())
+                        token: passwordEncrypt(user._id + Date.now()),
+                        userType
                     })
 
                     res.send({
@@ -85,6 +95,7 @@ module.exports = {
             if (!tokenData) tokenData = await Token.create({
                 userId: doctor._id,
                 token: passwordEncrypt(doctor._id + Date.now())
+                
             })
 
             res.send({

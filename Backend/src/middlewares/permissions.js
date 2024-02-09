@@ -6,7 +6,7 @@ module.exports = {
 
     isLogin: (req, res, next) => {
 
-        if (req.admin?.isActive && (req.admin?.isStaff || req.admin?.isAdmin)) {
+        if (req.admin?.isActive ) {
 
             next()
 
@@ -17,18 +17,18 @@ module.exports = {
         }
     },
 
-    isStaff: (req, res, next) => {
+    // isStaff: (req, res, next) => {
 
-        if (req.admin && req.admin.isActive && req.admin.isStaff) {
+    //     if (req.admin && req.admin.isActive && req.admin.isStaff) {
 
-            next()
+    //         next()
 
-        } else {
+    //     } else {
 
-            res.errorStatusCode = 403
-            throw new Error('NoPermission: You must log in and be staff.')
-        }
-    },
+    //         res.errorStatusCode = 403
+    //         throw new Error('NoPermission: You must log in and be staff.')
+    //     }
+    // },
     isAdmin: (req, res, next) => {
 
         if (req.admin && req.admin.isActive && req.admin.isAdmin) {

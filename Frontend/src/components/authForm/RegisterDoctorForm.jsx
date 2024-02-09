@@ -28,7 +28,7 @@ export const registerSchema = object().shape({
   zipCode: string()
     .required("PLZ ist verpflichted"),
   branch: string()
-    .required("PLZ ist verpflichted"),
+    .required("Branch ist verpflichted"),
 })
 
 
@@ -149,6 +149,9 @@ const RegisterDoctorForm = () => {
               <option value="HNO">HNO</option>
               <option value="Andere">Andere</option>
             </select>
+            {errors.branch && (
+              <p className="text-xs italic text-cyan-100">{errors.branch.message}</p>
+            )}
           </div>
         </div>
         <div className='flex flex-col items-center xl:flex-row xl:justify-between w-full 2xl:mt-4'>
@@ -270,7 +273,7 @@ const RegisterDoctorForm = () => {
             <input
               type="string"
               {...register('cityName')}
-              placeholder="City"
+              placeholder="Ort"
               className="w-full pl-[3rem] h-12 pr-3 py-2 appearance-none bg-white outline-none border focus:border-indigo-600 shadow-sm rounded-lg text-lg"
             />
             {errors.cityName && (
@@ -292,4 +295,3 @@ const RegisterDoctorForm = () => {
 }
 
 export default RegisterDoctorForm
-

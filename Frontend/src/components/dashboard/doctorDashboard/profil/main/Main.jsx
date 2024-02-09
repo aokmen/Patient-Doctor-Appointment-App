@@ -1,17 +1,21 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import useDataCall from '../../../../../hooks/useDataCall';
 import ProcessBar from '../processBar/ProcessBar';
 import "./main.css"
 import profilImage from "../../../../../assets/profil_image2.png"
 import successImg from "../../../../../assets/success.png"
+import { useSelector } from 'react-redux';
+import axios from 'axios';
 
 
 const Main = (doctorProfile) => {
-    const { id, avatar,firstName, lastName, email, birthDate, gender, street, zipCode, cityName,title, phone, languages, website, about, complaints } = doctorProfile
-
+    const { putData, getData, postData } = useDataCall()
+    const { branches } = useSelector((state) => state.data)
+    const { id, avatar,firstName, lastName, email, password, birthDate, gender, street, zipCode, cityName,title, phone, branch, languages, website, about, complaints} = doctorProfile
     const [count, setCount] = useState(0)
-
-    const { putData } = useDataCall()
+    const [file, setFile] = useState(null)
+    const [secondFile, setSecondFile] = useState(null);
+ 
     // const doctorProfileRef = useRef({
     //     firstName: "", 
     //     lastName: "", 
@@ -25,12 +29,29 @@ const Main = (doctorProfile) => {
     //     website: "",
     //     about: ""
     // })
+
+    useEffect(() => {
+        getData("branches")
+      }, [])
+
+     console.log("branches:",branches);
     const doctorProfileRef = useRef({
 
-        phone: "",
-        about: "",
-        website: "",
-   
+        avatar: avatar || "",
+        firstName: firstName || "", 
+        lastName: lastName || "", 
+        birthDate: birthDate || "",
+        street: street || "",
+        zipCode: zipCode || "",
+        cityName: cityName || "",
+        title: title || "",
+        phone: phone || "",
+        branch: branch || "",
+        languages: languages || "",
+        website: website || "",
+        about: about || "",
+        complaints: complaints || "",
+       
     })
 
 
@@ -40,13 +61,34 @@ const Main = (doctorProfile) => {
             [field]: value
         }
     }
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        console.log("doctorProfileRef:",doctorProfileRef);
-
-        putData("doctors", id, doctorProfileRef.current)
-        console.log("doctorProfileRef:",doctorProfileRef);
+    const handleFileChange = (e) => {
+        setFile(e.target.files[0])
     }
+
+    const handleSecondFileChange = (e) => {
+        setSecondFile(e.target.files[0]);
+    }
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+    putData("doctors", id, doctorProfileRef.current);
+
+    // İlk dosyanın FormData nesnesi oluşturuluyor
+    const formData1 = new FormData();
+    formData1.append('image', file);
+    formData1.append('userId', id);
+
+    // İkinci dosyanın FormData nesnesi oluşturuluyor
+    const formData2 = new FormData();
+    formData2.append('image', secondFile);
+    formData2.append('userId', id);
+
+    // Her bir dosya için ayrı ayrı postData işlemi yapılıyor
+    postData("files", formData1);
+    postData("files", formData2);
+    }
+
     return (
         <div className="dpanel-person-main">
 
@@ -57,14 +99,14 @@ const Main = (doctorProfile) => {
             <div className="dpanel-main-right">
                 <div className="dpanel-main-right--content">
 
-                    <form action="" className="dpanel-person" onSubmit={handleSubmit}>
+                    <form action="" id="uploadForm" encType="multipart/form-data" className="dpanel-person" onSubmit={handleSubmit}>
                         <div className={count === 0 ? "dpanel-person-profile" : (count === 1 ? "dpanel-person-profile2" : (count >= 2 ? "dpanel-person-profile3" : null))}>
                             <div className="dpanel-person--left">
                                 <div className="p-input dpanel-main--profil-image">
                                     <div className="p-input-image">
                                         <img src={profilImage} alt="profilImage" />
                                     </div>
-                                    {/* <input className="dpanel-p-input" type="text" name='p-input1' placeholder='Profilbild hochladen' /> */}
+                                    {/* <input  className="dpanel-p-input" type="text" name='p-input1' placeholder='Profilbild hochladen' /> */}
                                     <div className="dpanel-p-profil-img">
                                         <div className="dpanel-p-profil-img-right">
 
@@ -72,7 +114,7 @@ const Main = (doctorProfile) => {
                                                 <label htmlFor="file-avatar">Profilbild hochladen:</label>
                                             </div>
                                             <div className="dpanel-p-profil-img-right-input">
-                                                <input type="file" id="file-avatar" name="avatar" accept="image/png, image/jpeg" />
+                                                <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg" onChange={(e) => handleFileChange(e)} />
                                             </div>
 
                                         </div>
@@ -81,40 +123,39 @@ const Main = (doctorProfile) => {
 
                                 </div>
                                 <div className="p-input">
-                                    <label className="dpanel-p-label" htmlFor="p-input2">Vorname</label> <input className="dpanel-p-input" id="p-input2" type="text" placeholder='JMax' defaultValue={firstName} onChange={(e) => handleInputChange("firstName", e.target.value)} />
+                                    <label className="dpanel-p-label" htmlFor="p-input2">Vorname</label> <input required className="dpanel-p-input" id="p-input2" type="text" placeholder='Max' defaultValue={firstName} onChange={(e) => handleInputChange("firstName", e.target.value)} />
                                 </div>
                                 <div className="p-input">
-                                    <label className="dpanel-p-label" htmlFor="p-input3">Nachname</label> <input className="dpanel-p-input" id="p-input3" type="text" placeholder='Doe' defaultValue={lastName} onChange={(e) => handleInputChange("lastName", e.target.value)} />
+                                    <label className="dpanel-p-label" htmlFor="p-input3">Nachname</label> <input required className="dpanel-p-input" id="p-input3" type="text" placeholder='Doe' defaultValue={lastName} onChange={(e) => handleInputChange("lastName", e.target.value)} />
                                 </div>
                                 <div className="p-input">
-                                    <label className="dpanel-p-label" htmlFor="p-input4">Email</label> <input className="dpanel-p-input" id="p-input4" type="email" placeholder='dr.doe@doctor.com' defaultValue={email} onChange={(e) => handleInputChange("email", e.target.value)} />
+                                    <label className="dpanel-p-label" htmlFor="p-input4">Email</label> <input className="dpanel-p-input" id="p-input4" type="email" placeholder={email} onChange={(e) => handleInputChange("email", e.target.value)} readOnly/>
                                 </div>
                                 <div className="p-input">
-                                    <label className="dpanel-p-label" htmlFor="p-input5">Password</label> <input className="dpanel-p-input" id="p-input5" type="password" placeholder='****************' 
-                                    onChange={(e) => handleInputChange("password", e.target.value)} />
+                                    <label className="dpanel-p-label" htmlFor="p-input5">Password</label> <input className="dpanel-p-input" id="p-input5" type="password" placeholder='****************' onChange={(e) => handleInputChange("password", e.target.value)} readOnly/>
                                 </div>
 
 
                             </div>
                             <div className="dpanel-person--right">
                                 <div className="p-input">
-                                    <label className="dpanel-p-label" htmlFor="p-input1">Geburtstag</label> <input className="dpanel-p-input dpanel-p-input-birthdate" id="p-input1" type="date" name='p-input1' defaultValue={birthDate} onChange={(e) => handleInputChange("birthDate", e.target.value)}/>
+                                    <label className="dpanel-p-label" htmlFor="p-input1">Geburtstag</label> <input required className="dpanel-p-input dpanel-p-input-birthdate" id="p-input1" type="date" name='p-input1' defaultValue={birthDate} onChange={(e) => handleInputChange("birthDate", e.target.value)}/>
                                 </div>
                                 <div className="p-input-radio">
                                     <label className="gender2" >Geschlecht</label>
                                     <div className="radio-gender">
                                         <div>
-                                            <input type="radio" id="männlich" name="drone" defaultValue="männlich" defaultChecked={gender === "Male" ? true : false} />
+                                            <input required type="radio" id="männlich" name="drone" defaultValue="männlich" defaultChecked={gender === "Male" ? true : false} />
                                             <label htmlFor="männlich">Männlich</label>
                                         </div>
 
                                         <div>
-                                            <input type="radio" id="weiblich" name="drone" defaultValue="weiblich" defaultChecked={gender === "Female" ? true : false} />
+                                            <input required type="radio" id="weiblich" name="drone" defaultValue="weiblich" defaultChecked={gender === "Female" ? true : false} />
                                             <label htmlFor="weiblich">Weiblich</label>
                                         </div>
 
                                         <div>
-                                            <input type="radio" id="divers" name="drone" defaultValue="divers" defaultChecked={gender === "Others" ? true : false} />
+                                            <input required type="radio" id="divers" name="drone" defaultValue="divers" defaultChecked={gender === "Others" ? true : false} />
                                             <label htmlFor="divers">Divers</label>
                                         </div>
 
@@ -122,13 +163,13 @@ const Main = (doctorProfile) => {
 
                                 </div>
                                 <div className="p-input">
-                                    <label className="dpanel-p-label" htmlFor="p-input6">Straße</label> <input className="dpanel-p-input" id="p-input6" type="text" placeholder='Lange str' defaultValue={street} onChange={(e) => handleInputChange("street", e.target.value)}/>
+                                    <label className="dpanel-p-label" htmlFor="p-input6">Straße</label> <input required className="dpanel-p-input" id="p-input6" type="text" placeholder='Lange str' defaultValue={street} onChange={(e) => handleInputChange("street", e.target.value)}/>
                                 </div>
                                 <div className="p-input">
-                                    <label className="dpanel-p-label" htmlFor="p-input7">Postleizahl</label> <input className="dpanel-p-input" id="p-input7" type="number" placeholder='43226' defaultValue={zipCode} onChange={(e) => handleInputChange("zipCode", e.target.value)}/>
+                                    <label className="dpanel-p-label" htmlFor="p-input7">Postleizahl</label> <input required className="dpanel-p-input" id="p-input7" type="number" placeholder='43226' defaultValue={zipCode} onChange={(e) => handleInputChange("zipCode", e.target.value)}/>
                                 </div>
                                 <div className="p-input">
-                                    <label className="dpanel-p-label" htmlFor="p-input8">Ort</label> <input className="dpanel-p-input" id="p-input8" type="text" placeholder='München' defaultValue={cityName} onChange={(e) => handleInputChange("cityName", e.target.value)}/>
+                                    <label className="dpanel-p-label" htmlFor="p-input8">Ort</label> <input required className="dpanel-p-input" id="p-input8" type="text" placeholder='München' defaultValue={cityName} onChange={(e) => handleInputChange("cityName", e.target.value)}/>
                                 </div>
 
                             </div>
@@ -137,26 +178,33 @@ const Main = (doctorProfile) => {
                         <div className={count === 0 ? "dpanel-person-profile" : (count === 1 ? "dpanel-person-profile2" : (count >= 2 ? "dpanel-person-profile3" : null))}>
                             <div className="dpanel-person--left">
                                 <div className="p-input">
-                                    <label className="dpanel-p-label" htmlFor="p-input9">Titel</label> <input className="dpanel-p-input" id="p-input9" type="text" name='p-input1' placeholder='Dr.med' defaultValue={title} onChange={(e) => handleInputChange("title", e.target.value)}
+                                    <label className="dpanel-p-label" htmlFor="p-input9">Titel</label> <input required className="dpanel-p-input" id="p-input9" type="text" name='p-input1' placeholder='Dr.med' defaultValue={title} onChange={(e) => handleInputChange("title", e.target.value)}
                                     />
                                 </div>
                                 <div className="p-input">
-                                    <label className="dpanel-p-label" htmlFor="p-input10">Telefon</label> <input className="dpanel-p-input" id="p-input10" type="text" placeholder='1554212121' defaultValue={phone} onChange={(e) => handleInputChange("phone", e.target.value)} />
+                                    <label className="dpanel-p-label" htmlFor="p-input10">Telefon</label> <input required className="dpanel-p-input" id="p-input10" type="text" placeholder='z.B. 1554212121' defaultValue={phone} onChange={(e) => handleInputChange("phone", e.target.value)} />
                                 </div>
                                 <div className="p-input">
-                                    <label className="dpanel-p-label" htmlFor="p-input11">Fachgebiet</label> <input className="dpanel-p-input" id="p-input11" type="text" placeholder='z.B. Augenarzt' />
+                                    <label className="dpanel-p-label" htmlFor="p-input11" >Fachgebiet</label> 
+                                    <input required className="dpanel-p-input" id="p-input11" type="text" placeholder='z.B. Augenarzt' defaultValue={branch} onChange={(e) => handleInputChange("branch", e.target.value)}/>
+
+                                    {/* <select className="dpanel-p-input" name="branches" id="branches" onChange={(e) => handleInputChange("branches", e.target.value)} style={{marginRight:"15px"}}>
+                                            <option value="">Bitte wähle eine Option</option>
+                                            {branches && (branches?.map((item,i)=><option key={i} value={item.name}>{item.name}</option>))}
+     
+                                    </select> */}
                                 </div>
                                 <div className="p-input">
-                                    <label className="dpanel-p-label" htmlFor="p-input12">Sprache</label> <input className="dpanel-p-input" id="p-input12" type="text" placeholder='Deutsch, Englisch' defaultValue={languages} onChange={(e) => handleInputChange("languages", e.target.value)} />
+                                    <label className="dpanel-p-label" htmlFor="p-input12">Sprache</label> <input required className="dpanel-p-input" id="p-input12" type="text" placeholder='z.B. Deutsch, Englisch' defaultValue={languages} onChange={(e) => handleInputChange("languages", e.target.value)} />
                                 </div>
                                 <div className="p-input">
-                                    <label className="dpanel-p-label" htmlFor="p-input13">Webseite</label> <input className="dpanel-p-input" id="p-input13" type="text" placeholder='z.B. www.terminuns.com' defaultValue={website} onChange={(e) => handleInputChange("website", e.target.value)} />
+                                    <label className="dpanel-p-label" htmlFor="p-input13">Webseite</label> <input required className="dpanel-p-input" id="p-input13" type="text" placeholder='z.B. www.terminuns.com' defaultValue={website} onChange={(e) => handleInputChange("website", e.target.value)} />
                                 </div>
 
                             </div>
                             <div className="dpanel-person--right">
                                 <div className="p-input-about">
-                                    <p>Über mich</p> <textarea name="" id="textarea-about" cols="50" rows="10" placeholder=" z.B. Gesunde Augen sind das visuelle Tor zur Welt – und die Basis, um aktiv und selbstbestimmt das Leben zu genießen. Das gilt bereits für Kinder-Augen, besonders aber mit zunehmendem Alter sollte gesteigerter Wert auf eine gute Gesundheit der Augen gelegt werden..." defaultValue={about} onChange={(e) => handleInputChange("about", e.target.value)}>
+                                    <p>Über mich</p> <textarea required name="" id="textarea-about" cols="50" rows="10" placeholder=" z.B. Gesunde Augen sind das visuelle Tor zur Welt – und die Basis, um aktiv und selbstbestimmt das Leben zu genießen. Das gilt bereits für Kinder-Augen, besonders aber mit zunehmendem Alter sollte gesteigerter Wert auf eine gute Gesundheit der Augen gelegt werden..." defaultValue={about} onChange={(e) => handleInputChange("about", e.target.value)}>
                                     </textarea>
                                     {/* <button>Speichern</button> */}
                                     {/* <button type="submit" className="input-btn" >Senden</button> */}
@@ -168,7 +216,7 @@ const Main = (doctorProfile) => {
                             <div className="dpanel-person--left person3">
                                 <div className="p-input p-input3-1">
                                     <label className="dpanel-p-label" htmlFor="p-input14">Symptome</label>
-                                    <textarea name="" id="textarea-complaints" cols="50" rows="10" placeholder="z.B. Altersbedingte Makuladegeneration AMD, Augenschmerzen, Diabetische Retinopathie, Grüner Star / Glaukom, Kurzsichtigkeit / Myopie, Katarakt, Laser bei Nachsta" onChange={(e) => handleInputChange("complaints", e.target.value)}>
+                                    <textarea required name="" id="textarea-complaints" cols="50" rows="10" placeholder="z.B. Altersbedingte Makuladegeneration AMD, Augenschmerzen, Diabetische Retinopathie, Grüner Star / Glaukom, Kurzsichtigkeit / Myopie, Katarakt, Laser bei Nachsta" defaultValue={complaints} onChange={(e) => handleInputChange("complaints", e.target.value)}>
                                     </textarea>
                                 </div>
                                 <div className="p-input p-input3-2">
@@ -181,7 +229,8 @@ const Main = (doctorProfile) => {
                                             <label htmlFor="avatar">Laden Sie Ihre medizinischen Unterlagen hoch:</label>
                                         </div>
                                         <div className="dpanel-p-profil-data-upload-right-input">
-                                            <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg" />
+                                            
+                                            <input type="file" id="branchFile" name="branchFile" multiple accept="image/png, image/jpeg" onChange={(e) => handleSecondFileChange(e)} />
                                         </div>
                                         
                                     </div>

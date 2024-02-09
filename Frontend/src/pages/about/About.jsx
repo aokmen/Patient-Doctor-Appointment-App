@@ -4,11 +4,12 @@ import aboutImage from "../../assets/about-img.png";
 import patient from "../../assets/patient.png";
 import arzt from "../../assets/doctor.png";
 import "./about.css";
+import Footer from "../../components/footer/Footer";
 const About = () => {
   return (
     <>
       {/* <Header /> */}
-      <div className="bg-main-light-blue w-full h-full py-2 lg:mt-[-40px] sm:py-32" id="about">
+      <div className="bg-main-light-blue w-full h-full py-2 lg:mt-[-40px] sm:py-32 "  id="about">
         <div className="mx-auto m-2 sm:max-w-7xl px-0 grid grid-flow-col-dense ">
           <div className="mx-auto lg:flex lg:justify-between grid max-w-xl items-start gap-x-8 gap-y-16 sm:gap-y-24 lg:mx-0 lg:ml-[-60px] lg:max-w-none lg:grid-cols-2">
             <div className="grid grid-col w-[1000px] h-[640px]  border-2 border-main-light-blue2   overflow-hidden rounded-2xl  px-6 pb-9   sm:px-12  lg:px-8 lg:pb-8 xl:px-10 xl:pb-10">
@@ -101,6 +102,7 @@ const About = () => {
           </div>
         </div>
       </div>
+      <Footer/>
     </>
   );
 };

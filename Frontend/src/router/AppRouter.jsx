@@ -10,6 +10,8 @@ import AdminPanel from "../pages/panels/adminPanel/AdminPanel";
 import DoctorPanel from "../pages/panels/doctorPanel/DoctorPanel";
 import PatientPanel from "../pages/panels/patientPanel/PatientPanel";
 import About from "../pages/about/About";
+import Services from "../pages/services/Services";
+
 
 const AppRouter = () => {
   return (
@@ -21,7 +23,9 @@ const AppRouter = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/regdoctor" element={<RegisterDoctor />} />
         <Route path="/regpatient" element={<RegisterPatient />} />
+        <Route path="/services" element={<Services/>} />
         <Route path="/about" element={<About/>} />
+
         <Route element={<PrivateRouter />}>
           <Route path="/admin" element={<AdminPanel />} />
           <Route path="/doctor" element={<DoctorPanel />} />

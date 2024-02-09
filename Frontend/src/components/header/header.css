@@ -9,3 +9,12 @@
     gap: 60px;
   }
 }
+
+.fixed-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999; /* Navbar'ın diğer içeriklerin üzerinde olmasını sağlar */
+  height: 110px;
+}

@@ -20,6 +20,8 @@ module.exports = async function () {
 
 
     /* Admin */
+    const Token = require('../models/token')
+    await Token.deleteMany() // !!! Clear collection.
     const Admin = require('../models/admin')
     await Admin.deleteMany() // !!! Clear collection.
     await Admin.create({
