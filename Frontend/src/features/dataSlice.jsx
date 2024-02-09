@@ -15,7 +15,8 @@ const dataSlice = createSlice({
     appointments:[],
     cities:[],
     messages:[],
-    daySchedules: []
+    daySchedules: [],
+    files:[],
   },
   reducers:{
     fetchStart: (state) => {
@@ -24,7 +25,7 @@ const dataSlice = createSlice({
     },
     getDataSuccess: (state, {payload}) => {
       state.loading = false;
-      state[payload.res] = payload.data;
+      state[payload.url] = payload.data;
     },
 
     fetchFail: (state) => {

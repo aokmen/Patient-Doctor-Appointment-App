@@ -10,6 +10,7 @@ import notification from '../../assets/notification.png'
 import patient from '../../assets/patient.png'
 import seclock from '../../assets/security-lock.png'
 import './services.css'
+import BottomLine from '../../components/footer/BottomLine'
 
 const Services = () => {
   let servicesNameArr = ["Online Terminebuchung", "Arzt - Anmeldung & Profilverwaltung", "Patienten - Anmeldung & Profilverwaltung", "Kommunikation zwischen Patient und Arzt", "Benachrichtiguns- & Erinnerungsdienst", "Bewertung & Kommentare von Ärzten", "Datensichereit & Gewährleistung der Sicherheit", "Datenschutz Vertraulichkeit von Patientendaten"]
@@ -23,10 +24,12 @@ const Services = () => {
       serImg: serviceImgArr[i]
     })
   }
+
   //console.log(serviceObjArr)
-  
+
   return (
-    <div className='flex flex-col justify-center items-center w-full h-[140vh] md:h-[150vh] lg:h-[140vh] bg-[#F1F7FE]'>
+    <>
+    <div className='flex flex-col justify-center items-center mt-5 w-full h-[140vh] md:h-[150vh] lg:h-[140vh] bg-[#F1F7FE]'>
       <div className='w-[400px] mb-[55rem] md:mb-[58rem] md:w-[600px] xl:w-[900px] md:ml-[-15rem] lg:mb-[58rem] xl:mb-[47rem] lg:ml-[-65rem] xl:ml-[-65rem] absolute z-40'>
         <img className='w-[400px] md:w-[600px] xl:w-[900px] rounded-full border-b-4 lg:border-r-8 service1 bg-[#F1F7FE]' src={serviceImg1} alt="services1" />
       </div>
@@ -52,6 +55,8 @@ const Services = () => {
       </div>
 
     </div>
+    <BottomLine/>
+    </>
   )
 }
 

@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import ContactImg from '../../../assets/contact-img.png'
 import SendEmail from '../../../assets/send-email.png'
 import useDataCall from '../../../hooks/useDataCall'
+import BottomLine from '../../footer/BottomLine'
 // import { object, string } from "yup"
 // import { yupResolver } from '@hookform/resolvers/yup'
 
@@ -116,7 +117,7 @@ const Contact = () => {
         <img src={ContactImg} alt="contact"/>
       </div>
     </div> 
-    
+    <BottomLine/>
     </>
     
   )

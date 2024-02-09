@@ -21,7 +21,7 @@ const DoctorPanel = () => {
 
   const doctorProfile = doctors?.data?.filter((item) => (currentUser === item.email))
 
-
+console.log("doctors:",doctors);
   return (
 
     <>
@@ -33,7 +33,7 @@ const DoctorPanel = () => {
           </div>
           <div className="dpanel-main">
             <div className="main-content">
-              <Main/>
+              <Main {...doctorProfile[0]} />
             </div>
           </div>
         </div> : <Loading />}

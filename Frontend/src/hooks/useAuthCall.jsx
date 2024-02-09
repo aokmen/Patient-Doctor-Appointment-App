@@ -1,14 +1,16 @@
 import axios from "axios";
 import { fetchFail, fetchStart, loginSuccess, logoutSuccess, registerSuccess } from "../features/authSlice";
 import { useNavigate } from "react-router-dom"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 
 
 const url = process.env.REACT_APP_BASE_URL
 
 const useAuthCall = () => {
+
     const navigate = useNavigate()
     const dispatch = useDispatch()
+    const { token } = useSelector(state => state.auth);
 
     /* -------------------------------------------------------------------------- */
     /*                               The Login Process                            */
@@ -28,12 +30,26 @@ const useAuthCall = () => {
     /* -------------------------------------------------------------------------- */
     /*                              The Logout Process                            */
     /* -------------------------------------------------------------------------- */
-
+    
+    // const logout = async () => {  
+    //     dispatch(fetchStart())
+    //     try {
+    //         await axios.post(`${url}/auth/logout`)
+    //         dispatch(logoutSuccess())
+    //     } catch (error) {
+    //         dispatch(fetchFail())
+    //         console.log(error);
+    //     }
+    // }
 
     const logout = async () => {  
         dispatch(fetchStart())
         try {
-            await axios.post(`${url}/auth/logout`)
+            await axios.post(`${url}/auth/logout`, null,{
+                headers: {
+                    Authorization: `Token ${token}`,
+                  },
+            })
             dispatch(logoutSuccess())
         } catch (error) {
             dispatch(fetchFail())

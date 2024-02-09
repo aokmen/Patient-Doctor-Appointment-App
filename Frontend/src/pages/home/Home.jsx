@@ -5,9 +5,10 @@ import Header from "../../components/header/Header";
 import Hero from "../../components/home/hero/Hero";
 import HomeSection from "../../components/home/homeSection/HomeSection";
 import Contact from "../../components/home/contact/Contact";
-import Services from "../services/Services";
 import About from "../about/About";
 import DailyCalendar from "../../components/dailyCalendar/DailyCalendar";
+import Services from "../services/Services";
+
 
 
 const Home = () => {
@@ -20,8 +21,8 @@ const Home = () => {
   // useEffect(() => {
   //   getData("doctors")
   // }, [])
-  //console.log("currentUser:",currentUser);
-  //console.log("token:",token);
+  console.log("currentUser:",currentUser);
+  console.log("token:",token);
   return (
     <div className="flex flex-col  items-start">
       <Header />

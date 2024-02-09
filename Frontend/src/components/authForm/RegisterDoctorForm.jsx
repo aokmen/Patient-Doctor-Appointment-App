@@ -295,4 +295,3 @@ const RegisterDoctorForm = () => {
 }
 
 export default RegisterDoctorForm
-

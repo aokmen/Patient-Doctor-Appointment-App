@@ -29,6 +29,8 @@ const authSlice = createSlice({
       state.currentUser = payload?.patient ? payload?.patient.email : (payload?.doctor ? payload?.doctor.email : payload?.admin.email);
       state.token = payload?.key;
       state.error = false;
+      
+      console.log("payload:",payload);
     },
     fetchFail: (state) => {
       state.loading = false;

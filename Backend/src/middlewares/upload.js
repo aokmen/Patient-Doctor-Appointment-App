@@ -11,9 +11,11 @@ const multer = require('multer')
 module.exports = multer({
     storage: multer.diskStorage({
         destination: './upload',          // Bunu yapinca solda upload isminde bir klasör olustu
-        filename: function(req, file, returnCallback){
+        filename: (req, file, returnCallback) => {
                 //returnCallback(error, this.filename)
-                returnCallback(null, req.admin ? req.admin._id + '-' + file.originalname : (req.doctor ? req.doctor._id + '-' + file.originalname : req.patient?._id + '-' + file.originalname))     // Orijinal ismiyle kaydetmek icin
-        }
+                // returnCallback(null, req.admin ? req.admin._id + '-' + file.originalname : (req.doctor ? req.doctor._id + '-' + file.originalname : req.patient?._id + '-' + file.originalname))     // Orijinal ismiyle kaydetmek icin
+                returnCallback(null, req?.user.id + '-' + file.originalname)     // Orijinal ismiyle kaydetmek icin
+
+            }
     })
 })

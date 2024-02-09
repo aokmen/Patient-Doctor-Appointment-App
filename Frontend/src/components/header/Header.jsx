@@ -25,8 +25,8 @@ const Header = () => {
 
   return (
     <>
-      <nav className="flex-no-wrap relative flex w-full items-center justify-between py-2 shadow-md bg-main-dark-blue lg:flex-wrap lg:justify-start lg:py-4">
-        <div className="flex w-full flex-wrap items-center justify-between px-12">
+      <nav className=" flex-no-wrap relative flex w-full items-center justify-between py-2 shadow-md lg:flex-wrap lg:justify-start lg:py-4">
+        <div className=" fixed-navbar flex w-full flex-wrap items-center justify-between px-12  bg-main-dark-blue">
           {/* Hamburger button for mobile view */}
           <button
             className="block border-0 bg-transparent px-2 text-white hover:no-underline hover:shadow-none focus:no-underline focus:shadow-none focus:outline-none focus:ring-0 lg:hidden"
@@ -95,7 +95,7 @@ const Header = () => {
                 </button>
               </li>
               <li className="mb-2 lg:mb-0 lg:pr-2">
-                <button className="lg:px-2 px-4 py-3 hover:bg-main-light-blue  hover:text-main-dark-blue text-white rounded-2xl text-bg-main-dark-blue text-[20px] font-light">
+                <button className="lg:px-2 px-4 py-3 hover:bg-main-light-blue  hover:text-main-dark-blue text-white rounded-2xl text-bg-main-dark-blue text-[20px] font-light"  onClick={() => navigate("/services")}>
                   Service
                 </button>
               </li>

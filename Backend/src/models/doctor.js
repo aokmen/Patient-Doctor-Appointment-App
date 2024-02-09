@@ -61,6 +61,10 @@ const DoctorSchema = new mongoose.Schema({
         type: String,
         trim: true,
     },
+    branch:{
+        type: String,
+        trim: true,
+    },
     birthDate: {
         type: String,
         trim: true
@@ -81,6 +85,10 @@ const DoctorSchema = new mongoose.Schema({
         type: Boolean,
         default: true
     },
+    isApproved: {
+        type: Boolean,
+        default: false
+    },
     about: {
         type: String,
         trim: true
@@ -92,9 +100,12 @@ const DoctorSchema = new mongoose.Schema({
         type: String,
         trim: true
     },
+    // complaints: [{            
+    //     type: mongoose.Schema.Types.ObjectId,
+    //     ref:'Complaint'
+    // }],
     complaints: [{            
-        type: mongoose.Schema.Types.ObjectId,
-        ref:'Complaint'
+        type: String
     }],
     messages: [{            
         type: mongoose.Schema.Types.ObjectId,
