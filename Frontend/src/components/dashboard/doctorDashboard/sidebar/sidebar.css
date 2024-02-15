@@ -52,25 +52,19 @@
     /* border: 2px solid #5999D7; */
     box-shadow: 0 0 10px #5999D7;
 }
+.bottom3{
+    margin-left: -9px;
+}
+.middle3 h1{
+    margin-left: 5px;
+}
 .middle4 h1{
+    margin-left: 2px;
+}
+.middle5 h1{
+
+    margin-left: 2px;
+}
+.middle6 h1{
     margin-left: -5px;
 }
-
-/* .bot:hover{
-    background-color: #5999D7;
-    color: white;
-    cursor: pointer;
-    width: 100%;
-    height: 41px;
-}  */
-
-/* .bot{
-    display: flex;
-    color: #B7D8F8;
-    gap: 15px;
-    align-items: center;
-    margin-top:15px; 
-    padding-left: 15px;
-    height: 41px;
-}
-*/

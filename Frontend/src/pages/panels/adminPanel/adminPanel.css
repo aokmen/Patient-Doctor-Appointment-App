@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.dashboard {
+    display: flex;
+   
+}
+
+.apanel-sidebar {
+
+}
+
+.apanel-main {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: #F1F7FE;
+}
+
+.processbar {
+    flex: 20%;
+}
+
+.main-content {
+    flex: 80%;
+}
+
+
+
+
+.main-content-section{
+    height: 75vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+
+}
+
+.main-content-section-box {
+    background-color: white;
+    height: 90%;
+    width: 90%;
+    border-radius: 26px;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.548);
+
+
+}
+

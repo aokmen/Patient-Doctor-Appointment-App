@@ -7,7 +7,8 @@ const authSlice = createSlice({
     currentUser: null,
     loading: false,
     error: false,
-    token: null
+    token: null,
+    userType: null,
   },
   reducers: {
     fetchStart: (state) => {
@@ -18,6 +19,7 @@ const authSlice = createSlice({
       state.loading = false;
       state.currentUser = action.payload?.user?.email;
       state.token = action.payload?.key;
+      state.userType =action.payload?.userType
     },
     logoutSuccess: (state) => {
       state.loading = false;
@@ -29,8 +31,8 @@ const authSlice = createSlice({
       state.currentUser = payload?.patient ? payload?.patient.email : (payload?.doctor ? payload?.doctor.email : payload?.admin.email);
       state.token = payload?.key;
       state.error = false;
-      
-      console.log("payload:",payload);
+      state.userType = payload?.userType
+
     },
     fetchFail: (state) => {
       state.loading = false;

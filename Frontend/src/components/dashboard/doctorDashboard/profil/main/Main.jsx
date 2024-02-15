@@ -10,36 +10,26 @@ import axios from 'axios';
 
 const Main = (doctorProfile) => {
     const { putData, getData, postData } = useDataCall()
-    const { branches } = useSelector((state) => state.data)
-    const { id, avatar,firstName, lastName, email, password, birthDate, gender, street, zipCode, cityName,title, phone, branch, languages, website, about, complaints} = doctorProfile
+    const { branches, files } = useSelector((state) => state.data)
+    const { id, avatar, firstName, lastName, email, password, birthDate, gender, street, zipCode, cityName, title, phone, branch, languages, website, about, complaints } = doctorProfile
     const [count, setCount] = useState(0)
     const [file, setFile] = useState(null)
     const [secondFile, setSecondFile] = useState(null);
- 
-    // const doctorProfileRef = useRef({
-    //     firstName: "", 
-    //     lastName: "", 
-    //     email: "", 
-    //     birthDate: "", 
-    //     street: "", 
-    //     zipCode: "", 
-    //     cityName: "",
-    //     phone: "",
-    //     languages: "",
-    //     website: "",
-    //     about: ""
-    // })
+    const URL = process.env.REACT_APP_BASE_URL
 
     useEffect(() => {
-        getData("branches")
-      }, [])
 
-     console.log("branches:",branches);
+        getData("branches").then(() => getData("files"))
+    }, [])
+
+    console.log("branches:", branches);
+    console.log("files:", doctorProfile);
+
     const doctorProfileRef = useRef({
 
         avatar: avatar || "",
-        firstName: firstName || "", 
-        lastName: lastName || "", 
+        firstName: firstName || "",
+        lastName: lastName || "",
         birthDate: birthDate || "",
         street: street || "",
         zipCode: zipCode || "",
@@ -51,9 +41,14 @@ const Main = (doctorProfile) => {
         website: website || "",
         about: about || "",
         complaints: complaints || "",
-       
-    })
 
+    })
+     
+
+    const fileImage = doctorProfile.files.length > 0 ? `${URL}/img/${doctorProfile.files[0].fileName}` : profilImage;
+
+    // const fileNameFind = files.length > 0 ? files.filter((item) => item.fileName && item.fileName.split("-")[0] === id) : [];
+    // const fileImage = files.length > 0 ? `${URL}/img/${fileNameFind[fileNameFind.length - 2].fileName}` : profilImage;
 
     const handleInputChange = (field, value) => {
         doctorProfileRef.current = {
@@ -72,21 +67,21 @@ const Main = (doctorProfile) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-    putData("doctors", id, doctorProfileRef.current);
+        putData("doctors", id, doctorProfileRef.current);
 
-    // İlk dosyanın FormData nesnesi oluşturuluyor
-    const formData1 = new FormData();
-    formData1.append('image', file);
-    formData1.append('userId', id);
+        // İlk dosyanın FormData nesnesi oluşturuluyor
+        const formData1 = new FormData();
+        formData1.append('image', file);
+        formData1.append('userId', id);
 
-    // İkinci dosyanın FormData nesnesi oluşturuluyor
-    const formData2 = new FormData();
-    formData2.append('image', secondFile);
-    formData2.append('userId', id);
+        // İkinci dosyanın FormData nesnesi oluşturuluyor
+        const formData2 = new FormData();
+        formData2.append('image', secondFile);
+        formData2.append('userId', id);
 
-    // Her bir dosya için ayrı ayrı postData işlemi yapılıyor
-    postData("files", formData1);
-    postData("files", formData2);
+        // Her bir dosya için ayrı ayrı postData işlemi yapılıyor
+        postData("files", formData1);
+        postData("files", formData2);
     }
 
     return (
@@ -104,7 +99,8 @@ const Main = (doctorProfile) => {
                             <div className="dpanel-person--left">
                                 <div className="p-input dpanel-main--profil-image">
                                     <div className="p-input-image">
-                                        <img src={profilImage} alt="profilImage" />
+                                        <img src={fileImage} alt="profilImage" />
+
                                     </div>
                                     {/* <input  className="dpanel-p-input" type="text" name='p-input1' placeholder='Profilbild hochladen' /> */}
                                     <div className="dpanel-p-profil-img">
@@ -129,17 +125,17 @@ const Main = (doctorProfile) => {
                                     <label className="dpanel-p-label" htmlFor="p-input3">Nachname</label> <input required className="dpanel-p-input" id="p-input3" type="text" placeholder='Doe' defaultValue={lastName} onChange={(e) => handleInputChange("lastName", e.target.value)} />
                                 </div>
                                 <div className="p-input">
-                                    <label className="dpanel-p-label" htmlFor="p-input4">Email</label> <input className="dpanel-p-input" id="p-input4" type="email" placeholder={email} onChange={(e) => handleInputChange("email", e.target.value)} readOnly/>
+                                    <label className="dpanel-p-label" htmlFor="p-input4">Email</label> <input className="dpanel-p-input" id="p-input4" type="email" placeholder={email} onChange={(e) => handleInputChange("email", e.target.value)} readOnly />
                                 </div>
                                 <div className="p-input">
-                                    <label className="dpanel-p-label" htmlFor="p-input5">Password</label> <input className="dpanel-p-input" id="p-input5" type="password" placeholder='****************' onChange={(e) => handleInputChange("password", e.target.value)} readOnly/>
+                                    <label className="dpanel-p-label" htmlFor="p-input5">Password</label> <input className="dpanel-p-input" id="p-input5" type="password" placeholder='****************' onChange={(e) => handleInputChange("password", e.target.value)} readOnly />
                                 </div>
 
 
                             </div>
                             <div className="dpanel-person--right">
                                 <div className="p-input">
-                                    <label className="dpanel-p-label" htmlFor="p-input1">Geburtstag</label> <input required className="dpanel-p-input dpanel-p-input-birthdate" id="p-input1" type="date" name='p-input1' defaultValue={birthDate} onChange={(e) => handleInputChange("birthDate", e.target.value)}/>
+                                    <label className="dpanel-p-label" htmlFor="p-input1">Geburtstag</label> <input required className="dpanel-p-input dpanel-p-input-birthdate" id="p-input1" type="date" name='p-input1' defaultValue={birthDate} onChange={(e) => handleInputChange("birthDate", e.target.value)} />
                                 </div>
                                 <div className="p-input-radio">
                                     <label className="gender2" >Geschlecht</label>
@@ -163,13 +159,13 @@ const Main = (doctorProfile) => {
 
                                 </div>
                                 <div className="p-input">
-                                    <label className="dpanel-p-label" htmlFor="p-input6">Straße</label> <input required className="dpanel-p-input" id="p-input6" type="text" placeholder='Lange str' defaultValue={street} onChange={(e) => handleInputChange("street", e.target.value)}/>
+                                    <label className="dpanel-p-label" htmlFor="p-input6">Straße</label> <input required className="dpanel-p-input" id="p-input6" type="text" placeholder='Lange str' defaultValue={street} onChange={(e) => handleInputChange("street", e.target.value)} />
                                 </div>
                                 <div className="p-input">
-                                    <label className="dpanel-p-label" htmlFor="p-input7">Postleizahl</label> <input required className="dpanel-p-input" id="p-input7" type="number" placeholder='43226' defaultValue={zipCode} onChange={(e) => handleInputChange("zipCode", e.target.value)}/>
+                                    <label className="dpanel-p-label" htmlFor="p-input7">Postleizahl</label> <input required className="dpanel-p-input" id="p-input7" type="number" placeholder='43226' defaultValue={zipCode} onChange={(e) => handleInputChange("zipCode", e.target.value)} />
                                 </div>
                                 <div className="p-input">
-                                    <label className="dpanel-p-label" htmlFor="p-input8">Ort</label> <input required className="dpanel-p-input" id="p-input8" type="text" placeholder='München' defaultValue={cityName} onChange={(e) => handleInputChange("cityName", e.target.value)}/>
+                                    <label className="dpanel-p-label" htmlFor="p-input8">Ort</label> <input required className="dpanel-p-input" id="p-input8" type="text" placeholder='München' defaultValue={cityName} onChange={(e) => handleInputChange("cityName", e.target.value)} />
                                 </div>
 
                             </div>
@@ -185,8 +181,8 @@ const Main = (doctorProfile) => {
                                     <label className="dpanel-p-label" htmlFor="p-input10">Telefon</label> <input required className="dpanel-p-input" id="p-input10" type="text" placeholder='z.B. 1554212121' defaultValue={phone} onChange={(e) => handleInputChange("phone", e.target.value)} />
                                 </div>
                                 <div className="p-input">
-                                    <label className="dpanel-p-label" htmlFor="p-input11" >Fachgebiet</label> 
-                                    <input required className="dpanel-p-input" id="p-input11" type="text" placeholder='z.B. Augenarzt' defaultValue={branch} onChange={(e) => handleInputChange("branch", e.target.value)}/>
+                                    <label className="dpanel-p-label" htmlFor="p-input11" >Fachgebiet</label>
+                                    <input required className="dpanel-p-input" id="p-input11" type="text" placeholder='z.B. Augenarzt' defaultValue={branch} onChange={(e) => handleInputChange("branch", e.target.value)} />
 
                                     {/* <select className="dpanel-p-input" name="branches" id="branches" onChange={(e) => handleInputChange("branches", e.target.value)} style={{marginRight:"15px"}}>
                                             <option value="">Bitte wähle eine Option</option>
@@ -229,19 +225,19 @@ const Main = (doctorProfile) => {
                                             <label htmlFor="avatar">Laden Sie Ihre medizinischen Unterlagen hoch:</label>
                                         </div>
                                         <div className="dpanel-p-profil-data-upload-right-input">
-                                            
+
                                             <input type="file" id="branchFile" name="branchFile" multiple accept="image/png, image/jpeg" onChange={(e) => handleSecondFileChange(e)} />
                                         </div>
-                                        
+
                                     </div>
-                                </div>  
-                                <button type="submit" className="dpanel-profile-save-btn" >Speichern</button>                         
+                                </div>
+                                <button type="submit" className="dpanel-profile-save-btn" >Speichern</button>
                             </div>
                         </div>
                     </form>
                 </div>
             </div>
-            
+
 
             <div className="dpanel-main-btn">
                 {/* <button className= {count > 0 ? "dpanel-main-btn--left" : "dpanel-main-btn--left2"} onClick={()=>setCount(count-1)}>Vorherige Schritt</button>  */}
@@ -249,7 +245,7 @@ const Main = (doctorProfile) => {
                     <button className="dpanel-main-btn--left" style={{ visibility: (count > 0 || count === 2) ? "visible" : "hidden" }} onClick={() => setCount(count - 1)}>Vorherige Schritt</button>}
                 {count < 2 ? <button className="dpanel-main-btn--right" onClick={() => setCount(count + 1)}>Nächster Schritt</button>
                     : <button className="dpanel-main-btn--right" onClick={() => setCount(count + 1)} style={{ visibility: count === 3 ? "hidden" : "visible" }}>Senden</button>}
-                   {count === 3 ?
+                {count === 3 ?
                     <div className="main-content-success">
 
                         <div className="main-content-success-text">
@@ -260,7 +256,7 @@ const Main = (doctorProfile) => {
                     </div>
                     : null}
             </div>
-            
+
         </div>
 
     )

@@ -1,0 +1,248 @@
+/* -------------------------------------------------------------------------- */
+/*                               the Admin Panel                              */
+/* -------------------------------------------------------------------------- */
+
+
+
+
+
+.apanel-main-doctorOk {
+
+    height: 75vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+
+}
+
+.apanel-main-left {
+    background-color: white;
+    height: 90%;
+    width: 90%;
+    border-radius: 26px;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.548);
+
+
+}
+
+.apanel-person {
+    /* display: flex;
+    justify-content:space-around;
+    align-items: center;
+    height: 100%;
+    flex-wrap: wrap;
+    margin-top: 10px; */
+    height: 210vh;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.apanel-person-profile {
+
+    height: 70vh;
+    display: flex;
+    /* transform: translateY(-70vh); */
+}
+
+.apanel-person-profile2 {
+    height: 70vh;
+    display: flex;
+    transform: translateY(-70vh);
+}
+
+.apanel-person-profile3 {
+    height: 70vh;
+    display: flex;
+    transform: translateY(-140vh);
+}
+
+.apanel-person--left,
+.apanel-person--right {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.apanel-person--left {
+
+    /* border-right: 6px solid #B7D8F8; */
+}
+
+
+/* -------------------------------------------------------------------------- */
+/*                            Doctor Approval Card                            */
+/* -------------------------------------------------------------------------- */
+
+.apanel-view-title ul {
+    display: flex;
+    justify-content: center;
+    gap: 90px;
+    border-bottom: 1px solid #38638D;
+    width: 72%;
+    color: #38638D;
+    font-size: 1.2rem;
+}
+
+.apanel-view-doctor {
+    display: flex;
+
+}
+
+.apanel-view-doctor-left {
+    flex: 3;
+    display: flex;
+
+    align-items: center;
+    gap: 20px;
+
+
+}
+
+.apanel-view-doctor-right {
+    flex: 2;
+}
+
+.apanel-view-doctorInfo ul {
+    display: flex;
+    justify-content: center;
+    /* gap: 75px; */
+    width: 834px;
+    color: #38638D;
+    font-size: 1.2rem;
+    border-bottom: 1px solid #ced4db;
+
+
+}
+
+.doctorInfo1,
+.doctorInfo3,
+.doctorInfo5 {
+    padding-left: 10px;
+    flex: 2;
+
+}
+
+.apanel-view-doctorInfo-Ok {
+    margin-left: -150px;
+    flex: 4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.okIcons {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -20px;
+    gap: 10px;
+    padding: 20px;
+    border-radius: 13px;
+}
+
+.okIconsFlex {
+
+    padding: 10px;
+    width: 110px;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+    border-radius: 13px;
+ 
+    background-color: #F1F7FE;
+}
+
+.okIconsFlex img {
+    margin-top: -25px;
+}
+
+.okIconsFlex:hover {
+
+    cursor: pointer;
+    box-shadow: 0 0 20px #B7D8F8;
+}
+.okIconsFlex1:hover{
+    box-shadow: 0 0 10px rgb(241, 191, 24);
+    border: 1px solid #38638D;
+
+}
+.okIconsFlex2:hover{
+    box-shadow: 0 0 10px red;
+    border: 1px solid #38638D;
+
+}
+.okIconsFlex3:hover{
+    box-shadow: 0 0 10px rgb(32, 216, 216);
+    border: 1px solid #38638D;
+
+}
+.apanel-view-doctorImg {
+    margin-left: 20px;
+    width: 110px;
+}
+
+.doctorInfo1 li {
+    /* border-bottom: 1px solid #38638D; */
+    box-shadow: 0 0 30px #38628d34;
+    border-right: 1px solid #38638D;
+    padding-left: 10px;
+}
+
+.apanel-view-doctor-btn {
+    /* background-color: #38638D; */
+    background-color: #F1F7FE;
+    /* margin-top: -10px; */
+
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+
+
+}
+
+.apanel-view-doctor-btn button {
+    border: 1px solid #38638D;
+
+    border-radius: 5px;
+    padding: 5px 10px;
+    margin-top: -40px;
+}
+.apanel-view-doctor-btn button:hover{
+    cursor: pointer;
+    background-color: #B7D8F8;
+    border: none;
+}
+.deneme {
+    height: 200px;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+.deneme2::-webkit-scrollbar {
+       /* width: 0; */
+        /* Remove scrollbar space */
+        /* background: transparent; */
+        /* Optional: just make scrollbar invisible */
+}
+
+.deneme2 {
+    height: 200px;
+    overflow: scroll;
+    padding: 10px;
+    background-color: #F1F7FE;
+}
+
+.deneme2 h1 {
+    margin-top: 10px;
+    color: #38638D;
+    font-weight: bold;
+}

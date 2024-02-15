@@ -73,7 +73,8 @@
     gap: 15px;
     color: #38638D;
     font-weight: bold;
- 
-
 }
 
+.doctor-profile-info{
+    display: none;
+}
