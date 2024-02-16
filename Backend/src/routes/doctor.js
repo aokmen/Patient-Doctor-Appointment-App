@@ -16,9 +16,9 @@ router.route('/')
 
 router.route('/:id')
     .get( doctor.read)
-    .put(permissions.isDoctor, upload.single('avatar'), doctor.update)
-    .patch(permissions.isDoctor, upload.single('avatar'), doctor.update)
-    .delete(permissions.isDoctor, doctor.delete)
+    .put(permissions.isAdminOrDoctor, upload.single('avatar'), doctor.update)
+    .patch(permissions.isAdminOrDoctor, upload.single('avatar'), doctor.update)
+    .delete(permissions.isAdminOrDoctor,  doctor.delete)
 
 /* ------------------------------------------------------- */
 module.exports = router

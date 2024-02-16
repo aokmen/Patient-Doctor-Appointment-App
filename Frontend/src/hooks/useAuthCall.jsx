@@ -10,7 +10,7 @@ const useAuthCall = () => {
 
     const navigate = useNavigate()
     const dispatch = useDispatch()
-    const { token } = useSelector(state => state.auth);
+    const { token} = useSelector(state => state.auth);
 
     /* -------------------------------------------------------------------------- */
     /*                               The Login Process                            */
@@ -21,7 +21,8 @@ const useAuthCall = () => {
         try {
             const { data } = await axios.post(`${url}/auth/login`,userData)
             dispatch(loginSuccess(data))
-            navigate("/")
+            
+            navigate(`/${data.userType}`)
         } catch (error) {
             console.log(error.message);
             dispatch(fetchFail())
@@ -31,17 +32,6 @@ const useAuthCall = () => {
     /*                              The Logout Process                            */
     /* -------------------------------------------------------------------------- */
     
-    // const logout = async () => {  
-    //     dispatch(fetchStart())
-    //     try {
-    //         await axios.post(`${url}/auth/logout`)
-    //         dispatch(logoutSuccess())
-    //     } catch (error) {
-    //         dispatch(fetchFail())
-    //         console.log(error);
-    //     }
-    // }
-
     const logout = async () => {  
         dispatch(fetchStart())
         try {
