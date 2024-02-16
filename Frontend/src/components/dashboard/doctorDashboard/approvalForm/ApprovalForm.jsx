@@ -44,7 +44,7 @@ const ApprovalForm = (doctorProfile) => {
     })
 
 
-    const fileImage = doctorProfile.files.length > 0 ? `${URL}/img/${doctorProfile.files[0].fileName}` : profilImage;
+    const fileImage = doctorProfile.files.length > 0 ? `${URL}/img/${doctorProfile.files[doctorProfile.files.length-1].fileName}` : profilImage;
 
     // const fileNameFind = files.length > 0 ? files.filter((item) => item.fileName && item.fileName.split("-")[0] === id) : [];
     // const fileImage = files.length > 0 ? `${URL}/img/${fileNameFind[fileNameFind.length - 2].fileName}` : profilImage;

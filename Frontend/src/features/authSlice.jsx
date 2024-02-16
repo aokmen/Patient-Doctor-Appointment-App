@@ -33,7 +33,6 @@ const authSlice = createSlice({
       state.error = false;
       state.userType = payload?.userType
 
-
     },
     fetchFail: (state) => {
       state.loading = false;

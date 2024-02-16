@@ -71,14 +71,11 @@ module.exports = {
             #swagger.summary = "Get Single File"
         */
 
-            const data = await File.findOne({ _id: req.params.id }).populate({
-                path: 'userId',
-                select: 'fileName' // Sadece fileName alanını seçiyoruz
-            });
+        const data = await File.findOne({ _id: req.params.id })
 
         res.status(200).send({
             error: false,
-            img: data.fileName
+            data
         })
     },
 

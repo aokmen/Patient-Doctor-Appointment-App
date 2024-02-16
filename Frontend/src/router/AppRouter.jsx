@@ -28,6 +28,14 @@ import AdminMessage from "../pages/panels/adminPanel/adminMessage/AdminMessage";
 import AdminTask from "../pages/panels/adminPanel/adminTask/AdminTask";
 import AdminSetting from "../pages/panels/adminPanel/adminSetting/AdminSetting";
 import AdminAccount from "../pages/panels/adminPanel/adminAccount/AdminAccount";
+import PatientOverview from "../pages/panels/patientPanel/patientOverview/PatientOverview";
+import PatientProfile from "../pages/panels/patientPanel/patientProfile/PatientProfile";
+import PatientCalender from "../pages/panels/patientPanel/patientCalender/PatientCalender";
+import PatientMessage from "../pages/panels/patientPanel/patienMessage/PatientMessage";
+import PatientTask from "../pages/panels/patientPanel/patientTask/PatientTask";
+import PatientStatistic from "../pages/panels/patientPanel/patientStatistic/PatientStatistic";
+import PatientSetting from "../pages/panels/patientPanel/patientSetting/PatientSetting";
+import PatientAccount from "../pages/panels/patientPanel/patientAccount/PatientAccount";
 
 
 
@@ -35,47 +43,59 @@ const AppRouter = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/search" element={<SearchDoctor />} />
-        <Route path="/search/:id" element={<DetailDoctor />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/regdoctor" element={<RegisterDoctor />} />
-        <Route path="/regpatient" element={<RegisterPatient />} />
-        <Route path="/services" element={<Services />} />
-        <Route path="/about" element={<About />} />
+        <Route path="/" element={<Home/>}/>
+        <Route path="/search" element={<SearchDoctor/>}/>
+        <Route path="/search/:id" element={<DetailDoctor/>}/>
+        <Route path="/login" element={<Login/>}/>
+        <Route path="/regdoctor" element={<RegisterDoctor/>}/>
+        <Route path="/regpatient" element={<RegisterPatient/>}/>
+        <Route path="/services" element={<Services/>}/>
+        <Route path="/about" element={<About/>}/>
 
         <Route path="" element={<PrivateAdminRouter/>}>
-          <Route path="/admin" element={<AdminPanel />}>
+          <Route path="/admin" element={<AdminPanel/>}>
 
-            <Route index element={<AdminOverview />} />
-            <Route path="profile" index element={<AdminProfile />} />
-            <Route path="doctor-management" index element={<DoctorManagement />} />
-            <Route path="patient-management" element={<PatientManagement />} />
-            <Route path="message" element={<AdminMessage />} />
-            <Route path="task" index element={<AdminTask />} />
-            <Route path="setting" element={<AdminSetting />} />
-            <Route path="account" element={<AdminAccount/>} />
+            <Route index element={<AdminOverview/>}/>
+            <Route path="profile" index element={<AdminProfile/>}/>
+            <Route path="doctor-management" index element={<DoctorManagement/>}/>
+            <Route path="patient-management" element={<PatientManagement/>}/>
+            <Route path="message" element={<AdminMessage/>}/>
+            <Route path="task" index element={<AdminTask/>}/>
+            <Route path="setting" element={<AdminSetting/>}/>
+            <Route path="account" element={<AdminAccount/>}/>
 
           </Route>
-
-
         </Route>
+
         <Route path="" element={<PrivateDoctorRouter/>}>
-          <Route path="/doctor" element={<DoctorPanel />}>
+          <Route path="/doctor" element={<DoctorPanel/>}>
 
-            <Route index element={<DoctorOverview />} />
-            <Route path="profile" element={<DoctorProfile />} />
-            <Route path="my-calender" element={<MyCalender />} />
-            <Route path="message" element={<DoctorMessage />} />
-            <Route path="task" element={<DoctorTask />} />
-            <Route path="statistic" element={<DoctorStatistic />} />
-            <Route path="patient-info" element={<PatientInfo/>} />
-            <Route path="setting" element={<DoctorSetting/>} />
-            <Route path="account" element={<DoctorAccount/>} />
+            <Route index element={<DoctorOverview/>}/>
+            <Route path="profile" element={<DoctorProfile/>}/>
+            <Route path="my-calender" element={<MyCalender/>}/>
+            <Route path="message" element={<DoctorMessage/>}/>
+            <Route path="task" element={<DoctorTask/>}/>
+            <Route path="statistic" element={<DoctorStatistic/>}/>
+            <Route path="patient-info" element={<PatientInfo/>}/>
+            <Route path="setting" element={<DoctorSetting/>}/>
+            <Route path="account" element={<DoctorAccount/>}/>
+
           </Route>
         </Route>
+
         <Route path="" element={<PrivatePatientRouter/>}>
-          <Route path="/patient" element={<PatientPanel />} />
+          <Route path="/patient" element={<PatientPanel/>}>
+
+            <Route index element={<PatientOverview/>}/>
+            <Route path="profile" element={<PatientProfile/>}/>
+            <Route path="my-calender" element={<PatientCalender/>}/>
+            <Route path="message" element={<PatientMessage/>}/>
+            <Route path="task" element={<PatientTask/>}/>
+            <Route path="statistic" element={<PatientStatistic/>}/>
+            <Route path="setting" element={<PatientSetting/>}/>
+            <Route path="account" element={<PatientAccount/>}/>
+
+          </Route>
         </Route>
 
 
