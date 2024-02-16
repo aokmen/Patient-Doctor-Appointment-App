@@ -19,11 +19,9 @@ const Main = (doctorProfile) => {
 
     useEffect(() => {
 
+
         getData("branches").then(() => getData("files"))
     }, [])
-
-    console.log("branches:", branches);
-    console.log("files:", doctorProfile);
 
     const doctorProfileRef = useRef({
 

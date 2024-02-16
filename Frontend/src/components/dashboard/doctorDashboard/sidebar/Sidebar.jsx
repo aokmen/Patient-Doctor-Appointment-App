@@ -14,10 +14,23 @@ import message from "../../../../assets/message.png"
 import exit from "../../../../assets/logout.png"
 import home from "../../../../assets/home.png"
 import task from "../../../../assets/task.png"
+import { useSelector } from 'react-redux'
 
 
 
-const Sidebar = () => {
+
+const Sidebar = ({setPageName}) => {
+
+  const {currentUser} = useSelector((state) => state.auth)
+  //console.log(currentUser)
+
+  const {doctors} = useSelector((state)=>state.data)
+
+  //console.log(doctors)
+  const currentDoctor = doctors.data.filter((doct) => {return doct.email === currentUser})
+
+  //console.log(currentDoctor)
+  //const doctor = 
   
   const { logout } = useAuthCall();
   const navigate = useNavigate();
@@ -31,11 +44,14 @@ const Sidebar = () => {
     <div className="sidebar-main">
       <div className="topSlide">
       <div className="top">
-      <img src={profil_image} alt="profil_image"/> <h1>Jasmine Doe</h1>
+
+      <img src={profil_image} alt="profil_image" /> <h1>{currentDoctor[0]?.title}. {currentDoctor[0]?.firstName} {currentDoctor[0]?.lastName}</h1>
+
         </div>
         
       </div>
       <div className="middleSlide">
+
         <div className="mid middle1" onClick={() => navigate("/doctor")}>
           <img src={dashboard} alt="dashboard"/> <h1>Überblick</h1>
         </div>
@@ -59,10 +75,8 @@ const Sidebar = () => {
         </div>
         <div className="mid middle8" onClick={() => navigate("/doctor/setting")}>
           <img src={setting} alt="setting"/> <h1>Einstellung</h1>
+      
         </div>
-
-
-
 
       </div>
 

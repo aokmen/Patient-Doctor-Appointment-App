@@ -13,8 +13,6 @@ module.exports = async function () {
      
     const WeekDay = require('../models/weekDay')
     await WeekDay.deleteMany()
-    const DaySchedule = require('../models/daySchedule')
-    await DaySchedule.deleteMany()
     const Appointment = require('../models/appointment')
     await Appointment.deleteMany()
 

@@ -2,22 +2,22 @@
 
 const router = require('express').Router()
 /* ------------------------------------------------------- */
-// routes/daySchedule:
+// routes/event:
 
 //const permissions = require('../middlewares/permissions')
-const daySchedule = require('../controllers/daySchedule')
+const event = require('../controllers/event')
 
 // URL: /cities
 
 router.route('/')
-    .get(daySchedule.list)
-    .post(daySchedule.create)
+    .get(event.list)
+    .post(event.create)
 
 router.route('/:id')
-    .get(daySchedule.read)
-    .put(daySchedule.update)
-    .patch(daySchedule.update)
-    .delete(daySchedule.delete)
+    .get(event.read)
+    .put(event.update)
+    .patch(event.update)
+    .delete(event.delete)
 
 /* ------------------------------------------------------- */
 module.exports = router

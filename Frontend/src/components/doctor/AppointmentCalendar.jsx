@@ -5,6 +5,8 @@ import useDataCall from "../../hooks/useDataCall";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
 import Modal from './Appomodal.jsx'
+import 'react-calendar/dist/Calendar.css';
+import './ReactCalendar.css'
 
 
 const AppointmentCalendar = ({id}) => {

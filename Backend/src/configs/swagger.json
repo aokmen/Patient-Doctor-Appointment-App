@@ -62,6 +62,39 @@
         }
       }
     },
+    "/auth/register": {
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "branch": {
+                  "example": "any"
+                },
+                "userType": {
+                  "example": "any"
+                },
+                "username": {
+                  "example": "any"
+                },
+                "email": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/auth/logout": {
       "post": {
         "tags": [
@@ -1779,6 +1812,15 @@
             "schema": {
               "type": "object",
               "properties": {
+                "from": {
+                  "example": "any"
+                },
+                "subject": {
+                  "example": "any"
+                },
+                "content": {
+                  "example": "any"
+                },
                 "senderUserType": {
                   "example": "any"
                 },
@@ -1861,6 +1903,10 @@
               "example": true
             },
             "index": {
+              "type": "boolean",
+              "example": true
+            },
+            "required": {
               "type": "boolean",
               "example": true
             }
@@ -2150,9 +2196,9 @@
             "enum": {
               "type": "array",
               "example": [
-                "Admin",
-                "Doctor",
-                "Patient"
+                "admin",
+                "doctor",
+                "patient"
               ],
               "items": {
                 "type": "string"
@@ -2490,6 +2536,18 @@
             }
           }
         },
+        "branch": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "function"
+            },
+            "trim": {
+              "type": "boolean",
+              "example": true
+            }
+          }
+        },
         "birthDate": {
           "type": "object",
           "properties": {
@@ -2511,9 +2569,9 @@
             "enum": {
               "type": "array",
               "example": [
-                "male",
-                "female",
-                "others"
+                "Male",
+                "Female",
+                "Others"
               ],
               "items": {
                 "type": "string"
@@ -2560,6 +2618,18 @@
             }
           }
         },
+        "isApproved": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "function"
+            },
+            "default": {
+              "type": "boolean",
+              "example": false
+            }
+          }
+        },
         "about": {
           "type": "object",
           "properties": {
@@ -2602,10 +2672,6 @@
             "properties": {
               "type": {
                 "type": "function"
-              },
-              "ref": {
-                "type": "string",
-                "example": "Complaint"
               }
             }
           }
@@ -2621,6 +2687,21 @@
               "ref": {
                 "type": "string",
                 "example": "Message"
+              }
+            }
+          }
+        },
+        "appointments": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "function"
+              },
+              "ref": {
+                "type": "string",
+                "example": "Appointment"
               }
             }
           }
@@ -2667,9 +2748,9 @@
             "enum": {
               "type": "array",
               "example": [
-                "Admin",
-                "Doctor",
-                "Patient"
+                "admin",
+                "doctor",
+                "patient"
               ],
               "items": {
                 "type": "string"
@@ -2748,10 +2829,6 @@
             "type": {
               "type": "function"
             },
-            "required": {
-              "type": "boolean",
-              "example": true
-            },
             "index": {
               "type": "boolean",
               "example": true
@@ -2764,16 +2841,12 @@
             "type": {
               "type": "function"
             },
-            "required": {
-              "type": "boolean",
-              "example": true
-            },
             "enum": {
               "type": "array",
               "example": [
-                "Admin",
-                "Doctor",
-                "Patient"
+                "admin",
+                "doctor",
+                "patient"
               ],
               "items": {
                 "type": "string"
@@ -2787,10 +2860,6 @@
             "type": {
               "type": "function"
             },
-            "required": {
-              "type": "boolean",
-              "example": true
-            },
             "index": {
               "type": "boolean",
               "example": true
@@ -2803,16 +2872,12 @@
             "type": {
               "type": "function"
             },
-            "required": {
-              "type": "boolean",
-              "example": true
-            },
             "enum": {
               "type": "array",
               "example": [
-                "Admin",
-                "Doctor",
-                "Patient"
+                "admin",
+                "doctor",
+                "patient"
               ],
               "items": {
                 "type": "string"
@@ -2836,13 +2901,37 @@
             }
           }
         },
-        "message": {
+        "content": {
           "type": "object",
           "properties": {
             "type": {
               "type": "function"
             },
             "required": {
+              "type": "boolean",
+              "example": true
+            }
+          }
+        },
+        "name": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "function"
+            },
+            "trim": {
+              "type": "boolean",
+              "example": true
+            }
+          }
+        },
+        "from": {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "function"
+            },
+            "trim": {
               "type": "boolean",
               "example": true
             }
@@ -2902,10 +2991,6 @@
             "trim": {
               "type": "boolean",
               "example": true
-            },
-            "required": {
-              "type": "boolean",
-              "example": true
             }
           }
         },
@@ -2916,10 +3001,6 @@
               "type": "function"
             },
             "trim": {
-              "type": "boolean",
-              "example": true
-            },
-            "required": {
               "type": "boolean",
               "example": true
             }
@@ -3018,9 +3099,9 @@
             "enum": {
               "type": "array",
               "example": [
-                "male",
-                "female",
-                "others"
+                "Male",
+                "Female",
+                "Others"
               ],
               "items": {
                 "type": "string"

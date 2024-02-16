@@ -1,5 +1,4 @@
-import React, { useEffect } from "react";
-import useDataCall from "../../hooks/useDataCall";
+import React from "react";
 import { useSelector } from "react-redux";
 import Header from "../../components/header/Header";
 import Hero from "../../components/home/hero/Hero";

@@ -8,11 +8,18 @@ import useDataCall from "../../../hooks/useDataCall";
 import Loading from "../../loading/Loading";
 import ApprovalForm from "../../../components/dashboard/doctorDashboard/approvalForm/ApprovalForm";
 import DNavbar from "../../../components/dashboard/doctorDashboard/dNavbar/DNavbar";
+import Uberblick from "../../../components/dashboard/doctorDashboard/uberblick/Uberblick";
+import Kalender from "../../../components/dashboard/doctorDashboard/kalender/Kalender";
+import Statistik from "../../../components/dashboard/doctorDashboard/Statistik";
+import ManageAppo from "../../../components/dashboard/doctorDashboard/manageAppointments/ManageAppo";
+
 
 const DoctorPanel = () => {
   const { getData } = useDataCall()
   const { doctors } = useSelector((state) => state.data)
   const { currentUser } = useSelector((state) => state.auth)
+
+  const [pageName, setPageName] = useState("")
 
 
   useEffect(() => {
@@ -22,9 +29,11 @@ const DoctorPanel = () => {
   const doctorProfile = doctors?.data?.filter((item) => (currentUser === item.email))
   
 
+
   return (
 
     <>
+
 
       {doctorProfile && doctorProfile[0].isApproved === false ?
         <>
@@ -36,6 +45,7 @@ const DoctorPanel = () => {
               <div className="d-main-content">
                 <ApprovalForm {...doctorProfile[0]} />
               </div>
+
             </div>
           </div>
         </> :

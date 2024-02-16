@@ -15,6 +15,7 @@ module.exports = async (req, res, next) => {
 
         if (tokenData) {
             const userModel = require("../models/"+tokenData.userType)
+            //console.log("userModel",userModel);
 
             req.user = await userModel.findOne({_id:tokenData.userId})
             if (req.user) req.user.userType = tokenData.userType

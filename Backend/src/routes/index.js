@@ -44,9 +44,6 @@ router.use('/cities', require('./city'))
 // weekDay:
 router.use('/weekdays', require('./weekDay'))
 
-// daySchedule:
-router.use('/dayschedules', require('./daySchedule'))
-
 // file:
 router.use('/files', require('./file'))
 
@@ -56,6 +53,9 @@ router.use('/documents', require('./document'))
 
 //messages
 router.use("/messages", require("./message"))
+
+//events
+router.use("/events", require("./event"))
 
 
 
