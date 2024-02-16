@@ -1,13 +1,16 @@
 "use strict";
 
-const Message = require('../models/messages');
+const Event = require('../models/event');
+const Doctor = require('../models/doctor');
+
+
 
 module.exports = {
 
     list: async (req, res) => {
         /*
-            #swagger.tags = ["Messages"]
-            #swagger.summary = "List Messages"
+            #swagger.tags = ["Events"]
+            #swagger.summary = "List Events"
             #swagger.description = `
                 You can send query with endpoint for search[], sort[], page and limit.
                 <ul> Examples:
@@ -18,7 +21,7 @@ module.exports = {
             `
         */
 
-        const data = await res.getModelList(Message);
+        const data = await res.getModelList(Event);
 
         // FOR REACT PROJECT:
         res.status(200).send(data);
@@ -26,8 +29,8 @@ module.exports = {
 
     create: async (req, res) => {
         /*
-            #swagger.tags = ["Messages"]
-            #swagger.summary = "Create Message"
+            #swagger.tags = ["Events"]
+            #swagger.summary = "Create Event"
             #swagger.parameters['body'] = {
                 in: 'body',
                 required: true,
@@ -36,14 +39,17 @@ module.exports = {
                     "senderUserType": "user/admin",
                     "receiverUserId": "Receiver's User ID",
                     "receiverUserType": "user/admin",
-                    "subject": "Message Subject",
-                    "message": "Message Content"
+                    "subject": "Event Subject",
+                    "Event": "Event Content"
                 }
             }
         */
 
-        const data = await Message.create(req.body);
+        const data = await Event.create(req.body);
 
+        await Doctor.updateOne({_id: data.doctorId}, {$push: {events: data.id}})
+
+        
         // FOR REACT PROJECT:
         res.status(201).send({
             error: false,
@@ -53,11 +59,13 @@ module.exports = {
 
     read: async (req, res) => {
         /*
-            #swagger.tags = ["Messages"]
-            #swagger.summary = "Get Single Message"
+            #swagger.tags = ["Events"]
+            #swagger.summary = "Get Single Event"
         */
 
-        const data = await Message.findOne({ _id: req.params.id });
+        const data = await Event.findOne({ _id: req.params.id })
+        
+
 
         res.status(200).send({
             error: false,
@@ -67,8 +75,8 @@ module.exports = {
 
     update: async (req, res) => {
         /*
-            #swagger.tags = ["Messages"]
-            #swagger.summary = "Update Message"
+            #swagger.tags = ["Events"]
+            #swagger.summary = "Update Event"
             #swagger.parameters['body'] = {
                 in: 'body',
                 required: true,
@@ -77,28 +85,29 @@ module.exports = {
                     "senderUserType": "user/admin",
                     "receiverUserId": "Updated Receiver's User ID",
                     "receiverUserType": "user/admin",
-                    "subject": "Updated Message Subject",
-                    "message": "Updated Message Content"
+                    "subject": "Updated Event Subject",
+                    "Event": "Updated Event Content"
                 }
             }
         */
 
-        const data = await Message.updateOne({ _id: req.params.id }, req.body, { runValidators: true });
+        const data = await Event.updateOne({ _id: req.params.id }, req.body, { runValidators: true });
 
         res.status(202).send({
             error: false,
             data,
-            new: await Message.findOne({ _id: req.params.id })
+            new: await Event.findOne({ _id: req.params.id })
         });
     },
 
     delete: async (req, res) => {
         /*
-            #swagger.tags = ["Messages"]
-            #swagger.summary = "Delete Message"
+            #swagger.tags = ["Events"]
+            #swagger.summary = "Delete Event"
         */
+        
 
-        const data = await Message.deleteOne({ _id: req.params.id });
+        const data = await Event.deleteOne({ _id: req.params.id });
 
         res.status(data.deletedCount ? 204 : 404).send({
             error: !data.deletedCount,

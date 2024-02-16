@@ -80,13 +80,14 @@ module.exports = {
             }
         */
 
-        const data = await Doctor.updateOne({ _id: req.params.id }, req.body, { runValidators: true })
-
-        res.status(202).send({
+        
+           const data = await Doctor.updateOne({ _id: req.params.id }, req.body, { runValidators: true }) 
+           res.status(202).send({
             error: false,
             data,
             new: await Doctor.findOne({ _id: req.params.id })
         })
+        
     },
 
     delete: async (req, res) => {

@@ -15,6 +15,7 @@ const dataSlice = createSlice({
     appointments:[],
     cities:[],
     messages:[],
+    events:[],
     daySchedules: [],
     files:[],
   },

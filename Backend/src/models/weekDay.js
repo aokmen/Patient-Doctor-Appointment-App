@@ -16,7 +16,6 @@ const WeekDaySchema = new mongoose.Schema({
     name: {
         type: String,
         enum: dayNames,
-        unique: true,
         required: true
     },
     startHour: {

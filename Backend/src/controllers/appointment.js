@@ -81,7 +81,7 @@ module.exports = {
         const data = await Appointment.updateOne({ _id: req.params.id }, req.body, { runValidators: true }).populate('doctorId')
         const dataNew = await Appointment.findOne({ _id: req.params.id }).populate(["doctorId", "patientId"])
 
-        console.log(dataNew)
+        //console.log(dataNew)
         sendMail(
             "hakkioglu19@gmail.com",    //from
             /* data?.patientId?.email */"hakkioglu19@gmail.com",

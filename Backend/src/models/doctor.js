@@ -81,6 +81,10 @@ const DoctorSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'File'
     }],
+    events: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Event'
+    }],
     isActive: {
         type: Boolean,
         default: true
@@ -100,10 +104,6 @@ const DoctorSchema = new mongoose.Schema({
         type: String,
         trim: true
     },
-    // complaints: [{            
-    //     type: mongoose.Schema.Types.ObjectId,
-    //     ref:'Complaint'
-    // }],
     complaints: [{            
         type: String
     }],
@@ -114,6 +114,10 @@ const DoctorSchema = new mongoose.Schema({
     appointments:[{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Appointment'
+    }],
+    files: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Event'
     }],
     messageCount: {
         type: Number,

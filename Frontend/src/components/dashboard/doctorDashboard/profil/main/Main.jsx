@@ -34,7 +34,7 @@ const Main = (doctorProfile) => {
         getData("branches")
       }, [])
 
-     console.log("branches:",branches);
+     //console.log("branches:",branches);
     const doctorProfileRef = useRef({
 
         avatar: avatar || "",
