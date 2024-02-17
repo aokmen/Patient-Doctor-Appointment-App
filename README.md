@@ -18,7 +18,7 @@ This project includes a full-stack web application that allows patients and doct
   - User authentication is managed using Token Authentication.
   - Authorization is implemented using React Router's security features.
 
-## Project Structure
+## Project Structure 
 
 - **client:** Frontend code
   - **src:**
