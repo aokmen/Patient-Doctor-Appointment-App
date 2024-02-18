@@ -11,7 +11,7 @@ const ProcessBar = ({count}) => {
             <div className="going going1">
               <div className="goingTrue">
                 <div className="goingTrueTitle"><h1>1</h1></div>
-               <div className={count > 0 ? "goingTrueLine" : "goingFalseLine"}>
+               <div className={count > 0 ? "goingTrueLine" : "goingFalseLine"}> 
                
                </div>
               </div>
