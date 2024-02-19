@@ -1,15 +1,15 @@
 import React from 'react'
-import "./dNavbar.css"
+import "./pNavbar.css"
 import setting from "../../../../assets/setting2.png"
 import letter from "../../../../assets/letter.png"
 import notification2 from "../../../../assets/notification2.png"
 import help from "../../../../assets/help.png"
 
-const DNavbar = () => {
+const PNavbar = () => {
 
   return (
-    <div className="d-header">
-      <div className="d-navbar-icons">
+    <div className="p-header">
+      <div className="p-navbar-icons">
 
         <img src={letter} alt="letter" />
         <img src={notification2} alt="notification2" />
@@ -22,4 +22,4 @@ const DNavbar = () => {
   )
 }
 
-export default DNavbar
+export default PNavbar

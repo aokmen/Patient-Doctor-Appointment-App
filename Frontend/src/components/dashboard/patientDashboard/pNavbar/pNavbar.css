@@ -1,0 +1,18 @@
+.p-header{
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #38638D;
+
+}
+.p-navbar-icons{
+ 
+    display: flex;
+    justify-content:flex-end;
+    gap: 20px;
+    align-items: center;
+    width: 90%;
+    padding-top: 10px;
+
+}

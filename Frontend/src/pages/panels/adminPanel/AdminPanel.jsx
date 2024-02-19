@@ -10,6 +10,7 @@ import useDataCall from "../../../hooks/useDataCall";
 import Loading from "../../loading/Loading";
 import { Outlet } from "react-router-dom";
 import ProcessBar from "../../../components/dashboard/adminDashboard/processBar/ProcessBar";
+import ANavbar from "../../../components/dashboard/adminDashboard/aNavbar/ANavbar";
 
 const AdminPanel = () => {
   const { getData } = useDataCall()
@@ -29,23 +30,22 @@ const AdminPanel = () => {
       {currentUser === "admin@site.com" ?
 
         <div className="dashboard">
-          <div className="apanel-sidebar">
-            <Sidebar />
+          <div className="a-panel-sidebar">
+            <Sidebar/>
           </div>
 
-          <div className="apanel-main">
-            <div className="processbar">
-              <ProcessBar />
+          <div className="a-panel-main">
+            <div className="a-navbar">
+              <ANavbar/>
             </div>
-            <div className="main-content">
-                <div className="main-content-section">
-                  <div className="main-content-section-box">
+            <div className="a-main-content">
+                <div className="a-main-content-section">
+                  <div className="a-main-content-section-box">
 
-                    <Outlet />
+                    <Outlet/>
 
                   </div>
                 </div>
-              {/* <Main  /> */}
             </div>
           </div>
         </div> : <Loading />}

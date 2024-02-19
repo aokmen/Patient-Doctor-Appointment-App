@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Sidebar from "../../../components/dashboard/doctorDashboard/sidebar/Sidebar";
 import Main from "../../../components/dashboard/doctorDashboard/profil/main/Main";
 import { Outlet } from "react-router-dom";
@@ -8,11 +8,6 @@ import useDataCall from "../../../hooks/useDataCall";
 import Loading from "../../loading/Loading";
 import ApprovalForm from "../../../components/dashboard/doctorDashboard/approvalForm/ApprovalForm";
 import DNavbar from "../../../components/dashboard/doctorDashboard/dNavbar/DNavbar";
-import Uberblick from "../../../components/dashboard/doctorDashboard/uberblick/Uberblick";
-import Kalender from "../../../components/dashboard/doctorDashboard/kalender/Kalender";
-import Statistik from "../../../components/dashboard/doctorDashboard/Statistik";
-import ManageAppo from "../../../components/dashboard/doctorDashboard/manageAppointments/ManageAppo";
-
 
 const DoctorPanel = () => {
   const { getData } = useDataCall()

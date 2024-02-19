@@ -31,6 +31,7 @@ const DManagement = () => {
 
         <>
 
+
             <div className="apanel-view">
 
 

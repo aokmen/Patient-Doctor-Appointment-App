@@ -6,8 +6,8 @@ import EventsModal from './EventsModal';
 const Events = ({selectedDate}) => {
     const {events, doctors} = useSelector((state)=>state.data)
     const {getData, delData} = useDataCall()
-
-    const doctor_id = "65cdd8623302b5068be75a3e";
+    console.log("selectedDate:",selectedDate);
+    const doctor_id = "65ca8f41c6ee1815e06c1a74";
     const dateToday = new Date().toISOString()
 
     const thisDoctor = doctors.data.filter((doc) => doc.id === doctor_id)

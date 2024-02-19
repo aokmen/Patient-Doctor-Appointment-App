@@ -7,27 +7,27 @@
    
 }
 
-.apanel-sidebar {
+.a-panel-sidebar {
 
 }
 
-.apanel-main {
+.a-panel-main {
     display: flex;
     flex-direction: column;
     width: 100%;
     background-color: #F1F7FE;
 }
 
-.processbar {
-    flex: 20%;
+.a-navbar {
+    flex: 10%;
 }
 
-.main-content {
-    flex: 80%;
+.a-main-content {
+    flex: 90%;
 }
 
-.main-content-section{
-    height: 75vh;
+.a-main-content-section{
+    height: 94vh;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -36,12 +36,12 @@
 
 }
 
-.main-content-section-box {
+.a-main-content-section-box {
     background-color: white;
-    height: 90%;
+    height: 92%;
     width: 90%;
     border-radius: 26px;
-    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.548);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.199);
 
 }
 

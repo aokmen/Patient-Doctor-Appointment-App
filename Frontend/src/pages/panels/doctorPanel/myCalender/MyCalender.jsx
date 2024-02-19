@@ -1,8 +1,9 @@
 import React from 'react'
+import Kalender from '../../../../components/dashboard/doctorDashboard/kalender/Kalender'
 
 const MyCalender = () => {
   return (
-    <div>MyCalender</div>
+    <div><Kalender/></div>
   )
 }
 

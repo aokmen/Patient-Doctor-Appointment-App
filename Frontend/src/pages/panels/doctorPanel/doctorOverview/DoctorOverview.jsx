@@ -1,8 +1,9 @@
 import React from 'react'
+import Uberblick from '../../../../components/dashboard/doctorDashboard/uberblick/Uberblick'
 
 const DoctorOverview = () => {
   return (
-    <div>DoctorOverview</div>
+    <div><Uberblick/></div>
   )
 }
 
