@@ -20,7 +20,7 @@ const AufgabeSchema = new mongoose.Schema({
         type: String,
         enum: userTypes
     },
-    name: {
+    not: {
         type: String,
         trim: true,
         required: true
