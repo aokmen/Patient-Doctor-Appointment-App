@@ -44,6 +44,12 @@ router.use('/cities', require('./city'))
 // weekDay:
 router.use('/weekdays', require('./weekDay'))
 
+// aufgabe:
+router.use('/aufgabes', require('./aufgabe'))
+
+// notiz:
+router.use('/notizs', require('./notiz'))
+
 // file:
 router.use('/files', require('./file'))
 

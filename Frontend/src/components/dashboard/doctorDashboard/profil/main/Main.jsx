@@ -18,8 +18,6 @@ const Main = (doctorProfile) => {
     const URL = process.env.REACT_APP_BASE_URL
 
     useEffect(() => {
-
-
         getData("branches").then(() => getData("files"))
     }, [])
 
@@ -42,7 +40,6 @@ const Main = (doctorProfile) => {
 
     })
      
-
     const fileImage = doctorProfile.files.length > 0 ? `${URL}/img/${doctorProfile.files[0].fileName}` : profilImage;
 
     // const fileNameFind = files.length > 0 ? files.filter((item) => item.fileName && item.fileName.split("-")[0] === id) : [];

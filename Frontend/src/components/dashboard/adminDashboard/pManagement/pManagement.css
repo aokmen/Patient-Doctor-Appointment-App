@@ -2,11 +2,22 @@
 /*                               the Admin Panel                              */
 /* -------------------------------------------------------------------------- */
 
+.apanel-p-view{
 
+    height: 100%;
+    width: 100%;
+    border-radius: 26px;
+    overflow: scroll;
+    overflow-x: hidden; /* Hide horizontal scrollbar */;
 
+    height: 800px;
 
+}
 
-.apanel-main-doctorOk {
+.apanel-p-view-patientInfo{
+    padding: 0 50px;
+}
+.apanel-p-main-patientOk {
 
     height: 75vh;
     width: 100%;
@@ -17,7 +28,7 @@
 
 }
 
-.apanel-main-left {
+.apanel-p-main-left {
     background-color: white;
     height: 90%;
     width: 90%;
@@ -27,7 +38,7 @@
 
 }
 
-.apanel-person {
+.apanel-p-person {
     /* display: flex;
     justify-content:space-around;
     align-items: center;
@@ -40,27 +51,27 @@
 
 }
 
-.apanel-person-profile {
+.apanel-p-person-profile {
 
     height: 70vh;
     display: flex;
     /* transform: translateY(-70vh); */
 }
 
-.apanel-person-profile2 {
+.apanel-p-person-profile2 {
     height: 70vh;
     display: flex;
     transform: translateY(-70vh);
 }
 
-.apanel-person-profile3 {
+.apanel-p-person-profile3 {
     height: 70vh;
     display: flex;
     transform: translateY(-140vh);
 }
 
-.apanel-person--left,
-.apanel-person--right {
+.apanel-p-person--left,
+.apanel-p-person--right {
     flex: 1;
     display: flex;
     justify-content: center;
@@ -69,17 +80,17 @@
 
 }
 
-.apanel-person--left {
+.apanel-p-person--left {
 
     /* border-right: 6px solid #B7D8F8; */
 }
 
 
 /* -------------------------------------------------------------------------- */
-/*                            Doctor Approval Card                            */
+/*                            patient Approval Card                            */
 /* -------------------------------------------------------------------------- */
 
-.apanel-view-title ul {
+.apanel-p-view-title ul {
     display: flex;
     justify-content: center;
     gap: 90px;
@@ -89,12 +100,12 @@
     font-size: 1.2rem;
 }
 
-.apanel-view-doctor {
+.apanel-p-view-patient {
     display: flex;
 
 }
 
-.apanel-view-doctor-left {
+.apanel-p-view-patient-left {
     flex: 3;
     display: flex;
     align-items: center;
@@ -103,16 +114,13 @@
 
 }
 
-.apanel-view-doctor-right {
-    flex: 2;
-}
 
 
-.apanel-view-doctorInfo ul {
+.apanel-p-view-patientInfo ul {
     display: flex;
     justify-content: center;
     /* gap: 25px; */
-    width: 834px;
+    width: 634px;
     color: #38638D;
     font-size: 1.2rem;
     border-bottom: 1px solid #ced4db;
@@ -121,23 +129,15 @@
     
 }
 
-.doctorInfo1,
-.doctorInfo3,
-.doctorInfo5 {
+.patientInfo1{
     padding-left: 10px;
     flex: 2;
-    height: 50%;
+    margin-right: 50px;
 }
 
-.apanel-view-doctorInfo-Ok {
-    margin-left: -150px;
-    flex: 4;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
+.patientInfo1 span{
+    font-weight: bold;
 }
-
 .okIcons {
 
     display: flex;
@@ -183,22 +183,22 @@
 }
 .okIconsFlex3:hover{
     box-shadow: 0 0 10px rgb(32, 216, 216);
-    border: 1px solid #38638D;
+
 
 }
-.apanel-view-doctorImg {
+.apanel-p-view-patientImg {
     margin-left: 20px;
     width: 110px;
 }
 
-.doctorInfo1 li {
+.patientInfo1 li {
     /* border-bottom: 1px solid #38638D; */
     box-shadow: 0 0 30px #38628d34;
     border-right: 1px solid #38638D;
     padding-left: 10px;
 }
 
-.apanel-view-doctor-btn {
+.apanel-p-view-patient-btn {
     /* background-color: #38638D; */
     background-color: #F1F7FE;
     /* margin-top: -10px; */
@@ -210,40 +210,53 @@
 
 }
 
-.apanel-view-doctor-btn button {
+.apanel-p-view-patient-btn button {
     border: 1px solid #38638D;
 
     border-radius: 5px;
     padding: 5px 10px;
-    margin-top: -40px;
+
 }
-.apanel-view-doctor-btn button:hover{
+.apanel-p-view-patient-btn button:hover{
     cursor: pointer;
     background-color: #B7D8F8;
-    border: none;
+
 }
-.deneme {
+.apanel-p-view-patient-file {
     height: 200px;
     overflow: scroll;
     overflow-x: hidden;
+    border-bottom: 1px solid #38638D;
 }
 
-.deneme2::-webkit-scrollbar {
-       /* width: 0; */
-        /* Remove scrollbar space */
-        /* background: transparent; */
-        /* Optional: just make scrollbar invisible */
-}
 
-.deneme2 {
+.apanel-p-view-patient-info2 {
     height: 200px;
-    overflow: scroll;
     padding: 10px;
     background-color: #F1F7FE;
+    overflow: scroll;
+    overflow-x: hidden;
+    border-bottom: 1px solid #38638D;
 }
 
-.deneme2 h1 {
+.apanel-p-view-patient-info2 h1 {
     margin-top: 10px;
     color: #38638D;
     font-weight: bold;
 }
+
+.apanel-p-view-patient-right-btn{
+
+    flex: 2;
+    display: flex;
+    justify-content: center;
+    align-items:center ;
+    flex-direction: column;
+    gap: 50px;
+    border-bottom: 1px solid #38638D;
+}
+.apanel-p-view-patientInfo-Ok{
+    height: 100px;
+    width: 100%;
+    gap: 10px;
+}    

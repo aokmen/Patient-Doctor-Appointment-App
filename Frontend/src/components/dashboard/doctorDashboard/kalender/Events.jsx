@@ -62,9 +62,9 @@ const Events = ({selectedDate}) => {
                 <>
                     <table className='w-[20vw] text-center mx-auto'>
                         <tbody>
-                            <tr className='text-center text-lg font-bold py-3'>
+                            <tr className='text-center text-xl font-bold py-3'>
                                 <td className='text-center' colSpan='3'>
-                                    {selectedDate}
+                                    {selectedDate}(Gewähltes datum)
                                 </td>
                             </tr>
                             {
@@ -94,9 +94,9 @@ const Events = ({selectedDate}) => {
                             }
                         </tbody>
                     </table>
-                    <table className='mt-9 text-center w-[30vw] mx-auto'>
+                    <table className='mt-14 text-center w-[30vw] mx-auto'>
                         <tbody>    
-                            <tr className='text-center text-lg font-bold py-3'>
+                            <tr className='text-center text-xl font-bold py-3'>
                                 <td colSpan='4'>
                                     Bevorstehende Ereignisse
                                 </td>
@@ -134,8 +134,8 @@ const Events = ({selectedDate}) => {
                 <>
                 <table className='w-[40vw] '>
                     <tbody>
-                    <tr className='text-center text-lg font-bold py-3'>
-                            <td>{selectedDate}</td>
+                    <tr className='text-center text-xl font-bold py-3'>
+                            <td>{selectedDate}(Gewähltes datum)</td>
                     </tr>
                     <tr className='text-center text-lg font-bold py-3 text-red-600'>
                             <td>Sie haben an diesem Datum keine Ereignisse.</td>
@@ -143,7 +143,7 @@ const Events = ({selectedDate}) => {
                            
                     </tbody>
                     </table>
-                    <table className='mt-9 w-[30vw] text-center mx-auto'>
+                    <table className='mt-14 w-[30vw] text-center mx-auto'>
                         <tbody>
                     <tr className='text-center text-lg font-bold py-3'>
                         <td colSpan='4'>
@@ -181,7 +181,7 @@ const Events = ({selectedDate}) => {
                 </table>
                 </>
             }
-        <button onClick={()=> setShowModal(true)} className='mt-2 py-2 px-6 bg-[#6f48eb] text-white rounded-lg w-[12rem] hover:bg-[#7055cb] hover:scale-[1.05] duration-150'>EVENT HINFÜGEN</button>
+        <button onClick={()=> setShowModal(true)} className='mt-8 py-3 px-6 bg-emerald-700 text-white rounded-lg w-[15rem] hover:bg-emerald-600 hover:scale-[1.05] duration-150 text-lg'>EVENT HINFÜGEN</button>
         <EventsModal showModal={showModal} handleClose={handleClose} setShowModal={setShowModal} doctor_id={doctor_id} info={info} setInfo={setInfo}/>
     </div>
   )
