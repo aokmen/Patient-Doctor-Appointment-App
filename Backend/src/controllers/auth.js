@@ -68,6 +68,7 @@ module.exports = {
                         error: false,
                         key: tokenData.token,
                         user,
+                        userType
                     })
 
                 } else {
@@ -105,6 +106,7 @@ module.exports = {
                 error: false,
                 key: tokenData.token,
                 doctor,
+                userType : 'doctor'
             })
         }
         else if(req.body.username){
@@ -123,6 +125,7 @@ module.exports = {
                 error: false,
                 key: tokenData.token,
                 admin,
+                userType : 'admin'
             })
         }
         else{
@@ -141,6 +144,7 @@ module.exports = {
                 error: false,
                 key: tokenData.token,
                 patient,
+                userType : 'patient'
             })
         }
     },

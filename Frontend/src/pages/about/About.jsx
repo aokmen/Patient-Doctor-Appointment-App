@@ -1,10 +1,9 @@
 import React from "react";
-import Header from "../../components/header/Header";
 import aboutImage from "../../assets/about-img.png";
 import patient from "../../assets/patient.png";
 import arzt from "../../assets/doctor.png";
 import "./about.css";
-import Footer from "../../components/footer/Footer";
+import BottomLine from "../../components/footer/BottomLine";
 const About = () => {
   return (
     <>
@@ -102,7 +101,7 @@ const About = () => {
           </div>
         </div>
       </div>
-      <Footer/>
+      <BottomLine/>
     </>
   );
 };

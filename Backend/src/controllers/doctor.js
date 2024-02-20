@@ -20,8 +20,8 @@ module.exports = {
             `
         */
 
-        const data = await res.getModelList(Doctor, {}, ["branchId", "cityId", "complaints"])
-
+        const data = await res.getModelList(Doctor, {}, ["branchId", "cityId", "complaints","files"])
+    
         // res.status(200).send({
         //     error: false,
         //     details: await res.getModelListDetails(Doctor),
@@ -61,11 +61,21 @@ module.exports = {
             #swagger.summary = "Get Single Doctor"
         */
 
-        const data = await Doctor.findOne({ _id: req.params.id }).populate(["branchId", "cityId", "complaints"])
+        const data = await Doctor.findOne({ _id: req.params.id }).populate(["branchId", "cityId", "complaints","files"])
+        // .populate({
+        //     path: 'files',
+        //     select: 'fileName' // Sadece fileName alanını seçiyoruz
+        // });
+
+
+      
+
 
         res.status(200).send({
             error: false,
             data
+            // data:{...data._doc, "files":[`${req.protocol}://${req.get("host")}/img/${data.files[0]}`,`${req.protocol}://${req.get("host")}/img/${data.files[1]}`]}
+        
         })
     },
 

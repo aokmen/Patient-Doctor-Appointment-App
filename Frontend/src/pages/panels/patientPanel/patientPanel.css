@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.dashboard {
+    display: flex;
+}
+
+.p-panel-sidebar {
+
+}
+
+.p-panel-main {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-color: #F1F7FE;
+}
+
+.p-navbar {
+    flex: 10%;
+}
+
+.p-main-content {
+    flex: 90%;
+}
+
+.p-main-content-section{
+    height: 94vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.p-main-content-section-box {
+    background-color: white;
+    height: 92%;
+    width: 90%;
+    border-radius: 26px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.199);
+ 
+}

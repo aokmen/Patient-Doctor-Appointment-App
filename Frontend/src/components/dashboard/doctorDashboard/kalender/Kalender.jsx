@@ -14,7 +14,7 @@ const Kalender = () => {
     const {appointments} = useSelector((state)=>state.data)
     const {getData} = useDataCall()
 
-    const doctor_id = "65cdd8623302b5068be75a3e";
+    const doctor_id = "65ca8f41c6ee1815e06c1a74";
     const dateToday = new Date().toISOString()
 
     let appsThisDoctor = appointments.filter((item) => {return item.doctorId === doctor_id})
@@ -38,9 +38,11 @@ const Kalender = () => {
       }, [])
 
     const handleDateSelect = async (value) => {
-        const dateArray = value.toLocaleString().split(',').slice(0,1)[0].split('/')
+  
+        const dateArray = value.toLocaleString().split(' ').slice(0,1)[0].split('.')
         const datum = dateArray[2]+"-"+dateArray[1]+"-"+dateArray[0]
-        //console.log(datum)
+        console.log("dateArray:",dateArray)
+        console.log("value:",value)
         setSelectedDate(datum)
         const AppsSelectedDate = appsThisDoctor.filter((item) => {return item.date === datum})
         setAppsThisDoctorSelectedDate(AppsSelectedDate)
@@ -49,9 +51,9 @@ const Kalender = () => {
     
         setHolidayArray(dayData)
     }
-    
+
     const [iSEventsShown, setiSEventsShown] = useState(false)
-    
+
   return (
     <div className='px-14 py-10 h-[100vh] w-[87vw]'>
         <div className='mb-6 h-28 flex justify-between items-center bg-white w-full rounded-3xl'>

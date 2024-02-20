@@ -10,9 +10,12 @@ import patient2  from "../../../../assets/patient2.png"
 import calender from "../../../../assets/calender.png"
 import setting  from "../../../../assets/setting.png"
 import account from "../../../../assets/account.png"
-import logoutI from "../../../../assets/logout.png"
+import message from "../../../../assets/message.png"
+import exit from "../../../../assets/logout.png"
 import home from "../../../../assets/home.png"
+import task from "../../../../assets/task.png"
 import { useSelector } from 'react-redux'
+
 
 
 
@@ -41,45 +44,51 @@ const Sidebar = ({setPageName}) => {
     <div className="sidebar-main">
       <div className="topSlide">
       <div className="top">
-      <img src={profil_image} alt="" /> <h1>{currentDoctor[0]?.title}. {currentDoctor[0]?.firstName} {currentDoctor[0]?.lastName}</h1>
+
+      <img src={profil_image} alt="profil_image" /> <h1>{currentDoctor[0]?.title}. {currentDoctor[0]?.firstName} {currentDoctor[0]?.lastName}</h1>
+
         </div>
         
       </div>
       <div className="middleSlide">
-        <div className="mid middle1" onClick={()=>setPageName("Uberblick")}>
-          <img src={dashboard} alt="" /> <h1>Überblick</h1>
-        </div>
-        <div className="mid middle2" onClick={()=>setPageName("Profil")}>
-          <img src={profil_info} alt="" /> <h1>Profil</h1>
-        </div>
-        <div className="mid middle3" onClick={()=>setPageName("Kalender")}>
-          <img src={calender} alt="" /> <h1>Kalender</h1>
-        </div>
-        <div className="mid middle4" onClick={()=>setPageName("Statistik")}>
-          <img src={statistic} alt="" /> <h1>Statistik</h1>
-        </div>
-        <div className="mid middle5" onClick={()=>setPageName("Patienten-Infos")}>
-          <img src={patient2} alt="" /> <h1>Patienten-Infos</h1>
-        </div>
 
-        <div className="mid middle6" onClick={()=>setPageName("Einstellungen")}>
-          <img src={setting} alt="" /> <h1>Einstellungen</h1>
+        <div className="mid middle1" onClick={() => navigate("/doctor")}>
+          <img src={dashboard} alt="dashboard"/> <h1>Überblick</h1>
         </div>
-
-
-
+        <div className="mid middle2" onClick={() => navigate("/doctor/profile")}>
+          <img src={profil_info} alt="profil_info"/> <h1>Profil</h1>
+        </div>
+        <div className="mid middle3" onClick={() => navigate("/doctor/my-calender")}>
+          <img src={calender} alt="calender"/> <h1>Kalender</h1>
+        </div>
+        <div className="mid middle4" onClick={() => navigate("/doctor/message")}>
+          <img src={message} alt="message"/> <h1>Nachrichten</h1>
+        </div>
+        <div className="mid middle5" onClick={() => navigate("/doctor/task")}>
+          <img src={task} alt="task"/> <h1>Aufgaben</h1>
+        </div>
+        <div className="mid middle6" onClick={() => navigate("/doctor/statistic")}>
+          <img src={statistic} alt="statistic"/> <h1>Statistik</h1>
+        </div>
+        <div className="mid middle7" onClick={() => navigate("/doctor/patient-info")}>
+          <img src={patient2} alt="patient2"/> <h1>Patienten-Infos</h1>
+        </div>
+        <div className="mid middle8" onClick={() => navigate("/doctor/setting")}>
+          <img src={setting} alt="setting"/> <h1>Einstellung</h1>
+      
+        </div>
 
       </div>
 
       <div className="bottomSlide">
-        <div className="bot bottom1">
-          <img src={account} alt="" /> <h1>Mein Konto</h1>
+        <div className="bot bottom1" onClick={() => navigate("/doctor/account")}>
+          <img src={account} alt="account"/> <h1>Mein Konto</h1>
         </div>
         <div className="bot bottom2" onClick={() => closed()}>
-          <img src={logoutI} alt="" /> <h1>Ausloggen</h1>
+          <img src={exit} alt="logout"/> <h1>Ausloggen</h1>
         </div>
         <div className="bot bottom3" onClick={() => navigate("/")}>
-          <img src={home} alt="" /> <h1>Home</h1>
+          <img src={home} alt="home"/> <h1>Home</h1>
         </div>
       </div>
 

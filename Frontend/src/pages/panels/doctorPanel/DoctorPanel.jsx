@@ -1,17 +1,13 @@
 import React, { useEffect, useState } from "react";
 import Sidebar from "../../../components/dashboard/doctorDashboard/sidebar/Sidebar";
-import ProcessBar from "../../../components/dashboard/doctorDashboard/profil/processBar/ProcessBar";
 import Main from "../../../components/dashboard/doctorDashboard/profil/main/Main";
-
-import successImg from "../../../assets/success.png"
+import { Outlet } from "react-router-dom";
 import "./doctorPanel.css";
 import { useSelector } from "react-redux";
 import useDataCall from "../../../hooks/useDataCall";
 import Loading from "../../loading/Loading";
-import Uberblick from "../../../components/dashboard/doctorDashboard/uberblick/Uberblick";
-import Kalender from "../../../components/dashboard/doctorDashboard/kalender/Kalender";
-import Statistik from "../../../components/dashboard/doctorDashboard/Statistik";
-import ManageAppo from "../../../components/dashboard/doctorDashboard/manageAppointments/ManageAppo";
+import ApprovalForm from "../../../components/dashboard/doctorDashboard/approvalForm/ApprovalForm";
+import DNavbar from "../../../components/dashboard/doctorDashboard/dNavbar/DNavbar";
 
 const DoctorPanel = () => {
   const { getData } = useDataCall()
@@ -26,27 +22,54 @@ const DoctorPanel = () => {
   }, [])
 
   const doctorProfile = doctors?.data?.filter((item) => (currentUser === item.email))
+  
 
-//console.log("doctors:",doctors);
+
   return (
 
     <>
-      {doctorProfile && doctorProfile.length > 0 ?
 
-        <div className="dashboard">
-          <div className="dpanel-sidebar">
-            <Sidebar setPageName={setPageName}/>
-          </div>
-          <div className="dpanel-main">
-            <div className="main-content">
-              {/* <Main {...doctorProfile[0]} /> */}
-              {
-                pageName === "Uberblick" ? <Uberblick/> : (pageName === "Kalender" ? <Kalender/> : (pageName === "Profil" ? <Main/> : (pageName === "Statistik" ? <ManageAppo/> : <Uberblick/>) ) )
-              }
-              
+
+      {doctorProfile && doctorProfile[0].isApproved === false ?
+        <>
+          <div className="d-dashboard">
+            <div className="d-panel-sidebar">
+              <Sidebar/>
+            </div>
+            <div className="d-panel-main">
+              <div className="d-main-content">
+                <ApprovalForm {...doctorProfile[0]} />
+              </div>
+
             </div>
           </div>
-        </div> : <Loading />}
+        </> :
+        <>
+          {doctorProfile && doctorProfile[0].isApproved === true ?
+
+            <div className="d-dashboard">
+              <div className="d-panel-sidebar">
+                <Sidebar/>
+              </div>
+              <div className="d-panel-main">
+                <div className="d-navbar">
+                  <DNavbar />
+                </div>
+                <div className="d-main-content">
+                  <div className="d-main-content-section">
+                    <div className="d-main-content-section-box">
+                      <Outlet />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="d-doctor-profile-info">
+                <Main {...doctorProfile[0]} />
+              </div>
+            </div> 
+            : <Loading />}
+        </>}
     </>
   );
 };

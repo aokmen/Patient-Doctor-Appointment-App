@@ -1,0 +1,358 @@
+/* -------------------------------------------------------------------------- */
+/*                              the Doctor Panel                              */
+/* -------------------------------------------------------------------------- */
+
+.dpanel-main-right{
+
+    height: 75vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+   
+}
+.dpanel-main-right--content{
+    background-color: white;
+    height: 90%;
+    width: 90%;
+    border-radius: 26px;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.548);
+
+    
+}
+/* .dpanel-main-right--content2{
+    position: absolute;
+    background-color: white;
+    height: 92%;
+    width: 91%;
+    border-radius: 26px;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.548);
+    background: linear-gradient(-45deg, #38638D, #d519db, #29d523, #8d7638);
+	background-size: 400% 400%;
+	animation: gradient 5s ease infinite;
+}
+
+
+ @keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+} */
+
+.dpanel-person{
+    /* display: flex;
+    justify-content:space-around;
+    align-items: center;
+    height: 100%;
+    flex-wrap: wrap;
+    margin-top: 10px; */
+    height: 210vh;
+    display: flex;
+    flex-direction: column;
+
+}
+.dpanel-person-profile{
+
+    height: 70vh;
+    display: flex;
+   /* transform: translateY(-70vh); */
+}
+.dpanel-person-profile2{
+    height: 70vh;
+    display: flex;
+   transform: translateY(-70vh);
+}
+.dpanel-person-profile3{
+    height: 70vh;
+    display: flex;
+   transform: translateY(-140vh);
+}
+.dpanel-person--left, .dpanel-person--right{
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+   
+}
+.dpanel-person--left{
+    
+    /* border-right: 6px solid #B7D8F8; */
+}
+
+/* -------------------------------------------------------------------------- */
+/*             Inputs on the Person's Profile in the Doctor Panel             */
+/* -------------------------------------------------------------------------- */
+
+.p-input, .p-input-radio{
+    display: flex;
+    height: 65px;
+    width: 451px;
+    border-radius: 13px;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.548);
+    margin-bottom: 30px;
+  
+}
+.dpanel-p-label, .p-input-image, .p-input-radio .gender2{
+
+    flex: 1;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    height: 100%;
+    border-top-left-radius: 13px;
+    border-right: 5px solid #B7D8F8;
+    border-bottom-left-radius: 13px;
+    background-color: #F1F7FE;
+    font-size: 20px;
+    color: #38638D;
+
+
+}
+
+
+
+.p-input-image img{
+   
+   width: 100%;
+   height: 100%;
+   margin-left: -10px;
+   padding-top: 10px;
+   padding-bottom: 10px;
+   object-fit: cover;
+}
+.dpanel-p-label:hover, .p-input-about p:hover{
+    background-color: #B7D8F8;
+}
+
+.dpanel-p-input, .radio-gender{
+    outline: none;
+    flex: 2;
+    padding-left: 20px;
+    height: 100%;
+    border-top-right-radius: 13px;
+    border-bottom-right-radius: 13px;
+    color: #38638D;
+
+}
+.dpanel-p-input{
+    font-weight: 600;
+}
+
+.radio-gender{
+    display: flex;
+    gap: 15px;
+    justify-content: baseline;
+    align-items: center;
+}
+
+.radio-gender label{
+ margin-left: 5px;
+}
+.dpanel-p-input-birthdate{
+    padding-right: 10px;
+}
+
+.dpanel-p-input::placeholder {
+    opacity: 0.5;
+    color: #a4a6a8 !important;
+  }
+
+  #textarea-complaints::placeholder{
+    opacity: 0.5;
+    color: #a4a6a8 ;
+  }
+
+  #textarea-about::placeholder{
+    opacity: 0.5;
+    color: #a4a6a8 ;
+  }
+
+/* -------------------------------------------------------------------------- */
+/*                          Doctor-Panel-Profil-Image                         */
+/* -------------------------------------------------------------------------- */
+
+.dpanel-p-profil-img{
+    flex: 2;
+    display: flex;
+    align-items: center;
+}
+
+
+.dpanel-p-profil-img-right{
+    height: 100%;
+}
+.dpanel-p-profil-img-right-label{
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    border-bottom: 1px solid #B7D8F8;
+    font-size: 20px;
+    color: #38638D;
+    height: 50%;
+}
+.dpanel-p-profil-img-right-input{
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    height: 50%;
+}
+.dpanel-p-profil-img-right-input input{
+    width: 80%;
+    margin-left: 20px;
+    
+}
+/* -------------------------------------------------------------------------- */
+/*         About "Page 2" on the Person's Profile in the Doctor Panel         */
+/* -------------------------------------------------------------------------- */
+
+.p-input-about{
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.548);
+    width: 430px;
+    height: 445px;
+    border-radius: 13px;
+}
+
+.p-input-about p{
+    font-size: 20px;
+    color: #38638D;
+    background-color: #F1F7FE;
+    padding: 20px;
+    border-top-right-radius: 13px;
+    text-align: center;
+}
+.p-input-about textarea{
+    resize: none;
+    padding: 20px;
+    color: #38638D;
+    outline: none;
+}
+/* .p-input-about button{
+
+    background-color: #B7D8F8;
+    width: 100%;
+    padding: 10px 0;
+} */
+
+
+/* -------------------------------------------------------------------------- */
+/*            About on the Person's Profile in the Doctor Panel               */
+/* -------------------------------------------------------------------------- */
+
+
+.dpanel-main--profil-image{
+    height: 160px;
+}
+.dpanel-p-profil-img-right-input:hover{
+    background-color: #F1F7FE;
+}
+
+
+/* -------------------------------------------------------------------------- */
+/*         About "Page 3" on the Person's Profile in the Doctor Panel         */
+/* -------------------------------------------------------------------------- */
+
+.person3{
+    border: none;
+ 
+    width: 80%;
+    text-align: center;
+}
+.p-input3-1, .p-input3-2 {
+    width: 80%;
+    display: flex;
+}
+
+.p-input3-1{
+    height: 157px;
+}
+.p-input3-1 label{
+    flex: 1;
+}
+.p-input3-1 textarea{
+    flex: 5;
+    resize: none;
+    padding: 20px;
+    border-radius: 13px;
+    outline: none;
+}
+
+.dpanel-p-profil-data-upload-left{
+    flex: 1.1;
+   
+}
+.dpanel-p-profil-data-upload-right{
+    flex: 5;
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    justify-content: space-between;
+    color: #38638D;
+}
+
+.dpanel-person-btn1-div{
+    display: flex;
+    justify-content: space-between;
+}
+
+.dpanel-person-btn1-div{
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+}
+.person3-btn2{
+margin-top: 20px;
+
+}
+
+.processbar {
+    margin-top: 30px;
+}
+
+.main-content-success{
+
+    margin-top: -20px;
+ 
+  }
+
+.main-content-success-text{
+    display: flex;
+    align-items: center;
+    background-color: #B7D8F8;
+    padding: 20px;
+    gap: 15px;
+    color: #38638D;
+    font-weight: bold;
+    border-radius: 13px;
+}
+
+.dpanel-profile-save-btn{
+    background-color: #B7D8F8 !important;
+    padding: 20px 60px;
+    color: #38638D;
+    border-radius: 13px;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.548);
+    font-size: 20px;
+}
+.dpanel-profile-save-btn:hover{
+    background-color: #32f1c8 !important;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.548);
+}
+
+/* [required] {
+ background-color: #38628d48;
+} */
+.dpanel-main-right input:invalid, textarea:invalid{
+
+    /* border: 1px solid red; */
+    
+    box-shadow: 0px 0px 5px red;
+    
+    }
