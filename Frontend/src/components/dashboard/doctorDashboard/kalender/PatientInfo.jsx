@@ -6,8 +6,17 @@ import DeleteAppoModal from './DeleteAppoModal'
 
 const PatientInfo = ({patient, appsThisDoctor, appsThisDoctorSelectedDate, selectedDate}) => {
 
-    const termin = appsThisDoctor.filter((item) => item.patientId === patient).filter((item) => item.date === selectedDate)
-    //console.log(termin)
+    //console.log(patient)
+    let termin = []
+    if(patient){
+        termin = appsThisDoctor.filter((item) => item.patientId === patient).filter((item) => item.date === selectedDate)
+    }
+    else{
+        termin = []
+    }
+    
+    
+    console.log(termin)
 
     const isExist = appsThisDoctorSelectedDate.some((item) => item.patientId)
     //console.log(isExist)
@@ -24,14 +33,14 @@ const PatientInfo = ({patient, appsThisDoctor, appsThisDoctorSelectedDate, selec
             :
             (
                 !isExist ? 
-                <div className='w-[23rem] text-center'>
+                <div className='w-[20rem] text-center'>
 
                     <h1 className='mt-20 text-2xl'>An diesem Tag haben Sie keine vereinbarten Termine.</h1>
                 </div>
                 :
                 (termin.length ? 
                     <>
-                        <img src={patient?.profilePic || UserPNG} alt="Patient" className='w-[7rem] h-[7rem] mt-1'/>
+                        <img src={patient?.profilePic || UserPNG} alt="Patient" className='w-[7rem] h-[7rem]'/>
                         <div className='flex flex-col justify-center items-center'>
                             <h1 className='text-2xl mb-5 text-[#38638D]'>{patient?.firstName} {patient?.lastName}</h1>
                             <h1 className='text-xl mb-2'>Datum: {termin[0]?.date}</h1>
@@ -48,9 +57,9 @@ const PatientInfo = ({patient, appsThisDoctor, appsThisDoctorSelectedDate, selec
                             </div>
             
                         </div>
-                        <div className='flex justify-evenly items-center w-[30vw]'>
-                            <button className='mt-10 bg-[#6f48eb] text-white text-lg py-3 px-4 rounded-xl hover:bg-[#7055cb]'>SEND NACHRICHT</button>
-                            <button onClick={()=>setShowModal(true)} className='mt-10 bg-[#6f48eb] text-white text-lg py-3 px-4 rounded-xl hover:bg-[#7055cb]'>STORNIEREN</button>
+                        <div className='flex justify-evenly items-center w-[20vw] ml-3'>
+                            <button className='mt-10 bg-sky-600 text-white text-lg py-3 px-4 rounded-xl hover:bg-sky-700 duration-150'>SEND NACHRICHT</button>
+                            <button onClick={()=>setShowModal(true)} className='mt-10 bg-red-600 text-white text-lg py-3 px-4 rounded-xl hover:bg-red-700 duration-150'>STORNIEREN</button>
                         </div>
                         
  
