@@ -14,7 +14,9 @@ const Kalender = () => {
     const {appointments} = useSelector((state)=>state.data)
     const {getData} = useDataCall()
 
-    const doctor_id = "65ca8f41c6ee1815e06c1a74";
+
+    const doctor_id = "65d4c8f1db0d1dec3f2bf3f7";
+
     const dateToday = new Date().toISOString()
 
     let appsThisDoctor = appointments.filter((item) => {return item.doctorId === doctor_id})

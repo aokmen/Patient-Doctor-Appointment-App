@@ -16,7 +16,7 @@ const dataSlice = createSlice({
     cities:[],
     messages:[],
     events:[],
-    daySchedules: [],
+    weekdays: [],
     files:[],
   },
   reducers:{
