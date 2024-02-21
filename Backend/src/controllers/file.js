@@ -43,11 +43,11 @@ module.exports = {
                 schema: { $ref: '#/definitions/File' }
             }
         */
-             req.body.fileName = req.file.filename;
-             req.body.path = req.file.path;
-             req.body.mimeType = req.file.mimetype;
+             req.body.fileName = req.file?.filename;
+             req.body.path = req.file?.path;
+             req.body.mimeType = req.file?.mimetype;
             //req.body = { ...req.body, ...req.file }          Hepsini tek elde hizlica yapmak icin
-            req.body.extention = req.body.fileName.split('.').pop()
+            req.body.extention = req.body.fileName?.split('.').pop()
             // console.log(req.body.fileName.split('.'))
             // console.log(req.body.fileName.split('.').pop())
             // console.log(req.file);

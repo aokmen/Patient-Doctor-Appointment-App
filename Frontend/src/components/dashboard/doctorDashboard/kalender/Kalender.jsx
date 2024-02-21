@@ -14,8 +14,15 @@ const Kalender = () => {
     const {appointments} = useSelector((state)=>state.data)
     const {getData} = useDataCall()
 
-
-    const doctor_id = "65d4c8f1db0d1dec3f2bf3f7";
+    const { doctors } = useSelector((state) => state.data)
+    const { currentUser } = useSelector((state) => state.auth)
+  
+    useEffect(() => {
+      getData("doctors")
+    }, [])
+  
+     const doctorProfile = doctors?.data.filter((item) => (currentUser === item.email)) 
+     let doctor_id = doctorProfile[0].id
 
     const dateToday = new Date().toISOString()
 
@@ -41,10 +48,10 @@ const Kalender = () => {
 
     const handleDateSelect = async (value) => {
   
-        const dateArray = value.toLocaleString().split(' ').slice(0,1)[0].split('.')
+        const dateArray = value.toLocaleString().split(',').slice(0,1)[0].split('/')
         const datum = dateArray[2]+"-"+dateArray[1]+"-"+dateArray[0]
-        console.log("dateArray:",dateArray)
-        console.log("value:",value)
+        console.log(datum)
+        //console.log("value:",value.toLocaleString())
         setSelectedDate(datum)
         const AppsSelectedDate = appsThisDoctor.filter((item) => {return item.date === datum})
         setAppsThisDoctorSelectedDate(AppsSelectedDate)
@@ -58,41 +65,18 @@ const Kalender = () => {
 
   return (
     <div className='px-14 py-10 h-[100vh] w-[87vw]'>
-        <div className='mb-6 h-28 flex justify-between items-center bg-white w-full rounded-3xl'>
-            <div>
-                <h1 className='text-4xl font-bold w-80 text-[#38638D] ml-14'>Kalender</h1>
-            </div>
-            <div className='flex justify-evenly items-center flex-1'>
-                <div className='flex justify-start items-center border-2 py-1 px-4 w-[28rem] border-[#38638D] rounded-lg bg-[#F1F7FE]'>
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6 mr-3 text-[#38638D] font-bold">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
-                    </svg>
-                    <input type="text" className='p-2 w-full focus:outline-none text-lg bg-[#F1F7FE]' placeholder='Suchen'/>
 
+        <div className='grid grid-cols-2 gap-8 rounded-3xl'>
+            <div className='col-span-1 bg-white rounded-l-3xl max-h-[86vh] min-h-[86vh] flex flex-col'>
+                
+                <div className=' min-h-[10vh] text-4xl font-bold flex justify-center items-center border-b-8 border-[#38638D]'>
+                    <h1 className='text-[#38638D]'>Kalender</h1>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-10 h-10 ml-5 text-[#38638D]">
+                        <path fillRule="evenodd" d="M13.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L11.69 12 4.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z" clipRule="evenodd" />
+                        <path fillRule="evenodd" d="M19.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 1 1-1.06-1.06L17.69 12l-6.97-6.97a.75.75 0 0 1 1.06-1.06l7.5 7.5Z" clipRule="evenodd" />
+                    </svg>
                 </div>
                 <div>
-                    <button>
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-9 h-9 mx-2 text-[#38638D] font-bold">
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
-                        </svg>
-                    </button>
-                    <button>
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-9 h-9 mx-2 text-[#38638D] font-bold">
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0" />
-                        </svg>
-                    </button>
-                    <button>
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-9 h-9 mx-2 text-[#38638D] font-bold">
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 5.25h.008v.008H12v-.008Z" />
-                        </svg>
-                    </button>
-                </div>
-            </div>
-
-        </div>
-        <div className='grid grid-cols-2 gap-8 rounded-3xl'>
-            <div className='col-span-1 bg-white rounded-l-3xl max-h-[80vh] flex flex-col'>
-                
                     <Calendar 
                         className="react-calendar2 mx-auto mt-12" 
                         defaultView="month" 
@@ -105,6 +89,8 @@ const Kalender = () => {
                             }
                         }}
                     />
+                </div>
+                
                 
                 <div className=' rounded-3xl max-h-[33vh] min-h-[32vh] mt-5 flex flex-col'>
                     <h1 className='text-3xl text-[#38638D] mx-auto border-b-2 border-[#38638D] px-10 my-3'>Feiertage</h1>
@@ -112,7 +98,7 @@ const Kalender = () => {
                 </div>
             </div>
 
-            <div className='col-span-1 bg-white rounded-r-3xl max-h-[80vh] flex flex-col'>
+            <div className='col-span-1 bg-white rounded-r-3xl max-h-[86vh] min-h-[86vh] flex flex-col'>
                 <div className='py-3 rounded-3xl flex flex-col items-center'>
                     <div className='flex justify-start items-center border-2 w-[32rem] border-[#38638D] rounded-lg bg-[#F1F7FE] mb-6 mt-3'>
                         <button onClick={()=>setiSEventsShown(false)} className={`w-1/2 py-2 px-3 flex justify-center items-center text-3xl  ${!iSEventsShown ? 'bg-[#38638D]' : ''} ${!iSEventsShown ? 'text-white' : 'text-[#38638D]'}`}>Termine</button>

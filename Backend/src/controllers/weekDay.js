@@ -6,6 +6,7 @@ const WeekDay = require('../models/weekDay')
 
 const Appointment = require('../models/appointment')
 const Doctor = require('../models/doctor')
+const { get } = require('mongoose')
 
 module.exports = {
 
@@ -249,8 +250,28 @@ module.exports = {
             #swagger.summary = "Delete WeekDay"
         */
 
+        const data1 = await WeekDay.findOne({ _id: req.params.id })
+
+        function getDayName(dateStr, locale){
+            let date = new Date(dateStr);
+            return date.toLocaleDateString(locale, { weekday: 'long' });        
+        }
+        const weekDaysofThisDoctor = await WeekDay.find({doctorId: data1.doctorId})
+        //console.log(weekDaysofThisDoctor)
+        const appointmentsofThisDoctor = await Appointment.find({doctorId: data1.doctorId})
+        //console.log(appointmentsofThisDoctor)
+
+        for(let i = 0; i < weekDaysofThisDoctor.length; i++){
+            for(let j = 0; j < appointmentsofThisDoctor.length; j++)
+            if(getDayName(appointmentsofThisDoctor[j].date, "de-DE") === weekDaysofThisDoctor[i].name){
+                await Appointment.deleteOne({_id: appointmentsofThisDoctor[j].id})
+                await Doctor.updateOne({_id: data1.doctorId}, {$pull: {appointments: appointmentsofThisDoctor[j].id}})
+            }
+        }
+        
         const data = await WeekDay.deleteOne({ _id: req.params.id })
 
+        
         res.status(data.deletedCount ? 204 : 404).send({
             error: !data.deletedCount,
             data
