@@ -14,11 +14,11 @@
 }
 
 .d-navbar {
-    flex: 10%;
+    flex: 3%;
 }
 
 .d-main-content {
-    flex: 90%;
+    flex: 97%;
 }
 
 .d-doctor-profile-info{
@@ -35,10 +35,10 @@
 }
 
 .d-main-content-section-box {
-    background-color: white;
-    height: 92%;
-    width: 90%;
-    border-radius: 26px;
+    background-color: #F1F7FE;
+    height: 100%;
+    width: 100%;
+    
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.199);
  
 }

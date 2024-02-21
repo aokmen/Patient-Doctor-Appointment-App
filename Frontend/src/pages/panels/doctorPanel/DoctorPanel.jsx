@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect} from "react";
 import Sidebar from "../../../components/dashboard/doctorDashboard/sidebar/Sidebar";
-import Main from "../../../components/dashboard/doctorDashboard/profil/main/Main";
 import { Outlet } from "react-router-dom";
 import "./doctorPanel.css";
 import { useSelector } from "react-redux";
@@ -15,11 +14,10 @@ const DoctorPanel = () => {
   const { doctors } = useSelector((state) => state.data)
   const { currentUser } = useSelector((state) => state.auth)
 
-  const [pageName, setPageName] = useState("")
-
-
+  
   useEffect(() => {
     getData("doctors")
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const doctorProfile = doctors?.data?.filter((item) => (currentUser === item.email))

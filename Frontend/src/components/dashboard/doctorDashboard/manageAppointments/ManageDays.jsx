@@ -69,12 +69,12 @@ const ManageDays = ({hours, dauer, days, doctor_id, firstDate, secondDate}) => {
     <div className='flex justify-center items-center w-full mb-12'>
             
         <div className="w-full md:w-1/6 pr-3 mb-6 md:mb-0">
-            <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-state">Tag</label>
+            <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-state1">Tag</label>
             <div className="relative">
-                <select onChange={(e)=>setName(e.target.value)} name="tag" className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
+                <select onChange={(e)=>setName(e.target.value)} name="tag" className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state1">
                     {
                         remainedDays.map((item, index) => {
-                                return <option key={index} selected="Wahl" name="tag" value={item}>{item}</option>
+                                return <option key={index} disabled={ item === '-----' && true } selected={ item === '-----' && true } hidden={ item === '-----' && true } name="tag" value={item}>{item}</option>
                         })
                     }
                 </select>
@@ -86,12 +86,12 @@ const ManageDays = ({hours, dauer, days, doctor_id, firstDate, secondDate}) => {
         </div> 
         <div className='w-full flex item-center ml-12 mt-5' id="days">
             <div className="w-full md:w-1/6 pr-3 mb-6 md:mb-0">
-                <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-state">TAGESAnfang</label>
+                <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-state2">TAGESAnfang</label>
                 <div className="relative">
-                    <select onChange={(e)=>setStartHour(e.target.value)} name="startHour" className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
+                    <select onChange={(e)=>setStartHour(e.target.value)} name="startHour" className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state2">
                         {
                             hours.map((item, index) => {
-                                return <option key={index} name="startHour" selected="00.00" value={item}>{item}</option>
+                                return <option key={index} disabled={ item === '--.--' && true } selected={ item === '--.--' && true } hidden={ item === '--.--' && true } name="startHour" value={item}>{item}</option>
                             })
                         }
                     </select>
@@ -102,12 +102,12 @@ const ManageDays = ({hours, dauer, days, doctor_id, firstDate, secondDate}) => {
                 </div>
             </div>
             <div className="w-full md:w-1/6 px-3 mb-6 md:mb-0">
-                <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-state">tagesende</label>
+                <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-state3">tagesende</label>
                 <div className="relative">
-                    <select onChange={(e)=>setFinishHour(e.target.value)} className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
+                    <select onChange={(e)=>setFinishHour(e.target.value)} className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state3">
                         {
                             hours.map((item, index) => {
-                                return <option key={index} name="finishHour" selected="00.00" value={item}>{item}</option>
+                                return <option key={index}  disabled={ item === '--.--' && true } selected={ item === '--.--' && true } hidden={ item === '--.--' && true } name="finishHour" value={item}>{item}</option>
                             })
                         }
                     </select>
@@ -117,12 +117,12 @@ const ManageDays = ({hours, dauer, days, doctor_id, firstDate, secondDate}) => {
                 </div>
             </div>
             <div className="w-full md:w-1/6 px-3 mb-6 md:mb-0">
-                <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-state">MITTAGSPAUSE</label>
+                <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-state4">MITTAGSPAUSE</label>
                 <div className="relative">
-                    <select  onChange={(e)=>setLunchStart(e.target.value)} className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
+                    <select  onChange={(e)=>setLunchStart(e.target.value)} className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state4">
                         {
                             hours.map((item, index) => {
-                                return <option key={index}  name="lunchStart" selected="00.00" value={item}>{item}</option>
+                                return <option key={index}  disabled={ item === '--.--' && true } selected={ item === '--.--' && true } hidden={ item === '--.--' && true } name="lunchStart" value={item}>{item}</option>
                             })
                         }
                     </select>
@@ -133,12 +133,12 @@ const ManageDays = ({hours, dauer, days, doctor_id, firstDate, secondDate}) => {
                 </div>
             </div>
             <div className="w-full md:w-1/6 px-3 mb-6 md:mb-0">
-                <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-state">PAUSEENDE</label>
+                <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-state5">PAUSEENDE</label>
                 <div className="relative">
-                    <select  onChange={(e)=>setLunchFinish(e.target.value)}  className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
+                    <select  onChange={(e)=>setLunchFinish(e.target.value)}  className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state5">
                         {
                             hours.map((item, index) => {
-                                return <option key={index}  name="lunchFinish" selected="00.00" value={item}>{item}</option>
+                                return <option key={index}  disabled={ item === '--.--' && true } selected={ item === '--.--' && true } hidden={ item === '--.--' && true } name="lunchFinish" value={item}>{item}</option>
                             })
                         }
                     </select>
@@ -148,12 +148,12 @@ const ManageDays = ({hours, dauer, days, doctor_id, firstDate, secondDate}) => {
                 </div>
             </div>
             <div className="w-full md:w-1/5 px-3 mb-6 md:mb-0">
-                <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-state">Termin Dauer</label>
+                <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-state6">Termin Dauer</label>
                 <div className="relative">
-                    <select onChange={(e)=>setAppointmentDuration(e.target.value)} className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
+                    <select onChange={(e)=>setAppointmentDuration(e.target.value)} className="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state6">
                         {
                             dauer.map((item, index) => {
-                                return <option key={index} name="appointmentDuration" selected="Wahl" value={item}>{item}</option>
+                                return <option key={index}  disabled={ item === '---' && true } selected={ item === '---' && true } hidden={ item === '---' && true } name="appointmentDuration" value={item}>{item}</option>
                             })
                         }
                     </select>

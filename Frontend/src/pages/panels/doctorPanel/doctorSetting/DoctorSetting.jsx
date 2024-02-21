@@ -3,7 +3,7 @@ import ManageAppo from '../../../../components/dashboard/doctorDashboard/manageA
 import { useSelector } from 'react-redux'
 import useDataCall from '../../../../hooks/useDataCall'
 
-const DoctorSetting = ({id}) => {
+const DoctorSetting = () => {
 
   const { getData } = useDataCall()
   const { doctors } = useSelector((state) => state.data)

@@ -1,20 +1,16 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useRef, useState } from 'react'
 import useDataCall from '../../../../hooks/useDataCall';
 
 import "./dProfile.css"
 import profilImage from "../../../../assets/profil_image2.png"
-import successImg from "../../../../assets/success.png"
-import { useSelector } from 'react-redux';
-import axios from 'axios';
 
 
 const DProfile = (doctorProfile) => {
-    const { putData, getData, postData } = useDataCall()
-    const { branches, files } = useSelector((state) => state.data)
-    const { id, avatar, firstName, lastName, email, password, birthDate, gender, street, zipCode, cityName, title, phone, branch, languages, website, about, complaints } = doctorProfile
+    const { putData } = useDataCall()
+    const { id, avatar, firstName, lastName, email, birthDate, gender, street, zipCode, cityName, title, phone, branch, languages, website, about, complaints } = doctorProfile
     const [file, setFile] = useState(null)
 
-    const URL = process.env.REACT_APP_BASE_URL
+    //const URL = process.env.REACT_APP_BASE_URL
 
 
     const doctorProfileRef = useRef({
@@ -73,7 +69,7 @@ const DProfile = (doctorProfile) => {
     console.log("DProfile:",doctorProfile);
     return (
         
-        <div className="d-profile-panel-person-main">
+        <div className="d-profile-panel-person-main mt-5">
 
             <div className="processbar">
 
@@ -83,7 +79,7 @@ const DProfile = (doctorProfile) => {
                 <div className="d-profile-panel-main-right--content">
 
                     <form action="" id="dr-uploadForm" encType="multipart/form-data" className="d-profile-panel-person" onSubmit={handleSubmit}>
-                        <div className="d-profile-panel-person-profile">
+                        <div className="d-profile-panel-person-profile mt-10">
                             <div className="d-profile-panel-person--left">
                                 <div className="d-p-input d-profile-panel-main--profil-image">
                                     <div className="d-p-input-image">
@@ -195,7 +191,7 @@ const DProfile = (doctorProfile) => {
                             </div>
                             <div className="d-profile-panel-person--right">
                                 <div className="p-input-about">
-                                    <p>Über mich</p> <textarea required name="" id="dr-textarea-about" cols="50" rows="10" placeholder=" z.B. Gesunde Augen sind das visuelle Tor zur Welt – und die Basis, um aktiv und selbstbestimmt das Leben zu genießen. Das gilt bereits für Kinder-Augen, besonders aber mit zunehmendem Alter sollte gesteigerter Wert auf eine gute Gesundheit der Augen gelegt werden..." defaultValue={about} onChange={(e) => handleInputChange("about", e.target.value)}>
+                                    <p>Über mich</p> <textarea required name="" id="dr-textarea-about" cols="42" rows="10" placeholder=" z.B. Gesunde Augen sind das visuelle Tor zur Welt – und die Basis, um aktiv und selbstbestimmt das Leben zu genießen. Das gilt bereits für Kinder-Augen, besonders aber mit zunehmendem Alter sollte gesteigerter Wert auf eine gute Gesundheit der Augen gelegt werden..." defaultValue={about} onChange={(e) => handleInputChange("about", e.target.value)}>
                                     </textarea>
                                     {/* <button>Speichern</button> */}
                                     {/* <button type="submit" className="input-btn" >Senden</button> */}
