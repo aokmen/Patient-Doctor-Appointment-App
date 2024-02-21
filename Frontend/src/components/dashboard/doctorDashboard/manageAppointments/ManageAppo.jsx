@@ -4,11 +4,12 @@ import { useSelector } from 'react-redux'
 import useDataCall from '../../../../hooks/useDataCall'
 import ShowDays from './ShowDays'
 
-const ManageAppo = () => {
+const ManageAppo = ({id}) => {
 
     const {weekdays} = useSelector((state)=>state.data)
     const {getData} = useDataCall()
-    const doctor_id = "65d4c8f1db0d1dec3f2bf3f7";
+    const doctor_id = id;
+    console.log(id)
 
     useEffect(() => {
 
