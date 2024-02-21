@@ -23,7 +23,7 @@ module.exports = {
             `
         */
 
-        const data = await res.getModelList(WeekDay, {}, "hours")
+        const data = await res.getModelList(WeekDay)
 
         // res.status(200).send({
         //     error: false,
@@ -57,7 +57,7 @@ module.exports = {
             }
             return arr;
         };   
-        let daylist = getDaysArray(new Date("2024-01-30"),new Date("2024-04-30"));
+        let daylist = getDaysArray(req.body.startingDate, req.body.endingDate);
         const dayArray = daylist.map((v)=>v.toISOString().slice(0,10)) 
 
         //console.log(dayArray)
@@ -215,7 +215,7 @@ module.exports = {
             #swagger.summary = "Get Single WeekDay"
         */
 
-        const data = await WeekDay.findOne({ _id: req.params.id }).populate("hours")
+        const data = await WeekDay.findOne({ _id: req.params.id })
 
         res.status(200).send({
             error: false,
