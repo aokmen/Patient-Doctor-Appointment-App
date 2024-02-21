@@ -59,7 +59,7 @@ const DoctorPanel = () => {
                 <div className="d-main-content">
                   <div className="d-main-content-section">
                     <div className="d-main-content-section-box">
-                      <Outlet />
+                      <Outlet/>
                     </div>
                   </div>
                 </div>
