@@ -16,7 +16,7 @@ const PatientInfo = ({patient, appsThisDoctor, appsThisDoctorSelectedDate, selec
     }
     
     
-    console.log(termin)
+    //console.log(termin)
 
     const isExist = appsThisDoctorSelectedDate.some((item) => item.patientId)
     //console.log(isExist)
