@@ -8,6 +8,7 @@ import useDataCall from "../../../hooks/useDataCall";
 import Loading from "../../loading/Loading";
 import ApprovalForm from "../../../components/dashboard/doctorDashboard/approvalForm/ApprovalForm";
 import DNavbar from "../../../components/dashboard/doctorDashboard/dNavbar/DNavbar";
+import DProfile from "../../../components/dashboard/doctorDashboard/profil/DProfile";
 
 const DoctorPanel = () => {
   const { getData } = useDataCall()
@@ -65,7 +66,8 @@ const DoctorPanel = () => {
               </div>
               
               <div className="d-doctor-profile-info">
-                <Main {...doctorProfile[0]} />
+                {/* <Main {...doctorProfile[0]} /> */}
+                <DProfile {...doctorProfile[0]}/>
               </div>
             </div> 
             : <Loading />}

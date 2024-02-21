@@ -18,9 +18,9 @@ const DManagement = () => {
         getData("doctors")
     }, [])
 
-
+console.log("doctors",doctors.data);
     if (doctors) {
-        doctorInfo = doctors?.data?.filter((item, i) => item.files.length > 0)
+        doctorInfo = doctors?.data?.filter((item, i) => item.files.length >= 0)
     }
     else <Loading/>
 
@@ -37,9 +37,10 @@ const DManagement = () => {
 
                 <div className="apanel-view-doctorInfo">
                     <img src="" alt="" />
+                    {doctorInfo?.map((item, i) => <ApprovalCard {...item} key={i} />)}
                 </div>
             </div>
-            {doctorInfo?.map((item, i) => <ApprovalCard {...item} key={i} />)}
+
 
         </>
 

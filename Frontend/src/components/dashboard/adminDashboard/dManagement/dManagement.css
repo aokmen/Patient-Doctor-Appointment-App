@@ -2,8 +2,14 @@
 /*                               the Admin Panel                              */
 /* -------------------------------------------------------------------------- */
 
+.apanel-view{
 
-
+    height: 100%;
+    width: 100%;
+    border-radius: 26px;
+    overflow: scroll;
+    overflow-x: hidden; /* Hide horizontal scrollbar */
+}
 
 
 .apanel-main-doctorOk {
@@ -104,7 +110,7 @@
 }
 
 .apanel-view-doctor-right {
-    flex: 2;
+    flex: 3;
 }
 
 
@@ -121,22 +127,12 @@
     
 }
 
-.doctorInfo1,
-.doctorInfo3,
-.doctorInfo5 {
+.doctorInfo1{
     padding-left: 10px;
     flex: 2;
-    height: 50%;
+    margin-right: 50px;
 }
 
-.apanel-view-doctorInfo-Ok {
-    margin-left: -150px;
-    flex: 4;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-}
 
 .okIcons {
 
@@ -183,7 +179,7 @@
 }
 .okIconsFlex3:hover{
     box-shadow: 0 0 10px rgb(32, 216, 216);
-    border: 1px solid #38638D;
+
 
 }
 .apanel-view-doctorImg {
@@ -215,35 +211,48 @@
 
     border-radius: 5px;
     padding: 5px 10px;
-    margin-top: -40px;
+
 }
 .apanel-view-doctor-btn button:hover{
     cursor: pointer;
     background-color: #B7D8F8;
-    border: none;
+
 }
-.deneme {
+.apanel-view-doctor-file {
     height: 200px;
     overflow: scroll;
     overflow-x: hidden;
+    border-bottom: 1px solid #38638D;
 }
 
-.deneme2::-webkit-scrollbar {
-       /* width: 0; */
-        /* Remove scrollbar space */
-        /* background: transparent; */
-        /* Optional: just make scrollbar invisible */
-}
 
-.deneme2 {
+.apanel-view-doctor-info2 {
     height: 200px;
-    overflow: scroll;
     padding: 10px;
     background-color: #F1F7FE;
+    overflow: scroll;
+    overflow-x: hidden;
+    border-bottom: 1px solid #38638D;
 }
 
-.deneme2 h1 {
+.apanel-view-doctor-info2 h1 {
     margin-top: 10px;
     color: #38638D;
     font-weight: bold;
 }
+
+.apanel-view-doctor-right-btn{
+
+    flex: 2;
+    display: flex;
+    justify-content: center;
+    align-items:center ;
+    flex-direction: column;
+    gap: 50px;
+    border-bottom: 1px solid #38638D;
+}
+.apanel-view-doctorInfo-Ok{
+    height: 100px;
+    width: 100%;
+    gap: 10px;
+}    

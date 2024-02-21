@@ -40,62 +40,64 @@ const ApprovalCard = ({ id, firstName, lastName, title, branch, cityName, street
                 <li >{title} {firstName} {lastName}</li>
                 <li >{branch}</li>
                 <li >{street}, {zipCode}</li>
-              </div>
-              <div className='doctorInfo5'>
-                <li>{email}</li>
+                <li >{email}</li>
                 <li>{phone}</li>
                 <li >{cityName}</li>
               </div>
 
-
-
-
-              <div className="apanel-view-doctorInfo-Ok">
-                <div className="okIcons">
-                  <div className="okIconsFlex okIconsFlex1" onClick={() => putData("doctors", id, { isApproved: false })}>
-                    <img src={isApproved ? pendingImg2 : pendingImg} alt="" />
-                    <p>Ausstehend</p>
+              <div className="apanel-view-doctor-right">
+                {
+                  show && !show2 && <div className='apanel-view-doctor-file'><img src={fileImg} alt="fileImg" /></div>
+                }
+                {
+                  show2 && !show && <div className='apanel-view-doctor-info2'>
+                    <h1>Webseite: </h1> <p> {website}</p>
+                    <h1>Sprache: </h1> <p>{languages}</p>
+                    <h1>Symptome: </h1> <p>{complaints}</p>
+                    <h1>Über mich: </h1> <p> {about}
+                    </p>
                   </div>
-
-                  <div className="okIconsFlex okIconsFlex2">
-                    <img src={deleteImg2} alt="" />
-                    <p onClick={() => delData("doctors", id)}>Löschen</p>
-                  </div>
-
-                  <div className="okIconsFlex okIconsFlex3" onClick={() => putData("doctors", id, { isApproved: true })}>
-                    <img src={isApproved ? okImg : okImg2} alt="" />
-                    <p>Genehmigt</p>
-                  </div>
-                </div>
-
+                }
               </div>
+
+
+
+
+
             </ul>
 
           </div>
         </div>
-        <div className="apanel-view-doctor-right">
-          {
-            show && !show2 && <div className='deneme'><img src={fileImg} alt="fileImg" /></div>
-          }
-          {
-            show2 && !show && <div className='deneme2'>
-              <h1>Webseite: </h1> <p> {website}</p>
-              <h1>Sprache: </h1> <p>{languages}</p>
-              <h1>Symptome: </h1> <p>{complaints}</p>
-              <h1>Über mich: </h1> <p> {about}
-              </p>
+        <div className="apanel-view-doctor-right-btn">
+        <div className="apanel-view-doctor-btn">
+            <button onClick={() => handleShow()}>Zulassungsurkunde</button>
+   
+          </div>
+          <div className="apanel-view-doctorInfo-Ok">
+            <div className="okIcons">
+              <div className="okIconsFlex okIconsFlex1" onClick={() => putData("doctors", id, { isApproved: false })}>
+                <img src={isApproved ? pendingImg2 : pendingImg} alt="" />
+                <p>Ausstehend</p>
+              </div>
+
+              <div className="okIconsFlex okIconsFlex2">
+                <img src={deleteImg2} alt="" />
+                <p onClick={() => delData("doctors", id)}>Löschen</p>
+              </div>
+
+              <div className="okIconsFlex okIconsFlex3" onClick={() => putData("doctors", id, { isApproved: true })}>
+                <img src={isApproved ? okImg : okImg2} alt="" />
+                <p>Genehmigt</p>
+              </div>
             </div>
-          }
+          </div>
+          
         </div>
 
 
 
+      </div>
 
-      </div>
-      <div className="apanel-view-doctor-btn">
-        <button onClick={() => handleShow()}>Zulassungsurkunde</button>
-        {/* <button onClick={()=>handleShow2()}>Andere Infos</button> */}
-      </div>
 
     </div>
   )

@@ -11,37 +11,30 @@ import axios from 'axios';
 const PProfile = (patientProfile) => {
     const { putData, getData, postData } = useDataCall()
     const { branches, files } = useSelector((state) => state.data)
-    const { id, avatar, firstName, lastName, email, password, birthDate, gender, street, zipCode, cityName, title, phone, branch, languages, website, about, complaints } = patientProfile
+    const { id, firstName, lastName, email, birthDate, gender, street, zipCode, cityName, phone, profilePic} = patientProfile
     const [file, setFile] = useState(null)
 
     const URL = process.env.REACT_APP_BASE_URL
 
-    useEffect(() => {
+    // useEffect(() => {
 
 
-        getData("branches").then(() => getData("files"))
-    }, [])
+    //     getData("branches").then(() => getData("files"))
+    // }, [])
 
-    const doctorProfileRef = useRef({
+    const patientProfileRef = useRef({
 
-        avatar: avatar || "",
-        firstName: firstName || "",
-        lastName: lastName || "",
-        birthDate: birthDate || "",
-        street: street || "",
-        zipCode: zipCode || "",
-        cityName: cityName || "",
-        title: title || "",
-        phone: phone || "",
-        branch: branch || "",
-        languages: languages || "",
-        website: website || "",
-        about: about || "",
-        complaints: complaints || "",
+        firstName: firstName,
+        lastName: lastName,
+        birthDate: birthDate,
+        street: street ,
+        zipCode: zipCode ,
+        cityName: cityName,
+        phone: phone,
 
     })
      
-
+    console.log("gender:",gender);
     // const fileImage = patientProfile.files.length > 0 ? `${URL}/img/${patientProfile.files[0].fileName}` : profilImage;
     const fileImage =  profilImage;
 
@@ -49,29 +42,30 @@ const PProfile = (patientProfile) => {
     // const fileImage = files.length > 0 ? `${URL}/img/${fileNameFind[fileNameFind.length - 2].fileName}` : profilImage;
 
     const handleInputChange = (field, value) => {
-        doctorProfileRef.current = {
-            ...doctorProfileRef.current,
+        patientProfileRef.current = {
+            ...patientProfileRef.current,
             [field]: value
         }
     }
     const handleFileChange = (e) => {
         setFile(e.target.files[0])
+        console.log("file:",file);
     }
 
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        putData("patients", id, doctorProfileRef.current);
+        putData("patients", id, patientProfileRef.current);
 
         // İlk dosyanın FormData nesnesi oluşturuluyor
-        const formData1 = new FormData();
-        formData1.append('image', file);
-        formData1.append('userId', id);
+        // const formData1 = new FormData();
+        // formData1.append('image', profilePic);
+
 
         // Her bir dosya için ayrı ayrı postData işlemi yapılıyor
-        postData("files", formData1);
-        
+        // putData("patients", formData1);
+ 
     }
     return (
         <div className="p-panel-person-main">
@@ -83,15 +77,15 @@ const PProfile = (patientProfile) => {
             <div className="p-panel-main-right">
                 <div className="p-panel-main-right--content">
 
-                    <form action="" id="uploadForm" encType="multipart/form-data" className="p-panel-person" onSubmit={handleSubmit}>
+                    <form action="" id="p-uploadForm" encType="multipart/form-data" className="p-panel-person" onSubmit={handleSubmit}>
                         <div className="p-panel-person-profile">
                             <div className="p-panel-person--left">
-                                <div className="p-input p-panel-main--profil-image">
-                                    <div className="p-input-image">
+                                <div className="p-p-input p-panel-main--profil-image">
+                                    <div className="p-p-input-image">
                                         <img src={fileImage} alt="profilImage" />
 
                                     </div>
-                                    {/* <input  className="p-panel-p-input" type="text" name='p-input1' placeholder='Profilbild hochladen' /> */}
+                                    {/* <input  className="p-panel-p-p-input" type="text" name='p-p-input1' placeholder='Profilbild hochladen' /> */}
                                     <div className="p-panel-p-profil-img">
                                         <div className="p-panel-p-profil-img-right">
 
@@ -99,7 +93,9 @@ const PProfile = (patientProfile) => {
                                                 <label htmlFor="file-avatar">Profilbild hochladen:</label>
                                             </div>
                                             <div className="p-panel-p-profil-img-right-input">
-                                                <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg" onChange={(e) => handleFileChange(e)} />
+                                                <input type="file" id="p-avatar" name="p-avatar" accept="image/png, image/jpeg" 
+                                                // onChange={(e) => handleFileChange(e)} 
+                                                />
                                             </div>
 
                                         </div>
@@ -107,57 +103,58 @@ const PProfile = (patientProfile) => {
 
 
                                 </div>
-                                <div className="p-input">
-                                    <label className="p-panel-p-label" htmlFor="p-input2">Vorname</label> <input required className="p-panel-p-input" id="p-input2" type="text" placeholder='Max' defaultValue={firstName} onChange={(e) => handleInputChange("firstName", e.target.value)} />
+                                <div className="p-p-input">
+                                    <label className="p-panel-p-label" htmlFor="p-p-input">Vorname</label> <input required className="p-panel-p-p-input" id="p-p-input" type="text" placeholder='Max' defaultValue={firstName} onChange={(e) => handleInputChange("firstName", e.target.value)} />
                                 </div>
-                                <div className="p-input">
-                                    <label className="p-panel-p-label" htmlFor="p-input3">Nachname</label> <input required className="p-panel-p-input" id="p-input3" type="text" placeholder='Doe' defaultValue={lastName} onChange={(e) => handleInputChange("lastName", e.target.value)} />
+                                <div className="p-p-input">
+                                    <label className="p-panel-p-label" htmlFor="p-p-input3">Nachname</label> <input required className="p-panel-p-p-input" id="p-p-input3" type="text" placeholder='Doe' defaultValue={lastName} onChange={(e) => handleInputChange("lastName", e.target.value)} />
                                 </div>
-                                <div className="p-input">
-                                    <label className="p-panel-p-label" htmlFor="p-input4">Email</label> <input className="p-panel-p-input" id="p-input4" type="email" placeholder={email} onChange={(e) => handleInputChange("email", e.target.value)} readOnly />
+                                <div className="p-p-input">
+                                    <label className="p-panel-p-label" htmlFor="p-p-input4">Email</label> <input className="p-panel-p-p-input" id="p-p-input4" type="email" placeholder={email} onChange={(e) => handleInputChange("email", e.target.value)} readOnly />
                                 </div>
-                                <div className="p-input">
-                                    <label className="p-panel-p-label" htmlFor="p-input5">Password</label> <input className="p-panel-p-input" id="p-input5" type="password" placeholder='****************' onChange={(e) => handleInputChange("password", e.target.value)} readOnly />
+                                <div className="p-p-input">
+                                    <label className="p-panel-p-label" htmlFor="p-p-input5">Password</label> <input className="p-panel-p-p-input" id="p-p-input5" type="password" placeholder='****************' onChange={(e) => handleInputChange("password", e.target.value)} readOnly />
                                 </div>
 
 
                             </div>
                             <div className="p-panel-person--right">
-                                <div className="p-input">
-                                    <label className="p-panel-p-label" htmlFor="p-input1">Geburtstag</label> <input required className="p-panel-p-input p-panel-p-input-birthdate" id="p-input1" type="date" name='p-input1' defaultValue={birthDate} onChange={(e) => handleInputChange("birthDate", e.target.value)} />
+                                <div className="p-p-input">
+                                    <label className="p-panel-p-label" htmlFor="p-p-input1">Geburtstag</label> <input required className="p-panel-p-p-input p-panel-p-p-input-birthdate" id="p-p-input2" type="date" name='p-p-input1' defaultValue={birthDate} onChange={(e) => handleInputChange("birthDate", e.target.value)} />
                                 </div>
-                                <div className="p-input-radio">
+                                {gender ? <> <div className="p-p-input-radio">
                                     <label className="gender2" >Geschlecht</label>
                                     <div className="radio-gender">
                                         <div>
-                                            <input required type="radio" id="männlich" name="drone" defaultValue="männlich" defaultChecked={gender === "Male" ? true : false} />
-                                            <label htmlFor="männlich">Männlich</label>
+                                            <input required type="radio" id="p-männlich" name="drone" defaultValue="p-männlich"  defaultChecked={gender === "Male"} />
+                                            <label htmlFor="p-männlich">Männlich</label>
                                         </div>
 
                                         <div>
-                                            <input required type="radio" id="weiblich" name="drone" defaultValue="weiblich" defaultChecked={gender === "Female" ? true : false} />
-                                            <label htmlFor="weiblich">Weiblich</label>
+                                            <input required type="radio" id="p-weiblich" name="drone" defaultValue="p-weiblich"  defaultChecked={gender === "Female"}  />
+                                            <label htmlFor="p-weiblich">Weiblich</label>
                                         </div>
 
                                         <div>
-                                            <input required type="radio" id="divers" name="drone" defaultValue="divers" defaultChecked={gender === "Others" ? true : false} />
-                                            <label htmlFor="divers">Divers</label>
+                                            <input required type="radio" id="p-divers" name="drone"  defaultValue="p-divers" defaultChecked={gender === "Others"} />
+                                            <label htmlFor="p-divers">Divers</label>
                                         </div>
-
+                                            
                                     </div>
 
+                                </div> </>: null}
+  
+                                <div className="p-p-input">
+                                    <label className="p-panel-p-label" htmlFor="p-p-input6">Straße</label> <input required className="p-panel-p-p-input" id="p-p-input6" type="text" placeholder='Lange str' defaultValue={street} onChange={(e) => handleInputChange("street", e.target.value)} />
                                 </div>
-                                <div className="p-input">
-                                    <label className="p-panel-p-label" htmlFor="p-input6">Straße</label> <input required className="p-panel-p-input" id="p-input6" type="text" placeholder='Lange str' defaultValue={street} onChange={(e) => handleInputChange("street", e.target.value)} />
+                                <div className="p-p-input">
+                                    <label className="p-panel-p-label" htmlFor="p-p-input7">Postleizahl</label> <input required className="p-panel-p-p-input" id="p-p-input7" type="number" placeholder='43226' defaultValue={zipCode} onChange={(e) => handleInputChange("zipCode", e.target.value)} />
                                 </div>
-                                <div className="p-input">
-                                    <label className="p-panel-p-label" htmlFor="p-input7">Postleizahl</label> <input required className="p-panel-p-input" id="p-input7" type="number" placeholder='43226' defaultValue={zipCode} onChange={(e) => handleInputChange("zipCode", e.target.value)} />
+                                <div className="p-p-input">
+                                    <label className="p-panel-p-label" htmlFor="p-p-input8">Ort</label> <input required className="p-panel-p-p-input" id="p-p-input8" type="text" placeholder='München' defaultValue={cityName} onChange={(e) => handleInputChange("cityName", e.target.value)} />
                                 </div>
-                                <div className="p-input">
-                                    <label className="p-panel-p-label" htmlFor="p-input8">Ort</label> <input required className="p-panel-p-input" id="p-input8" type="text" placeholder='München' defaultValue={cityName} onChange={(e) => handleInputChange("cityName", e.target.value)} />
-                                </div>
-                                 <div className="p-input">
-                                    <label className="p-panel-p-label" htmlFor="p-input10">Telefon</label> <input required className="p-panel-p-input" id="p-input10" type="text" placeholder='z.B. 1554212121' defaultValue={phone} onChange={(e) => handleInputChange("phone", e.target.value)} />
+                                 <div className="p-p-input">
+                                    <label className="p-panel-p-label" htmlFor="p-p-input10">Telefon</label> <input required className="p-panel-p-p-input" id="p-p-input10" type="text" placeholder='z.B. 1554212121' defaultValue={phone} onChange={(e) => handleInputChange("phone", e.target.value)} />
                                 </div>
 
                             </div>

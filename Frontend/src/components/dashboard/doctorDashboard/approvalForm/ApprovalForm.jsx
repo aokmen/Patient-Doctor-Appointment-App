@@ -199,7 +199,7 @@ const ApprovalForm = (doctorProfile) => {
                             </div>
                             <div className="dpanel-person--right">
                                 <div className="p-input-about">
-                                    <p>Über mich</p> <textarea required name="" id="textarea-about" cols="50" rows="10" placeholder=" z.B. Gesunde Augen sind das visuelle Tor zur Welt – und die Basis, um aktiv und selbstbestimmt das Leben zu genießen. Das gilt bereits für Kinder-Augen, besonders aber mit zunehmendem Alter sollte gesteigerter Wert auf eine gute Gesundheit der Augen gelegt werden..." defaultValue={about} onChange={(e) => handleInputChange("about", e.target.value)}>
+                                    <p>Über mich</p> <textarea required name="" id="d-textarea-about" cols="50" rows="10" placeholder=" z.B. Gesunde Augen sind das visuelle Tor zur Welt – und die Basis, um aktiv und selbstbestimmt das Leben zu genießen. Das gilt bereits für Kinder-Augen, besonders aber mit zunehmendem Alter sollte gesteigerter Wert auf eine gute Gesundheit der Augen gelegt werden..." defaultValue={about} onChange={(e) => handleInputChange("about", e.target.value)}>
                                     </textarea>
                                     {/* <button>Speichern</button> */}
                                     {/* <button type="submit" className="input-btn" >Senden</button> */}
@@ -211,7 +211,7 @@ const ApprovalForm = (doctorProfile) => {
                             <div className="dpanel-person--left person3">
                                 <div className="p-input p-input3-1">
                                     <label className="dpanel-p-label" htmlFor="p-input14">Symptome</label>
-                                    <textarea required name="" id="textarea-complaints" cols="50" rows="10" placeholder="z.B. Altersbedingte Makuladegeneration AMD, Augenschmerzen, Diabetische Retinopathie, Grüner Star / Glaukom, Kurzsichtigkeit / Myopie, Katarakt, Laser bei Nachsta" defaultValue={complaints} onChange={(e) => handleInputChange("complaints", e.target.value)}>
+                                    <textarea required name="" id="d-textarea-complaints" cols="50" rows="10" placeholder="z.B. Altersbedingte Makuladegeneration AMD, Augenschmerzen, Diabetische Retinopathie, Grüner Star / Glaukom, Kurzsichtigkeit / Myopie, Katarakt, Laser bei Nachsta" defaultValue={complaints} onChange={(e) => handleInputChange("complaints", e.target.value)}>
                                     </textarea>
                                 </div>
                                 <div className="p-input p-input3-2">

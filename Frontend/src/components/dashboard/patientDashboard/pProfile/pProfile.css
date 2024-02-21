@@ -44,7 +44,7 @@
 /*             Inputs on the Person's Profile in the Patient Panel             */
 /* -------------------------------------------------------------------------- */
 
-.p-input, .p-input-radio{
+.p-p-input, .p-p-input-radio{
     display: flex;
     height: 65px;
     width: 451px;
@@ -53,7 +53,7 @@
     margin-bottom: 30px;
   
 }
-.p-panel-p-label, .p-input-image, .p-input-radio .gender2{
+.p-panel-p-label, .p-p-input-image, .p-p-input-radio .gender2{
 
     flex: 1;
     display: flex;
@@ -72,7 +72,7 @@
 
 
 
-.p-input-image img{
+.p-p-input-image img{
    
    width: 100%;
    height: 100%;
@@ -81,11 +81,11 @@
    padding-bottom: 10px;
    object-fit: cover;
 }
-.p-panel-p-label:hover, .p-input-about p:hover{
+.p-panel-p-label:hover, .p-p-input-about p:hover{
     background-color: #B7D8F8;
 }
 
-.p-panel-p-input, .radio-gender{
+.p-panel-p-p-input, .radio-gender{
     outline: none;
     flex: 2;
     padding-left: 20px;
@@ -95,7 +95,7 @@
     color: #38638D;
 
 }
-.p-panel-p-input{
+.p-panel-p-p-input{
     font-weight: 600;
 }
 
@@ -109,11 +109,11 @@
 .radio-gender label{
  margin-left: 5px;
 }
-.p-panel-p-input-birthdate{
+.p-panel-p-p-input-birthdate{
     padding-right: 10px;
 }
 
-.p-panel-p-input::placeholder {
+.p-panel-p-p-input::placeholder {
     opacity: 0.5;
     color: #a4a6a8 !important;
   }
@@ -187,8 +187,9 @@
     width: 200px;
 }
 .p-panel-profile-save-btn:hover{
-    background-color: #32f1c8 !important;
+    background-color:#38638D !important;
     box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.548);
+    color: white;
 }
 
 /* [required] {
@@ -201,3 +202,4 @@
     box-shadow: 0px 0px 5px red;
     
     }
+

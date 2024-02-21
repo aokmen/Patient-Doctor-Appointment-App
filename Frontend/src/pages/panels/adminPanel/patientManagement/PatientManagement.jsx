@@ -1,8 +1,11 @@
 import React from 'react'
+import PManagement from '../../../../components/dashboard/adminDashboard/pManagement/PManagement'
 
 const PatientManagement = () => {
   return (
-    <div className="bg-blue h-full w-full">PatientManagement</div>
+    <div >
+      <PManagement/>
+    </div>
   )
 }
 
