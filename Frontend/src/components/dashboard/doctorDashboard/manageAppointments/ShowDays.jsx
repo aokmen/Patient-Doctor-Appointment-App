@@ -1,11 +1,11 @@
 import React, { useEffect} from 'react'
 import useDataCall from '../../../../hooks/useDataCall'
 
-const ShowDays = ({name, appointmentDuration, startHour, finishHour, lunchStart, lunchFinish, doctor_id}) => {
+const ShowDays = ({name, appointmentDuration, startHour, finishHour, lunchStart, lunchFinish, doctor_id, id}) => {
 
 
 
-    const {getData} = useDataCall()
+    const {getData, delData} = useDataCall()
 
 
     useEffect(() => {
@@ -19,9 +19,9 @@ const ShowDays = ({name, appointmentDuration, startHour, finishHour, lunchStart,
     }, [])
     //console.log(days)
 
-    const handleUpdateWeekday = () => {
-
-    }
+    // const handleDeleteWeekday = (id) => {
+    //     delData("weekdays", id)
+    // }
   return (
     <div className='flex justify-center items-center w-full'>
             
@@ -71,8 +71,8 @@ const ShowDays = ({name, appointmentDuration, startHour, finishHour, lunchStart,
                     </div>
                 </div>
             </div>
-            <button type='submit' className='md:w-[10rem] md:h-[3rem] bg-sky-600 rounded-xl text-white mt-5 hover:bg-sky-500 duration-150' onClick={handleUpdateWeekday}>BEARBEITEN</button>
-                </div>
+            <button className='md:w-[10rem] md:h-[3rem] bg-red-600 rounded-xl text-white mt-5 hover:bg-red-500 duration-150' onClick={()=>delData("weekdays", id)}>LÖSCHEN</button>
+        </div>
     </div>
   )
 }
