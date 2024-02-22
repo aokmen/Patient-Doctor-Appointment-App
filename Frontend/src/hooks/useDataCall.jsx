@@ -101,6 +101,22 @@ const useDataCall = () => {
             console.log(error);
         }
     }
+
+    /* -------------------------------------------------------------------------- */
+    /*                             Get Single Appointment Data with Axios                            */
+    /* -------------------------------------------------------------------------- */
+
+    const getSingleData = async (url, userId) => {  
+        dispatch(fetchStart())
+        try {
+            const { data } = await axiosWithToken(`/${url}/${userId}`)
+            dispatch(getDataSuccess({ data: data?.data?.appointments, url: "appointments" }))
+            //console.log(data)
+        } catch (error) {
+            dispatch(fetchFail())
+            console.log(error);
+        }
+    }
     /* -------------------------------------------------------------------------- */
     /*                            Post Data with Axios                            */
     /* -------------------------------------------------------------------------- */
@@ -149,7 +165,7 @@ const useDataCall = () => {
     }
 
     return {
-        getData, postData, putData, delData
+        getData, postData, putData, delData, getSingleData
     }
 
 }

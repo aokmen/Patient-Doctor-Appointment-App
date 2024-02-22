@@ -57,7 +57,7 @@ module.exports = {
             #swagger.summary = "Get Single Patient"
         */
 
-        const data = await Patient.findOne({ _id: req.params.id })
+        const data = await Patient.findOne({ _id: req.params.id }).populate("appointments")
 
         res.status(200).send({
             error: false,
