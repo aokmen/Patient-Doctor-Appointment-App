@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import "./sidebar.css"
 import { useNavigate } from 'react-router-dom'
 import useAuthCall from '../../../../hooks/useAuthCall'
@@ -14,6 +14,8 @@ import message from "../../../../assets/message.png"
 import exit from "../../../../assets/logout.png"
 import home from "../../../../assets/home.png"
 import task from "../../../../assets/task.png"
+import { useSelector } from 'react-redux'
+import useDataCall from '../../../../hooks/useDataCall'
 
 
 
@@ -21,6 +23,20 @@ const Sidebar = () => {
   
   const { logout } = useAuthCall();
   const navigate = useNavigate();
+  const {getData} = useDataCall()
+
+  const {currentUser} = useSelector((state) => state.auth)
+  const {patients} = useSelector((state) => state.data)
+
+  useEffect(() => {
+    getData("patients")
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  const thisPatient = patients.filter((pat) => {return pat.email === currentUser}) 
+  //console.log(thisPatient)
+  const patientName = thisPatient[0]?.firstName + " " + thisPatient[0]?.lastName
 
   const closed = () => {
     logout();
@@ -31,7 +47,7 @@ const Sidebar = () => {
     <div className="sidebar-main">
       <div className="topSlide">
       <div className="top">
-      <img src={profil_image} alt="profil_image"/> <h1>Jasmine Doe</h1>
+      <img src={profil_image} alt="profil_image"/> <h1>{patientName}</h1>
         </div>
         
       </div>

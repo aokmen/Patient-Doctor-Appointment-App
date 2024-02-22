@@ -18,6 +18,8 @@ const dataSlice = createSlice({
     events:[],
     weekdays: [],
     files:[],
+    tasks:[],
+    notes:[],
   },
   reducers:{
     fetchStart: (state) => {
