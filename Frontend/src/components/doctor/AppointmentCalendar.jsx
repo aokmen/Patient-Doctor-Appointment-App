@@ -20,8 +20,8 @@ const AppointmentCalendar = ({id}) => {
   const {appointments} = useSelector((state) => state.data)                   
   const {doctors} = useSelector((state) => state.data)                   
   const {patients} = useSelector((state) => state.data)                   
-  //const {currentUser} = useSelector((state) => state.auth)                   
-let currentUser = "Jessica.Yvonne11pat@site.com"
+  const {currentUser} = useSelector((state) => state.auth)                   
+  //let currentUser = "Jessica.Yvonne11pat@site.com"
   
   let day = []
   const [appArr, setAppArr] = useState([])

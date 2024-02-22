@@ -3,6 +3,7 @@
 // Appointment Controller:
 
 const Appointment = require('../models/appointment')
+const Patient = require('../models/patient')
 const sendMail = require('../helpers/sendMail')
 
 module.exports = {
@@ -78,8 +79,19 @@ module.exports = {
             }
         */
 
-        const data = await Appointment.updateOne({ _id: req.params.id }, req.body, { runValidators: true }).populate('doctorId')
-        const dataNew = await Appointment.findOne({ _id: req.params.id }).populate(["doctorId", "patientId"])
+        const data0 = await Appointment.findOne({ _id: req.params.id }).populate("patientId")    //update edilmeden önceki veri
+
+
+        const data = await Appointment.updateOne({ _id: req.params.id }, req.body, { runValidators: true }).populate('doctorId')      // update islemi
+        const dataNew = await Appointment.findOne({ _id: req.params.id }).populate(["doctorId", "patientId"])        //update edildikten sonraki veri
+
+        if(req.body.patientId){
+            await Patient.updateOne({_id: dataNew.patientId}, {$push: {appointments: dataNew.id}})
+        }
+        else{
+            await Patient.updateOne({_id: data0.patientId}, {$pull: {appointments: data0.id}})
+        }
+        
 
         //console.log(dataNew)
         sendMail(

@@ -6,6 +6,7 @@ const authSlice = createSlice({
     initialState:{
     currentUser: null,
     loading: false,
+    userId: "",
     error: false,
     token: null,
     userType: null,
@@ -18,6 +19,7 @@ const authSlice = createSlice({
     loginSuccess: (state,action) => {
       state.loading = false;
       state.currentUser = action.payload?.user?.email;
+      state.userId = action.payload?.user?.id;
       state.token = action.payload?.key;
       state.userType =action.payload?.userType
     },
