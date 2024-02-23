@@ -2,7 +2,7 @@ import React from 'react'
 import Termine from './Termine'
 
 const KommendeTermine = ({appointmentsOfThisPatient, setTermin}) => {
-    console.log(appointmentsOfThisPatient)
+    //console.log(appointmentsOfThisPatient)
 
 
   return (

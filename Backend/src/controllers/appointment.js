@@ -79,17 +79,20 @@ module.exports = {
             }
         */
 
-        const data0 = await Appointment.findOne({ _id: req.params.id }).populate("patientId")    //update edilmeden önceki veri
+        const data0 = await Appointment.findOne({ _id: req.params.id }).populate(["doctorId", "patientId"])    //update edilmeden önceki veri
 
 
-        const data = await Appointment.updateOne({ _id: req.params.id }, req.body, { runValidators: true }).populate('doctorId')      // update islemi
+        const data = await Appointment.updateOne({ _id: req.params.id }, req.body, { runValidators: true }).populate(["doctorId", "patientId"])      // update islemi
         const dataNew = await Appointment.findOne({ _id: req.params.id }).populate(["doctorId", "patientId"])        //update edildikten sonraki veri
 
         if(req.body.patientId){
             await Patient.updateOne({_id: dataNew.patientId}, {$push: {appointments: dataNew.id}})
         }
         else{
-            await Patient.updateOne({_id: data0.patientId}, {$pull: {appointments: data0.id}})
+            if(req.body.isCancelled === false){
+                await Patient.updateOne({_id: data0.patientId}, {$pull: {appointments: data0.id}}) 
+            }
+            
         }
         
 

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import useDataCall from '../../../../hooks/useDataCall'
 
-const Termine = ({date, timeStart, doctorId}) => {
+const Termine = ({date, timeStart, doctorId, isCancelled}) => {
 
     const { doctors } = useSelector((state) => state.data)
     const {getData} = useDataCall()
@@ -22,15 +22,32 @@ const Termine = ({date, timeStart, doctorId}) => {
     }
 
   return (
-    <div className='flex flex-col justify-center items-center border-x-8 border-y-2 border-[#B7D8F8] mt-4 min-w-[12rem] max-w-[22rem] mx-auto'>
-        <div className='flex flex-row justify-evenly'>
-            <h3  className='text-[#38638D] text-lg font-bold'>{doctorInfo[0]?.branch}</h3>
-        </div>
-        <div className='flex justify-evenly mt-1'>
-            <h3 className='mr-20 text-[#38638D]'>{date}</h3>
-            <h3 className='text-[#38638D] font-bold'>Uhrzeit: {timeStart}</h3>
-        </div>
-    </div>
+      <>
+      {
+        isCancelled ? 
+          <div className='flex flex-col justify-center items-center border-x-8 border-y-2 border-red-500 mt-4 min-w-[12rem] max-w-[22rem] mx-auto'>
+            <div className='flex flex-row justify-evenly'>
+              <h3 className='text-[#38638D] text-lg font-bold line-through decoration-red-500'>{doctorInfo[0]?.branch}</h3>
+            </div>
+            <div className='flex justify-evenly mt-1'>
+                <h3 className='mr-20 text-[#38638D] line-through decoration-red-500'>{date}</h3>
+                <h3 className='text-[#38638D] font-bold line-through decoration-red-500'>Uhrzeit: {timeStart}</h3>
+            </div>
+          </div>
+          :
+          <div className='flex flex-col justify-center items-center border-x-8 border-y-2 border-[#B7D8F8] mt-4 min-w-[12rem] max-w-[22rem] mx-auto'>
+            <div className='flex flex-row justify-evenly'>
+              <h3  className='text-[#38638D] text-lg font-bold'>{doctorInfo[0]?.branch}</h3>
+            </div>
+            <div className='flex justify-evenly mt-1'>
+                <h3 className='mr-20 text-[#38638D]'>{date}</h3>
+                <h3 className='text-[#38638D] font-bold'>Uhrzeit: {timeStart}</h3>
+            </div>
+          </div>
+      }
+      </>
+
+    
   )
 }
 

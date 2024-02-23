@@ -89,6 +89,7 @@ const ManageAppo = ({id}) => {
   return (
 
     <div className='px-14 py-10 h-[100vh] w-[87vw]'>
+        <div className='col-span-1 bg-white rounded-3xl max-h-[86vh] min-h-[86vh] flex flex-col'>
         {weekDaysThisDoctor.length === 0 && <>
             <div className='flex justify-center items-center'>
                     <div className='bg-white w-[70vw] p-5 rounded-xl'>
@@ -164,6 +165,7 @@ const ManageAppo = ({id}) => {
             </div>
             }
         </form>
+        </div>
     </div>
   )
 }
