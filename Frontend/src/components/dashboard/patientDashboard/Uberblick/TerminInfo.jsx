@@ -4,6 +4,7 @@ import locationIcon from '../../../../assets/locationIcon.png'
 import phoneIcon from '../../../../assets/phone.png'
 import { useSelector } from 'react-redux'
 import useDataCall from '../../../../hooks/useDataCall'
+import CancelAppoModal from './CancelAppoModal'
 
 const TerminInfo = ({termin}) => {
 
@@ -26,6 +27,7 @@ const TerminInfo = ({termin}) => {
 
     //const termin = todayAppsThisDoctor.filter((item) => item.patientId === patient)
     console.log(termin)
+    const [showModal, setShowModal] = React.useState(false);
 
   return (
     <div className='flex flex-col justify-center items-center'>
@@ -48,10 +50,33 @@ const TerminInfo = ({termin}) => {
                         <img src={phoneIcon} className="mr-1 w-5 h-5" alt="phoneIcon" />
                         <h1 className='text-lg'>{doctorInfo[0]?.phone} </h1>
                     </div>
-            
+                    {
+                        termin.isCancelled && <h1 className='absolute text-5xl text-red-600 font-bold opacity-50'>STORNIERT</h1>
+                    }
                 </div>
-                <button className='mt-10 bg-[#6f48eb] text-white text-lg py-3 px-6 rounded-xl hover:bg-[#7055cb]'>SEND MESSAGE</button>
- 
+                {
+                    termin.isCancelled ? 
+                    <div>
+                        {
+                            termin.cancelUserType === "doctor" ? 
+                            <h1 className='text-red-600 mt-10 text-lg font-bold'>Termin ist von dem Arzt/ der Ärztin storniert worden.</h1>
+                            :
+                            (
+                                termin.cancelUserType === "admin" ?
+                                <h1 className='text-red-600 mt-10 text-lg font-bold'>Termin ist von Website Admin storniert worden.</h1>
+                                :
+                                <h1 className='text-red-600 mt-10 text-lg font-bold'>Termin ist von Ihnen storniert worden.</h1>
+                            )
+                        }
+                        <h1 className='text-red-600'>Stornierungsgrund: {termin?.cancelReason}</h1>
+                    </div>
+                    :
+                    <div className='flex justify-evenly items-center w-[20vw] ml-3'>
+                    <button className='mt-10 bg-sky-600 text-white text-lg py-3 px-4 rounded-xl hover:bg-sky-700 duration-150'>SEND NACHRICHT</button>
+                    <button onClick={()=>setShowModal(true)} className='mt-10 bg-red-600 text-white text-lg py-3 px-4 rounded-xl hover:bg-red-700 duration-150'>STORNIEREN</button>
+                </div>
+                }
+                <CancelAppoModal showModal={showModal} setShowModal={setShowModal} termin={termin} doctorInfo={doctorInfo}/>
             </>
             :
             <div className='w-[30rem] text-center'>

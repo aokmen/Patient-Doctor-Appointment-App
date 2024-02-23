@@ -50,7 +50,7 @@ const Kalender = () => {
   
         const dateArray = value.toLocaleString().split(',').slice(0,1)[0].split('/')
         const datum = dateArray[2]+"-"+dateArray[1]+"-"+dateArray[0]
-        console.log(datum)
+        //console.log(datum)
         //console.log("value:",value.toLocaleString())
         setSelectedDate(datum)
         const AppsSelectedDate = appsThisDoctor.filter((item) => {return item.date === datum})
@@ -106,7 +106,7 @@ const Kalender = () => {
                     </div>
                     {
                         !iSEventsShown ?    
-                            <div className='max-h-[67vh] min-h-[67vh] flex flex-row'>
+                            <div className='max-h-[72vh] min-h-[72vh] flex flex-row'>
                                 <div className='overflow-scroll rounded-3xl max-w-[18vw] min-w-[18vw]'>
                                     <table className='bg-slate-100 mx-auto my-5 border-2 border-[#38638D]'>
                                         <thead>
@@ -152,7 +152,7 @@ const Kalender = () => {
                                 </div>
                             </div>
                         :
-                            <div className='max-h-[66vh] min-h-[66vh] py-3 mt-6 rounded-3xl flex flex-col'>
+                            <div className='max-h-[71vh] min-h-[71vh] py-3 mt-6 rounded-3xl flex flex-col'>
                                 <div className='max-h-[35vh] min-h-[35vh]'>
                                     <Events selectedDate={selectedDate}/>
                                 </div>

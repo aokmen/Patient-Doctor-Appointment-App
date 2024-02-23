@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from 'react'
-
 import { useSelector } from 'react-redux'
 import useDataCall from '../../../../hooks/useDataCall'
 import Calendar from 'react-calendar'
 import moment from 'moment'
 import { getGermanHolidays } from '../../doctorDashboard/uberblick/HolidayService.js';
-
 import '../../../doctor/ReactCalendar.css'
 import KommendeTermine from './KommendeTermine.jsx'
 import TerminInfo from './TerminInfo.jsx'
+import { useNavigate } from 'react-router-dom'
 
 
 
@@ -20,17 +19,14 @@ const Uberblick = () => {
     const [holidays, setHolidays] = useState([]);  
 
     const dateToday = new Date().toISOString()
-//console.log(dateToday)
 
 const {appointments} = useSelector((state)=>state.data)
 const {getData, getSingleData} = useDataCall()
 
-//console.log(appointments)
 
   const { patients } = useSelector((state) => state.data)
   const { currentUser, userId } = useSelector((state) => state.auth)
   
-  //console.log(currentUser)
 
   useEffect(() => {
     getSingleData("patients", userId)
@@ -39,13 +35,14 @@ const {getData, getSingleData} = useDataCall()
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
+  //console.log(appointments)
 
    const patientProfile = patients.filter((item) => {return item.email === currentUser}) 
-   console.log(patientProfile)
+   //console.log(patientProfile)
 
   const [termin, setTermin] = useState([])
 
-
+  const navigate = useNavigate();
 
 useEffect(() => {
     const fetchHolidays = async () => {
@@ -62,7 +59,6 @@ useEffect(() => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-//console.log(holidays)
 
 const handleDateSelect = async (value) => {
     //console.log("Hello")
@@ -73,9 +69,7 @@ const handleDateSelect = async (value) => {
     
     setHolidayArray(dayData)
 }
-
-//console.log(holidayArray)
-//.date 
+ 
 
   return (
     <div className='px-14 py-10 h-[100vh] w-[87vw]'>
@@ -96,9 +90,10 @@ const handleDateSelect = async (value) => {
 
                     <h2 className='text-3xl text-[#38638D] my-4'>Kommende Termine</h2>
                 </div>
-                <div className='mt-8'>
+                <div className='mt-8 min-h-[44vh] overflow-scroll'>
                    <KommendeTermine appointmentsOfThisPatient={appointments} dateToday={dateToday} setTermin={setTermin}/> 
                 </div>
+                <button onClick={() => navigate("/search")} className='mx-auto rounded-full bg-sky-700 text-lg text-white min-w-[8rem] w-[8rem] min-h-[8rem] h-[8rem] hover:bg-sky-600 duration-150'>neuen Termin vereinbaren</button>
             </div>
             <div className='col-span-4 grid grid-rows-7 gap-8'>
                 <div className='col-span-1 row-span-2 bg-white flex flex-col justify-evenly text-center p-3 max-h-[13rem] min-h-[13rem] max-w-[17rem]'>

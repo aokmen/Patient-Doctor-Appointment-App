@@ -2,24 +2,21 @@ import React, { useState } from "react";
 import useDataCall from "../../../../hooks/useDataCall";
 import { useSelector } from "react-redux";
 
-export default function DeleteAppoModal({setShowModal, showModal, termin}) {
 
-    const {delData, putData} = useDataCall()
+export default function DeleteAppoModal({setShowModal, showModal, termin, doctorInfo}) {
 
+    const {putData} = useDataCall()
+    
     const [cancelReason, setCancelReason] = useState("")
 
-    // const handleTerminDelete = () => {
-    //     setShowModal(false)
-    //     delData("appointments",termin[0].id)
-    // }
     const { userId } = useSelector((state) => state.auth)
 
     const handleTerminCancel = () => {
         setShowModal(false)
-        putData("appointments", termin[0].id, {
+        putData("appointments", termin.id, {
             isCancelled: true,
             cancelUserId: userId,
-            cancelUserType: "doctor",
+            cancelUserType: "patient",
             cancelReason: cancelReason
         })
     }
@@ -48,13 +45,14 @@ export default function DeleteAppoModal({setShowModal, showModal, termin}) {
                 </div>
                 {/*body*/}
                 <div className="relative p-6 flex-auto">
-                    <p className="my-4 text-blueGray-500 text-lg leading-relaxed">Name von Patient/in: <span className="font-bold">{termin[0]?.patientId?.firstName} {termin[0]?.patientId?.lastName}</span></p>
-                    <p className="my-4 text-blueGray-500 text-lg leading-relaxed">Datum: <span className="font-bold">{termin[0]?.date}</span></p>
-                    <p className="my-4 text-blueGray-500 text-lg leading-relaxed">Uhrzeit: <span className="font-bold">{termin[0]?.timeStart}</span></p>
+                    <p className="my-4 text-blueGray-500 text-lg leading-relaxed">Name von Arzt/in: <span className="font-bold">{doctorInfo[0]?.title}. {doctorInfo[0]?.firstName} {doctorInfo[0]?.lastName}</span></p>
+                    <p className="my-4 text-blueGray-500 text-lg leading-relaxed">Datum: <span className="font-bold">{termin?.date}</span></p>
+                    <p className="my-4 text-blueGray-500 text-lg leading-relaxed">Uhrzeit: <span className="font-bold">{termin?.timeStart}</span></p>
                     <div class="relative">
                         <textarea onChange={(e)=>setCancelReason(e.target.value)} type="text" id="floating_outlined" class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
                         <label for="floating_outlined" class="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1">Stornierungsgrund</label>
                     </div>
+                    
                 </div>
                 {/*footer*/}
                 <div className="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b">
