@@ -6,17 +6,19 @@ import profilImage from "../../../../assets/profil_image2.png"
 
 
 const DProfile = (doctorProfile) => {
-    const { putData } = useDataCall()
+    const { putData, postData } = useDataCall()
     const { id, avatar, firstName, lastName, email, birthDate, gender, street, zipCode, cityName, title, phone, branch, languages, website, about, complaints } = doctorProfile
+    const [fileName, setFileName] = useState("")
+    const [avatarName, setAvatarName] = useState("")
     const [file, setFile] = useState(null)
-
-    //const URL = process.env.REACT_APP_BASE_URL
+    const [secondFile, setSecondFile] = useState(null);
+    const URL = process.env.REACT_APP_BASE_URL
 
 
     const doctorProfileRef = useRef({
 
-        avatar: avatar,
-        firstName: firstName,
+        avatar: avatar || "",
+        firstName: firstName || "",
         lastName: lastName || "",
         birthDate: birthDate || "",
         street: street || "",
@@ -32,10 +34,10 @@ const DProfile = (doctorProfile) => {
 
     })
 
-    console.log("firstName:", firstName);
+ 
     // const fileImage = doctorProfile.files.length > 0 ? `${URL}/img/${doctorProfile.files[0].fileName}` : profilImage;
-    const fileImage = profilImage;
-
+    const fileImage = `${URL}/img/${id}-${fileName}` || profilImage;
+    console.log(`${URL}/img/${id}-${fileName}`);
     // const fileNameFind = files.length > 0 ? files.filter((item) => item.fileName && item.fileName.split("-")[0] === id) : [];
     // const fileImage = files.length > 0 ? `${URL}/img/${fileNameFind[fileNameFind.length - 2].fileName}` : profilImage;
 
@@ -45,24 +47,42 @@ const DProfile = (doctorProfile) => {
             [field]: value
         }
     }
-    const handleFileChange = (e) => {
-        setFile(e.target.files[0])
-        console.log("file:", file);
+
+    const handleAvatarChange = (e) => {
+        const selectedFile = e.target.files[0]
+        const name = selectedFile.name;
+        setAvatarName(name);
+        console.log("avatar:",avatarName);
     }
 
+    const handleFileChange = (e) => {
+        const selectedFile = e.target.files[0]
+        const name = selectedFile.name;
+        setFileName(name);
+        setFile(selectedFile)
+        console.log("avatar-name:",name);
+    }
+    const handleSecondFileChange = (e) => {
+        setSecondFile(e.target.files[0]);
+    }
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
         putData("doctors", id, doctorProfileRef.current);
 
         // İlk dosyanın FormData nesnesi oluşturuluyor
-        // const formData1 = new FormData();
-        // formData1.append('image', profilePic);
+        const formData1 = new FormData();
+        formData1.append('image', file);
+        formData1.append('userId', id);
 
+        // İkinci dosyanın FormData nesnesi oluşturuluyor
+        const formData2 = new FormData();
+        formData2.append('image', secondFile);
+        formData2.append('userId', id);
 
         // Her bir dosya için ayrı ayrı postData işlemi yapılıyor
-        // putData("doctors", formData1);
+        postData("files", formData1);
+        postData("files", formData2);
 
     }
 
@@ -95,7 +115,7 @@ const DProfile = (doctorProfile) => {
                                             </div>
                                             <div className="d-profile-panel-p-profil-img-right-input">
                                                 <input type="file" id="dr-avatar" name="dr-avatar" accept="image/png, image/jpeg"
-                                                // onChange={(e) => handleFileChange(e)} 
+                                                onChange={handleFileChange} 
                                                 />
                                             </div>
 
@@ -210,6 +230,21 @@ const DProfile = (doctorProfile) => {
                                     <textarea required name="" id="dr-textarea-complaints" cols="50" rows="10" placeholder="z.B. Altersbedingte Makuladegeneration AMD, Augenschmerzen, Diabetische Retinopathie, Grüner Star / Glaukom, Kurzsichtigkeit / Myopie, Katarakt, Laser bei Nachsta" defaultValue={complaints} onChange={(e) => handleInputChange("complaints", e.target.value)}>
                                     </textarea>
                                 </div>
+                                <div className="p-input p-input3-2">
+                                    <div className="dpanel-p-profil-data-upload-left">
+                                        <label className="dpanel-p-label" htmlFor="p-input15">Dateien</label>
+                                    </div>
+
+                                    <div className="dpanel-p-profil-data-upload-right">
+                                        <div className="dpanel-p-profil-data-upload-right-label">
+                                            <label htmlFor="avatar">Laden Sie Ihre medizinischen Unterlagen hoch:</label>
+                                        </div>
+                                        <div className="dpanel-p-profil-data-upload-right-input">
+                                            <input type="file" id="branchFile2" name="branchFile2" accept="image/png, image/jpeg" onChange={handleSecondFileChange}/>
+                                        </div>
+                                        
+                                    </div>
+                                </div>  
                                 <button type="submit" className="d-profile-panel-profile-save-btn" >Speichern</button>
 
                             </div>

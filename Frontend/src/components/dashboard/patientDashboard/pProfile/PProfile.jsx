@@ -12,7 +12,7 @@ const PProfile = (patientProfile) => {
     const { putData, getData, postData } = useDataCall()
     const { branches, files } = useSelector((state) => state.data)
     const { id, firstName, lastName, email, birthDate, gender, street, zipCode, cityName, phone, profilePic} = patientProfile
-    const [file, setFile] = useState(null)
+    const [fileName, setFileName] = useState("")
 
     const URL = process.env.REACT_APP_BASE_URL
 
@@ -47,9 +47,17 @@ const PProfile = (patientProfile) => {
             [field]: value
         }
     }
+    // const handleFileChange = (e) => {
+    //     setFile(e.target.files[0])
+    //     console.log("file:",file);
+    // }
     const handleFileChange = (e) => {
-        setFile(e.target.files[0])
-        console.log("file:",file);
+        
+        const selectedFile = e.target.files[0]
+        const name = selectedFile.name;
+        setFileName(name);
+        // console.log("file:",fileName);
+
     }
 
 
@@ -83,7 +91,6 @@ const PProfile = (patientProfile) => {
                                 <div className="p-p-input p-panel-main--profil-image">
                                     <div className="p-p-input-image">
                                         <img src={fileImage} alt="profilImage" />
-
                                     </div>
                                     {/* <input  className="p-panel-p-p-input" type="text" name='p-p-input1' placeholder='Profilbild hochladen' /> */}
                                     <div className="p-panel-p-profil-img">
@@ -94,7 +101,7 @@ const PProfile = (patientProfile) => {
                                             </div>
                                             <div className="p-panel-p-profil-img-right-input">
                                                 <input type="file" id="p-avatar" name="p-avatar" accept="image/png, image/jpeg" 
-                                                // onChange={(e) => handleFileChange(e)} 
+                                                 onChange={handleFileChange} 
                                                 />
                                             </div>
 
