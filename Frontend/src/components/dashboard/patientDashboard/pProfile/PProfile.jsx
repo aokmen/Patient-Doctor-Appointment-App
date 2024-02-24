@@ -13,7 +13,7 @@ const PProfile = (patientProfile) => {
     const { branches, files } = useSelector((state) => state.data)
     const { id, firstName, lastName, email, birthDate, gender, street, zipCode, cityName, phone, profilePic} = patientProfile
     const [fileName, setFileName] = useState("")
-
+    const [file, setFile] = useState(null)
     const URL = process.env.REACT_APP_BASE_URL
 
     // useEffect(() => {
@@ -34,7 +34,7 @@ const PProfile = (patientProfile) => {
 
     })
      
-    console.log("gender:",gender);
+
     // const fileImage = patientProfile.files.length > 0 ? `${URL}/img/${patientProfile.files[0].fileName}` : profilImage;
     const fileImage =  profilImage;
 
@@ -56,8 +56,7 @@ const PProfile = (patientProfile) => {
         const selectedFile = e.target.files[0]
         const name = selectedFile.name;
         setFileName(name);
-        // console.log("file:",fileName);
-
+         console.log("file:",name);
     }
 
 
@@ -73,7 +72,11 @@ const PProfile = (patientProfile) => {
 
         // Her bir dosya için ayrı ayrı postData işlemi yapılıyor
         // putData("patients", formData1);
- 
+        const formData = new FormData();
+        formData.append('image', file);
+        formData.append('userId', id);
+        // formData.append('fileName', e.target.files[0].name);
+        postData("files", formData);
     }
     return (
         <div className="p-panel-person-main">
