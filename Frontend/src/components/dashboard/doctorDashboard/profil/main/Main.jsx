@@ -11,7 +11,7 @@ import axios from 'axios';
 const Main = (doctorProfile) => {
     const { putData, getData, postData } = useDataCall()
     const { branches, files } = useSelector((state) => state.data)
-    const { id, avatar, firstName, lastName, email, password, birthDate, gender, street, zipCode, cityName, title, phone, branch, languages, website, about, complaints } = doctorProfile
+    const { id, avatar, doc, firstName, lastName, email, birthDate, gender, street, zipCode, cityName, title, phone, branch, languages, website, about, complaints } = doctorProfile
     const [count, setCount] = useState(0)
     const [file, setFile] = useState(null)
     const [secondFile, setSecondFile] = useState(null);
@@ -37,13 +37,11 @@ const Main = (doctorProfile) => {
         website: website || "",
         about: about || "",
         complaints: complaints || "",
-
+        doc: doc || "",
     })
      
-    const fileImage = doctorProfile.files.length > 0 ? `${URL}/img/${doctorProfile.files[0].fileName}` : profilImage;
 
-    // const fileNameFind = files.length > 0 ? files.filter((item) => item.fileName && item.fileName.split("-")[0] === id) : [];
-    // const fileImage = files.length > 0 ? `${URL}/img/${fileNameFind[fileNameFind.length - 2].fileName}` : profilImage;
+    const fileImage = profilImage
 
     const handleInputChange = (field, value) => {
         doctorProfileRef.current = {
@@ -53,10 +51,12 @@ const Main = (doctorProfile) => {
     }
     const handleFileChange = (e) => {
         setFile(e.target.files[0])
+        handleInputChange("avatar", e.target.value)
     }
 
     const handleSecondFileChange = (e) => {
         setSecondFile(e.target.files[0]);
+        handleInputChange("doc", e.target.value)
     }
 
     const handleSubmit = async (e) => {
@@ -105,7 +105,7 @@ const Main = (doctorProfile) => {
                                                 <label htmlFor="file-avatar">Profilbild hochladen:</label>
                                             </div>
                                             <div className="dpanel-p-profil-img-right-input">
-                                                <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg" onChange={(e) => handleFileChange(e)} />
+                                                <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg" onChange={handleFileChange} />
                                             </div>
 
                                         </div>
@@ -221,7 +221,7 @@ const Main = (doctorProfile) => {
                                         </div>
                                         <div className="dpanel-p-profil-data-upload-right-input">
 
-                                            <input type="file" id="branchFile" name="branchFile" multiple accept="image/png, image/jpeg" onChange={(e) => handleSecondFileChange(e)} />
+                                            <input type="file" id="branchFile" name="branchFile" multiple accept="image/png, image/jpeg" onChange={handleSecondFileChange} />
                                         </div>
 
                                     </div>
@@ -238,7 +238,7 @@ const Main = (doctorProfile) => {
                 {/* <button className= {count > 0 ? "dpanel-main-btn--left" : "dpanel-main-btn--left2"} onClick={()=>setCount(count-1)}>Vorherige Schritt</button>  */}
                 {count === 3 ? (<button className="dpanel-main-btn--left" onClick={() => setCount(count - 3)}>Zurück</button>) :
                     <button className="dpanel-main-btn--left" style={{ visibility: (count > 0 || count === 2) ? "visible" : "hidden" }} onClick={() => setCount(count - 1)}>Vorherige Schritt</button>}
-                {count < 2 ? <button className="dpanel-main-btn--right" onClick={() => setCount(count + 1)}>Nächster Schritt</button>
+                {count < 2 ? <button className="dpanel-main-btn--right next-btn" onClick={() => setCount(count + 1)}>Nächster Schritt</button>
                     : <button className="dpanel-main-btn--right" onClick={() => setCount(count + 1)} style={{ visibility: count === 3 ? "hidden" : "visible" }}>Senden</button>}
                 {count === 3 ?
                     <div className="main-content-success">
