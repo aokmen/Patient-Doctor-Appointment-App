@@ -1,19 +1,21 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import useDataCall from '../../../../hooks/useDataCall';
 
 import "./dProfile.css"
 import profilImage from "../../../../assets/profil_image2.png"
+import { useSelector } from 'react-redux';
 
 
 const DProfile = (doctorProfile) => {
-    const { putData, postData } = useDataCall()
-    const { id, avatar, firstName, lastName, email, birthDate, gender, street, zipCode, cityName, title, phone, branch, languages, website, about, complaints } = doctorProfile
+    const { putData, postData, getData } = useDataCall()
+    const {  files } = useSelector((state) => state.data)
+    const { id, avatar, firstName, lastName, email, birthDate, gender, street, zipCode, cityName, title, phone, branch, languages, website, about, complaints, doc } = doctorProfile
     const [fileName, setFileName] = useState("")
     const [avatarName, setAvatarName] = useState("")
     const [file, setFile] = useState(null)
     const [secondFile, setSecondFile] = useState(null);
     const URL = process.env.REACT_APP_BASE_URL
-
+    const [resim, setResim] = useState("")
 
     const doctorProfileRef = useRef({
 
@@ -31,15 +33,15 @@ const DProfile = (doctorProfile) => {
         website: website || "",
         about: about || "",
         complaints: complaints || "",
+        doc: doc || "",
 
     })
 
- 
-    // const fileImage = doctorProfile.files.length > 0 ? `${URL}/img/${doctorProfile.files[0].fileName}` : profilImage;
-    const fileImage = `${URL}/img/${id}-${fileName}` || profilImage;
-    console.log(`${URL}/img/${id}-${fileName}`);
-    // const fileNameFind = files.length > 0 ? files.filter((item) => item.fileName && item.fileName.split("-")[0] === id) : [];
-    // const fileImage = files.length > 0 ? `${URL}/img/${fileNameFind[fileNameFind.length - 2].fileName}` : profilImage;
+   
+    const avatarSplit =avatar.split('\\')
+    const avatarFindName =avatarSplit[avatarSplit.length-1]
+
+    const fileImage = `${URL}/img/${id}-${avatarFindName}` || profilImage
 
     const handleInputChange = (field, value) => {
         doctorProfileRef.current = {
@@ -48,22 +50,13 @@ const DProfile = (doctorProfile) => {
         }
     }
 
-    const handleAvatarChange = (e) => {
-        const selectedFile = e.target.files[0]
-        const name = selectedFile.name;
-        setAvatarName(name);
-        console.log("avatar:",avatarName);
-    }
-
     const handleFileChange = (e) => {
-        const selectedFile = e.target.files[0]
-        const name = selectedFile.name;
-        setFileName(name);
-        setFile(selectedFile)
-        console.log("avatar-name:",name);
+        setFile(e.target.files[0]);
+        handleInputChange("avatar", e.target.value)
     }
     const handleSecondFileChange = (e) => {
         setSecondFile(e.target.files[0]);
+        handleInputChange("doc", e.target.value)
     }
 
     const handleSubmit = async (e) => {
@@ -86,7 +79,6 @@ const DProfile = (doctorProfile) => {
 
     }
 
-    console.log("DProfile:",doctorProfile);
     return (
         
         <div className="d-profile-panel-person-main mt-5">
@@ -116,6 +108,7 @@ const DProfile = (doctorProfile) => {
                                             <div className="d-profile-panel-p-profil-img-right-input">
                                                 <input type="file" id="dr-avatar" name="dr-avatar" accept="image/png, image/jpeg"
                                                 onChange={handleFileChange} 
+                                                // onChange={(e) => handleInputChange("avatar", e.target.value)}
                                                 />
                                             </div>
 
@@ -214,7 +207,7 @@ const DProfile = (doctorProfile) => {
                                     <p>Über mich</p> <textarea required name="" id="dr-textarea-about" cols="42" rows="10" placeholder=" z.B. Gesunde Augen sind das visuelle Tor zur Welt – und die Basis, um aktiv und selbstbestimmt das Leben zu genießen. Das gilt bereits für Kinder-Augen, besonders aber mit zunehmendem Alter sollte gesteigerter Wert auf eine gute Gesundheit der Augen gelegt werden..." defaultValue={about} onChange={(e) => handleInputChange("about", e.target.value)}>
                                     </textarea>
                                     {/* <button>Speichern</button> */}
-                                    {/* <button type="submit" className="input-btn" >Senden</button> */}
+                                    {/* <button type="submit" className="input-btn">Senden</button> */}
                                 </div>
 
 
