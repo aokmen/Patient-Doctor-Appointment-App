@@ -77,6 +77,9 @@ const DoctorSchema = new mongoose.Schema({
     avatar: {
         type: String,
     },
+    doc: {
+        type: String,
+    },
     files: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'File'
