@@ -19,33 +19,30 @@ import { useSelector } from 'react-redux'
 
 
 
-const Sidebar = ({setPageName}) => {
-
-  const {currentUser} = useSelector((state) => state.auth)
-  //console.log(currentUser)
-
-  const {doctors} = useSelector((state)=>state.data)
-
-  //console.log(doctors)
-  const currentDoctor = doctors.data.filter((doct) => {return doct.email === currentUser})
-
-  //console.log(currentDoctor)
-  //const doctor = 
-  
+const Sidebar = ({avatar,id}) => {
   const { logout } = useAuthCall();
   const navigate = useNavigate();
-
+  const {currentUser} = useSelector((state) => state.auth)
+  const {doctors} = useSelector((state)=>state.data)
+  const currentDoctor = doctors.data.filter((doct) => {return doct.email === currentUser})
+  const URL = process.env.REACT_APP_BASE_URL
+  let fileImage = profil_image;
   const closed = () => {
     logout();
     navigate("/");
   };
+  if (avatar) {
+    const avatarSplit = avatar.split('\\');
+    const avatarFindName = avatarSplit[avatarSplit.length - 1];
+    fileImage = `${URL}/img/${id}-${avatarFindName}` || profil_image;
+  }
 
   return (
     <div className="sidebar-main">
       <div className="topSlide">
       <div className="top">
 
-      <img src={profil_image} alt="profil_image" /> <h1>{currentDoctor[0]?.title}. {currentDoctor[0]?.firstName} {currentDoctor[0]?.lastName}</h1>
+      <div className="sidebar-avatar-img"><img src={fileImage} alt="profil_image" /></div> <div className="sidebar-avatar-name"><h1>{currentDoctor[0]?.title}. {currentDoctor[0]?.firstName} {currentDoctor[0]?.lastName}</h1></div> 
 
         </div>
         
