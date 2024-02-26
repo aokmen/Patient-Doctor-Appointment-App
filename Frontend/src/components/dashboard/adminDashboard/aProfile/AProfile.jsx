@@ -23,13 +23,9 @@ const AProfile = ({ id, firstName, lastName, email, avatar }) => {
 
     if (avatar) {
         const avatarSplit = avatar.split('\\')
-        console.log("avatarSplit:", avatarSplit);
         const avatarFindName = avatarSplit[avatarSplit.length - 1]
-        console.log("avatarFindName:", avatarFindName);
         fileImage = `${URL}/img/${id}-${avatarFindName}`
-        console.log("fileImageeeessss:", fileImage);
     }
-    console.log("fileImageee:", fileImage);
 
     const handleInputChange = (field, value) => {
         patientProfileRef.current = {
