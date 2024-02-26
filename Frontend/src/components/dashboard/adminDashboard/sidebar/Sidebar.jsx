@@ -18,10 +18,18 @@ import task from "../../../../assets/task.png"
 
 
 
-const Sidebar = () => {
+const Sidebar = ({id,avatar,firstName,lastName}) => {
   
   const { logout } = useAuthCall();
   const navigate = useNavigate();
+  const URL = process.env.REACT_APP_BASE_URL
+  let fileImage = profil_image;
+
+  if (avatar) {
+    const avatarSplit = avatar.split('\\');
+    const avatarFindName = avatarSplit[avatarSplit.length - 1];
+    fileImage = `${URL}/img/${id}-${avatarFindName}`
+  }
 
   const closed = () => {
     logout();
@@ -32,7 +40,7 @@ const Sidebar = () => {
     <div className="sidebar-main">
       <div className="topSlide">
       <div className="top">
-      <img src={profil_image} alt="profil_image"/> <h1>Jasmine Doe</h1>
+      <div className="sidebar-avatar-img"><img src={fileImage} alt="profil_image" /></div> <div className="sidebar-avatar-name"><h1>{firstName} {lastName}</h1></div>
         </div>
         
       </div>

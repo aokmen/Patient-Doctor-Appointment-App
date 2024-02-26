@@ -3,20 +3,17 @@ import useDataCall from '../../../../hooks/useDataCall';
 
 import "./dProfile.css"
 import profilImage from "../../../../assets/profil_image2.png"
-import { useSelector } from 'react-redux';
+
 
 
 const DProfile = (doctorProfile) => {
-    const { putData, postData, getData } = useDataCall()
-    const {  files } = useSelector((state) => state.data)
+    const { putData, postData } = useDataCall()
     const { id, avatar, firstName, lastName, email, birthDate, gender, street, zipCode, cityName, title, phone, branch, languages, website, about, complaints, doc } = doctorProfile
-    const [fileName, setFileName] = useState("")
-    const [avatarName, setAvatarName] = useState("")
     const [file, setFile] = useState(null)
     const [secondFile, setSecondFile] = useState(null);
     const URL = process.env.REACT_APP_BASE_URL
-    const [resim, setResim] = useState("")
 
+    let fileImage = profilImage
     const doctorProfileRef = useRef({
 
         avatar: avatar || "",
@@ -37,11 +34,12 @@ const DProfile = (doctorProfile) => {
 
     })
 
-   
-    const avatarSplit =avatar.split('\\')
+   if(avatar) {
+    const avatarSplit = avatar.split('\\')
     const avatarFindName =avatarSplit[avatarSplit.length-1]
+    fileImage = `${URL}/img/${id}-${avatarFindName}`
+   }
 
-    const fileImage = `${URL}/img/${id}-${avatarFindName}` || profilImage
 
     const handleInputChange = (field, value) => {
         doctorProfileRef.current = {
@@ -50,10 +48,16 @@ const DProfile = (doctorProfile) => {
         }
     }
 
+    
     const handleFileChange = (e) => {
         setFile(e.target.files[0]);
         handleInputChange("avatar", e.target.value)
+  
     }
+    useEffect(() => {
+
+    }, [file])
+
     const handleSecondFileChange = (e) => {
         setSecondFile(e.target.files[0]);
         handleInputChange("doc", e.target.value)

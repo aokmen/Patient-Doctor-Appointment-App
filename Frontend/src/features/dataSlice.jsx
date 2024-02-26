@@ -12,6 +12,7 @@ const dataSlice = createSlice({
     complaints:[],
     doctors:[],
     patients:[],
+    admins:[],
     appointments:[],
     cities:[],
     messages:[],

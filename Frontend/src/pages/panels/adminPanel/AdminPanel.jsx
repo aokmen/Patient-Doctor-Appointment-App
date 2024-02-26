@@ -11,27 +11,29 @@ import Loading from "../../loading/Loading";
 import { Outlet } from "react-router-dom";
 import ProcessBar from "../../../components/dashboard/adminDashboard/processBar/ProcessBar";
 import ANavbar from "../../../components/dashboard/adminDashboard/aNavbar/ANavbar";
+import AProfile from "../../../components/dashboard/adminDashboard/aProfile/AProfile";
+import AdminProfile from "./adminProfile/AdminProfile";
 
 const AdminPanel = () => {
   const { getData } = useDataCall()
-  const { doctors } = useSelector((state) => state.data)
+  const { admins } = useSelector((state) => state.data)
   const { currentUser } = useSelector((state) => state.auth)
 
 
   useEffect(() => {
-    getData("doctors")
+    getData("admins")
   }, [])
 
+  const adminProfile = admins?.data?.filter((item) => (currentUser === item.email))
 
-  console.log("currentUser:", currentUser);
   return (
 
     <>
-      {currentUser === "admin@site.com" ?
+      {adminProfile && adminProfile[0].isAdmin === true ?
 
         <div className="dashboard">
           <div className="a-panel-sidebar">
-            <Sidebar/>
+            <Sidebar {...adminProfile[0]}/>
           </div>
 
           <div className="a-panel-main">
@@ -43,11 +45,14 @@ const AdminPanel = () => {
                   <div className="a-main-content-section-box">
 
                     <Outlet/>
-
+                   
                   </div>
                 </div>
             </div>
           </div>
+          <div className="a-doctor-profile-info">
+         
+              </div>
         </div> : <Loading />}
     </>
   );

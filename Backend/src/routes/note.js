@@ -2,22 +2,22 @@
 
 const router = require('express').Router()
 /* ------------------------------------------------------- */
-// routes/aufgabe:
+// routes/note:
 
 //const permissions = require('../middlewares/permissions')
-const aufgabe = require('../controllers/aufgabe')
+const note = require('../controllers/note')
 
 // URL: /cities
 
 router.route('/')
-    .get(aufgabe.list)
-    .post(aufgabe.create)
+    .get(note.list)
+    .post(note.create)
 
 router.route('/:id')
-    .get(aufgabe.read)
-    .put(aufgabe.update)
-    .patch(aufgabe.update)
-    .delete(aufgabe.delete)
+    .get(note.read)
+    .put(note.update)
+    .patch(note.update)
+    .delete(note.delete)
 
 /* ------------------------------------------------------- */
 module.exports = router

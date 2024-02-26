@@ -100,15 +100,16 @@ module.exports={
             }
         */
 
-        // Filters:
-        let filters = {}
+        // // Filters:
+        // let filters = {}
 
-        if(!req?.admin?.isAdmin) {
-            filters._id = req.admin._id
-            req.body.isAdmin = false           // Kendisini admin yapamasin diye
-        }
+        // if(!req?.admin?.isAdmin) {
+        //     filters._id = req.admin._id
+        //     req.body.isAdmin = false           // Kendisini admin yapamasin diye
+        // }
 
-        const data = await Admin.updateOne({_id: req.params.id, ...filters}, req.body, {runValidators: true})
+        // const data = await Admin.updateOne({_id: req.params.id, ...filters}, req.body, {runValidators: true})
+        const data = await Admin.updateOne({_id: req.params.id}, req.body, {runValidators: true})
 
         res.status(202).send({
             error: false,

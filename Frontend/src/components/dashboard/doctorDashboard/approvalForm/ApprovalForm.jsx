@@ -17,9 +17,9 @@ const ApprovalForm = (doctorProfile) => {
     const [file, setFile] = useState(null)
     const [secondFile, setSecondFile] = useState(null);
     const URL = process.env.REACT_APP_BASE_URL
-
+    let fileImage = profilImage;
     useEffect(() => {
-        getData("branches").then(() => getData("files"))
+        getData("branches")
     }, [])
 
     const doctorProfileRef = useRef({
@@ -40,17 +40,12 @@ const ApprovalForm = (doctorProfile) => {
         complaints: complaints || "",
         doc: doc || "",
     })
+    if (avatar) {
 
-
-    // const fileImage = doctorProfile.files.length > 0 ? `${URL}/img/${doctorProfile.files[doctorProfile.files.length-1].fileName}` : profilImage;
-
-    // const fileNameFind = files.length > 0 ? files.filter((item) => item.fileName && item.fileName.split("-")[0] === id) : [];
-    // const fileImage = files.length > 0 ? `${URL}/img/${fileNameFind[fileNameFind.length - 2].fileName}` : profilImage;
     const avatarSplit =avatar.split('\\')
     const avatarFindName =avatarSplit[avatarSplit.length-1]
-
-    const fileImage = `${URL}/img/${id}-${avatarFindName}` || profilImage
-
+    fileImage = `${URL}/img/${id}-${avatarFindName}`
+    }
     const handleInputChange = (field, value) => {
         doctorProfileRef.current = {
             ...doctorProfileRef.current,

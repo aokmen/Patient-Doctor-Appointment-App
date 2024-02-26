@@ -11,8 +11,6 @@
     flex-direction: column;
     width: 100%;
     background-color: #F1F7FE;
-
- 
 }
 
 .d-navbar {
@@ -21,7 +19,6 @@
 
 .d-main-content {
     flex: 97%;
-
 }
 
 .d-doctor-profile-info{

@@ -20,6 +20,19 @@
     justify-content: center;
     flex-direction: column;
     gap: 10px;
+    text-align: center;
+}
+.sidebar-avatar-img{
+    display: flex;
+    justify-content: center;
+    height: 150px;
+    width: 150px;
+}
+.sidebar-avatar-img img{
+    width: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 5px solid #B7D8F8;
 }
 
 .middleSlide{

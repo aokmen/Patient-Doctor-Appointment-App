@@ -3,24 +3,14 @@ import useDataCall from '../../../../hooks/useDataCall';
 
 import "./pProfile.css"
 import profilImage from "../../../../assets/profil_image2.png"
-import successImg from "../../../../assets/success.png"
-import { useSelector } from 'react-redux';
-import axios from 'axios';
 
 
 const PProfile = (patientProfile) => {
-    const { putData, getData, postData } = useDataCall()
-    const { branches, files } = useSelector((state) => state.data)
+    const { putData, postData } = useDataCall()
     const { id, firstName, lastName, email, birthDate, gender, street, zipCode, cityName, phone, profilePic} = patientProfile
-    const [fileName, setFileName] = useState("")
     const [file, setFile] = useState(null)
     const URL = process.env.REACT_APP_BASE_URL
-
-    // useEffect(() => {
-
-
-    //     getData("branches").then(() => getData("files"))
-    // }, [])
+    let fileImage = profilImage
 
     const patientProfileRef = useRef({
 
@@ -31,15 +21,16 @@ const PProfile = (patientProfile) => {
         zipCode: zipCode ,
         cityName: cityName,
         phone: phone,
+        profilePic: profilePic,
 
     })
      
+    if(profilePic) {
+        const avatarSplit = profilePic.split('\\')
+        const avatarFindName = avatarSplit[avatarSplit.length-1]
+        fileImage = `${URL}/img/${id}-${avatarFindName}`
+    }
 
-    // const fileImage = patientProfile.files.length > 0 ? `${URL}/img/${patientProfile.files[0].fileName}` : profilImage;
-    const fileImage =  profilImage;
-
-    // const fileNameFind = files.length > 0 ? files.filter((item) => item.fileName && item.fileName.split("-")[0] === id) : [];
-    // const fileImage = files.length > 0 ? `${URL}/img/${fileNameFind[fileNameFind.length - 2].fileName}` : profilImage;
 
     const handleInputChange = (field, value) => {
         patientProfileRef.current = {
@@ -47,18 +38,14 @@ const PProfile = (patientProfile) => {
             [field]: value
         }
     }
-    // const handleFileChange = (e) => {
-    //     setFile(e.target.files[0])
-    //     console.log("file:",file);
-    // }
-    const handleFileChange = (e) => {
-        
-        const selectedFile = e.target.files[0]
-        const name = selectedFile.name;
-        setFileName(name);
-         console.log("file:",name);
-    }
 
+    const handleFileChange = (e) => {
+        setFile(e.target.files[0]);
+        handleInputChange("profilePic", e.target.value)
+    }
+    useEffect(() => {
+
+    }, [file])
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -66,16 +53,10 @@ const PProfile = (patientProfile) => {
         putData("patients", id, patientProfileRef.current);
 
         // İlk dosyanın FormData nesnesi oluşturuluyor
-        // const formData1 = new FormData();
-        // formData1.append('image', profilePic);
-
-
-        // Her bir dosya için ayrı ayrı postData işlemi yapılıyor
-        // putData("patients", formData1);
         const formData = new FormData();
         formData.append('image', file);
         formData.append('userId', id);
-        // formData.append('fileName', e.target.files[0].name);
+         // Her bir dosya için ayrı ayrı postData işlemi yapılıyor
         postData("files", formData);
     }
     return (

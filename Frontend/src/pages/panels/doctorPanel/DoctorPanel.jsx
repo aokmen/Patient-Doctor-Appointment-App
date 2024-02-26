@@ -11,24 +11,19 @@ import DProfile from "../../../components/dashboard/doctorDashboard/profil/DProf
 
 const DoctorPanel = () => {
   const { getData } = useDataCall()
-  const { doctors, files } = useSelector((state) => state.data)
+  const { doctors} = useSelector((state) => state.data)
   const { currentUser } = useSelector((state) => state.auth)
 
   
   useEffect(() => {
     getData("doctors")
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-    getData("files")
   }, [])
 
   const doctorProfile = doctors?.data?.filter((item) => (currentUser === item.email))
   
-
-
   return (
 
     <>
-
 
       {doctorProfile && doctorProfile[0].isApproved === false ?
         <>
@@ -66,7 +61,7 @@ const DoctorPanel = () => {
               
               <div className="d-doctor-profile-info">
                 {/* <Main {...doctorProfile[0]} /> */}
-                <DProfile {...doctorProfile[0]}/>
+                {/* <DProfile {...doctorProfile[0]}/> */}
               </div>
             </div> 
             : <Loading />}
