@@ -3,17 +3,28 @@ import Sidebar from "../../../components/dashboard/patientDashboard/sidebar/Side
 import { Outlet } from "react-router-dom";
 import "./patientPanel.css";
 import PNavbar from "../../../components/dashboard/patientDashboard/pNavbar/PNavbar";
+import useDataCall from "../../../hooks/useDataCall";
+import { useSelector } from "react-redux";
 
 
 const PatientPanel = () => {
+  const { getData } = useDataCall()
+  const { patients} = useSelector((state) => state.data)
+  const { currentUser } = useSelector((state) => state.auth)
 
+  
+  useEffect(() => {
+    getData("patients")
+  }, [])
+
+  const patientProfile = patients?.filter((item) => (currentUser === item.email))
 
   return (
 
     <>
       <div className="dashboard">
         <div className="p-panel-sidebar">
-          <Sidebar />
+          <Sidebar {...patientProfile[0]}/>
         </div>
         <div className="p-panel-main">
           <div className="p-navbar">

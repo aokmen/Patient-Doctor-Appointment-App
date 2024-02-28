@@ -1,42 +1,37 @@
 /* -------------------------------------------------------------------------- */
 /*                              the Patient Panel                              */
 /* -------------------------------------------------------------------------- */
-.d-profile-panel-person-main{
 
-    height: 90vh;
-    overflow: scroll;
-}
+.a-panel-main-right{
 
-.d-profile-panel-main-right{
-
-    height: 150vh;
-
+    height: 75vh;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
 
   }
-.d-profile-panel-main-right--content{
+.a-panel-main-right--content{
     background-color: white;
-    height: 150vh;
+    height: 90%;
     width: 90%;
     border-radius: 26px;
 
 }
 
-.d-profile-panel-person{
-
+.a-panel-person{
+    height: 210vh;
     display: flex;
     flex-direction: column;
 }
-.d-profile-panel-person-profile{
+.a-panel-person-profile{
 
-
+    height: 70vh;
     display: flex;
    /* transform: translateY(-70vh); */
 }
 
-.d-profile-panel-person--left, .d-profile-panel-person--right{
+.a-panel-person--left, .a-panel-person--right{
     flex: 1;
     display: flex;
     justify-content: center;
@@ -45,20 +40,11 @@
    
 }
 
-.d-profile-panel-person-profile2{
-
-    display: flex;
-}
-.d-profile-panel-person-profile3{
-
-    display: flex;
-    margin-bottom: 60px;
-}
 /* -------------------------------------------------------------------------- */
 /*             Inputs on the Person's Profile in the Patient Panel             */
 /* -------------------------------------------------------------------------- */
 
-.d-p-input, .d-p-input-radio{
+.a-p-input, .a-p-input-radio{
     display: flex;
     height: 65px;
     width: 451px;
@@ -67,7 +53,7 @@
     margin-bottom: 30px;
   
 }
-.d-profile-panel-p-label, .d-p-input-image, .d-p-input-radio .gender2{
+.a-panel-p-label, .a-p-input-image, .a-p-input-radio .gender2{
 
     flex: 1;
     display: flex;
@@ -86,7 +72,7 @@
 
 
 
-.d-p-input-image img{
+.a-p-input-image img{
    
    width: 100%;
    height: 100%;
@@ -95,11 +81,11 @@
    padding-bottom: 10px;
    object-fit: cover;
 }
-.d-profile-panel-p-label:hover, .d-p-input-about p:hover{
+.a-panel-p-label:hover, .a-p-input-about p:hover{
     background-color: #B7D8F8;
 }
 
-.d-profile-panel-d-p-input, .radio-gender{
+.a-panel-a-p-input, .radio-gender{
     outline: none;
     flex: 2;
     padding-left: 20px;
@@ -109,7 +95,7 @@
     color: #38638D;
 
 }
-.d-profile-panel-d-p-input{
+.a-panel-a-p-input{
     font-weight: 600;
 }
 
@@ -123,11 +109,11 @@
 .radio-gender label{
  margin-left: 5px;
 }
-.d-profile-panel-d-p-input-birthdate{
+.a-panel-a-p-input-birthdate{
     padding-right: 10px;
 }
 
-.d-profile-panel-d-p-input::placeholder {
+.a-panel-a-p-input::placeholder {
     opacity: 0.5;
     color: #a4a6a8 !important;
   }
@@ -146,17 +132,17 @@
 /*                          Patient-Panel-Profil-Image                         */
 /* -------------------------------------------------------------------------- */
 
-.d-profile-panel-p-profil-img{
+.a-panel-p-profil-img{
     flex: 2;
     display: flex;
     align-items: center;
 }
 
 
-.d-profile-panel-p-profil-img-right{
+.a-panel-p-profil-img-right{
     height: 100%;
 }
-.d-profile-panel-p-profil-img-right-label{
+.a-panel-p-profil-img-right-label{
     display: flex;
     align-items: center;
     padding-left: 20px;
@@ -165,13 +151,13 @@
     color: #38638D;
     height: 50%;
 }
-.d-profile-panel-p-profil-img-right-input{
+.a-panel-p-profil-img-right-input{
     display: flex;
     justify-items: center;
     align-items: center;
     height: 50%;
 }
-.d-profile-panel-p-profil-img-right-input input{
+.a-panel-p-profil-img-right-input input{
     width: 80%;
     margin-left: 20px;
     
@@ -184,14 +170,14 @@
 /* -------------------------------------------------------------------------- */
 
 
-.d-profile-panel-main--profil-image{
+.a-panel-main--profil-image{
     height: 160px;
 }
-.d-profile-panel-p-profil-img-right-input:hover{
+.a-panel-p-profil-img-right-input:hover{
     background-color: #F1F7FE;
 }
 
-.d-profile-panel-profile-save-btn{
+.a-panel-profile-save-btn{
     background-color: #B7D8F8 !important;
     padding: 20px 60px;
     color: #38638D;
@@ -200,18 +186,20 @@
     font-size: 20px;
     width: 200px;
 }
-.d-profile-panel-profile-save-btn:hover{
-    background-color: #32f1c8 !important;
+.a-panel-profile-save-btn:hover{
+    background-color:#38638D !important;
     box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.548);
+    color: white;
 }
 
 /* [required] {
  background-color: #38628d48;
 } */
-.d-profile-panel-main-right input:invalid, textarea:invalid{
+.a-panel-main-right input:invalid, textarea:invalid{
 
     /* border: 1px solid red; */
     
     box-shadow: 0px 0px 5px red;
     
     }
+

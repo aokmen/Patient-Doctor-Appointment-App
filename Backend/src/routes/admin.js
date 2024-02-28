@@ -17,8 +17,8 @@ router.route('/')
 
 router.route('/:id')
     .get(admin.read)
-    .put(admin.update)
-    .patch(admin.update)
+    .put(permissions.isAdmin, admin.update)
+    .patch(permissions.isAdmin, admin.update)
     .delete(admin.delete)
 
 /* ------------------------------------------------------- */

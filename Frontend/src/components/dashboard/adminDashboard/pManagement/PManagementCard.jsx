@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import "./pManagement.css"
-import profileImg from "./assets/65c9e35aa6fbdf54fffd0754-ProfileImg.png"
-import fileImg from "./assets/65c9e35aa6fbdf54fffd0754-Bewerbungsdeckblatt-Aerztin.jpg"
+import profileImg from "../../../../assets/profil_image2.png"
+
 
 import okImg from "../../../../assets/ok.png"
 import deleteImg from "../../../../assets/delete.png"
@@ -13,19 +13,17 @@ import useDataCall from '../../../../hooks/useDataCall'
 
 const URL = process.env.REACT_APP_BASE_URL
 
-const PManagementCard = ({ id, firstName, lastName, title, branch, cityName, street, zipCode, email, phone, website, languages, complaints, isActive, about, files
+const PManagementCard = ({ id,profilePic, firstName, lastName, cityName, street, zipCode, email, phone, isActive
 }) => {
   const { delData, putData } = useDataCall()
-  const [show, setShow] = useState(false)
-  const [show2, setShow2] = useState(true)
 
-  const handleShow = () => {
-    setShow(!show)
-    setShow2(!show2)
-  }
+  let fileImage = profileImg;
 
-  const fileImage = profileImg;
-
+  if(profilePic) {
+    const avatarSplit = profilePic.split('\\')
+    const avatarFindName =avatarSplit[avatarSplit.length-1]
+    fileImage = `${URL}/img/${id}-${avatarFindName}`
+   }
 
   return (
     <div className="apanel-p-view--main">

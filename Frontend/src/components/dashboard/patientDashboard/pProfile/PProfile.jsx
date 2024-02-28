@@ -3,24 +3,14 @@ import useDataCall from '../../../../hooks/useDataCall';
 
 import "./pProfile.css"
 import profilImage from "../../../../assets/profil_image2.png"
-import successImg from "../../../../assets/success.png"
-import { useSelector } from 'react-redux';
-import axios from 'axios';
 
 
 const PProfile = (patientProfile) => {
-    const { putData, getData, postData } = useDataCall()
-    const { branches, files } = useSelector((state) => state.data)
+    const { putData, postData } = useDataCall()
     const { id, firstName, lastName, email, birthDate, gender, street, zipCode, cityName, phone, profilePic} = patientProfile
     const [file, setFile] = useState(null)
-
     const URL = process.env.REACT_APP_BASE_URL
-
-    // useEffect(() => {
-
-
-    //     getData("branches").then(() => getData("files"))
-    // }, [])
+    let fileImage = profilImage
 
     const patientProfileRef = useRef({
 
@@ -31,15 +21,16 @@ const PProfile = (patientProfile) => {
         zipCode: zipCode ,
         cityName: cityName,
         phone: phone,
+        profilePic: profilePic,
 
     })
      
-    console.log("gender:",gender);
-    // const fileImage = patientProfile.files.length > 0 ? `${URL}/img/${patientProfile.files[0].fileName}` : profilImage;
-    const fileImage =  profilImage;
+    if(profilePic) {
+        const avatarSplit = profilePic.split('\\')
+        const avatarFindName = avatarSplit[avatarSplit.length-1]
+        fileImage = `${URL}/img/${id}-${avatarFindName}`
+    }
 
-    // const fileNameFind = files.length > 0 ? files.filter((item) => item.fileName && item.fileName.split("-")[0] === id) : [];
-    // const fileImage = files.length > 0 ? `${URL}/img/${fileNameFind[fileNameFind.length - 2].fileName}` : profilImage;
 
     const handleInputChange = (field, value) => {
         patientProfileRef.current = {
@@ -47,11 +38,14 @@ const PProfile = (patientProfile) => {
             [field]: value
         }
     }
-    const handleFileChange = (e) => {
-        setFile(e.target.files[0])
-        console.log("file:",file);
-    }
 
+    const handleFileChange = (e) => {
+        setFile(e.target.files[0]);
+        handleInputChange("profilePic", e.target.value)
+    }
+    useEffect(() => {
+
+    }, [file])
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -59,13 +53,11 @@ const PProfile = (patientProfile) => {
         putData("patients", id, patientProfileRef.current);
 
         // İlk dosyanın FormData nesnesi oluşturuluyor
-        // const formData1 = new FormData();
-        // formData1.append('image', profilePic);
-
-
-        // Her bir dosya için ayrı ayrı postData işlemi yapılıyor
-        // putData("patients", formData1);
- 
+        const formData = new FormData();
+        formData.append('image', file);
+        formData.append('userId', id);
+         // Her bir dosya için ayrı ayrı postData işlemi yapılıyor
+        postData("files", formData);
     }
     return (
         <div className="p-panel-person-main">
@@ -83,7 +75,6 @@ const PProfile = (patientProfile) => {
                                 <div className="p-p-input p-panel-main--profil-image">
                                     <div className="p-p-input-image">
                                         <img src={fileImage} alt="profilImage" />
-
                                     </div>
                                     {/* <input  className="p-panel-p-p-input" type="text" name='p-p-input1' placeholder='Profilbild hochladen' /> */}
                                     <div className="p-panel-p-profil-img">
@@ -94,7 +85,7 @@ const PProfile = (patientProfile) => {
                                             </div>
                                             <div className="p-panel-p-profil-img-right-input">
                                                 <input type="file" id="p-avatar" name="p-avatar" accept="image/png, image/jpeg" 
-                                                // onChange={(e) => handleFileChange(e)} 
+                                                 onChange={handleFileChange} 
                                                 />
                                             </div>
 

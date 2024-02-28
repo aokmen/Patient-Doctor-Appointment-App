@@ -36,6 +36,9 @@ const AdminSchema = new mongoose.Schema({
         trim: true,
         required: true
     },
+    avatar: {
+        type: String,
+    },
     isActive: {
         type: Boolean,
         default: true

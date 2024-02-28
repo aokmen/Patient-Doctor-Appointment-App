@@ -1,22 +1,23 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import useDataCall from '../../../../hooks/useDataCall';
 
 import "./dProfile.css"
 import profilImage from "../../../../assets/profil_image2.png"
 
 
+
 const DProfile = (doctorProfile) => {
-    const { putData } = useDataCall()
-    const { id, avatar, firstName, lastName, email, birthDate, gender, street, zipCode, cityName, title, phone, branch, languages, website, about, complaints } = doctorProfile
+    const { putData, postData } = useDataCall()
+    const { id, avatar, firstName, lastName, email, birthDate, gender, street, zipCode, cityName, title, phone, branch, languages, website, about, complaints, doc } = doctorProfile
     const [file, setFile] = useState(null)
+    const [secondFile, setSecondFile] = useState(null);
+    const URL = process.env.REACT_APP_BASE_URL
 
-    //const URL = process.env.REACT_APP_BASE_URL
-
-
+    let fileImage = profilImage
     const doctorProfileRef = useRef({
 
-        avatar: avatar,
-        firstName: firstName,
+        avatar: avatar || "",
+        firstName: firstName || "",
         lastName: lastName || "",
         birthDate: birthDate || "",
         street: street || "",
@@ -29,15 +30,22 @@ const DProfile = (doctorProfile) => {
         website: website || "",
         about: about || "",
         complaints: complaints || "",
+        doc: doc || "",
 
     })
 
+
     //console.log("firstName:", firstName);
     // const fileImage = doctorProfile.files.length > 0 ? `${URL}/img/${doctorProfile.files[0].fileName}` : profilImage;
-    const fileImage = profilImage;
+    //const fileImage = profilImage;
 
-    // const fileNameFind = files.length > 0 ? files.filter((item) => item.fileName && item.fileName.split("-")[0] === id) : [];
-    // const fileImage = files.length > 0 ? `${URL}/img/${fileNameFind[fileNameFind.length - 2].fileName}` : profilImage;
+   if(avatar) {
+    const avatarSplit = avatar.split('\\')
+    const avatarFindName =avatarSplit[avatarSplit.length-1]
+    fileImage = `${URL}/img/${id}-${avatarFindName}`
+   }
+
+
 
     const handleInputChange = (field, value) => {
         doctorProfileRef.current = {
@@ -45,28 +53,45 @@ const DProfile = (doctorProfile) => {
             [field]: value
         }
     }
-    const handleFileChange = (e) => {
-        setFile(e.target.files[0])
-        console.log("file:", file);
-    }
 
+    
+    const handleFileChange = (e) => {
+        setFile(e.target.files[0]);
+        handleInputChange("avatar", e.target.value)
+  
+    }
+    useEffect(() => {
+
+    }, [file])
+
+    const handleSecondFileChange = (e) => {
+        setSecondFile(e.target.files[0]);
+        handleInputChange("doc", e.target.value)
+    }
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
         putData("doctors", id, doctorProfileRef.current);
 
         // İlk dosyanın FormData nesnesi oluşturuluyor
-        // const formData1 = new FormData();
-        // formData1.append('image', profilePic);
+        const formData1 = new FormData();
+        formData1.append('image', file);
+        formData1.append('userId', id);
 
+        // İkinci dosyanın FormData nesnesi oluşturuluyor
+        const formData2 = new FormData();
+        formData2.append('image', secondFile);
+        formData2.append('userId', id);
 
         // Her bir dosya için ayrı ayrı postData işlemi yapılıyor
-        // putData("doctors", formData1);
+        postData("files", formData1);
+        postData("files", formData2);
 
     }
 
+
     //console.log("DProfile:",doctorProfile);
+
     return (
         
         <div className="d-profile-panel-person-main mt-5">
@@ -95,7 +120,8 @@ const DProfile = (doctorProfile) => {
                                             </div>
                                             <div className="d-profile-panel-p-profil-img-right-input">
                                                 <input type="file" id="dr-avatar" name="dr-avatar" accept="image/png, image/jpeg"
-                                                // onChange={(e) => handleFileChange(e)} 
+                                                onChange={handleFileChange} 
+                                                // onChange={(e) => handleInputChange("avatar", e.target.value)}
                                                 />
                                             </div>
 
@@ -194,7 +220,7 @@ const DProfile = (doctorProfile) => {
                                     <p>Über mich</p> <textarea required name="" id="dr-textarea-about" cols="42" rows="10" placeholder=" z.B. Gesunde Augen sind das visuelle Tor zur Welt – und die Basis, um aktiv und selbstbestimmt das Leben zu genießen. Das gilt bereits für Kinder-Augen, besonders aber mit zunehmendem Alter sollte gesteigerter Wert auf eine gute Gesundheit der Augen gelegt werden..." defaultValue={about} onChange={(e) => handleInputChange("about", e.target.value)}>
                                     </textarea>
                                     {/* <button>Speichern</button> */}
-                                    {/* <button type="submit" className="input-btn" >Senden</button> */}
+                                    {/* <button type="submit" className="input-btn">Senden</button> */}
                                 </div>
 
 
@@ -210,6 +236,21 @@ const DProfile = (doctorProfile) => {
                                     <textarea required name="" id="dr-textarea-complaints" cols="50" rows="10" placeholder="z.B. Altersbedingte Makuladegeneration AMD, Augenschmerzen, Diabetische Retinopathie, Grüner Star / Glaukom, Kurzsichtigkeit / Myopie, Katarakt, Laser bei Nachsta" defaultValue={complaints} onChange={(e) => handleInputChange("complaints", e.target.value)}>
                                     </textarea>
                                 </div>
+                                <div className="p-input p-input3-2">
+                                    <div className="dpanel-p-profil-data-upload-left">
+                                        <label className="dpanel-p-label" htmlFor="p-input15">Dateien</label>
+                                    </div>
+
+                                    <div className="dpanel-p-profil-data-upload-right">
+                                        <div className="dpanel-p-profil-data-upload-right-label">
+                                            <label htmlFor="avatar">Laden Sie Ihre medizinischen Unterlagen hoch:</label>
+                                        </div>
+                                        <div className="dpanel-p-profil-data-upload-right-input">
+                                            <input type="file" id="branchFile2" name="branchFile2" accept="image/png, image/jpeg" onChange={handleSecondFileChange}/>
+                                        </div>
+                                        
+                                    </div>
+                                </div>  
                                 <button type="submit" className="d-profile-panel-profile-save-btn" >Speichern</button>
 
                             </div>

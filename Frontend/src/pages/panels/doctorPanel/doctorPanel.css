@@ -31,14 +31,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden;
 }
 
 .d-main-content-section-box {
-    background-color: #F1F7FE;
-    height: 100%;
-    width: 100%;
-    
+    background-color: white;
+    height: 92%;
+    width: 90%;
+    border-radius: 26px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.199);
- 
+    overflow: hidden;
 }

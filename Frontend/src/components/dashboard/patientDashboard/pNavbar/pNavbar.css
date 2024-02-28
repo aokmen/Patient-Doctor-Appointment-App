@@ -4,7 +4,8 @@
     align-items: center;
     justify-content: center;
     color: #38638D;
-
+    padding: 18px 80px 0 80px;
+    margin-bottom: -18px;
 }
 .p-navbar-icons{
  

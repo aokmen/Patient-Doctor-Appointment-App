@@ -39,7 +39,9 @@
     align-items: center;
    
 }
-
+.p-panel-person--left{
+    border-right: 5px solid #F1F7FE;
+}
 /* -------------------------------------------------------------------------- */
 /*             Inputs on the Person's Profile in the Patient Panel             */
 /* -------------------------------------------------------------------------- */

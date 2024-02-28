@@ -5,11 +5,11 @@ const { mongoose } = require('../configs/dbConnection')
 /* ------------------------------------------------------- *
 
 /* ------------------------------------------------------- */
-// Notiz Model:
+// Note Model:
 
 const { userTypes } = require('../configs/constraints')
 
-const NotizSchema = new mongoose.Schema({
+const NoteSchema = new mongoose.Schema({
 
     userId:{
         type: String,
@@ -20,20 +20,20 @@ const NotizSchema = new mongoose.Schema({
         type: String,
         enum: userTypes
     },
-    not: {
+    note: {
         type: String,
         trim: true,
         required: true
     },
     
-}, { collection: 'notizs', timestamps: true })
+}, { collection: 'notes', timestamps: true })
 
 
 // FOR REACT PROJECT:
-NotizSchema.pre('init', function (data) {
+NoteSchema.pre('init', function (data) {
 
     data.id = data._id
     data.createds = data.createdAt.toLocaleDateString('de-de')
 })
 /* ------------------------------------------------------- */
-module.exports = mongoose.model('Notiz', NotizSchema)
+module.exports = mongoose.model('Note', NoteSchema)

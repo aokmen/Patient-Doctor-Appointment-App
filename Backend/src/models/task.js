@@ -5,11 +5,11 @@ const { mongoose } = require('../configs/dbConnection')
 /* ------------------------------------------------------- *
 
 /* ------------------------------------------------------- */
-// Aufgabe Model:
+// Task Model:
 
 const { userTypes } = require('../configs/constraints')
 
-const AufgabeSchema = new mongoose.Schema({
+const TaskSchema = new mongoose.Schema({
 
     userId:{
         type: String,
@@ -20,20 +20,20 @@ const AufgabeSchema = new mongoose.Schema({
         type: String,
         enum: userTypes
     },
-    not: {
+    task: {
         type: String,
         trim: true,
         required: true
     },
     
-}, { collection: 'aufgabes', timestamps: true })
+}, { collection: 'tasks', timestamps: true })
 
 
 // FOR REACT PROJECT:
-AufgabeSchema.pre('init', function (data) {
+TaskSchema.pre('init', function (data) {
 
     data.id = data._id
     data.createds = data.createdAt.toLocaleDateString('de-de')
 })
 /* ------------------------------------------------------- */
-module.exports = mongoose.model('Aufgabe', AufgabeSchema)
+module.exports = mongoose.model('Task', TaskSchema)

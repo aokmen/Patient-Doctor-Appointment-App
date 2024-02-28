@@ -2,22 +2,22 @@
 
 const router = require('express').Router()
 /* ------------------------------------------------------- */
-// routes/notiz:
+// routes/task:
 
 //const permissions = require('../middlewares/permissions')
-const notiz = require('../controllers/notiz')
+const task = require('../controllers/task')
 
 // URL: /cities
 
 router.route('/')
-    .get(notiz.list)
-    .post(notiz.create)
+    .get(task.list)
+    .post(task.create)
 
 router.route('/:id')
-    .get(notiz.read)
-    .put(notiz.update)
-    .patch(notiz.update)
-    .delete(notiz.delete)
+    .get(task.read)
+    .put(task.update)
+    .patch(task.update)
+    .delete(task.delete)
 
 /* ------------------------------------------------------- */
 module.exports = router

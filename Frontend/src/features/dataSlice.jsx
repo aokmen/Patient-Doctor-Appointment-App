@@ -12,12 +12,15 @@ const dataSlice = createSlice({
     complaints:[],
     doctors:[],
     patients:[],
+    admins:[],
     appointments:[],
     cities:[],
     messages:[],
     events:[],
     weekdays: [],
     files:[],
+    tasks:[],
+    notes:[],
   },
   reducers:{
     fetchStart: (state) => {

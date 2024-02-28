@@ -1,15 +1,15 @@
 "use strict"
 
-// Notiz Controller:
+// Task Controller:
 
-const Notiz = require('../models/notiz')
+const Task = require('../models/task')
 
 module.exports = {
 
     list: async (req, res) => {
         /*
-            #swagger.tags = ["Notizs"]
-            #swagger.summary = "List Notizs"
+            #swagger.tags = ["Tasks"]
+            #swagger.summary = "List Tasks"
             #swagger.description = `
                 You can send query with endpoint for search[], sort[], page and limit.
                 <ul> Examples:
@@ -20,11 +20,11 @@ module.exports = {
             `
         */
 
-        const data = await res.getModelList(Notiz)
+        const data = await res.getModelList(Task)
 
         // res.status(200).send({
         //     error: false,
-        //     details: await res.getModelListDetails(Notiz),
+        //     details: await res.getModelListDetails(Task),
         //     data
         // })
         
@@ -34,16 +34,16 @@ module.exports = {
 
     create: async (req, res) => {
         /*
-            #swagger.tags = ["Notizs"]
-            #swagger.summary = "Create Notiz"
+            #swagger.tags = ["Tasks"]
+            #swagger.summary = "Create Task"
             #swagger.parameters['body'] = {
                 in: 'body',
                 required: true,
-                schema: { $ref: '#/definitions/Notiz' }
+                schema: { $ref: '#/definitions/Task' }
             }
         */
 
-        const data = await Notiz.create(req.body)
+        const data = await Task.create(req.body)
 
         res.status(201).send({
             error: false,
@@ -53,11 +53,11 @@ module.exports = {
 
     read: async (req, res) => {
         /*
-            #swagger.tags = ["Notizs"]
-            #swagger.summary = "Get Single Notiz"
+            #swagger.tags = ["Tasks"]
+            #swagger.summary = "Get Single Task"
         */
 
-        const data = await Notiz.findOne({ _id: req.params.id })
+        const data = await Task.findOne({ _id: req.params.id })
 
         res.status(200).send({
             error: false,
@@ -67,31 +67,31 @@ module.exports = {
 
     update: async (req, res) => {
         /*
-            #swagger.tags = ["Notizs"]
-            #swagger.summary = "Update Notiz"
+            #swagger.tags = ["Tasks"]
+            #swagger.summary = "Update Task"
             #swagger.parameters['body'] = {
                 in: 'body',
                 required: true,
-                schema: { $ref: '#/definitions/Notiz' }
+                schema: { $ref: '#/definitions/Task' }
             }
         */
 
-        const data = await Notiz.updateOne({ _id: req.params.id }, req.body, { runValidators: true })
+        const data = await Task.updateOne({ _id: req.params.id }, req.body, { runValidators: true })
 
         res.status(202).send({
             error: false,
             data,
-            new: await Notiz.findOne({ _id: req.params.id })
+            new: await Task.findOne({ _id: req.params.id })
         })
     },
 
     delete: async (req, res) => {
         /*
-            #swagger.tags = ["Notizs"]
-            #swagger.summary = "Delete Notiz"
+            #swagger.tags = ["Tasks"]
+            #swagger.summary = "Delete Task"
         */
 
-        const data = await Notiz.deleteOne({ _id: req.params.id })
+        const data = await Task.deleteOne({ _id: req.params.id })
 
         res.status(data.deletedCount ? 204 : 404).send({
             error: !data.deletedCount,

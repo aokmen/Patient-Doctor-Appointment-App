@@ -1,15 +1,15 @@
 "use strict"
 
-// Aufgabe Controller:
+// Note Controller:
 
-const Aufgabe = require('../models/Aufgabe')
+const Note = require('../models/note')
 
 module.exports = {
 
     list: async (req, res) => {
         /*
-            #swagger.tags = ["Aufgabes"]
-            #swagger.summary = "List Aufgabes"
+            #swagger.tags = ["Notes"]
+            #swagger.summary = "List Notes"
             #swagger.description = `
                 You can send query with endpoint for search[], sort[], page and limit.
                 <ul> Examples:
@@ -20,11 +20,11 @@ module.exports = {
             `
         */
 
-        const data = await res.getModelList(Aufgabe)
+        const data = await res.getModelList(Note)
 
         // res.status(200).send({
         //     error: false,
-        //     details: await res.getModelListDetails(Aufgabe),
+        //     details: await res.getModelListDetails(Note),
         //     data
         // })
         
@@ -34,16 +34,16 @@ module.exports = {
 
     create: async (req, res) => {
         /*
-            #swagger.tags = ["Aufgabes"]
-            #swagger.summary = "Create Aufgabe"
+            #swagger.tags = ["Notes"]
+            #swagger.summary = "Create Note"
             #swagger.parameters['body'] = {
                 in: 'body',
                 required: true,
-                schema: { $ref: '#/definitions/Aufgabe' }
+                schema: { $ref: '#/definitions/Note' }
             }
         */
 
-        const data = await Aufgabe.create(req.body)
+        const data = await Note.create(req.body)
 
         res.status(201).send({
             error: false,
@@ -53,11 +53,11 @@ module.exports = {
 
     read: async (req, res) => {
         /*
-            #swagger.tags = ["Aufgabes"]
-            #swagger.summary = "Get Single Aufgabe"
+            #swagger.tags = ["Notes"]
+            #swagger.summary = "Get Single Note"
         */
 
-        const data = await Aufgabe.findOne({ _id: req.params.id })
+        const data = await Note.findOne({ _id: req.params.id })
 
         res.status(200).send({
             error: false,
@@ -67,31 +67,31 @@ module.exports = {
 
     update: async (req, res) => {
         /*
-            #swagger.tags = ["Aufgabes"]
-            #swagger.summary = "Update Aufgabe"
+            #swagger.tags = ["Notes"]
+            #swagger.summary = "Update Note"
             #swagger.parameters['body'] = {
                 in: 'body',
                 required: true,
-                schema: { $ref: '#/definitions/Aufgabe' }
+                schema: { $ref: '#/definitions/Note' }
             }
         */
 
-        const data = await Aufgabe.updateOne({ _id: req.params.id }, req.body, { runValidators: true })
+        const data = await Note.updateOne({ _id: req.params.id }, req.body, { runValidators: true })
 
         res.status(202).send({
             error: false,
             data,
-            new: await Aufgabe.findOne({ _id: req.params.id })
+            new: await Note.findOne({ _id: req.params.id })
         })
     },
 
     delete: async (req, res) => {
         /*
-            #swagger.tags = ["Aufgabes"]
-            #swagger.summary = "Delete Aufgabe"
+            #swagger.tags = ["Notes"]
+            #swagger.summary = "Delete Note"
         */
 
-        const data = await Aufgabe.deleteOne({ _id: req.params.id })
+        const data = await Note.deleteOne({ _id: req.params.id })
 
         res.status(data.deletedCount ? 204 : 404).send({
             error: !data.deletedCount,

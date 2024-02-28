@@ -1,32 +1,41 @@
 import React, { useState } from 'react'
 import "./dManagement.css"
-import profileImg from "./assets/65c9e35aa6fbdf54fffd0754-ProfileImg.png"
-import fileImg from "./assets/65c9e35aa6fbdf54fffd0754-Bewerbungsdeckblatt-Aerztin.jpg"
-
+import profileImg from "../../../../assets/profil_image2.png"
+import fileImg from "../../../../assets/about-img.png"
 import okImg from "../../../../assets/ok.png"
-import deleteImg from "../../../../assets/delete.png"
 import pendingImg from "../../../../assets/pending.png"
 import okImg2 from "../../../../assets/ok2.png"
 import deleteImg2 from "../../../../assets/delete2.png"
 import pendingImg2 from "../../../../assets/pending2.png"
 import useDataCall from '../../../../hooks/useDataCall'
 
-const URL = process.env.REACT_APP_BASE_URL
-
-const ApprovalCard = ({ id, firstName, lastName, title, branch, cityName, street, zipCode, email, phone, website, languages, complaints, isApproved, about, files
+const ApprovalCard = ({ id, firstName, lastName, title, branch, cityName, street, zipCode, email, phone, website, languages, complaints, isApproved, about, avatar, doc, files
 }) => {
+
   const { delData, putData } = useDataCall()
   const [show, setShow] = useState(false)
   const [show2, setShow2] = useState(true)
+  const URL = process.env.REACT_APP_BASE_URL
+  let fileImage = profileImg
+  let fileDoc = fileImg
 
   const handleShow = () => {
     setShow(!show)
     setShow2(!show2)
   }
-
-  const fileImage = files.length > 0 ? `${URL}/img/${files[0].fileName}` : profileImg;
-
-
+    
+  if(avatar) {
+    const avatarSplit = avatar.split('\\')
+    const avatarFindName =avatarSplit[avatarSplit.length-1]
+    fileImage = `${URL}/img/${id}-${avatarFindName}`
+   }
+  
+   if(doc) {
+    const docSplit = doc.split('\\')
+    const docFindName =docSplit[docSplit.length-1]
+    fileDoc = `${URL}/img/${id}-${docFindName}` || fileImg
+   }
+   
   return (
     <div className="apanel-view--main">
       <div className="apanel-view-doctor">
@@ -47,7 +56,7 @@ const ApprovalCard = ({ id, firstName, lastName, title, branch, cityName, street
 
               <div className="apanel-view-doctor-right">
                 {
-                  show && !show2 && <div className='apanel-view-doctor-file'><img src={fileImg} alt="fileImg" /></div>
+                  show && !show2 && <div className='apanel-view-doctor-file'><img src={fileDoc} alt="fileImg" /></div>
                 }
                 {
                   show2 && !show && <div className='apanel-view-doctor-info2'>
@@ -59,11 +68,6 @@ const ApprovalCard = ({ id, firstName, lastName, title, branch, cityName, street
                   </div>
                 }
               </div>
-
-
-
-
-
             </ul>
 
           </div>
@@ -90,15 +94,9 @@ const ApprovalCard = ({ id, firstName, lastName, title, branch, cityName, street
                 <p>Genehmigt</p>
               </div>
             </div>
-          </div>
-          
+          </div>    
         </div>
-
-
-
       </div>
-
-
     </div>
   )
 }
