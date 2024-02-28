@@ -4,7 +4,7 @@
 import React, { useEffect } from 'react'
 
 import logo2 from "../../assets/Logo2.png"
-import userIcon from '../../assets/user.png'
+//import userIcon from '../../assets/user.png'
 import { useSelector } from 'react-redux';
 import useDataCall from '../../hooks/useDataCall';
 
@@ -13,9 +13,9 @@ const Sidebar = () => {
     const currentUser = useSelector((state) => state.auth)
     const {getData} = useDataCall()
 
-    const {patients} = useSelector((state)=>state.data)
+    //const {patients} = useSelector((state)=>state.data)
 
-    const thisPatient = patients?.data?.filter((item, i) => {return item.username === currentUser})
+    //const thisPatient = patients?.data?.filter((item, i) => {return item.username === currentUser})
 
     useEffect(() => {
     

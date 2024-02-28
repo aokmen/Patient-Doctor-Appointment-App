@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 
 export default function DeleteAppoModal({setShowModal, showModal, termin}) {
 
-    const {delData, putData} = useDataCall()
+    const {putData} = useDataCall()
 
     const [cancelReason, setCancelReason] = useState("")
 

@@ -61,7 +61,7 @@ module.exports = {
             #swagger.summary = "Get Single Doctor"
         */
 
-        const data = await Doctor.findOne({ _id: req.params.id }).populate(["branchId", "cityId", "complaints","files"])
+        const data = await Doctor.findOne({ _id: req.params.id }).populate(["branchId", "cityId", "complaints","files", "appointments"])
         // .populate({
         //     path: 'files',
         //     select: 'fileName' // Sadece fileName alanını seçiyoruz

@@ -32,7 +32,7 @@ const DProfile = (doctorProfile) => {
 
     })
 
-    console.log("firstName:", firstName);
+    //console.log("firstName:", firstName);
     // const fileImage = doctorProfile.files.length > 0 ? `${URL}/img/${doctorProfile.files[0].fileName}` : profilImage;
     const fileImage = profilImage;
 
@@ -66,7 +66,7 @@ const DProfile = (doctorProfile) => {
 
     }
 
-    console.log("DProfile:",doctorProfile);
+    //console.log("DProfile:",doctorProfile);
     return (
         
         <div className="d-profile-panel-person-main mt-5">
