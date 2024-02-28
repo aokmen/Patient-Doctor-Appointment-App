@@ -19,6 +19,7 @@ const Kalender = () => {
   
     useEffect(() => {
       getData("doctors")
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
   
      const doctorProfile = doctors?.data.filter((item) => (currentUser === item.email)) 

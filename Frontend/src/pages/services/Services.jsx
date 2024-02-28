@@ -29,7 +29,7 @@ const Services = () => {
 
   return (
     <>
-    <div className='flex flex-col justify-center items-center mt-5 w-full h-[140vh] md:h-[150vh] lg:h-[140vh] bg-[#F1F7FE]'>
+    <div className='flex flex-col justify-center items-center w-full h-[140vh] md:h-[150vh] lg:h-[140vh] bg-[#F1F7FE]'>
       <div className='w-[400px] mb-[55rem] md:mb-[58rem] md:w-[600px] xl:w-[900px] md:ml-[-15rem] lg:mb-[58rem] xl:mb-[47rem] lg:ml-[-65rem] xl:ml-[-65rem] absolute z-40'>
         <img className='w-[400px] md:w-[600px] xl:w-[900px] rounded-full border-b-4 lg:border-r-8 service1 bg-[#F1F7FE]' src={serviceImg1} alt="services1" />
       </div>
@@ -38,7 +38,7 @@ const Services = () => {
       <div className='absolute border-8 border-cyan-700 mt-[85vh] rounded-full'>
 
       </div> */}
-      <div className='flex flex-wrap justify-center items-center border-r-8 md:border-l-8 md:border-r-0 lg:border-b-8 border-[#345b83] rounded-full lg:rounded-3xl py-[6rem] lg:py-0 lg:pb-[5rem] lg:pt-12 md:py[10rem] px-10 md:px-0 md:pl-3 w-[75vw] md:w-[90vw] lg:w-[70vw] lg:ml-[10rem] lg:pl-[5rem] xl:pl-[17rem] xl:mt-[-10rem] lg:mb-[17rem] xl:mb-[23rem] xl:pb-[15rem] xl:mr-[-20rem] md:h-[80vh] lg:h-[85vh] mt-[2rem] md:mt-[4rem] lg:absolute'>
+      <div className='flex flex-wrap justify-center items-center border-r-8 md:border-l-8 md:border-r-0 lg:border-b-8 border-[#345b83] rounded-full lg:rounded-3xl py-[6rem] lg:py-0 lg:pb-[5rem] lg:pt-12 md:py[10rem] px-10 md:px-0 md:pl-3 w-[75vw] md:w-[90vw] lg:w-[70vw] lg:ml-[10rem] lg:pl-[5rem] xl:pl-[17rem] xl:mt-[-8rem] lg:mb-[17rem] xl:mb-[23rem] xl:pb-[15rem] xl:mr-[-20rem] md:h-[80vh] lg:h-[85vh] mt-[2rem] md:mt-[4rem] lg:absolute'>
         {
           
           serviceObjArr.map((item, index) => (

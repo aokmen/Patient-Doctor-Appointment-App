@@ -1,8 +1,9 @@
 import React from 'react'
+import Statistics from '../../../../components/dashboard/doctorDashboard/statistics/Statistics'
 
 const DoctorStatistic = () => {
   return (
-    <div>DoctorStatistic</div>
+    <div><Statistics/></div>
   )
 }
 

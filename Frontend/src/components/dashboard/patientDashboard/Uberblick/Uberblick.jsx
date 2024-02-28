@@ -20,12 +20,12 @@ const Uberblick = () => {
 
     const dateToday = new Date().toISOString()
 
-const {appointments} = useSelector((state)=>state.data)
-const {getData, getSingleData} = useDataCall()
+    const {appointments} = useSelector((state)=>state.data)
+    const {getData, getSingleData} = useDataCall()
 
 
-  const { patients } = useSelector((state) => state.data)
-  const { currentUser, userId } = useSelector((state) => state.auth)
+    //const { patients } = useSelector((state) => state.data)
+    const { userId } = useSelector((state) => state.auth)
   
 
   useEffect(() => {
@@ -37,7 +37,7 @@ const {getData, getSingleData} = useDataCall()
 
   //console.log(appointments)
 
-   const patientProfile = patients.filter((item) => {return item.email === currentUser}) 
+   //const patientProfile = patients.filter((item) => {return item.email === currentUser}) 
    //console.log(patientProfile)
 
   const [termin, setTermin] = useState([])

@@ -34,11 +34,17 @@ const DProfile = (doctorProfile) => {
 
     })
 
+
+    //console.log("firstName:", firstName);
+    // const fileImage = doctorProfile.files.length > 0 ? `${URL}/img/${doctorProfile.files[0].fileName}` : profilImage;
+    //const fileImage = profilImage;
+
    if(avatar) {
     const avatarSplit = avatar.split('\\')
     const avatarFindName =avatarSplit[avatarSplit.length-1]
     fileImage = `${URL}/img/${id}-${avatarFindName}`
    }
+
 
 
     const handleInputChange = (field, value) => {
@@ -82,6 +88,9 @@ const DProfile = (doctorProfile) => {
         postData("files", formData2);
 
     }
+
+
+    //console.log("DProfile:",doctorProfile);
 
     return (
         
