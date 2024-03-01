@@ -57,7 +57,7 @@ const Events = ({selectedDate}) => {
       }, [])
 
   return (
-    <div className='flex flex-col justify-center items-center overflow-scroll'>
+    <div className='flex flex-col justify-center items-center overflow-scroll px-2'>
 
             {
                 todayEventsOfThisDoctor.length ? 
@@ -72,9 +72,9 @@ const Events = ({selectedDate}) => {
                             {
                                 todayEventsOfThisDoctor.map((eve, index) => {
                                     return <tr key={index}>
-                                        <td className='border-2 border-[#6f48eb]'>{eve.hour}</td>
-                                        <td className='border-2 border-[#6f48eb]'>{eve.note}</td>
-                                        <td className='border-2 border-[#6f48eb] flex justify-evenly items-center'>
+                                        <td className='border-2 border-[#38638D]'>{eve.hour}</td>
+                                        <td className='border-2 border-[#38638D]'>{eve.note}</td>
+                                        <td className='border-2 border-[#38638D] flex justify-evenly items-center'>
                                             <button onClick={()=>handleEventDelete(eve.id)} className='hover:scale-[1.05] duration-150'>
                                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6 text-red-600">
                                                     <path d="M3.375 3C2.339 3 1.5 3.84 1.5 4.875v.75c0 1.036.84 1.875 1.875 1.875h17.25c1.035 0 1.875-.84 1.875-1.875v-.75C22.5 3.839 21.66 3 20.625 3H3.375Z" />
@@ -96,7 +96,7 @@ const Events = ({selectedDate}) => {
                             }
                         </tbody>
                     </table>
-                    <table className='mt-14 text-center w-[30vw] mx-auto'>
+                    <table className='mt-14 text-center w-[25vw] mx-auto'>
                         <tbody>    
                             <tr className='text-center text-xl font-bold py-3'>
                                 <td colSpan='4'>
@@ -106,10 +106,10 @@ const Events = ({selectedDate}) => {
                             {
                                 eventsOfThisDoctor.map((eve, index) => {
                                     return <tr key={index}>
-                                        <td className='border-2 border-[#6f48eb]'>{eve.day}</td>
-                                        <td className='border-2 border-[#6f48eb]'>{eve.hour}</td>
-                                        <td className='border-2 border-[#6f48eb]'>{eve.note}</td>
-                                        <td className='border-2 border-[#6f48eb] flex justify-evenly items-center'>
+                                        <td className='border-2 border-[#38638D]'>{eve.day}</td>
+                                        <td className='border-2 border-[#38638D]'>{eve.hour}</td>
+                                        <td className='border-2 border-[#38638D]'>{eve.note}</td>
+                                        <td className='border-2 border-[#38638D] flex justify-evenly items-center'>
                                             <button onClick={()=>handleEventDelete(eve.id)} className='hover:scale-[1.05] duration-150'>
                                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6 text-red-600">
                                               <path d="M3.375 3C2.339 3 1.5 3.84 1.5 4.875v.75c0 1.036.84 1.875 1.875 1.875h17.25c1.035 0 1.875-.84 1.875-1.875v-.75C22.5 3.839 21.66 3 20.625 3H3.375Z" />
@@ -145,7 +145,7 @@ const Events = ({selectedDate}) => {
                            
                     </tbody>
                     </table>
-                    <table className='mt-14 w-[30vw] text-center mx-auto'>
+                    <table className='mt-14 w-[28vw] text-center mx-auto'>
                         <tbody>
                     <tr className='text-center text-lg font-bold py-3'>
                         <td colSpan='4'>
@@ -155,10 +155,10 @@ const Events = ({selectedDate}) => {
                         {
                             eventsOfThisDoctor.map((eve, index) => {
                                 return <tr key={index}>
-                                    <td className='border-2 border-[#6f48eb]'>{eve.day}</td>
-                                    <td className='border-2 border-[#6f48eb]'>{eve.hour}</td>
-                                    <td className='border-2 border-[#6f48eb]'>{eve.note}</td>
-                                    <td className='border-2 border-[#6f48eb] flex justify-evenly items-center'>
+                                    <td className='border-2 border-[#38638D]'>{eve.day}</td>
+                                    <td className='border-2 border-[#38638D]'>{eve.hour}</td>
+                                    <td className='border-2 border-[#38638D]'>{eve.note}</td>
+                                    <td className='border-2 border-[#38638D] flex justify-evenly items-center'>
                                         <button onClick={()=>handleEventDelete(eve.id)} className='hover:scale-[1.05] duration-150'>
                                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6 text-red-600">
                                               <path d="M3.375 3C2.339 3 1.5 3.84 1.5 4.875v.75c0 1.036.84 1.875 1.875 1.875h17.25c1.035 0 1.875-.84 1.875-1.875v-.75C22.5 3.839 21.66 3 20.625 3H3.375Z" />

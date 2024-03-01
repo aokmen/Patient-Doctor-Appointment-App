@@ -1,15 +1,15 @@
 "use strict"
 
-// Complaint Controller:
+// Service Controller:
 
-const Complaint = require('../models/complaint')
+const Service = require('../models/service')
 
 module.exports = {
 
     list: async (req, res) => {
         /*
-            #swagger.tags = ["Complaints"]
-            #swagger.summary = "List Complaints"
+            #swagger.tags = ["Services"]
+            #swagger.summary = "List Services"
             #swagger.description = `
                 You can send query with endpoint for search[], sort[], page and limit.
                 <ul> Examples:
@@ -20,11 +20,11 @@ module.exports = {
             `
         */
 
-        const data = await res.getModelList(Complaint)
+        const data = await res.getModelList(Service)
 
         // res.status(200).send({
         //     error: false,
-        //     details: await res.getModelListDetails(Complaint),
+        //     details: await res.getModelListDetails(Service),
         //     data
         // })
         
@@ -34,16 +34,16 @@ module.exports = {
 
     create: async (req, res) => {
         /*
-            #swagger.tags = ["Complaints"]
-            #swagger.summary = "Create Complaint"
+            #swagger.tags = ["Services"]
+            #swagger.summary = "Create Service"
             #swagger.parameters['body'] = {
                 in: 'body',
                 required: true,
-                schema: { $ref: '#/definitions/Complaint' }
+                schema: { $ref: '#/definitions/Service' }
             }
         */
 
-        const data = await Complaint.create(req.body)
+        const data = await Service.create(req.body)
 
         res.status(201).send({
             error: false,
@@ -53,11 +53,11 @@ module.exports = {
 
     read: async (req, res) => {
         /*
-            #swagger.tags = ["Complaints"]
-            #swagger.summary = "Get Single Complaint"
+            #swagger.tags = ["Services"]
+            #swagger.summary = "Get Single Service"
         */
 
-        const data = await Complaint.findOne({ _id: req.params.id })
+        const data = await Service.findOne({ _id: req.params.id })
 
         res.status(200).send({
             error: false,
@@ -67,31 +67,31 @@ module.exports = {
 
     update: async (req, res) => {
         /*
-            #swagger.tags = ["Complaints"]
-            #swagger.summary = "Update Complaint"
+            #swagger.tags = ["Services"]
+            #swagger.summary = "Update Service"
             #swagger.parameters['body'] = {
                 in: 'body',
                 required: true,
-                schema: { $ref: '#/definitions/Complaint' }
+                schema: { $ref: '#/definitions/Service' }
             }
         */
 
-        const data = await Complaint.updateOne({ _id: req.params.id }, req.body, { runValidators: true })
+        const data = await Service.updateOne({ _id: req.params.id }, req.body, { runValidators: true })
 
         res.status(202).send({
             error: false,
             data,
-            new: await Complaint.findOne({ _id: req.params.id })
+            new: await Service.findOne({ _id: req.params.id })
         })
     },
 
     delete: async (req, res) => {
         /*
-            #swagger.tags = ["Complaints"]
-            #swagger.summary = "Delete Complaint"
+            #swagger.tags = ["Services"]
+            #swagger.summary = "Delete Service"
         */
 
-        const data = await Complaint.deleteOne({ _id: req.params.id })
+        const data = await Service.deleteOne({ _id: req.params.id })
 
         res.status(data.deletedCount ? 204 : 404).send({
             error: !data.deletedCount,

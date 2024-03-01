@@ -2,22 +2,22 @@
 
 const router = require('express').Router()
 /* ------------------------------------------------------- */
-// routes/complaint:
+// routes/service:
 
 //const permissions = require('../middlewares/permissions')
-const complaint = require('../controllers/complaint')
+const service = require('../controllers/service')
 
-// URL: /complaints
+// URL: /services
 
 router.route('/')
-    .get(complaint.list)
-    .post(complaint.create)
+    .get(service.list)
+    .post(service.create)
 
 router.route('/:id')
-    .get(complaint.read)
-    .put(complaint.update)
-    .patch(complaint.update)
-    .delete(complaint.delete)
+    .get(service.read)
+    .put(service.update)
+    .patch(service.update)
+    .delete(service.delete)
 
 /* ------------------------------------------------------- */
 module.exports = router

@@ -107,12 +107,13 @@ const DoctorSchema = new mongoose.Schema({
         type: String,
         trim: true
     },
-    complaints: [{            
-        type: String
-    }],
     messages: [{            
         type: mongoose.Schema.Types.ObjectId,
         ref:'Message'
+    }],
+    services: [{            
+        type: mongoose.Schema.Types.ObjectId,
+        ref:'Service'
     }],
     appointments:[{
         type: mongoose.Schema.Types.ObjectId,
