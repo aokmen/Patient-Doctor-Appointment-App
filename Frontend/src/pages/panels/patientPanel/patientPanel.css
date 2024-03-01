@@ -35,10 +35,8 @@
 }
 
 .p-main-content-section-box {
-    background-color: white;
     height: 92%;
     width: 90%;
     border-radius: 26px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.199);
     overflow: hidden;
 }

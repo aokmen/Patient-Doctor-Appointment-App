@@ -8,7 +8,7 @@ import profilImage from "../../../../assets/profil_image2.png"
 
 const DProfile = (doctorProfile) => {
     const { putData, postData } = useDataCall()
-    const { id, avatar, firstName, lastName, email, birthDate, gender, street, zipCode, cityName, title, phone, branch, languages, website, about, complaints, doc } = doctorProfile
+    const { id, avatar, firstName, lastName, email, birthDate, gender, street, zipCode, cityName, title, phone, branch, languages, website, about, services, doc } = doctorProfile
     const [file, setFile] = useState(null)
     const [secondFile, setSecondFile] = useState(null);
     const URL = process.env.REACT_APP_BASE_URL
@@ -29,7 +29,7 @@ const DProfile = (doctorProfile) => {
         languages: languages || "",
         website: website || "",
         about: about || "",
-        complaints: complaints || "",
+        services: services || "",
         doc: doc || "",
 
     })
@@ -94,7 +94,7 @@ const DProfile = (doctorProfile) => {
 
     return (
         
-        <div className="d-profile-panel-person-main mt-5">
+        <div className="d-profile-panel-person-main">
 
             <div className="processbar">
 
@@ -232,8 +232,8 @@ const DProfile = (doctorProfile) => {
                         <div className="d-profile-panel-person-profile3">
                             <div className="d-profile-panel-person--left person3">
                                 <div className="p-input p-input3-1">
-                                    <label className="d-profile-panel-p-label" htmlFor="p-input14">Symptome</label>
-                                    <textarea required name="" id="dr-textarea-complaints" cols="50" rows="10" placeholder="z.B. Altersbedingte Makuladegeneration AMD, Augenschmerzen, Diabetische Retinopathie, Grüner Star / Glaukom, Kurzsichtigkeit / Myopie, Katarakt, Laser bei Nachsta" defaultValue={complaints} onChange={(e) => handleInputChange("complaints", e.target.value)}>
+                                    <label className="d-profile-panel-p-label" htmlFor="p-input14">Leistungsspektrum</label>
+                                    <textarea required name="" id="dr-textarea-complaints" cols="50" rows="10" placeholder="z.B. Altersbedingte Makuladegeneration AMD, Augenschmerzen, Diabetische Retinopathie, Grüner Star / Glaukom, Kurzsichtigkeit / Myopie, Katarakt, Laser bei Nachsta" defaultValue={services} onChange={(e) => handleInputChange("services", e.target.value)}>
                                     </textarea>
                                 </div>
                                 <div className="p-input p-input3-2">

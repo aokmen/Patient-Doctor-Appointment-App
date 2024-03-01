@@ -1,27 +1,36 @@
 import React, { useEffect} from 'react'
 import useDataCall from '../../../../hooks/useDataCall'
+import { useSelector } from 'react-redux';
 
 const ShowDays = ({name, appointmentDuration, startHour, finishHour, lunchStart, lunchFinish, doctor_id, id}) => {
 
 
 
-    const {getData, delData} = useDataCall()
+    // const { appointments } = useSelector((state) => state.data);
+    const { getData, delData } = useDataCall()
+    // const { userId } = useSelector((state) => state.auth);
+
+    // useEffect(() => {
+    //   getData("doctors");
+    //   // eslint-disable-next-line react-hooks/exhaustive-deps
+    // }, []);
+    
+    // let allAppointmentsThisDoctor = appointments.filter((item) => {
+    //   return item.doctorId === userId;
+    // });
+    // let receivedAppThisDoctor = allAppointmentsThisDoctor.filter((app) => {
+    //   return app.patientId;
+    // });
+    // console.log(receivedAppThisDoctor)
 
 
     useEffect(() => {
         getData("weekdays")
 
-        // let relatedDay = days.filter((day) => {return day.nm === result.name})
-        // console.log(days)
-
         
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
-    //console.log(days)
-
-    // const handleDeleteWeekday = (id) => {
-    //     delData("weekdays", id)
-    // }
+    
   return (
     <div className='flex justify-center items-center w-full'>
             
@@ -70,8 +79,17 @@ const ShowDays = ({name, appointmentDuration, startHour, finishHour, lunchStart,
                         <p>{appointmentDuration} Min</p>
                     </div>
                 </div>
-            </div>
-            <button className='md:w-[10rem] md:h-[3rem] bg-red-600 rounded-xl text-white mt-5 hover:bg-red-500 duration-150' onClick={()=>delData("weekdays", id)}>LÖSCHEN</button>
+              </div>
+              {/* {
+                  receivedAppThisDoctor.length !== 0 ?   //!Burasi normalde calisiyor ama istersen silemeyecek sekilde düzeltirsin
+                      <div className=''>
+                          <button disabled className='md:w-[10rem] md:h-[3rem] bg-red-600 rounded-xl text-white mt-5' onClick={() => delData("weekdays", id)}>LÖSCHEN</button>
+                          <p className='text-red-600'>Bevor Sie Ihre Termine löschen, müssen Sie alle vereinbarten Termine stornieren.</p>
+                      </div>
+                      : */}
+                      <button className='md:w-[10rem] md:h-[3rem] bg-red-600 rounded-xl text-white mt-5 hover:bg-red-500 duration-150' onClick={()=>delData("weekdays", id)}>LÖSCHEN</button>
+              {/* } */}
+            
         </div>
     </div>
   )

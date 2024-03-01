@@ -31,18 +31,18 @@ const PatientInfo = ({patient, todayAppsThisDoctor}) => {
                         <h1 className='text-lg'>{patient.phone} </h1>
                     </div>
                     {
-                        termin[0].isCancelled && <h1 className='absolute text-5xl text-red-600 font-bold opacity-50'>STORNIERT</h1>
+                        termin[0]?.isCancelled && <h1 className='absolute text-5xl text-red-600 font-bold opacity-50'>STORNIERT</h1>
                     }
                 </div>
                     {
-                            termin[0].isCancelled ? 
+                            termin[0]?.isCancelled ? 
                                 <div>
                                     {
-                                        termin[0].cancelUserType === "patient" ? 
+                                        termin[0]?.cancelUserType === "patient" ? 
                                             <h1 className='text-red-600 mt-10 text-lg font-bold'>Termin ist von dem Patient/der Patientin storniert worden.</h1>
                                         :
                                             (
-                                                termin[0].cancelUserType === "admin" ?
+                                                termin[0]?.cancelUserType === "admin" ?
                                                     <h1 className='text-red-600 mt-10 text-lg font-bold'>Termin ist von Website Admin storniert worden.</h1>
                                                 :
                                                     <h1 className='text-red-600 mt-10 text-lg font-bold'>Termin ist von Ihnen storniert worden.</h1>
