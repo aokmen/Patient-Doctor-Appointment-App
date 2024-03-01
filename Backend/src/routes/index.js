@@ -26,8 +26,8 @@ router.use('/contents', require('./content'))
 // branch:
 router.use('/branches', require('./branch'))
 
-// complaint:
-router.use('/complaints', require('./complaint'))
+// service:
+router.use('/services', require('./service'))
 
 // doctor:
 router.use('/doctors', require('./doctor'))

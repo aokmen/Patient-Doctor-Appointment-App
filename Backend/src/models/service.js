@@ -5,9 +5,9 @@ const { mongoose } = require('../configs/dbConnection')
 /* ------------------------------------------------------- *
 
 /* ------------------------------------------------------- */
-// Complaint Model:
+// Service Model:
 
-const ComplaintSchema = new mongoose.Schema({
+const ServiceSchema = new mongoose.Schema({
 
     name: {
         type: String,
@@ -15,14 +15,14 @@ const ComplaintSchema = new mongoose.Schema({
         required: true
     },
     
-}, { collection: 'complaints', timestamps: true })
+}, { collection: 'services', timestamps: true })
 
 
 // FOR REACT PROJECT:
-ComplaintSchema.pre('init', function (data) {
+ServiceSchema.pre('init', function (data) {
 
     data.id = data._id
     data.createds = data.createdAt.toLocaleDateString('de-de')
 })
 /* ------------------------------------------------------- */
-module.exports = mongoose.model('Complaint', ComplaintSchema)
+module.exports = mongoose.model('Service', ServiceSchema)
