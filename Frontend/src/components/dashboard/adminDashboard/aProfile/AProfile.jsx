@@ -10,8 +10,8 @@ const AProfile = ({ id, firstName, lastName, email, avatar }) => {
     const { putData, postData } = useDataCall()
     const [file, setFile] = useState(null)
     const URL = process.env.REACT_APP_BASE_URL
-    let fileImage = profilImage
-    console.log("id:", id);
+    const fileImage = `${URL}/img/${id.slice(-15)}.jpg`
+
     const patientProfileRef = useRef({
 
         firstName: firstName,
@@ -19,13 +19,8 @@ const AProfile = ({ id, firstName, lastName, email, avatar }) => {
         avatar: avatar,
 
     })
-
-
-    if (avatar) {
-        const avatarSplit = avatar.split('\\')
-        const avatarFindName = avatarSplit[avatarSplit.length - 1]
-        fileImage = `${URL}/img/${id}-${avatarFindName}`
-    }
+  
+   
 
     const handleInputChange = (field, value) => {
         patientProfileRef.current = {
@@ -41,9 +36,6 @@ const AProfile = ({ id, firstName, lastName, email, avatar }) => {
         setFile(e.target.files[0]);
         handleInputChange("avatar", e.target.value)
     }
-    useEffect(() => {
-
-    }, [file])
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -56,6 +48,7 @@ const AProfile = ({ id, firstName, lastName, email, avatar }) => {
         formData.append('userId', id);
         // Her bir dosya için ayrı ayrı postData işlemi yapılıyor
         postData("files", formData);
+        window.location.reload();
     }
     return (
 
@@ -73,7 +66,7 @@ const AProfile = ({ id, firstName, lastName, email, avatar }) => {
                             <div className="a-panel-person--left">
                                 <div className="a-p-input a-panel-main--profil-image">
                                     <div className="a-p-input-image">
-                                        <img src={fileImage} alt="profilImage" />
+                                        <img src={fileImage || profilImage} alt="profilImage" />
                                     </div>
 
                                     <div className="a-panel-p-profil-img">

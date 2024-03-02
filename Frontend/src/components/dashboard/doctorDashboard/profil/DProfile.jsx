@@ -40,11 +40,8 @@ const DProfile = (doctorProfile) => {
     //const fileImage = profilImage;
 
    if(avatar) {
-    const avatarSplit = avatar.split('\\')
-    const avatarFindName =avatarSplit[avatarSplit.length-1]
-    fileImage = `${URL}/img/${id}-${avatarFindName}`
+    fileImage = `${URL}/img/${id.slice(-15)}.jpg`
    }
-
 
 
     const handleInputChange = (field, value) => {
@@ -60,9 +57,7 @@ const DProfile = (doctorProfile) => {
         handleInputChange("avatar", e.target.value)
   
     }
-    useEffect(() => {
 
-    }, [file])
 
     const handleSecondFileChange = (e) => {
         setSecondFile(e.target.files[0]);
@@ -86,7 +81,7 @@ const DProfile = (doctorProfile) => {
         // Her bir dosya için ayrı ayrı postData işlemi yapılıyor
         postData("files", formData1);
         postData("files", formData2);
-
+        window.location.reload();
     }
 
 

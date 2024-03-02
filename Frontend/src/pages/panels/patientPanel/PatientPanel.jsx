@@ -8,23 +8,20 @@ import { useSelector } from "react-redux";
 
 
 const PatientPanel = () => {
-  const { getData } = useDataCall()
-  const { patients} = useSelector((state) => state.data)
-  const { currentUser } = useSelector((state) => state.auth)
+  // const { getData } = useDataCall()
+  // const { patients} = useSelector((state) => state.data)
+  const { user } = useSelector((state) => state.auth)
 
-  
-  useEffect(() => {
-    getData("patients")
-  }, [])
-
-  const patientProfile = patients?.filter((item) => (currentUser === item.email))
+  // useEffect(() => {
+  //   getData("patients")
+  // }, [])
 
   return (
 
     <>
       <div className="dashboard">
         <div className="p-panel-sidebar">
-          <Sidebar {...patientProfile[0]}/>
+          <Sidebar {...user}/>
         </div>
         <div className="p-panel-main">
           <div className="p-navbar">

@@ -24,13 +24,7 @@ const Sidebar = ({ profilePic, id, firstName, lastName }) => {
   const navigate = useNavigate();
 
   const URL = process.env.REACT_APP_BASE_URL
-  let fileImage = profil_image;
-
-  if (profilePic) {
-    const avatarSplit = profilePic.split('\\');
-    const avatarFindName = avatarSplit[avatarSplit.length - 1];
-    fileImage = `${URL}/img/${id}-${avatarFindName}`
-  }
+  const fileImage = `${URL}/img/${id.slice(-15)}.jpg`
 
   const closed = () => {
     logout();
@@ -41,7 +35,7 @@ const Sidebar = ({ profilePic, id, firstName, lastName }) => {
     <div className="sidebar-main">
       <div className="topSlide">
         <div className="top">
-        <div className="sidebar-avatar-img"><img src={fileImage} alt="profil_image" /></div> <div className="sidebar-avatar-name"><h1>{firstName} {lastName}</h1></div>
+        <div className="sidebar-avatar-img"><img src={fileImage || profil_image} alt="profil_image" /></div> <div className="sidebar-avatar-name"><h1>{firstName} {lastName}</h1></div>
         </div>
 
       </div>

@@ -1,5 +1,5 @@
 import { fetchFail, fetchStart, getDataSuccess } from "../features/dataSlice";
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import useAxios from "./useAxios";
 
 const url = process.env.REACT_APP_BASE_URL
@@ -7,7 +7,7 @@ const url = process.env.REACT_APP_BASE_URL
 const useDataCall = () => {
     const dispatch = useDispatch()
     const {axiosWithToken} = useAxios()
-
+    const {userId} = useSelector(state=>state.auth)
     /* -------------------------------------------------------------------------- */
     /*                             Get Data with Axios                            */
     /* -------------------------------------------------------------------------- */
@@ -31,7 +31,8 @@ const useDataCall = () => {
         dispatch(fetchStart())
         try {
             const { data } = await axiosWithToken(`/${url}/${userId}`)
-            dispatch(getDataSuccess({ data: data?.data?.appointments, url: "appointments" }))
+            if(url==="appointments") dispatch(getDataSuccess({ data: data?.data?.appointments, url: "appointments" }))
+            else dispatch(getDataSuccess({ data:data?.data, url }))
             //console.log(data)
         } catch (error) {
             dispatch(fetchFail())
@@ -47,7 +48,8 @@ const useDataCall = () => {
         dispatch(fetchStart())
         try {
             await axiosWithToken.post(`/${url}/`, info)
-            getData(url)
+            if(url!=="messages") getData(url)
+            else getSingleData(url,userId)
         } catch (error) {
             dispatch(fetchFail())
             console.log(error);

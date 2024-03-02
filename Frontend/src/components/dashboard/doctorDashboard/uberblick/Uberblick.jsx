@@ -109,7 +109,7 @@ const handleDateSelect = async (value) => {
 
   return (
     
-    <div className='px-14 py-10 h-[100vh] w-[87vw]'>
+    <div className=' h-[100vh] w-[87vw]'>
     <div className='flex rounded-3xl'>
         <div className='flex flex-col w-[27%] bg-white max-h-[86vh] min-h-[86vh] overflow-scroll rounded-l-3xl border-r-[1.9rem] border-[#F1F7FE]'>
             <div className='min-h-[10vh] text-4xl font-bold flex justify-center items-center border-b-8 border-[#38638D]'>

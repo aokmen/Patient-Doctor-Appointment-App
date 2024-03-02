@@ -11,13 +11,12 @@ import axios from 'axios';
 
 const ApprovalForm = (doctorProfile) => {
     const { putData, getData, postData } = useDataCall()
-    const { branches, files } = useSelector((state) => state.data)
     const { id, avatar, doc, firstName, lastName, email, birthDate, gender, street, zipCode, cityName, title, phone, branch, languages, website, about, complaints } = doctorProfile
     const [count, setCount] = useState(0)
     const [file, setFile] = useState(null)
     const [secondFile, setSecondFile] = useState(null);
     const URL = process.env.REACT_APP_BASE_URL
-    let fileImage = profilImage;
+   
     useEffect(() => {
         getData("branches")
     }, [])
@@ -40,12 +39,8 @@ const ApprovalForm = (doctorProfile) => {
         complaints: complaints || "",
         doc: doc || "",
     })
-    if (avatar) {
+    const fileImage = `${URL}/img/${id.slice(-15)}.jpg`
 
-    const avatarSplit =avatar.split('\\')
-    const avatarFindName =avatarSplit[avatarSplit.length-1]
-    fileImage = `${URL}/img/${id}-${avatarFindName}`
-    }
     const handleInputChange = (field, value) => {
         doctorProfileRef.current = {
             ...doctorProfileRef.current,
@@ -97,7 +92,7 @@ const ApprovalForm = (doctorProfile) => {
                             <div className="dpanel-person--left">
                                 <div className="p-input dpanel-main--profil-image">
                                     <div className="p-input-image">
-                                        <img src={fileImage} alt="profilImage" />
+                                        <img src={fileImage || profilImage} alt="profilImage" />
 
                                     </div>
                                     {/* <input  className="dpanel-p-input" type="text" name='p-input1' placeholder='Profilbild hochladen' /> */}

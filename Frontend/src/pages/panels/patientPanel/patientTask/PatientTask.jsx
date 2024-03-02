@@ -16,7 +16,7 @@ const PatientTask = () => {
 
   const patientProfile = patients?.filter((item) => currentUser === item.email);
   return (
-    <div className="flex justify-between mt-3 ">
+    <div className="flex justify-between mx-auto">
       <PTask {...patientProfile[0]} />
       <PNote {...patientProfile[0]} />
     </div>

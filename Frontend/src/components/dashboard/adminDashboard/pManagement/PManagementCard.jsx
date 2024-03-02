@@ -20,9 +20,7 @@ const PManagementCard = ({ id,profilePic, firstName, lastName, cityName, street,
   let fileImage = profileImg;
 
   if(profilePic) {
-    const avatarSplit = profilePic.split('\\')
-    const avatarFindName =avatarSplit[avatarSplit.length-1]
-    fileImage = `${URL}/img/${id}-${avatarFindName}`
+    fileImage = `${URL}/img/${id.slice(-15)}.jpg`
    }
 
   return (

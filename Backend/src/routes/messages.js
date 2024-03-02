@@ -10,6 +10,14 @@ const permissions = require('../middlewares/permissions');
 router.route('/')
     .get(messages.list)
     .post( messages.create);
+// 1.Yol
+// query
+// "/?patientId=34324234"
+
+// 2.Yol
+// router.route('/patient/:patientId')
+//     .get(messages.list)
+//req.params.patientId
 
 router.route('/:id')
     .get(messages.read)

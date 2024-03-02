@@ -3,14 +3,17 @@ import useDataCall from '../../../../hooks/useDataCall';
 
 import "./pProfile.css"
 import profilImage from "../../../../assets/profil_image2.png"
+import successImg from "../../../../assets/success.png"
+import { useSelector } from 'react-redux';
+import axios from 'axios';
 
 
 const PProfile = (patientProfile) => {
     const { putData, postData } = useDataCall()
+
     const { id, firstName, lastName, email, birthDate, gender, street, zipCode, cityName, phone, profilePic} = patientProfile
     const [file, setFile] = useState(null)
     const URL = process.env.REACT_APP_BASE_URL
-    let fileImage = profilImage
 
     const patientProfileRef = useRef({
 
@@ -25,12 +28,9 @@ const PProfile = (patientProfile) => {
 
     })
      
-    if(profilePic) {
-        const avatarSplit = profilePic.split('\\')
-        const avatarFindName = avatarSplit[avatarSplit.length-1]
-        fileImage = `${URL}/img/${id}-${avatarFindName}`
-    }
-
+     const fileImage = `${URL}/img/${id.slice(-15)}.jpg`
+  
+   
 
     const handleInputChange = (field, value) => {
         patientProfileRef.current = {
@@ -38,15 +38,15 @@ const PProfile = (patientProfile) => {
             [field]: value
         }
     }
-
+    // const handleFileChange = (e) => {
+    //     setFile(e.target.files[0])
+    //     console.log("file:",file);
+    // }
     const handleFileChange = (e) => {
         setFile(e.target.files[0]);
         handleInputChange("profilePic", e.target.value)
     }
-    useEffect(() => {
-
-    }, [file])
-
+ 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -58,6 +58,9 @@ const PProfile = (patientProfile) => {
         formData.append('userId', id);
          // Her bir dosya için ayrı ayrı postData işlemi yapılıyor
         postData("files", formData);
+        console.log("file:",file);
+        console.log("fileImage:",fileImage);
+        window.location.reload();
     }
     return (
         <div className="p-panel-person-main">
@@ -74,7 +77,7 @@ const PProfile = (patientProfile) => {
                             <div className="p-panel-person--left">
                                 <div className="p-p-input p-panel-main--profil-image">
                                     <div className="p-p-input-image">
-                                        <img src={fileImage} alt="profilImage" />
+                                        <img src={fileImage || profilImage} alt="profilImage" />
                                     </div>
                                     {/* <input  className="p-panel-p-p-input" type="text" name='p-p-input1' placeholder='Profilbild hochladen' /> */}
                                     <div className="p-panel-p-profil-img">
