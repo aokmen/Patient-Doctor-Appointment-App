@@ -25,6 +25,10 @@ const NoteSchema = new mongoose.Schema({
         trim: true,
         required: true
     },
+    isCompleted: {
+        type: Boolean,
+        default: false
+    },
     
 }, { collection: 'notes', timestamps: true })
 
