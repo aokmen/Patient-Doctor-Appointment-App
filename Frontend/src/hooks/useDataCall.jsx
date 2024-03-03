@@ -32,7 +32,8 @@ const useDataCall = () => {
         dispatch(fetchStart())
         try {
             const { data } = await axiosWithToken(`/${url}/${userId}`)
-            dispatch(getDataSuccess({ data: data?.data?.appointments, url: "appointments" }))
+            if(url==="appointments") dispatch(getDataSuccess({ data: data?.data?.appointments, url: "appointments" }))
+            else dispatch(getDataSuccess({ data:data?.data, url }))
             //console.log(data)
         } catch (error) {
             dispatch(fetchFail())
