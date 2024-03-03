@@ -7,7 +7,8 @@ const url = process.env.REACT_APP_BASE_URL
 const useDataCall = () => {
     const dispatch = useDispatch()
     const {axiosWithToken} = useAxios()
-
+    const {userId} = useSelector(state=>state.auth)
+    
     /* -------------------------------------------------------------------------- */
     /*                             Get Data with Axios                            */
     /* -------------------------------------------------------------------------- */
