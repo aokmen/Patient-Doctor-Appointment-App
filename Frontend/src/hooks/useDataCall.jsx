@@ -8,6 +8,10 @@ const useDataCall = () => {
     const dispatch = useDispatch()
     const {axiosWithToken} = useAxios()
     const {userId} = useSelector(state=>state.auth)
+<<<<<<< HEAD
+=======
+    
+>>>>>>> 99f84edbc2c3d45fad745189347163ed9f6d8543
     /* -------------------------------------------------------------------------- */
     /*                             Get Data with Axios                            */
     /* -------------------------------------------------------------------------- */

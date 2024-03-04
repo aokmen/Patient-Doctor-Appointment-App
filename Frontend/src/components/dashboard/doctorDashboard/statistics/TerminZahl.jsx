@@ -32,56 +32,18 @@ const TerminZahl = ({appoOfthisDoctor}) => {
 
   const dateToday = new Date().toISOString()
   const datumHeute = dateToday.toLocaleString().slice(0,10)
-  const dateDeparted = Number(datumHeute.split("-")[2])
-  //console.log(dateDeparted - 7)
 
   //******************************************************************************************* */
 
-  let oneWeekBefore = ""
-  
-  if (dateDeparted <= 7) {
-    const month = parseInt(datumHeute.split("-")[1]);
-    const year = parseInt(datumHeute.split("-")[0]);
-    const dayOfMonth = parseInt(datumHeute.split("-")[2]);
+  function getDateOneWeekBefore() {
+    var today = new Date();
+    var oneWeekBefore = new Date(today);
+    oneWeekBefore.setDate(oneWeekBefore.getDate() - 7);
+    return oneWeekBefore.toISOString().split("T")[0];
+  }
 
-    let daysInMonth;
-    switch (month) {
-        case 1:
-        case 3:
-        case 5:
-        case 7:
-        case 8:
-        case 10:
-        case 12:
-            daysInMonth = 31;
-            break;
-        case 4:
-        case 6:
-        case 9:
-        case 11:
-            daysInMonth = 30;
-            break;
-        case 2:
-            daysInMonth = year % 4 === 0 && (year % 100 !== 0 || year % 400 === 0) ? 29 : 28;
-            break;
-        default:
-            daysInMonth = 0;
-    }
+  //console.log(getDateOneWeekBefore());
 
-    const daysBack = dateDeparted - 1;
-    const daysToSubtract = daysBack >= dayOfMonth ? daysBack - dayOfMonth : 0;
-    const newDay = dayOfMonth - daysToSubtract;
-    const newMonth = daysToSubtract === 0 ? month : month === 1 ? 12 : month - 1;
-    const newYear = newMonth === 12 ? year - 1 : year;
-
-    oneWeekBefore = `${newYear}-${newMonth.toString().padStart(2, '0')}-${newDay.toString().padStart(2, '0')}`;
-} else {
-    const daysAgo = dateDeparted - 7;
-    oneWeekBefore = `${datumHeute.split("-")[0]}-${datumHeute.split("-")[1]}-${daysAgo}`;
-}
-
-    
-  //console.log(oneWeekBefore)
 //****************************************************************************************************** */
 
 const currentDate = new Date();
@@ -103,10 +65,10 @@ const previousMonthDate = daysInPreviousMonth >= currentDay
 
   let todayApps = appoOfthisDoctor.filter((item) => {return item.date === datumHeute})
   //console.log(todayApps)
-  let AppsThisWeek = appoOfthisDoctor.filter((item) => {return item.date <= datumHeute && item.date > oneWeekBefore })
+  let AppsThisWeek = appoOfthisDoctor.filter((item) => {return item.date <= datumHeute && item.date > getDateOneWeekBefore(); })
   //console.log(AppsThisWeek)
   let AppsThisMonth = appoOfthisDoctor.filter((item) => {return item.date <= datumHeute && item.date > previousMonthDate })
-  //console.log(AppsThisWeek)
+  //console.log(AppsThisMonth)
 
   let relevantPatients = []
   let relevantPatientsWeekly = []

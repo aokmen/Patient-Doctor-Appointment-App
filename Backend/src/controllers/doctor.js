@@ -20,7 +20,7 @@ module.exports = {
             `
         */
 
-        const data = await res.getModelList(Doctor, {}, ["branchId", "cityId", "complaints"])
+        const data = await res.getModelList(Doctor, {}, ["branchId", "cityId", "services"])
     
         // res.status(200).send({
         //     error: false,
@@ -62,7 +62,11 @@ module.exports = {
         */
 
 
+<<<<<<< HEAD
         const data = await Doctor.findOne({ _id: req.params.id }).populate(["branchId", "cityId", "complaints","files", "appointments","messages"])
+=======
+        const data = await Doctor.findOne({ _id: req.params.id }).populate(["branchId", "cityId", "services","files", "appointments"])
+>>>>>>> 99f84edbc2c3d45fad745189347163ed9f6d8543
 
         // .populate({
         //     path: 'files',

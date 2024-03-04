@@ -36,10 +36,9 @@ const AppointmentSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Patient'
     },
-    complaints: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Complaint',
-    }],
+    complaints: {
+        type: String,
+    },
     insurance: {
         type: String,
         enum: insurance,

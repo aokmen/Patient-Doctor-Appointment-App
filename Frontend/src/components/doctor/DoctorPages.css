@@ -22,19 +22,19 @@
 a.view-profile:hover{
     color: #B7D8F8;
 }
-.sypmtoms{
+.services{
     background-color: #B7D8F8;
     padding: 1rem;
     box-shadow: 0px 3px 7px lightgray;
 }
-.symptom-buttons{
+.service-buttons{
     padding: 0.5rem 1rem;
     background-color: #38638D;
     color: white;
     border-radius: 10px;
     margin: .5rem 1rem;
 }
-.symptoms-title{
+.services-title{
     margin: 1rem 0 0 0;
     color: #38638D;
 }

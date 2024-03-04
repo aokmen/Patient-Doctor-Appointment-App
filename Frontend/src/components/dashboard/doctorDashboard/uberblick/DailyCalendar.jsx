@@ -31,7 +31,10 @@ const DailyCalendar = ({todayAppsThisDoctor, dateToday, setPatient}) => {
         
       </table>
       :
-      <h1>Heute haben Sie keine Termine.</h1>
+      <div className='flex justify-center'>
+        <h1>Heute haben Sie keine Termine.</h1>
+      </div>
+      
       }
       
 
