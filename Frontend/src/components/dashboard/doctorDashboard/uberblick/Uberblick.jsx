@@ -119,29 +119,7 @@ const Uberblick = () => {
   //console.log(todayAppoThisDoctor)
 
   return (
-<<<<<<< HEAD
-    
-    <div className=' h-[100vh] w-[87vw]'>
-    <div className='flex rounded-3xl'>
-        <div className='flex flex-col w-[27%] bg-white max-h-[86vh] min-h-[86vh] overflow-scroll rounded-l-3xl border-r-[1.9rem] border-[#F1F7FE]'>
-            <div className='min-h-[10vh] text-4xl font-bold flex justify-center items-center border-b-8 border-[#38638D]'>
-                <h1 className='text-[#38638D]'>Überblick</h1>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-10 h-10 ml-5 text-[#38638D]">
-                   <path fillRule="evenodd" d="M13.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 0 1-1.06-1.06L11.69 12 4.72 5.03a.75.75 0 0 1 1.06-1.06l7.5 7.5Z" clipRule="evenodd" />
-                    <path fillRule="evenodd" d="M19.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 1 1-1.06-1.06L17.69 12l-6.97-6.97a.75.75 0 0 1 1.06-1.06l7.5 7.5Z" clipRule="evenodd" />
-                </svg>
-            </div>
-            <div className='flex flex-col justify-center items-center border-b-4 border-[#38638D] mx-auto'>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-12 h-12 text-[#38638D] mt-4">
-                    <path d="M12.75 12.75a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM7.5 15.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5ZM8.25 17.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM9.75 15.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5ZM10.5 17.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM12 15.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5ZM12.75 17.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM14.25 15.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5ZM15 17.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM16.5 15.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5ZM15 12.75a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM16.5 13.5a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Z" />
-                    <path fillRule="evenodd" d="M6.75 2.25A.75.75 0 0 1 7.5 3v1.5h9V3A.75.75 0 0 1 18 3v1.5h.75a3 3 0 0 1 3 3v11.25a3 3 0 0 1-3 3H5.25a3 3 0 0 1-3-3V7.5a3 3 0 0 1 3-3H6V3a.75.75 0 0 1 .75-.75Zm13.5 9a1.5 1.5 0 0 0-1.5-1.5H5.25a1.5 1.5 0 0 0-1.5 1.5v7.5a1.5 1.5 0 0 0 1.5 1.5h13.5a1.5 1.5 0 0 0 1.5-1.5v-7.5Z" clipRule="evenodd" />
-                </svg>
-                <h2 className='text-3xl text-[#38638D] my-4'>Heutige Termine</h2>
-            </div>
-            <div className='mt-8'>
-                <DailyCalendar todayAppsThisDoctor={todayAppsThisDoctor} dateToday={dateToday} setPatient={setPatient}/> 
-            </div>
-=======
+
     <div className="h-[100vh] w-[87vw]">
       <div className="flex rounded-3xl">
         <div className="flex flex-col w-[27%] bg-white max-h-[86vh] min-h-[86vh] overflow-scroll rounded-l-3xl border-r-[1.9rem] border-[#F1F7FE]">
@@ -188,7 +166,7 @@ const Uberblick = () => {
               setPatient={setPatient}
             />
           </div>
->>>>>>> 99f84edbc2c3d45fad745189347163ed9f6d8543
+
         </div>
         <div className="flex flex-row gap-8 w-[73%]">
           <div className="flex flex-col max-w-[35rem]">
