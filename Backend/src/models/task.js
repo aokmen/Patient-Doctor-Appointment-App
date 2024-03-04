@@ -24,6 +24,14 @@ const TaskSchema = new mongoose.Schema(
       trim: true,
       required: true,
     },
+<<<<<<< HEAD
+=======
+    isCompleted: {
+        type: Boolean,
+        default: false
+    },
+}, { collection: 'tasks', timestamps: true })
+>>>>>>> 99f84edbc2c3d45fad745189347163ed9f6d8543
 
     isCompleted: {
       type: Boolean,
@@ -39,4 +47,8 @@ TaskSchema.pre("init", function (data) {
   data.createds = data.createdAt.toLocaleDateString("de-de");
 });
 /* ------------------------------------------------------- */
+<<<<<<< HEAD
 module.exports = mongoose.model("Task", TaskSchema);
+=======
+module.exports = mongoose.model('Task', TaskSchema)
+>>>>>>> 99f84edbc2c3d45fad745189347163ed9f6d8543

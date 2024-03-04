@@ -3,7 +3,7 @@
 /* -------------------------------------------------------------------------- */
 .d-profile-panel-person-main{
 
-    height: 90vh;
+    height: 100vh;
     overflow: scroll;
 }
 
@@ -19,7 +19,7 @@
 .d-profile-panel-main-right--content{
     background-color: white;
     height: 150vh;
-    width: 90%;
+    width: 100%;
     border-radius: 26px;
 
 }

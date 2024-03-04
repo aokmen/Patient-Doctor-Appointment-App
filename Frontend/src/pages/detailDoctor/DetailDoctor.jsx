@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
-import Sidebar from '../../components/doctor/Sidebar'
-import Symptom from '../../components/doctor/Symptom'
+import Sidebar from '../../components/dashboard/patientDashboard/sidebar/Sidebar'
+import Services from '../../components/doctor/Services'
 import DoctorProfil from '../../components/doctor/ProfilDoctor'
 import AppointmentCalendar from '../../components/doctor/AppointmentCalendar'
 import AboutDoctor from '../../components/doctor/AboutDoctor'
@@ -31,7 +31,7 @@ const DetailDoctor = () => {
       !thisDoctor?.length ? <Loading/> : (
         <div className="grid grid-rows-5 grid-cols-8 w-100">
           <div className="row-span-5 col-span-1"><Sidebar/></div>
-          <div className="row-span-1 col-span-7"><Symptom {...thisDoctor[0]}/></div>
+          <div className="row-span-1 col-span-7 max-w-[88vw] ml-3"><Services {...thisDoctor[0]}/></div>
           <div className="row-span-4 col-span-2"><DoctorProfil {...thisDoctor[0]}/></div>
           <div className="row-span-4 col-span-3"><AppointmentCalendar {...thisDoctor[0]}/></div>
           <div className="row-span-4 col-span-2"><AboutDoctor {...thisDoctor[0]}/></div>

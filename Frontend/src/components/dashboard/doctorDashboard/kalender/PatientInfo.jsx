@@ -24,7 +24,7 @@ const PatientInfo = ({patient, appsThisDoctor, appsThisDoctorSelectedDate, selec
     const [showModal, setShowModal] = React.useState(false);
 
   return (
-    <div className='flex flex-col justify-center items-center'>
+    <div className='flex ml-4 flex-col justify-center items-center max-w-[22rem] text-center'>
         {
             !appsThisDoctorSelectedDate.length ? 
             <div className='w-[23rem] text-center'>

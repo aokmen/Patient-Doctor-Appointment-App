@@ -19,9 +19,9 @@ const Statistics = () => {
         
       // eslint-disable-next-line react-hooks/exhaustive-deps
       }, [])
-    console.log(appointments)
+    //console.log(appointments)
   return (
-    <div className='px-14 py-10 h-[100vh] w-[87vw]'>
+    <div className='h-[100vh] w-[87vw]'>
         <div className="flex  max-h-[86vh] min-h-[86vh]">
             <div className="flex flex-col max-h-[86vh] min-h-[86vh]  max-w-[26vw] min-w-[26vw]">
                 <div className="border-b-[1.9rem] border-[#F1F7FE] max-h-[50vh] min-h-[50vh] bg-white rounded-tl-3xl text-center">

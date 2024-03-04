@@ -54,74 +54,74 @@ module.exports = async function () {
     })
     
 
-    /* Complaint */
-    const Complaint = require('../models/complaint')
-    await Complaint.deleteMany() // !!! Clear collection.
-    await Complaint.create({
+    /* Service */
+    const Service = require('../models/service')
+    await Service.deleteMany() // !!! Clear collection.
+    await Service.create({
         "_id": "65343222b67e9681f937f201",
         "name": "Augenschmerzen",
     })
-    await Complaint.create({
+    await Service.create({
         "_id": "65343222b67e9681f937f202",
         "name": "Zahnschmerzen",
     })
-    await Complaint.create({
+    await Service.create({
         "_id": "65343222b67e9681f937f203",
         "name": "Beinschmerzen",
     })
-    // await Complaint.create({
+    // await Service.create({
     //     "_id": "65343222b67e9681f937f204",
     //     "name": "Ohrenschmerzen",
     // })
-    // await Complaint.create({
+    // await Service.create({
     //     "_id": "65343222b67e9681f937f205",
     //     "name": "Rückenschmerzen",
     // })
-    // await Complaint.create({
+    // await Service.create({
     //     "_id": "65343222b67e9681f937f206",
     //     "name": "Nierenschmerzen",
     // })
-    // await Complaint.create({
+    // await Service.create({
     //     "_id": "65343222b67e9681f937f207",
     //     "name": "Husten",
     // })
-    // await Complaint.create({
+    // await Service.create({
     //     "_id": "65343222b67e9681f937f208",
     //     "name": "Machtlosigkeit",
     // })
-    // await Complaint.create({
+    // await Service.create({
     //     "_id": "65343222b67e9681f937f209",
     //     "name": "Schwitzen",
     // })
-    // await Complaint.create({
+    // await Service.create({
     //     "_id": "65343222b67e9681f937f210",
     //     "name": "Kopfschmerzen",
     // })
-    // await Complaint.create({
+    // await Service.create({
     //     "_id": "65343222b67e9681f937f211",
     //     "name": "Zittern",
     // })
-    // await Complaint.create({
+    // await Service.create({
     //     "_id": "65343222b67e9681f937f212",
     //     "name": "Herzklopfen",
     // })
-    // await Complaint.create({
+    // await Service.create({
     //     "_id": "65343222b67e9681f937f213",
     //     "name": "Erkältung",
     // })
-    // await Complaint.create({
+    // await Service.create({
     //     "_id": "65343222b67e9681f937f214",
     //     "name": "Schnupfen",
     // })
-    // await Complaint.create({
+    // await Service.create({
     //     "_id": "65343222b67e9681f937f215",
     //     "name": "Fieber",
     // })
-    // await Complaint.create({
+    // await Service.create({
     //     "_id": "65343222b67e9681f937f216",
     //     "name": "Bluthochdruck",
     // })
-    // await Complaint.create({
+    // await Service.create({
     //     "_id": "65343222b67e9681f937f217",
     //     "name": "Schwindelgefühl",
     // })
@@ -397,7 +397,7 @@ module.exports = async function () {
     //     "b5343222b67e9685f937f219",
     //     "b5343222b67e9685f937f220"
      ]
-    const complaintIds = [
+    const serviceIds = [
         "65343222b67e9681f937f201",
         "65343222b67e9681f937f202",
         "65343222b67e9681f937f203",
@@ -433,7 +433,7 @@ module.exports = async function () {
 
     for(let k = 0; k < cityIds.length; k++) {
         for(let i = 0; i < branchIds.length; i++){
-            for(let j = 0; j < complaintIds.length; j++){
+            for(let j = 0; j < serviceIds.length; j++){
                 Doctor.create({
                     //id: branchIds[i] + i,
                     branchId: branchIds[i],
@@ -451,7 +451,7 @@ module.exports = async function () {
                     phone: "+099879777878",
                     birthDate: "1970-08-23",
                     gender: genders[j],
-                    complaints: [complaintIds[j]]
+                    services: [serviceIds[j]]
                 }).then((doctor) => {
                     Patient.create({
                         //id: value[0] + i,
