@@ -75,7 +75,11 @@ const PatientSchema = new mongoose.Schema({
     messageCount: {
         type: Number,
         default: 0
-    }
+    },
+    isChecked: {
+        type: Boolean,
+        default: true,
+    },
     
 }, { collection: 'patients', timestamps: true })
 
