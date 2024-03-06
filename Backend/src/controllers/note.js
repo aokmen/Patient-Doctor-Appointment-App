@@ -57,7 +57,7 @@ module.exports = {
             #swagger.summary = "Get Single Note"
         */
 
-        const data = await Note.findOne({ _id: req.params.id })
+        const data = await Note.find({ userId: req.params.id })
 
         res.status(200).send({
             error: false,

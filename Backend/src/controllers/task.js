@@ -57,7 +57,7 @@ module.exports = {
             #swagger.summary = "Get Single Task"
         */
 
-        const data = await Task.findOne({ _id: req.params.id })
+        const data = await Task.find({ userId: req.params.id })
 
         res.status(200).send({
             error: false,
