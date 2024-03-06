@@ -42,6 +42,8 @@ const LastMessagePatient = ({ setPatientInfo }) => {
                     const patientClassName = findPatient?.isChecked ? "p-d-last-message" : "isChecked";
                    console.log(findPatient);
                         const imgPatient = findPatient?.profilePic && `${URL}/img/${findPatient?.id.slice(-15)}.jpg`
+                        const messagesReverse= messages.slice().reverse()
+                        const lastDate = messagesReverse.find(item => item.senderUserId === findPatient?.id || item.receiverUserId === findPatient?.id)
                         return (
                             findPatient && (
                             <div onClick={() => handleClick(findPatient)} key={i} className={patientClassName}>
@@ -50,7 +52,7 @@ const LastMessagePatient = ({ setPatientInfo }) => {
                                 </div>
                                 <div className="p-d-last-message-info">
                                     <h1 className='font-bold'>{findPatient.firstName} {findPatient.lastName}</h1>
-                                    <p>Letzte Nachricht 14.Februar 2024</p>
+                                    <p>{lastDate.updatedAt.split('T')[0]} -- {lastDate.updatedAt.split('T')[1].substring(0, 8)}</p>
                                 </div>
                             </div>
                             )

@@ -136,7 +136,7 @@ const PMessage = ({ patientProfile }) => {
 
                                                 <div className="p-message-main-show-date-box-right">
                                                     <img src={okIcon} alt="okIcon-right" />
-                                                    <p className="p-message-date-right">{item.createdAt.split('T')[0]}&nbsp; &nbsp; {item.createdAt.split('T')[1].substring(0, 8)}
+                                                    <p className="p-message-date">{item.createdAt.split('T')[0]}&nbsp; &nbsp; {item.createdAt.split('T')[1].substring(0, 8)}
                                                     </p>
 
                                                 </div>

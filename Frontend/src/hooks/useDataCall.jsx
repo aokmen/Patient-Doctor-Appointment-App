@@ -34,6 +34,7 @@ const useDataCall = () => {
             if(url==="appointments") dispatch(getDataSuccess({ data: data?.data?.appointments, url: "appointments" }))
             else dispatch(getDataSuccess({ data:data?.data, url }))
             //console.log(data)
+
         } catch (error) {
             dispatch(fetchFail())
             console.log(error);
@@ -48,8 +49,8 @@ const useDataCall = () => {
         dispatch(fetchStart())
         try {
             await axiosWithToken.post(`/${url}/`, info)
-            if(url!=="messages") getData(url)
-            else getSingleData(url,userId)
+            if(url==="tasks" || url==="messages" || url==="notes") getSingleData(url,userId)
+            else getData(url)
         } catch (error) {
             dispatch(fetchFail())
             console.log(error);
@@ -64,7 +65,8 @@ const useDataCall = () => {
         dispatch(fetchStart())
         try {
             await axiosWithToken.put(`/${url}/${id}`, info)
-            getData(url)
+            if(url==="tasks" || url==="notes") getSingleData(url,id)
+            else getData(url)
         } catch (error) {
             dispatch(fetchFail())
             console.log(error);
@@ -80,7 +82,9 @@ const useDataCall = () => {
         dispatch(fetchStart())
         try {
             await axiosWithToken.delete(`/${url}/${id}`)
-            getData(url)
+            if(url==="tasks" || url==="notes") getSingleData(url,id)
+            else getData(url)
+
         } catch (error) {
             dispatch(fetchFail())
             console.log(error);

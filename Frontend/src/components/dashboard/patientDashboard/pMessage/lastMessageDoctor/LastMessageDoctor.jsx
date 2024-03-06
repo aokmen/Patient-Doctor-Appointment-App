@@ -43,7 +43,8 @@ return (
                 const findDoctor = doctors?.data?.find(item => item.id === element);
                 const doctorClassName = findDoctor?.isChecked ? "p-d-last-message" : "isChecked";
                 const imgSrc =  findDoctor?.avatar && `${URL}/img/${findDoctor?.id.slice(-15)}.jpg`
-
+                const messagesReverse = messages.slice().reverse()
+                const lastDate = messagesReverse.find(item => item.senderUserId === findDoctor?.id || item.receiverUserId === findDoctor?.id)
                 return (
                     findDoctor && (
                         <div onClick={() => handleClick(findDoctor)} key={i} className={doctorClassName}>
@@ -52,7 +53,7 @@ return (
                             </div>
                             <div className="p-d-last-message-info">
                                 <h1 className='font-bold'>{findDoctor.title} {findDoctor.firstName} {findDoctor.lastName}</h1>
-                                <p>Letzte Nachricht 14.Februar 2024</p>
+                                <p>{lastDate.updatedAt.split('T')[0]} -- {lastDate.updatedAt.split('T')[1].substring(0, 8)}</p>
                             </div>
                         </div>
                     )

@@ -25,6 +25,7 @@ const TaskSchema = new mongoose.Schema(
       required: true,
     },
 
+
     isCompleted: {
       type: Boolean,
       default: false,
@@ -39,4 +40,5 @@ TaskSchema.pre("init", function (data) {
   data.createds = data.createdAt.toLocaleDateString("de-de");
 });
 /* ------------------------------------------------------- */
+
 module.exports = mongoose.model("Task", TaskSchema);
