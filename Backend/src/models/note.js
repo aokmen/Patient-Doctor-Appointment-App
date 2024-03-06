@@ -25,14 +25,12 @@ const NoteSchema = new mongoose.Schema(
       required: true,
     },
     isCompleted: {
-
-        type: Boolean,
-        default: false
+      type: Boolean,
+      default: false,
     },
-    
-}, { collection: 'notes', timestamps: true })
-
-
+  },
+  { collection: "notes", timestamps: true }
+);
 
 // FOR REACT PROJECT:
 NoteSchema.pre("init", function (data) {
@@ -40,5 +38,4 @@ NoteSchema.pre("init", function (data) {
   data.createds = data.createdAt.toLocaleDateString("de-de");
 });
 /* ------------------------------------------------------- */
-
 module.exports = mongoose.model("Note", NoteSchema);

@@ -107,13 +107,12 @@ const DoctorSchema = new mongoose.Schema({
         type: String,
         trim: true
     },
+    complaints: [{            
+        type: String
+    }],
     messages: [{            
         type: mongoose.Schema.Types.ObjectId,
         ref:'Message'
-    }],
-    services: [{            
-        type: mongoose.Schema.Types.ObjectId,
-        ref:'Service'
     }],
     appointments:[{
         type: mongoose.Schema.Types.ObjectId,
@@ -126,10 +125,6 @@ const DoctorSchema = new mongoose.Schema({
     messageCount: {
         type: Number,
         default: 0
-    },
-    isChecked: {
-        type: Boolean,
-        default: true,
     }
     
 }, { collection: 'doctors', timestamps: true })
