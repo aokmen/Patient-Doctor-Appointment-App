@@ -16,7 +16,6 @@ const PatientMessage = () => {
     getSingleData("messages",userId)
     // getData("messages?patientId=23423423")
   }, [])
-console.log("messages:",messages);
 
   return (
     <div><PMessage 

@@ -10,8 +10,13 @@ import "../../../doctor/ReactCalendar.css";
 import Clock from "./Clock.jsx";
 
 const Uberblick = () => {
+
+  const { userId } = useSelector((state) => state.auth);
+  const { appointments } = useSelector((state) => state.data);
+  const { getData } = useDataCall();
   const [patient, setPatient] = useState("");
   const [holidayArray, setHolidayArray] = useState([]);
+  
   let dayData = [];
 
   const [holidays, setHolidays] = useState([]);
@@ -19,30 +24,28 @@ const Uberblick = () => {
   const dateToday = new Date().toISOString();
   //console.log(dateToday)
 
-  const { appointments } = useSelector((state) => state.data);
-  const { getData } = useDataCall();
+
 
   //console.log(appointments)
 
-  const { doctors } = useSelector((state) => state.data);
-  const { currentUser, userId } = useSelector((state) => state.auth);
 
   useEffect(() => {
     getData("doctors");
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const doctorProfile = doctors?.data.filter(
-    (item) => currentUser === item.email
-  );
-  let doctor_id = doctorProfile[0].id;
+  // const doctorProfile = doctors?.data.filter(
+  //   (item) => currentUser === item.email
+  // );
+  // let doctor_id = doctorProfile[0].id;
   //console.log(doctor_id)
 
   let todayApps = appointments.filter((item) => {
     return item.date === dateToday.split("T")[0];
   });
   let todayAppsThisDoctor = todayApps.filter((item) => {
-    return item.doctorId === doctor_id;
+    // return item.doctorId === doctor_id;
+    return item.doctorId === userId;
   });
 
   let allAppointmentsThisDoctor = appointments.filter((item) => {

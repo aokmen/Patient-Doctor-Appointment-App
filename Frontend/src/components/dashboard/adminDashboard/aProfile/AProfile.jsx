@@ -10,7 +10,7 @@ const AProfile = ({ id, firstName, lastName, email, avatar }) => {
     const { putData, postData } = useDataCall()
     const [file, setFile] = useState(null)
     const URL = process.env.REACT_APP_BASE_URL
-    const fileImage = `${URL}/img/${id.slice(-15)}.jpg`
+    let fileImage = profilImage
 
     const patientProfileRef = useRef({
 
@@ -19,7 +19,10 @@ const AProfile = ({ id, firstName, lastName, email, avatar }) => {
         avatar: avatar,
 
     })
-  
+
+    if(avatar) {
+        fileImage = `${URL}/img/${id.slice(-15)}.jpg`
+       }
    
 
     const handleInputChange = (field, value) => {
@@ -66,7 +69,7 @@ const AProfile = ({ id, firstName, lastName, email, avatar }) => {
                             <div className="a-panel-person--left">
                                 <div className="a-p-input a-panel-main--profil-image">
                                     <div className="a-p-input-image">
-                                        <img src={fileImage || profilImage} alt="profilImage" />
+                                        <img src={fileImage} alt="profilImage" />
                                     </div>
 
                                     <div className="a-panel-p-profil-img">

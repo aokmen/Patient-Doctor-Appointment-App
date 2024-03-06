@@ -13,17 +13,11 @@ const Kalender = () => {
 
     const {appointments} = useSelector((state)=>state.data)
     const {getData} = useDataCall()
-
-    const { doctors } = useSelector((state) => state.data)
-    const { currentUser } = useSelector((state) => state.auth)
+    const {  userId } = useSelector((state) => state.auth)
   
-    useEffect(() => {
-      getData("doctors")
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
   
-     const doctorProfile = doctors?.data.filter((item) => (currentUser === item.email)) 
-     let doctor_id = doctorProfile[0].id
+    
+     let doctor_id = userId
 
     const dateToday = new Date().toISOString()
 

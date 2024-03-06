@@ -13,7 +13,7 @@ const MessageFindDoctor = ({id, street, title, firstName, lastName, zipCode, bra
       id:id,
       title:title,
       firstName:firstName,
-      lastName:lastName
+      lastName:lastName,
     })
   };
 
