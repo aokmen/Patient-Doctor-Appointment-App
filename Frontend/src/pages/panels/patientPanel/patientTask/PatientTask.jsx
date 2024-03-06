@@ -6,19 +6,18 @@ import PTask from "../../../../components/dashboard/patientDashboard/pTask/PTask
 import PNote from "../../../../components/dashboard/patientDashboard/pNote/PNote";
 
 const PatientTask = () => {
-  const { getData } = useDataCall();
-  const { patients } = useSelector((state) => state.data);
-  const { currentUser } = useSelector((state) => state.auth);
+  const { getSingleData} = useDataCall();
+  const { userId } = useSelector((state) => state.auth)
 
   useEffect(() => {
-    getData("patients");
+    getSingleData("tasks",userId);
+    getSingleData("notes",userId);
   }, []);
-
-  const patientProfile = patients?.filter((item) => currentUser === item.email);
+  
   return (
     <div className="flex justify-between mx-auto">
-      <PTask {...patientProfile[0]} />
-      <PNote {...patientProfile[0]} />
+      <PTask />
+      <PNote />
     </div>
   );
 };

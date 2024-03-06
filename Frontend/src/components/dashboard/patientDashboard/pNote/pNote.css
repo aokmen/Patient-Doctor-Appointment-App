@@ -1,0 +1,16 @@
+.note-main-add{
+    overflow-y: scroll;
+    height: 532px;
+    width: 680px;
+}
+
+.note-main-add::-webkit-scrollbar {
+
+    width: 10px;
+}
+
+.note-main-add::-webkit-scrollbar-thumb {
+
+    background: #d9e4f0
+}
+
