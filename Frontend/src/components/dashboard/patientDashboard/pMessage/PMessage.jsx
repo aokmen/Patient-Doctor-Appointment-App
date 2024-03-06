@@ -14,32 +14,17 @@ import LastMessageDoctor from './lastMessageDoctor/LastMessageDoctor';
 const PMessage = ({ patientProfile }) => {
     const { loading, messages, doctors } = useSelector((state) => state.data);
     const { userId } = useSelector((state) => state.auth);
-    let messageAvatar, messageAvatar2 = avatar
-    const { postData } = useDataCall();
+  
+    const { postData,putData } = useDataCall();
     const URL = process.env.REACT_APP_BASE_URL
     const [filteredDoctors, setfilteredDoctors] = useState([])
     const [doctorInfo, setDoctorInfo] = useState({})
     let patientId = ""
+   
+    const messageAvatar = patientProfile.id && `${URL}/img/${(patientProfile?.id).slice(-15)}.jpg`
+    const messageAvatar2 = doctorInfo.id && `${URL}/img/${doctorInfo?.id.slice(-15)}.jpg`;
 
-    /* -------------------------------------------------------------------------- */
-    /*                     Accessing the doctor's profile icon                    */
-    /* -------------------------------------------------------------------------- */
-
-    if (doctors?.data && doctors?.data.length > 0 && doctorInfo && doctorInfo.id) {
-        const doctorProfile = doctors?.data?.filter(item => item.id === doctorInfo.id)
-        messageAvatar2 = `${URL}/img/${doctorProfile[0].id.slice(-15)}.jpg`;
-
-    }
-
-
-    /* -------------------------------------------------------------------------- */
-    /*                   Accessing the patient's profile icon                     */
-    /* -------------------------------------------------------------------------- */
-
-
-        messageAvatar = `${URL}/img/${(patientProfile.id).slice(-15)}.jpg`;
     
-
     const messageRef = useRef({
         content: ""
     });
@@ -103,6 +88,8 @@ const PMessage = ({ patientProfile }) => {
         messageContainerRef.current.scrollTop = messageContainerRef.current.scrollHeight;
         messageInputRef.current.value = "";
         messageRef.current.content = "";
+
+        putData("patients", userId, { isChecked: false })     
     };
 
     const messageContainerRef = useRef(null);
@@ -114,7 +101,7 @@ const PMessage = ({ patientProfile }) => {
         if (messageContainerRef.current) {
             messageContainerRef.current.scrollTop = messageContainerRef.current.scrollHeight;
         }
-    }, [messages]);
+    }, [messages, doctorInfo]);
 
     return (
 
@@ -131,7 +118,7 @@ const PMessage = ({ patientProfile }) => {
                                     <div className="p-message-main-show-left">
                                         <p className="p-message-main-content">{item.content}</p>
                                         <div className="p-message-main-show-box">
-                                            <div className="p-message-main-show-img-box"><img src={messageAvatar} alt="" /></div>
+                                            <div className="p-message-main-show-img-box"><img src={messageAvatar || avatar} alt="" /></div>
                                             <div className="p-message-main-show-date-box">
                                                 <p className="p-message-date">{item.createdAt.split('T')[0]}&nbsp; &nbsp; {item.createdAt.split('T')[1].substring(0, 8)}
                                                 </p>
@@ -153,7 +140,7 @@ const PMessage = ({ patientProfile }) => {
                                                     </p>
 
                                                 </div>
-                                                <div className="p-message-main-show-img-box-right"><img src={messageAvatar2} alt="" /></div>
+                                                <div className="p-message-main-show-img-box-right"><img src={messageAvatar2 || avatar} alt="" /></div>
                                             </div>
                                         </div>
                                     </div>

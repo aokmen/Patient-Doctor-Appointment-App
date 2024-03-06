@@ -15,28 +15,18 @@ const DMessage = ({ doctorProfile}) => {
     const { loading, messages, patients } = useSelector((state) => state.data);
     const { userId } = useSelector((state) => state.auth);
 
-    let messageAvatar, messageAvatar2 = avatar
-    const { postData } = useDataCall();
+
+    const { postData,putData } = useDataCall();
     const URL = process.env.REACT_APP_BASE_URL
     const [filteredPatients, setfilteredPatients] = useState([])
     const [patientInfo, setPatientInfo] = useState("")
     let doctorId = ""
 
-    /* -------------------------------------------------------------------------- */
-    /*                     Accessing the patient's profile icon                    */
-    /* -------------------------------------------------------------------------- */
 
-    if (patientInfo && patientInfo?.length > 0) {
-      
-        messageAvatar2 = `${URL}/img/${patientInfo.id.slice(-15)}.jpg`;
-       
-    }
 
-    /* -------------------------------------------------------------------------- */
-    /*                   Accessing the doctor's profile icon                     */
-    /* -------------------------------------------------------------------------- */
-
-        messageAvatar = `${URL}/img/${doctorProfile.id.slice(-15)}.jpg`;
+    const messageAvatar = doctorProfile.id && `${URL}/img/${doctorProfile.id.slice(-15)}.jpg`; 
+    const messageAvatar2 = patientInfo.id && `${URL}/img/${patientInfo.id.slice(-15)}.jpg`;
+     
 
 
     const messageRef = useRef({
@@ -48,15 +38,16 @@ const DMessage = ({ doctorProfile}) => {
     const handleSearch = (e) => {
         e.preventDefault();
         const filteredResults = patients.filter((patient) => {
-            // Önce patient nesnesinin tanımlı olduğunu kontrol edin
-            if (!patient) return false;
+            // Önce patient nesnesinin tanımlı olduğunu ve firstName özelliğinin var olduğunu kontrol edin
+            if (!patient || !patient.firstName) return false;
     
-            // Şimdi diğer özellikleri kontrol edin
-            const NameMatch = patient.firstName.toLowerCase().includes(searchpatientRef.current.name?.toLowerCase()) || patient.lastName.toLowerCase().includes(searchpatientRef.current.name?.toLowerCase()) || ""
+            // Diğer özellikleri kontrol edin ve arama kriterlerine göre filtreleyin
+            const nameMatch = patient.firstName.toLowerCase().includes(searchpatientRef.current.name?.toLowerCase()) || 
+                              patient.lastName.toLowerCase().includes(searchpatientRef.current.name?.toLowerCase());
     
-            return (NameMatch);
+            return nameMatch;
         });
-        setfilteredPatients(filteredResults)
+        setfilteredPatients(filteredResults);
     }
 
     /* ----------------------------- searchpatientRef ---------------------------- */
@@ -99,7 +90,7 @@ const DMessage = ({ doctorProfile}) => {
         // Scrolling the scrollbar to the bottom after sending data
         messageContainerRef.current.scrollTop = messageContainerRef.current.scrollHeight;
         messageInputRef.current.value = "";
-
+        putData("doctors", userId, { isChecked: false }) 
     };
 
     const messageContainerRef = useRef(null);
@@ -111,7 +102,7 @@ const DMessage = ({ doctorProfile}) => {
         if (messageContainerRef.current) {
             messageContainerRef.current.scrollTop = messageContainerRef.current.scrollHeight;
         }
-    }, [messages]);
+    }, [messages,patientInfo]);
 
     return (
 
@@ -128,7 +119,7 @@ const DMessage = ({ doctorProfile}) => {
                                     <div className="p-message-main-show-left">
                                         <p className="p-message-main-content">{item.content}</p>
                                         <div className="p-message-main-show-box">
-                                            <div className="p-message-main-show-img-box"><img src={messageAvatar} alt="" /></div>
+                                            <div className="p-message-main-show-img-box"><img src={messageAvatar || avatar} alt="" /></div>
                                             <div className="p-message-main-show-date-box">
                                                 <p className="p-message-date">{item.createdAt.split('T')[0]}&nbsp; &nbsp; {item.createdAt.split('T')[1].substring(0, 8)}
                                                 </p>
@@ -137,7 +128,7 @@ const DMessage = ({ doctorProfile}) => {
                                         </div>
                                     </div>
                                     : null}
-                            {item.senderUserId === patientInfo.id && item.receiverUserId === patientInfo.id ?
+                            {item.senderUserId === patientInfo.id && item.receiverUserId === userId ?
                                 <>
                                     <div className="p-message-main-show-right-main">
                                         <div className="p-message-main-show-right">
@@ -150,7 +141,7 @@ const DMessage = ({ doctorProfile}) => {
                                                     </p>
 
                                                 </div>
-                                                <div className="p-message-main-show-img-box-right"><img src={messageAvatar2} alt="" /></div>
+                                                <div className="p-message-main-show-img-box-right"><img src={messageAvatar2 || avatar} alt="" /></div>
                                             </div>
                                         </div>
                                     </div>
