@@ -8,13 +8,16 @@ import { useSelector } from "react-redux";
 
 
 const PatientPanel = () => {
-  // const { getData } = useDataCall()
-  // const { patients} = useSelector((state) => state.data)
-  const { user } = useSelector((state) => state.auth)
 
-  // useEffect(() => {
-  //   getData("patients")
-  // }, [])
+
+  const { user, userId} = useSelector((state) => state.auth)
+  const {getData, getSingleData} = useDataCall()
+
+  useEffect(() => {
+    getData("patients")
+    getData("doctors")
+    getSingleData("messages",userId)
+  }, [])
 
   return (
 
