@@ -15,7 +15,7 @@ router.route('/')
 
 router.route('/:id')
     .get( patient.read)
-    .put(permissions.isAdminOrPatient, patient.update)
+    .put(patient.update)
     .patch(permissions.isAdminOrPatient, patient.update)
     .delete(permissions.isAdminOrPatient, patient.delete)
 
