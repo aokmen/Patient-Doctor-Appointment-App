@@ -6,26 +6,16 @@ import { useSelector } from 'react-redux'
 
 const DoctorProfile = () => {
 
+  const { user } = useSelector((state) => state.auth)
 
-  const { getData } = useDataCall()
-  const { doctors } = useSelector((state) => state.data)
-  const { currentUser } = useSelector((state) => state.auth)
-
-  useEffect(() => {
-    getData("doctors")
-  }, [])
-
-   const doctorProfile = doctors?.data.filter((item) => (currentUser === item.email)) 
-
-
-
+  
   return (
      <>
-      {doctorProfile ?
+
         <div>
-          <DProfile {...doctorProfile[0]}/>
+          <DProfile {...user}/>
         </div>
-        : <Loading />}
+        : <Loading />
     </>
   )
 }
