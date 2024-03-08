@@ -1,5 +1,6 @@
 import React from 'react'
 import { Chart } from "react-google-charts";
+import { useSelector } from 'react-redux';
 
 
 export const options = {
@@ -20,18 +21,19 @@ export let data = [
   ]
 
 
-const CancelStats = ({appoOfthisDoctor}) => {
+const CancelStats = () => {
 
+  const { appointments } = useSelector((state) => state.data);
 
-  let receivedAppointments = appoOfthisDoctor.filter((app) => {return app.patientId})
+  let receivedAppointments = appointments.filter((app) => {return app.patientId})
   
-  let cancelledByPatient = appoOfthisDoctor.filter((app) => {return app.cancelUserType === "patient"})
+  let cancelledByPatient = appointments.filter((app) => {return app.cancelUserType === "patient"})
   let byPatient = cancelledByPatient.length
 
-  let cancelledByAdmin = appoOfthisDoctor.filter((app) => {return app.cancelUserType === "admin"})
+  let cancelledByAdmin = appointments.filter((app) => {return app.cancelUserType === "admin"})
   let byAdmin = cancelledByAdmin.length
 
-  let cancelledByDoctor = appoOfthisDoctor.filter((app) => {return app.cancelUserType === "doctor"})
+  let cancelledByDoctor = appointments.filter((app) => {return app.cancelUserType === "doctor"})
   let byDoctor = cancelledByDoctor.length
 
   let realizedAppointments = receivedAppointments.length - byPatient - byDoctor - byAdmin

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import useDataCall from "../../../../hooks/useDataCall";
 import Calendar from "react-calendar";
 import moment from "moment";
 import { getGermanHolidays } from "../../doctorDashboard/uberblick/HolidayService.js";
@@ -18,22 +17,7 @@ const Uberblick = () => {
   const dateToday = new Date().toISOString();
 
   const { appointments } = useSelector((state) => state.data);
-  const { getData, getSingleData } = useDataCall();
 
-  //const { patients } = useSelector((state) => state.data)
-  const { userId } = useSelector((state) => state.auth);
-
-  useEffect(() => {
-    getSingleData("patients", userId);
-    getData("patients");
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  //console.log(appointments)
-
-  //const patientProfile = patients.filter((item) => {return item.email === currentUser})
-  //console.log(patientProfile)
 
   const [termin, setTermin] = useState([]);
 

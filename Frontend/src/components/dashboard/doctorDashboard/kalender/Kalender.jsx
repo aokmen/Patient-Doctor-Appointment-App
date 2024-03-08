@@ -1,68 +1,77 @@
-import React, { useEffect, useState } from 'react'
-import Calendar from 'react-calendar'
-import './calendar.css'
-import { useSelector } from 'react-redux'
-import useDataCall from '../../../../hooks/useDataCall'
-import PatientInfo from './PatientInfo'
-import Events from './Events'
-import Feiertage from './Feiertage'
-import moment from 'moment'
-
+import React, { useEffect, useState } from "react";
+import Calendar from "react-calendar";
+import "./calendar.css";
+import { useSelector } from "react-redux";
+import useDataCall from "../../../../hooks/useDataCall";
+import PatientInfo from "./PatientInfo";
+import Events from "./Events";
+import Feiertage from "./Feiertage";
+import moment from "moment";
 
 const Kalender = () => {
+  const { appointments } = useSelector((state) => state.data);
+  const { getData } = useDataCall();
 
-    const {appointments} = useSelector((state)=>state.data)
-    const {getData} = useDataCall()
+  const { userId, userType } = useSelector((state) => state.auth);
 
-    const { doctors } = useSelector((state) => state.data)
-    const { currentUser } = useSelector((state) => state.auth)
-  
-    useEffect(() => {
-      getData("doctors")
+  useEffect(() => {
+    getData("doctors");
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
-  
-     const doctorProfile = doctors?.data.filter((item) => (currentUser === item.email)) 
-     let doctor_id = doctorProfile[0].id
+  }, []);
 
-    const dateToday = new Date().toISOString()
+  //  const doctorProfile = doctors?.data.filter((item) => (currentUser === item.email))
+  let doctor_id = userId;
 
-    let appsThisDoctor = appointments.filter((item) => {return item.doctorId === doctor_id})
-    let todayAppsThisDoctor = appsThisDoctor.filter((item) => {return item.date === dateToday.split('T')[0]})
+  const dateToday = new Date().toISOString();
 
-    const [appsThisDoctorSelectedDate, setAppsThisDoctorSelectedDate] = useState([])
-    const [selectedDate, setSelectedDate] = useState(dateToday.split('T')[0])
-    const [patient, setPatient] = useState("")
+  let appsThisDoctor = appointments.filter((item) => {
+    return item.doctorId === doctor_id;
+  });
+  let todayAppsThisDoctor = appsThisDoctor.filter((item) => {
+    return item.date === dateToday.split("T")[0];
+  });
 
-    const [holidayArray, setHolidayArray] = useState([])
-    let dayData = []
-    const [holidays, setHolidays] = useState([]);
+  const [appsThisDoctorSelectedDate, setAppsThisDoctorSelectedDate] = useState(
+    []
+  );
+  const [selectedDate, setSelectedDate] = useState(dateToday.split("T")[0]);
+  const [patient, setPatient] = useState("");
 
-    useEffect(() => {
+  const [holidayArray, setHolidayArray] = useState([]);
+  let dayData = [];
+  const [holidays, setHolidays] = useState([]);
 
-        getData("appointments")
-        const AppsToday = appsThisDoctor.filter((item) => {return item.date === dateToday.split('T')[0]})
-        setAppsThisDoctorSelectedDate(AppsToday)
+  useEffect(() => {
+    getData("appointments");
+    const AppsToday = appsThisDoctor.filter((item) => {
+      return item.date === dateToday.split("T")[0];
+    });
+    setAppsThisDoctorSelectedDate(AppsToday);
 
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-      }, [])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-    const handleDateSelect = async (value) => {
-  
-        const dateArray = value.toLocaleString().split(',').slice(0,1)[0].split('/')
-        const datum = dateArray[2]+"-"+dateArray[1]+"-"+dateArray[0]
-        //console.log(datum)
-        //console.log("value:",value.toLocaleString())
-        setSelectedDate(datum)
-        const AppsSelectedDate = appsThisDoctor.filter((item) => {return item.date === datum})
-        setAppsThisDoctorSelectedDate(AppsSelectedDate)
+  const handleDateSelect = async (value) => {
+    const dateArray = value
+      .toLocaleString()
+      .split(",")
+      .slice(0, 1)[0]
+      .split("/");
+    const datum = dateArray[2] + "-" + dateArray[1] + "-" + dateArray[0];
+    //console.log(datum)
+    //console.log("value:",value.toLocaleString())
+    setSelectedDate(datum);
+    const AppsSelectedDate = appsThisDoctor.filter((item) => {
+      return item.date === datum;
+    });
+    setAppsThisDoctorSelectedDate(AppsSelectedDate);
 
-        dayData = await holidays.filter((item) =>  item.date.iso === datum)
-    
-        setHolidayArray(dayData)
-    }
+    dayData = await holidays.filter((item) => item.date.iso === datum);
 
-    const [iSEventsShown, setiSEventsShown] = useState(false)
+    setHolidayArray(dayData);
+  };
+
+  const [iSEventsShown, setiSEventsShown] = useState(false);
 
   return (
     <div className="h-[100vh] w-[87vw]">
@@ -272,7 +281,11 @@ const Kalender = () => {
             ) : (
               <div className="max-h-[71vh] min-h-[71vh] py-3 mt-6 rounded-3xl flex flex-col w-[35rem] ml-[-7rem]">
                 <div className="max-h-[38vh] min-h-[38vh]">
-                  <Events selectedDate={selectedDate} />
+                  <Events
+                    selectedDate={selectedDate}
+                    userType={userType}
+                    userId={userId}
+                  />
                 </div>
               </div>
             )}
@@ -281,6 +294,6 @@ const Kalender = () => {
       </div>
     </div>
   );
-}
+};
 
-export default Kalender
+export default Kalender;

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import Sidebar from "../../../components/dashboard/patientDashboard/sidebar/Sidebar";
 import { Outlet } from "react-router-dom";
 import "./patientPanel.css";
@@ -8,23 +8,21 @@ import { useSelector } from "react-redux";
 
 
 const PatientPanel = () => {
-  const { getData } = useDataCall()
-  const { patients} = useSelector((state) => state.data)
-  const { currentUser } = useSelector((state) => state.auth)
 
-  
+  const { getData } = useDataCall();
+  const { user } = useSelector((state) => state.auth);
+
   useEffect(() => {
-    getData("patients")
-  }, [])
+    getData("patients");
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-  const patientProfile = patients?.filter((item) => (currentUser === item.email))
 
   return (
-
     <>
       <div className="dashboard">
         <div className="p-panel-sidebar">
-          <Sidebar {...patientProfile[0]}/>
+          <Sidebar {...user} />
         </div>
         <div className="p-panel-main">
           <div className="p-navbar">
@@ -39,8 +37,7 @@ const PatientPanel = () => {
           </div>
         </div>
       </div>
-      <div className="patient-profile-info">
-      </div>
+      <div className="patient-profile-info"></div>
     </>
   );
 };

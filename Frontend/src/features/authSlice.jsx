@@ -1,10 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-
 const authSlice = createSlice({
-    name:"auth",
-    initialState:{
+  name: "auth",
+  initialState: {
     currentUser: null,
+    user: {},
     loading: false,
     userId: "",
     error: false,
@@ -16,12 +16,13 @@ const authSlice = createSlice({
       state.loading = true;
       state.error = false;
     },
-    loginSuccess: (state,action) => {
+    loginSuccess: (state, action) => {
       state.loading = false;
       state.currentUser = action.payload?.user?.email;
+      state.user = action.payload?.user;
       state.userId = action.payload?.user?.id;
       state.token = action.payload?.key;
-      state.userType =action.payload?.userType
+      state.userType = action.payload?.userType;
     },
     logoutSuccess: (state) => {
       state.loading = false;
@@ -30,11 +31,16 @@ const authSlice = createSlice({
     },
     registerSuccess: (state, { payload }) => {
       state.loading = false;
-      state.currentUser = payload?.patient ? payload?.patient.email : (payload?.doctor ? payload?.doctor.email : payload?.admin.email);
+      state.currentUser = payload?.patient
+        ? payload?.patient.email
+        : payload?.doctor
+        ? payload?.doctor.email
+        : payload?.admin.email;
+      state.userId = payload?.user?.id;
+      state.user = payload?.user;
       state.token = payload?.key;
       state.error = false;
-      state.userType = payload?.userType
-
+      state.userType = payload?.userType;
     },
     fetchFail: (state) => {
       state.loading = false;
@@ -42,7 +48,7 @@ const authSlice = createSlice({
     },
   },
 });
-// export const { reducer } = authSlice; 
+// export const { reducer } = authSlice;
 // export const {
 //   fetchStart,
 //   loginSuccess,
@@ -51,7 +57,15 @@ const authSlice = createSlice({
 //   fetchFail,
 // } = authSlice.actions
 
-export const { reducer, actions: { fetchStart, loginSuccess, logoutSuccess, registerSuccess, fetchFail }} = authSlice;
+export const {
+  reducer,
+  actions: {
+    fetchStart,
+    loginSuccess,
+    logoutSuccess,
+    registerSuccess,
+    fetchFail,
+  },
+} = authSlice;
 
 export default authSlice;
-

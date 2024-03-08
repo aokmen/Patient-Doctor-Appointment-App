@@ -5,79 +5,90 @@ const { mongoose } = require('../configs/dbConnection')
 const { genders } = require('../configs/constraints')
 // Patient Model:
 
-const PatientSchema = new mongoose.Schema({
-
+const PatientSchema = new mongoose.Schema(
+  {
     email: {
-        type: String,
-        trim: true,
-        required: true,
-        unique: true,
-        index: true
+      type: String,
+      trim: true,
+      required: true,
+      unique: true,
+      index: true,
     },
     password: {
-        type: String,
-        trim: true,
-        required: true
+      type: String,
+      trim: true,
+      required: true,
     },
     firstName: {
-        type: String,
-        trim: true
+      type: String,
+      trim: true,
     },
     lastName: {
-        type: String,
-        trim: true,
+      type: String,
+      trim: true,
     },
     street: {
-        type: String,
-        trim: true,
-        required: true
+      type: String,
+      trim: true,
+      required: true,
     },
     zipCode: {
-        type: Number,
-        required: true
+      type: Number,
+      required: true,
     },
     profilePic: {
-        type: String,
+      type: String,
     },
     cityId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'City',
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "City",
     },
-    cityName:{
-        type: String,
-        trim: true
+    cityName: {
+      type: String,
+      trim: true,
     },
     phone: {
-        type: String,
-        trim: true
+      type: String,
+      trim: true,
     },
     birthDate: {
-        type: String,
-        trim: true
+      type: String,
+      trim: true,
     },
     gender: {
-        type: String,
-        enum: genders,
-        trim: true
+      type: String,
+      enum: genders,
+      trim: true,
     },
     isActive: {
-        type: Boolean,
-        default: true
+      type: Boolean,
+      default: true,
     },
-    messages: [{            
+    messages: [
+      {
         type: mongoose.Schema.Types.ObjectId,
-        ref:'Message',
-    }],
-    appointments: [{            
+        ref: "Message",
+      },
+    ],
+    events: [
+      {
         type: mongoose.Schema.Types.ObjectId,
-        ref:'Appointment',
-    }],
+        ref: "Event",
+      },
+    ],
+    appointments: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Appointment",
+      },
+    ],
     messageCount: {
-        type: Number,
-        default: 0
-    }
-    
-}, { collection: 'patients', timestamps: true })
+      type: Number,
+      default: 0,
+    },
+  },
+  { collection: "patients", timestamps: true }
+);
 
 
 const validation = require('../helpers/validation')

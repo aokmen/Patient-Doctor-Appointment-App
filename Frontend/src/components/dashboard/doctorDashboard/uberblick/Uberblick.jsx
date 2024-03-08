@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import DailyCalendar from "./DailyCalendar";
 import { useSelector } from "react-redux";
-import useDataCall from "../../../../hooks/useDataCall";
 import Calendar from "react-calendar";
 import moment from "moment";
 import { getGermanHolidays } from "./HolidayService.js";
@@ -16,39 +15,18 @@ const Uberblick = () => {
 
   const [holidays, setHolidays] = useState([]);
 
-  const dateToday = new Date().toISOString();
-  //console.log(dateToday)
+  const dateToday = moment().format("YYYY-MM-DD");
+
 
   const { appointments } = useSelector((state) => state.data);
-  const { getData } = useDataCall();
 
-  //console.log(appointments)
-
-  const { doctors } = useSelector((state) => state.data);
-  const { currentUser, userId } = useSelector((state) => state.auth);
-
-  useEffect(() => {
-    getData("doctors");
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  const doctorProfile = doctors?.data.filter(
-    (item) => currentUser === item.email
-  );
-  let doctor_id = doctorProfile[0].id;
-  //console.log(doctor_id)
 
   let todayApps = appointments.filter((item) => {
-    return item.date === dateToday.split("T")[0];
+    return item.date === dateToday;
   });
-  let todayAppsThisDoctor = todayApps.filter((item) => {
-    return item.doctorId === doctor_id;
-  });
+  //console.log(todayApps)
 
-  let allAppointmentsThisDoctor = appointments.filter((item) => {
-    return item.doctorId === userId;
-  });
-  let receivedAppThisDoctor = allAppointmentsThisDoctor.filter((app) => {
+  let receivedAppThisDoctor = appointments.filter((app) => {
     return app.patientId;
   });
 
@@ -63,8 +41,6 @@ const Uberblick = () => {
     };
 
     //fetchHolidays();
-
-    getData("appointments").then(() => getData("doctors"));
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -88,7 +64,7 @@ const Uberblick = () => {
   //console.log(holidayArray)
   //.date
 
-  let patientsArray = allAppointmentsThisDoctor.filter((item) => {
+  let patientsArray = appointments.filter((item) => {
     return item.patientId;
   });
   //console.log(patientsArray)
@@ -110,11 +86,8 @@ const Uberblick = () => {
   }
   //console.log(patientsArray2)
 
-  const datumHeute = dateToday.toLocaleString().slice(0, 10);
-  //console.log(datumHeute)
-
   const todayAppoThisDoctor = receivedAppThisDoctor.filter((element) => {
-    return element.date === datumHeute;
+    return element.date === dateToday;
   });
   //console.log(todayAppoThisDoctor)
 
@@ -160,7 +133,7 @@ const Uberblick = () => {
           </div>
           <div className="mt-8">
             <DailyCalendar
-              todayAppsThisDoctor={todayAppsThisDoctor}
+              todayAppsThisDoctor={todayApps}
               dateToday={dateToday}
               setPatient={setPatient}
             />
@@ -214,7 +187,7 @@ const Uberblick = () => {
               </div>
               <PatientInfo
                 patient={patient}
-                todayAppsThisDoctor={todayAppsThisDoctor}
+                todayAppsThisDoctor={todayApps}
               />
               </div>
                 :

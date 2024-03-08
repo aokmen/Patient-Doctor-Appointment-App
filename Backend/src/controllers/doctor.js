@@ -62,7 +62,7 @@ module.exports = {
         */
 
 
-        const data = await Doctor.findOne({ _id: req.params.id }).populate(["branchId", "cityId", "services","files", "appointments"])
+        const data = await Doctor.findOne({ _id: req.params.id }).populate(["branchId", "cityId", "services","files", "appointments", "events"])
 
         // .populate({
         //     path: 'files',
