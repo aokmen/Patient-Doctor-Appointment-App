@@ -42,7 +42,7 @@ const Header = () => {
         const profileRef = useRef()
 
         const navigation = [
-            { title: "Dashboard", onClick: () => navigate("/patient") },
+            { title: "Mein Panel", onClick: () => navigate("/patient") },
             { title: "Settings", onClick: () => navigate("/patient/profile") },
             { title: "Log out", onClick: closed },
         ]
