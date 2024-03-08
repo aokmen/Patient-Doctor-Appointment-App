@@ -13,8 +13,7 @@ const Events = ({selectedDate}) => {
     const dateToday = new Date().toISOString()
 
     const thisDoctor = doctors.data.filter((doc) => doc.id === doctor_id)
-    //console.log(thisDoctor[0])
-    //console.log(selectedDate)
+
     const eventsOfThisDoctor = events.filter((item) => {return item.doctorId === doctor_id})
 
 

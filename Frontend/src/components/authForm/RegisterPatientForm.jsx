@@ -79,8 +79,8 @@ const RegisterPatientForm = () => {
   
   
   return (
-    <div className='register-form-page h-[87vh] md:h-[88vh] md:py-11 text-center flex flex-col items-center'>
-      <div className='flex justify-center items-center mb-5 lg:mb-5'>
+    <div className='register-form-page h-[90vh] md:h-[88vh] md:py-11 text-center flex flex-col items-center'>
+      <div className='flex justify-center items-center mb-12 lg:mb-5'>
         <div className='flex justify-center items-center title-heading mr-3 rounded-md lg:rounded-lg p-2'>
           <img src={patient} alt="patientIcon" width={20} height={30}/>
           <h1 className='text-[#38638D] font-bold ml-1 md:text-lg xl:text-2xl'>Patient</h1>

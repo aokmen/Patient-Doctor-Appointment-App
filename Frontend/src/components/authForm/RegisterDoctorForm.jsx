@@ -59,25 +59,14 @@ const RegisterDoctorForm = () => {
   })
 
   const onSubmit = (data) => {
-    console.log(data)
     regDoctor(data)
   }
 
   const [isPasswordHidden, setPasswordHidden] = useState(true)
   const [isCalendarHidden, setCalendarHidden] = useState(true)
 
-   const [show, setShow] = useState(false);
-	const [selectedDate, setSelectedDate] = useState(null);
-	const handleChange = (selectedDate) => {
-		setSelectedDate(selectedDate.toISOString().slice(0,10));
-    //console.log(selectedDate.toISOString().slice(0,10))
-	};
-
-	const handleClose = (state) => {
-		setShow(state);
-	};
-  
-  
+ 
+ 
   
   return (
     <div className='register-form-page h-[90vh] md:h-[88vh] md:py-11 text-center flex flex-col items-center'>
@@ -208,9 +197,9 @@ const RegisterDoctorForm = () => {
             </svg>
             {
               isCalendarHidden ? 
-              <input type="text" {...register('birthDate')} onClick={() => setCalendarHidden(!isCalendarHidden)} className="w-full pl-[3rem] text-[#38638D] h-11 pr-3 py-2 appearance-none bg-white outline-none border focus:border-indigo-600 shadow-sm rounded-lg text-lg" placeholder="Geburtstag" onFocus={() => {setShow(true)}} /> 
+              <input type="text" {...register('birthDate')} onClick={() => setCalendarHidden(!isCalendarHidden)} className="w-full pl-[3rem] text-[#38638D] h-11 pr-3 py-2 appearance-none bg-white outline-none border focus:border-indigo-600 shadow-sm rounded-lg text-lg" placeholder="Geburtstag"/> 
               : 
-              <input type="date" {...register('birthDate')} className="w-full pl-[3rem] text-[#38638D] h-11 pr-3 py-2 appearance-none bg-white outline-none border focus:border-indigo-600 shadow-sm rounded-lg text-lg" placeholder="Geburtstag" onFocus={() => {setShow(true)}} />
+              <input type="date" {...register('birthDate')} className="w-full pl-[3rem] text-[#38638D] h-11 pr-3 py-2 appearance-none bg-white outline-none border focus:border-indigo-600 shadow-sm rounded-lg text-lg" placeholder="Geburtstag" />
             }
             
 					    

@@ -44,7 +44,6 @@ const ManageAppo = ({id}) => {
 
     const handleDateControl = (e) => {
         e.preventDefault()
-        console.log(e.target.value)
         setSecondDate(e.target.value)
         if(secondDate <= firstDate){
             setIsLaterThan(false)
@@ -57,14 +56,14 @@ const ManageAppo = ({id}) => {
     }
 
     let weekDaysThisDoctor = weekdays.filter((weekD)=>weekD.doctorId === doctor_id)
-    console.log(weekDaysThisDoctor)
+
     
 
     
 
     useEffect(() => {
         
-        console.log(weekDaysThisDoctor)
+     
         if(weekDaysThisDoctor.length === 0){
             setIsDateSelected(false)
         }
@@ -78,7 +77,7 @@ const ManageAppo = ({id}) => {
     }, [weekDaysThisDoctor])
     
     
-    console.log(isDateSelected)
+
 
     // const submitDateSelect = (e) => {
     //     e.preventDefault()

@@ -6,12 +6,11 @@ import userIcon2 from "../../assets/user2.png"
 import lock from "../../assets/lock.png"
 import doctor from "../../assets/doctor.png"
 import patient from "../../assets/patient.png"
-import { useSelector } from 'react-redux';
 
 
 const LoginForm = () => {
   // const { currentUser, token } = useSelector((state) => state.auth)
-  const {login,currentUser} = useAuthCall()
+  const {login} = useAuthCall()
   const [signIn, setSignIn] = useState({
     email: "",
     password: "",
@@ -28,19 +27,12 @@ const habdleInputChange = (field, value) => {
     e.preventDefault();
     // Add your login logic here
       login(signIn)
-      // console.log("currentUser:",currentUser);
-      // console.log("token:",token);
-      // console.log("currentUser:",currentUser);
+
   };
 
-  //Slider Button
-  const [activeButton, setActiveButton] = useState(1);
 
-  const handleLinkClick = (buttonNumber) => {
-    setActiveButton(buttonNumber);
-  };
   return (
-    <div className="lg:w-1/2 md:w-full sm:w-full order-1 lg:order-2 rounded-md flex flex-col items-center justify-center mt-5" >
+    <div className="lg:w-1/2  md:w-full sm:w-full order-1 lg:order-2 rounded-md flex flex-col items-center justify-center mt-5" >
         <div className='flex flex-col items-center justify-center lg:h-3/4 rounded-md w-full lg:w-3/4 md:w-3/5 sm:w-3/4' style={{ backgroundColor: '#38638D' }}>
           <div className="flex items-center justify-center text-center xl:mb-4 ">
             <img
@@ -106,7 +98,7 @@ const habdleInputChange = (field, value) => {
             <div className="flex justify-center items-center mb-4 mt-4 font-bold">
                 <a
                   href="#"
-                  className={`px-4 py-2 rounded-l-xl bg-[#5999D7] text-white font-bold h-[50px] flex items-center `}
+                  className={`px-4 py-2 rounded-l-xl hover:cursor-default bg-[#5999D7] text-white font-bold h-[50px] flex items-center `}
                 >
                   Jetzt Registrieren
                 </a>
@@ -119,13 +111,13 @@ const habdleInputChange = (field, value) => {
               />
                 <a
                   href="/regdoctor"
-                  className={`px-4 py-2 font-bold h-[50px] w-[100px] flex items-center justify-end ${activeButton === 1 ? 'bg-[#B7D8F8] text-gray-700' : 'bg-[#5999D7] text-white'
-                    }`}
-                  onClick={() => handleLinkClick(1)}
+                  className="px-4 py-2 font-bold h-[50px] w-[100px] flex items-center justify-end border-r-2 border-[#5999D7] bg-[#F1F7FE] text-main-dark-blue hover:bg-[#B7D8F8]"
+             
                 >
                   Arzt
                 </a>
                 </div>
+
                 <div className='relative'>
                 <img
                 src={patient}  // Replace with the path to your PNG icon
@@ -134,13 +126,17 @@ const habdleInputChange = (field, value) => {
               />
                 <a
                   href="/regpatient"
-                  className={`px-4 py-2 rounded-r-xl h-[50px] w-[120px] flex items-center justify-end ${activeButton === 2 ? 'bg-[#B7D8F8] text-gray-700' : 'bg-[#5999D7] text-white'
-                    }`}
-                  onClick={() => handleLinkClick(2)}
+                  className="px-4 py-2 font-bold h-[50px] w-[100px] flex items-center justify-end  bg-[#F1F7FE] text-main-dark-blue hover:bg-[#B7D8F8]"
                 >
                   Patient
                 </a>
                 </div>
+                <a
+                  href="#"
+                  className={`px-4 py-2 rounded-r-xl hover:cursor-default bg-[#5999D7] text-white font-bold h-[50px] flex items-center `}
+                >
+ 
+                </a>
             </div>
 
           </form>

@@ -13,6 +13,10 @@
 }
 .register-form-page{
     background-color: #38638D;
+    height: 700px !important;
+    margin-top: 80px;
+    width: 850px !important;
+    border-radius: 13px;
 }
 .register-form{
     width: 35vw;

@@ -40,7 +40,6 @@ const LastMessagePatient = ({ setPatientInfo }) => {
                 {uniqueIdsArray.map((element, i) => {
                     const findPatient = patients?.find(item => item.id === element);
                     const patientClassName = findPatient?.isChecked ? "p-d-last-message" : "isChecked";
-                   console.log(findPatient);
                         const imgPatient = findPatient?.profilePic && `${URL}/img/${findPatient?.id.slice(-15)}.jpg`
                         const messagesReverse= messages.slice().reverse()
                         const lastDate = messagesReverse.find(item => item.senderUserId === findPatient?.id || item.receiverUserId === findPatient?.id)

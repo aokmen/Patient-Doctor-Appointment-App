@@ -4,7 +4,7 @@ import patientImage from './assets/doctor.png'
 
 
 const MessageFindPatient = ({id, street, firstName, lastName, zipCode, cityId, setPatientInfo}) => {
-console.log("IDDD:",id);
+
   const handleClick = () => {
     setPatientInfo({
       id:id,

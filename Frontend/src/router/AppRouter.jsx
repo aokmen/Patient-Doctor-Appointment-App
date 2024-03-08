@@ -36,6 +36,7 @@ import PatientTask from "../pages/panels/patientPanel/patientTask/PatientTask";
 import PatientStatistic from "../pages/panels/patientPanel/patientStatistic/PatientStatistic";
 import PatientSetting from "../pages/panels/patientPanel/patientSetting/PatientSetting";
 import PatientAccount from "../pages/panels/patientPanel/patientAccount/PatientAccount";
+import Contact from "../pages/contact/Contact";
 
 
 
@@ -51,6 +52,7 @@ const AppRouter = () => {
         <Route path="/regpatient" element={<RegisterPatient/>}/>
         <Route path="/services" element={<Services/>}/>
         <Route path="/about" element={<About/>}/>
+        <Route path="/contact" element={<Contact/>}/>
 
         <Route path="" element={<PrivateAdminRouter/>}>
           <Route path="/admin" element={<AdminPanel/>}>

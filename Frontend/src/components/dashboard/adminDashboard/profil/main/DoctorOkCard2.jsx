@@ -25,7 +25,7 @@ const handleShow = () => {
 }
 
 const fileImage = files.length > 0 ? `${URL}/img/${files[0].fileName}` : profileImg;
-console.log("bbbbbbbbbb:",fileImage);
+
 
   return (
     <div className="apanel-view--main">

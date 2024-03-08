@@ -31,7 +31,6 @@ const SearchDoctor = () => {
     getData("doctors");
   }, []);
 
-  console.log("doctors", doctors);
 
   const handleInputChange = (field, value) => {
     searchParamsRef.current = {
