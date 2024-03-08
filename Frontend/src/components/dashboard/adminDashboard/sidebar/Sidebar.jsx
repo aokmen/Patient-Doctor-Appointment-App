@@ -23,13 +23,12 @@ const Sidebar = ({id,avatar,firstName,lastName}) => {
   const { logout } = useAuthCall();
   const navigate = useNavigate();
   const URL = process.env.REACT_APP_BASE_URL
-  let fileImage = profil_image;
+  let fileImage = profil_image
 
-  if (avatar) {
-    const avatarSplit = avatar.split('\\');
-    const avatarFindName = avatarSplit[avatarSplit.length - 1];
-    fileImage = `${URL}/img/${id}-${avatarFindName}`
-  }
+  if(avatar) {
+    fileImage = `${URL}/img/${id.slice(-15)}.jpg`
+   }
+
 
   const closed = () => {
     logout();

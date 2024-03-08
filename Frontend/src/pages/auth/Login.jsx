@@ -2,15 +2,17 @@ import React from 'react'
 import LoginForm from '../../components/authForm/LoginForm'
 import LoginImg from "../../assets/LoginImg.png"
 import Header from '../../components/header/Header'
+import { useLocation } from 'react-router-dom'
 
 const Login = () => {
+
   return (
     <>
      <Header/>
-     <div className="min-h-screen flex flex-col lg:flex-row bg-blue-200">
+     <div className="mt-[-130px] pt-20 min-h-screen md:mt-[-165px] md:pt-[200px] flex flex-col lg:flex-row bg-blue-200">
      
      {/* Left side (Image) */}
-     <div className=" order-2 lg:order-1 block m-auto">
+     <div className=" order-2 lg:order-1 block m-auto   md:w-1/3">
        <img
          //style={{ width: '700px', height: '700px' }}
          src={LoginImg}

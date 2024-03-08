@@ -9,8 +9,13 @@ import "../../../doctor/ReactCalendar.css";
 import Clock from "./Clock.jsx";
 
 const Uberblick = () => {
+
+  const { userId } = useSelector((state) => state.auth);
+  const { appointments } = useSelector((state) => state.data);
+  const { getData } = useDataCall();
   const [patient, setPatient] = useState("");
   const [holidayArray, setHolidayArray] = useState([]);
+  
   let dayData = [];
 
   const [holidays, setHolidays] = useState([]);
@@ -21,8 +26,10 @@ const Uberblick = () => {
   const { appointments } = useSelector((state) => state.data);
 
 
+
   let todayApps = appointments.filter((item) => {
     return item.date === dateToday;
+
   });
   //console.log(todayApps)
 
@@ -92,6 +99,7 @@ const Uberblick = () => {
   //console.log(todayAppoThisDoctor)
 
   return (
+
     <div className="h-[100vh] w-[87vw]">
       <div className="flex rounded-3xl">
         <div className="flex flex-col w-[27%] bg-white max-h-[86vh] min-h-[86vh] overflow-scroll rounded-l-3xl border-r-[1.9rem] border-[#F1F7FE]">
@@ -138,6 +146,7 @@ const Uberblick = () => {
               setPatient={setPatient}
             />
           </div>
+
         </div>
         <div className="flex flex-row gap-8 w-[73%]">
           <div className="flex flex-col max-w-[35rem]">

@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux';
 const Events = ({ selectedDate}) => {
   const { delData } = useDataCall();
 
+
   const [showModal, setShowModal] = React.useState(false);
   const { userType, userId } = useSelector((state) => state.auth);
   const { events } = useSelector((state) => state.data);

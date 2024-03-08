@@ -16,25 +16,14 @@ const ApprovalCard = ({ id, firstName, lastName, title, branch, cityName, street
   const [show, setShow] = useState(false)
   const [show2, setShow2] = useState(true)
   const URL = process.env.REACT_APP_BASE_URL
-  let fileImage = profileImg
-  let fileDoc = fileImg
 
+  let fileImage = profileImg
   const handleShow = () => {
     setShow(!show)
     setShow2(!show2)
   }
-    
-  if(avatar) {
-    const avatarSplit = avatar.split('\\')
-    const avatarFindName =avatarSplit[avatarSplit.length-1]
-    fileImage = `${URL}/img/${id}-${avatarFindName}`
-   }
-  
-   if(doc) {
-    const docSplit = doc.split('\\')
-    const docFindName =docSplit[docSplit.length-1]
-    fileDoc = `${URL}/img/${id}-${docFindName}` || fileImg
-   }
+  if(avatar) {fileImage = `${URL}/img/${id.slice(-15)}.jpg`}
+  const fileDoc = `${URL}/img/${id.slice(-15)}.jpg` || fileImg
    
   return (
     <div className="apanel-view--main">

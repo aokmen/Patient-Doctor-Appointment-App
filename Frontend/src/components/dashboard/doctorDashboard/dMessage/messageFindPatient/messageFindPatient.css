@@ -1,0 +1,88 @@
+
+
+.messageFindDoctor{
+    background-color: #F1F7FE;
+    display: flex;
+    padding-left: 10px;
+    align-items: center;
+    height: 200px;
+    width: 500px;
+    border-radius: 44px;
+    gap: 20px;
+    position: relative;
+    color: #38638D;
+    margin-top:10px ;
+    }
+
+
+
+.p-message-doctor-middleInfo{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    gap: 20px;
+    width: 320px;
+    margin-bottom: 45px;
+    margin-top: -10px;
+ 
+   
+}
+.p-message-doctorImage{
+    position: absolute;
+    margin-left: 10px;
+}
+.p-message-doctorName{
+    top: 20px;
+    left: 90px;
+    position: absolute;
+    width: 190px;
+  
+}
+.p-message-doctorName span{
+    font-weight: bold;
+}
+.p-message-doctorName h2 span{
+    font-size: small;
+}
+.p-message-address{
+    margin-top: 25px;
+    font-size: 14px;
+}
+.p-message-city{
+    margin-top: 5px;
+    font-size: 14px;
+}
+.p-message-doctorRate{
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    width: 75px;
+    border-left: 2px solid #38638D;
+    padding-left: 15px;
+}
+
+.p-message-doctor-info-btn{
+    position: absolute;
+    background-color: #38638D !important;
+    width: 170px;
+    height: 50px;
+    border-top-left-radius: 44px;
+    border-bottom-right-radius: 44px;
+    padding: 5px;
+    color: white !important;
+    margin-top: 32px !important;
+    right: 0;
+}
+.p-message-doctor-info-btn:hover{
+    background-color: #5999D7 !important;
+    border: 1px solid #B7D8F8;
+    color: white !important;
+}
+.p-message-doctor-info-btn:active{
+    background-color: #38638D !important;
+    color: white !important;
+}
+
+.p-message-doctorName h2 {
+    font-weight: bold;
+}

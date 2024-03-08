@@ -10,22 +10,20 @@ import DNavbar from "../../../components/dashboard/doctorDashboard/dNavbar/DNavb
 import DProfile from "../../../components/dashboard/doctorDashboard/profil/DProfile";
 
 const DoctorPanel = () => {
-  const { getData } = useDataCall()
-  const { doctors} = useSelector((state) => state.data)
-  const { currentUser } = useSelector((state) => state.auth)
 
-  
+  const { user,userId } = useSelector((state) => state.auth)
+
+  const {getData,getSingleData} = useDataCall()
+
   useEffect(() => {
+    getData("patients")
     getData("doctors")
+    getSingleData("messages",userId)
   }, [])
 
-  const doctorProfile = doctors?.data?.filter((item) => (currentUser === item.email))
-  
   return (
-
     <>
-
-      {doctorProfile && doctorProfile[0].isApproved === false ?
+      {user && user.isApproved === false ?
         <>
           <div className="d-dashboard">
             <div className="d-panel-sidebar">
@@ -33,18 +31,18 @@ const DoctorPanel = () => {
             </div>
             <div className="d-panel-main">
               <div className="d-main-content">
-                <ApprovalForm {...doctorProfile[0]} />
+                <ApprovalForm {...user} />
               </div>
 
             </div>
           </div>
         </> :
         <>
-          {doctorProfile && doctorProfile[0].isApproved === true ?
+          {user && user.isApproved === true ?
 
             <div className="d-dashboard">
               <div className="d-panel-sidebar">
-                <Sidebar {...doctorProfile[0]}/>
+                <Sidebar {...user}/>
               </div>
               <div className="d-panel-main">
                 <div className="d-navbar">

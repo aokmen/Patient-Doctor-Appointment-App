@@ -16,6 +16,10 @@ const MessageSchema = new mongoose.Schema({
         type: String,
         enum: userTypes,
     },
+    senderName: {
+        type: String,
+        trim: true,
+    },
     receiverUserId: {
         type: mongoose.Schema.Types.ObjectId,
         index: true,
@@ -24,23 +28,19 @@ const MessageSchema = new mongoose.Schema({
         type: String,
         enum: userTypes,
     },
+    receiverName: {
+        type: String,
+        trim: true,
+    },
     subject: {
         type: String,
-        required: true,
         trim: true,
     },
     content: {
         type: String,
         required: true,
-    },
-    name: {
-        type: String,
-        trim: true,
-    },
-    from: {
-        type: String,
-        trim: true,
-    },
+    }
+
 }, { collection: 'messages', timestamps: true });
 
 module.exports = mongoose.model('Message', MessageSchema);

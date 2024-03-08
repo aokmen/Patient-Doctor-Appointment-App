@@ -5,6 +5,7 @@ import useAxios from "./useAxios";
 const url = process.env.REACT_APP_BASE_URL;
 
 const useDataCall = () => {
+
   const dispatch = useDispatch();
   const { axiosWithToken } = useAxios();
   const { userId } = useSelector((state) => state.auth);
@@ -57,11 +58,12 @@ const useDataCall = () => {
   /*                            Post Data with Axios                            */
   /* -------------------------------------------------------------------------- */
 
+
   const postData = async (url, info) => {
     dispatch(fetchStart());
     try {
       await axiosWithToken.post(`/${url}/`, info);
-      if (url === "events" || url === "appointments") getSingleData(url, userId);
+      if (url === "events" || url === "appointments" || url==="tasks" || url==="messages" || url==="notes") getSingleData(url, userId);
       else getData(url);
     } catch (error) {
       dispatch(fetchFail());
@@ -77,8 +79,7 @@ const useDataCall = () => {
     dispatch(fetchStart());
     try {
       await axiosWithToken.put(`/${url}/${id}`, info);
-      if (url === "events" || url === "appointments")
-        getSingleData(url, userId);
+      if (url === "events" || url === "appointments" || url==="tasks" || url==="notes") getSingleData(url, userId);
       else getData(url);
     } catch (error) {
       dispatch(fetchFail());
@@ -90,18 +91,19 @@ const useDataCall = () => {
   /*                            Delete Data with Axios                          */
   /* -------------------------------------------------------------------------- */
 
-  const delData = async (url, id) => {
-    dispatch(fetchStart());
-    try {
-      await axiosWithToken.delete(`/${url}/${id}`);
-      if (url === "events" || url === "appointments")
-        getSingleData(url, userId);
-      else getData(url);
-    } catch (error) {
-      dispatch(fetchFail());
-      console.log(error);
+    const delData = async (url, id) => { 
+        dispatch(fetchStart())
+        try {
+            await axiosWithToken.delete(`/${url}/${id}`)
+            if(url==="tasks" || url==="notes" || url === "events" || url === "appointments") getSingleData(url,id)
+            else getData(url)
+
+        } catch (error) {
+            dispatch(fetchFail())
+            console.log(error);
+        }
     }
-  };
+
 
   return {
     getData,
@@ -112,3 +114,4 @@ const useDataCall = () => {
   };
 };
 export default useDataCall;
+

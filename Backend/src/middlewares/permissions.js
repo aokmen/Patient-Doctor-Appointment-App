@@ -77,5 +77,16 @@ module.exports = {
             res.errorStatusCode = 403;
             throw new Error('NoPermission: You must login and be either admin or doctor.');
         }
-    }
+    },
+    isCheckedOnly : (req, res, next) => {
+        // Sadece isChecked alanını güncelleyin, diğer alanlara erişimi engelleyin.
+        // Sadece 'patient' kullanıcısıysa ve isChecked varsa veya
+        // 'doctor' kullanıcısıysa ve istek bir 'patient' tarafından yapıldıysa devam et
+        if ((req.user.role === 'patient' && req.body.isChecked) ||
+            (req.user.role === 'doctor' && req.body.isChecked)) {
+            return next();
+        }
+        
+        return res.status(403).json({ message: "You are not allowed to modify other fields." });
+    },
 }

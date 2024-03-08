@@ -18,7 +18,7 @@ const DManagement = () => {
         getData("doctors")
     }, [])
 
-console.log("doctors",doctors.data);
+
     if (doctors) {
         doctorInfo = doctors?.data?.filter((item, i) => item.files.length >= 0)
     }
