@@ -1,4 +1,3 @@
-import { useSelector } from "react-redux";
 import useDataCall from "../../../../hooks/useDataCall";
 import CancelStats from "./CancelStats";
 import GenderStats from "./GenderStats";
@@ -9,17 +8,14 @@ import { useEffect } from "react";
 
 
 const Statistics = () => {
-
-    const {getSingleData} = useDataCall()
-    const {appointments} = useSelector((state)=>state.data)
-    const { userId } = useSelector((state) => state.auth)
+    const { getData } = useDataCall();
 
     useEffect(() => {
-        getSingleData("doctors", userId)
-        
+      getData("patients");
+
       // eslint-disable-next-line react-hooks/exhaustive-deps
-      }, [])
-    //console.log(appointments)
+    }, []);
+    
   return (
     <div className='h-[100vh] w-[87vw]'>
         <div className="flex  max-h-[86vh] min-h-[86vh]">
@@ -32,16 +28,16 @@ const Statistics = () => {
                             <path fillRule="evenodd" d="M19.28 11.47a.75.75 0 0 1 0 1.06l-7.5 7.5a.75.75 0 1 1-1.06-1.06L17.69 12l-6.97-6.97a.75.75 0 0 1 1.06-1.06l7.5 7.5Z" clipRule="evenodd" />
                         </svg>
                     </div>
-                    <GenderStats appoOfthisDoctor={appointments}/>
+                    <GenderStats />
                 </div>
                 <div className="max-h-[36vh] min-h-[36vh] rounded-bl-3xl bg-white">
-                    <CancelStats appoOfthisDoctor={appointments}/>
+                    <CancelStats />
                 </div>
             </div>
             <div className="flex flex-col border-l-[1.9rem] border-[#F1F7FE] max-h-[86vh] min-h-[86vh] max-w-[54vw] min-w-[54vw]">
                 <div className="flex max-h-[50vh] min-h-[50vh] border-b-[1.9rem] rounded-tr-3xl border-[#F1F7FE] bg-white">
                     <div className="max-w-[26vw] min-w-[26vw] border-r-[1.9rem] border-[#F1F7FE]">
-                        <TerminZahl appoOfthisDoctor={appointments}/>
+                        <TerminZahl />
                     </div>
                     <div className="">
                         <Sypmtome/>

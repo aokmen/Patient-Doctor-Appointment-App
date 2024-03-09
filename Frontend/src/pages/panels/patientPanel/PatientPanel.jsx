@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import Sidebar from "../../../components/dashboard/patientDashboard/sidebar/Sidebar";
 import { Outlet } from "react-router-dom";
 import "./patientPanel.css";
@@ -9,22 +9,23 @@ import { useSelector } from "react-redux";
 
 const PatientPanel = () => {
 
-
-  const { user, userId} = useSelector((state) => state.auth)
   const {getData, getSingleData} = useDataCall()
+  const { user, userId} = useSelector((state) => state.auth)
 
   useEffect(() => {
-    getData("patients")
+    getData("patients");
     getData("doctors")
     getSingleData("messages",userId)
-  }, [])
+    
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
 
   return (
-
     <>
       <div className="dashboard">
         <div className="p-panel-sidebar">
-          <Sidebar {...user}/>
+          <Sidebar {...user} />
         </div>
         <div className="p-panel-main">
           <div className="p-navbar">
@@ -39,8 +40,7 @@ const PatientPanel = () => {
           </div>
         </div>
       </div>
-      <div className="patient-profile-info">
-      </div>
+      <div className="patient-profile-info"></div>
     </>
   );
 };

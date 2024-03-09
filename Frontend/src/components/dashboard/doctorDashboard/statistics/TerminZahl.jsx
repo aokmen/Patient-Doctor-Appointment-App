@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Chart } from "react-google-charts";
-import useDataCall from '../../../../hooks/useDataCall';
 import { useSelector } from 'react-redux';
+import moment from "moment";
 
 
 export let data = [
@@ -19,19 +19,13 @@ export const options = {
   legend: { position: "bottom" },
 };
 
-const TerminZahl = ({appoOfthisDoctor}) => {
+const TerminZahl = () => {
 
-  const {getData} = useDataCall()
-  const {patients} = useSelector((state)=>state.data)
+  const {patients, appointments} = useSelector((state)=>state.data)
   
-  useEffect(() => {
-    getData("patients")
-    
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
 
-  const dateToday = new Date().toISOString()
-  const datumHeute = dateToday.toLocaleString().slice(0,10)
+  
+  const datumHeute = moment().format("YYYY-MM-DD");
 
   //******************************************************************************************* */
 
@@ -63,11 +57,11 @@ const previousMonthDate = daysInPreviousMonth >= currentDay
 
 //****************************************************************************************************** */
 
-  let todayApps = appoOfthisDoctor.filter((item) => {return item.date === datumHeute})
+  let todayApps = appointments.filter((item) => {return item.date === datumHeute})
   //console.log(todayApps)
-  let AppsThisWeek = appoOfthisDoctor.filter((item) => {return item.date <= datumHeute && item.date > getDateOneWeekBefore(); })
+  let AppsThisWeek = appointments.filter((item) => {return item.date <= datumHeute && item.date > getDateOneWeekBefore(); })
   //console.log(AppsThisWeek)
-  let AppsThisMonth = appoOfthisDoctor.filter((item) => {return item.date <= datumHeute && item.date > previousMonthDate })
+  let AppsThisMonth = appointments.filter((item) => {return item.date <= datumHeute && item.date > previousMonthDate })
   //console.log(AppsThisMonth)
 
   let relevantPatients = []
@@ -79,13 +73,13 @@ const previousMonthDate = daysInPreviousMonth >= currentDay
   let receivedAppointmentsThisMonth = AppsThisMonth.filter((app) => {return app.patientId})
 
   receivedAppointmentsToday.map(element => { 
-    return relevantPatients.push(...patients.filter((item) => {return item.id === element.patientId}))
+    return relevantPatients.push(...patients.filter((item) => {return item.id === element.patientId.id}))
   });
   receivedAppointmentsThisWeek.map(element => { 
-    return relevantPatientsWeekly.push(...patients.filter((item) => {return item.id === element.patientId}))
+    return relevantPatientsWeekly.push(...patients.filter((item) => {return item.id === element.patientId.id}))
   });
   receivedAppointmentsThisMonth.map(element => { 
-    return relevantPatientsMonthly.push(...patients.filter((item) => {return item.id === element.patientId}))
+    return relevantPatientsMonthly.push(...patients.filter((item) => {return item.id === element.patientId.id}))
   });
 
   let manCountToday = 0

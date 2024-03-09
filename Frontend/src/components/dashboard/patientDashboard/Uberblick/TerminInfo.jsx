@@ -11,7 +11,6 @@ const TerminInfo = ({termin}) => {
     const { doctors } = useSelector((state) => state.data)
     const {getData} = useDataCall()
 
-
   
     useEffect(() => {
       getData("doctors")
@@ -26,7 +25,7 @@ const TerminInfo = ({termin}) => {
     }
 
     //const termin = todayAppsThisDoctor.filter((item) => item.patientId === patient)
- 
+
     const [showModal, setShowModal] = React.useState(false);
 
   return (

@@ -59,8 +59,13 @@ module.exports = {
             #swagger.tags = ["Appointments"]
             #swagger.summary = "Get Single Appointment"
         */
-
-        const data = await Appointment.findOne({ _id: req.params.id }).populate(["doctorId", "patientId"])
+        const data = await Appointment.find({
+          $or: [
+            { patientId: req.params.id },
+            { doctorId: req.params.id },
+          ],
+        }).populate("patientId");
+        
 
         res.status(200).send({
             error: false,

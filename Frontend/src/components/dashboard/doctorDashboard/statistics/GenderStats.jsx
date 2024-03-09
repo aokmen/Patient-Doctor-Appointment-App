@@ -20,25 +20,19 @@ export const options = {
   colors: ["#38638D", "#204060", "#59D4D4", "#5999D7"],
 };
 
-const GenderStats = ({appoOfthisDoctor}) => {
-
-  const {getData} = useDataCall()
-  const {patients} = useSelector((state)=>state.data)
+const GenderStats = () => {
   
-  useEffect(() => {
-    getData("patients")
-    
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  const { appointments, patients } = useSelector((state) => state.data);
+  
 
   let relevantPatients = []
 
-  let receivedAppointments = appoOfthisDoctor.filter((app) => {return app.patientId})
+  let receivedAppointments = appointments.filter((app) => {return app.patientId})
 
   receivedAppointments.map(element => { 
-    return relevantPatients.push(...patients.filter((item) => {return item.id === element.patientId}))
+    return relevantPatients.push(...patients.filter((item) => {return item.id === element.patientId.id}))
   });
-  //console.log(relevantPatients)
+  console.log(relevantPatients);
 
   let manCount = 0
   let womanCount = 0

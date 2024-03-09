@@ -2,6 +2,7 @@
 
 const Event = require('../models/event');
 const Doctor = require('../models/doctor');
+const Patient = require('../models/patient');
 
 
 
@@ -47,7 +48,19 @@ module.exports = {
 
         const data = await Event.create(req.body);
 
-        await Doctor.updateOne({_id: data.doctorId}, {$push: {events: data.id}})
+        if (req.body.patientId) {
+          await Patient.updateOne(
+            { _id: data.patientId },
+            { $push: { events: data.id } }
+          );
+        } else {
+          if (req.body.doctorId) {
+            await Doctor.updateOne(
+              { _id: data.doctorId },
+              { $push: { events: data.id } }
+            );
+          }
+        }
 
         
         // FOR REACT PROJECT:
@@ -63,9 +76,10 @@ module.exports = {
             #swagger.summary = "Get Single Event"
         */
 
-        const data = await Event.findOne({ _id: req.params.id })
+        const data = await Event.find({
+          $or: [{ patientId: req.params.id }, { doctorId: req.params.id }],
+        });
         
-
 
         res.status(200).send({
             error: false,

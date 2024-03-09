@@ -18,10 +18,12 @@ const DetailDoctor = () => {
   const thisDoctor = doctors?.data?.filter((item, i) => {return item.id === id})
 
   useEffect(() => {
-    
-    getData("doctors")
+    getData("appointments");
+    getData("doctors");
+    getData("patients");
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, []);
 
 
 

@@ -9,8 +9,11 @@ const EventSchema = new mongoose.Schema({
 
     doctorId: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Doctor',
-        required: true
+        ref: 'Doctor'
+    },
+    patientId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Patient'
     },
     day: {
         type: String,
