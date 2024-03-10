@@ -43,8 +43,8 @@ const Header = () => {
 
         const navigation = [
             { title: "Mein Panel", onClick: () => navigate("/patient") },
-            { title: "Settings", onClick: () => navigate("/patient/profile") },
-            { title: "Log out", onClick: closed },
+            { title: "Einstellung", onClick: () => navigate("/patient/profile") },
+            { title: "Ausloggen", onClick: closed },
         ]
 
         fileImage = (user.profilePic || user.avatar) && `${URL}/img/${userId.slice(-15)}.jpg` 
@@ -57,14 +57,14 @@ const Header = () => {
 
         return (
             <div className={`relative ${props.class}`}>
-                <div className="flex items-center space-x-4 w-10 h-10">
-                    <button ref={profileRef} className="object-fit-cover  outline-none rounded-full ring-offset-2 ring-gray-200 ring-2 lg:focus:bg-main-light2-blue"
+                <div className="flex items-center mt-[-5px]">
+                    <button ref={profileRef} className="w-20 h-20 outline-none rounded-full ring-offset-2 ring-gray-200 ring-2 lg:focus:bg-main-light2-blue "
                         onClick={() => setState(!state)}
                     >
                           
                             <img
                                 src= {fileImage}
-                                className="w-full h-full rounded-full"
+                                className="w-full h-full object-cover rounded-full "
                                 alt="fileImage"
                             />
                     </button>
@@ -74,7 +74,7 @@ const Header = () => {
                     </div>
                 </div>
 
-                <ul className={`bg-white top-12 right-0 mt-5 space-y-5 lg:absolute lg:border lg:rounded-md lg:text-sm lg:w-52 lg:shadow-md lg:space-y-0 lg:mt-0 md:absolute md:border md:rounded-md md:text-sm md:w-52 md:shadow-md md:space-y-0 md:mt-0 ${state ? '' : 'lg:hidden || md:hidden'}`}>
+                <ul className={`bg-white top-12 w-full p-3 left-[-20px] mt-100 lg:absolute lg:border lg:rounded-md lg:text-sm lg:w-[120] lg:shadow-md lg:space-y-0 lg:mt-0 md:absolute md:border md:rounded-md md:text-sm md:w-[120px] md:shadow-md md:space-y-0 md:mt-0  ${state ? '' : 'lg:hidden || md:hidden'}`}>
                     {
                         navigation.map((item, i) => (
                             <li key={i}>
@@ -89,15 +89,15 @@ const Header = () => {
         )
     }
     return (
-        <nav className={`flex-no-wrap  relative pb-5 min-h-[130px] w-full text-lg  ${state ? "shadow-lg rounded-xl border mx-2 mt-2 md:shadow-none md:border-none md:mx-2 md:mt-0" : ""}`}>
+        <nav className={`flex-no-wrap  relative  w-full text-lg ${state ? "shadow-lg rounded-xl border mx-2 mt-2 md:shadow-none md:border-none md:mx-2 md:mt-0" : ""}`}>
            <div className="fixed-navbar bg-main-dark-blue">
             <div className="    gap-x-14 items-center max-w-screen-2xl mx-auto px-4 md:flex md:px-8  ">
-                <div className="flex items-center justify-between py-5 lg:block md:hidden ">
+                <div className="flex items-center justify-between py-2 lg:block md:hidden ">
                     <button onClick={() => navigate("/")} >
                         <img
                             src={logo}
                             alt="Float UI logo"
-                            className="mt-2 h-10 max-w-screen-2xl sm:mr-[-50px] "
+                            className="mt-4 h-10 max-w-screen-2xl sm:mr-[-50px] "
                         />
                     </button>
                     <div className="md:hidden">
@@ -154,15 +154,7 @@ const Header = () => {
                                 </div>
                                 :
                                 <>
-                                    <button onClick={closed} className="flex items-center text-white justify-center gap-x-1 py-2 px-4 mr-2  hover:text-main-dark-blue font-medium hover:bg-main-light-blue2 active:bg-main-light-blue rounded-xl md:inline-flex">
-                                        Ausloggen
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5">
-                                            <path fillRule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clipRule="evenodd" />
-                                        </svg>
-                                    </button>
-                                    <ProfileDropDown
-                                        className=" lg:block"
-                                    />
+                                    <ProfileDropDown className=" lg:block"/>
                                 </>
                             }
                         </div>
