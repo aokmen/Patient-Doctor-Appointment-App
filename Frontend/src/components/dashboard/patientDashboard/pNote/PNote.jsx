@@ -47,10 +47,10 @@ const PNote = () => {
   };
 
   return (
-    <div className="note-main container flex justify-center ml-4 h-[825px] bg-white rounded-l-3xl ">
+    <div className="note-main container flex justify-center ml-4 h-[825px] bg-white  ">
       <div>
         <div className=" text-main-dark-blue py-4">
-          <h3 className="text-3xl font-bold mx-4">Meine Aufgabe</h3>
+          <h3 className="text-3xl font-bold mx-4">Meine Notizen</h3>
         </div>
         <div className="p-2 flex flex-col justify-center w-[650px] ">
           <div className="flex flex-col border-2 rounded-lg border-main-light-blue2 py-10 mb-[15px] ">
