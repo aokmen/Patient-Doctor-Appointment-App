@@ -8,20 +8,24 @@ import KommendeTermine from "./KommendeTermine.jsx";
 import TerminInfo from "./TerminInfo.jsx";
 import { useNavigate } from "react-router-dom";
 
+
+
 const Uberblick = () => {
   const [holidayArray, setHolidayArray] = useState([]);
   let dayData = [];
 
   const [holidays, setHolidays] = useState([]);
 
-  const dateToday = new Date().toISOString();
+  const dateToday = moment().format("YYYY-MM-DD");
 
-  const { appointments } = useSelector((state) => state.data);
+  const { appointments, doctors } = useSelector((state) => state.data);
 
 
   const [termin, setTermin] = useState([]);
 
   const navigate = useNavigate();
+
+  ;
 
   useEffect(() => {
     const fetchHolidays = async () => {
@@ -51,6 +55,25 @@ const Uberblick = () => {
 
     setHolidayArray(dayData);
   };
+
+  function getAppointmentsForCurrentMonth(appointments) {
+    const currentDate = new Date();
+    const currentYear = currentDate.getFullYear();
+    const currentMonth = currentDate.getMonth() + 1; // Note: JavaScript months are 0-indexed
+
+    return appointments?.filter((appointment) => {
+      const appointmentDate = new Date(appointment.date);
+      const appointmentYear = appointmentDate.getFullYear();
+      const appointmentMonth = appointmentDate.getMonth() + 1;
+
+      return (
+        appointmentYear === currentYear && appointmentMonth === currentMonth
+      );
+    });
+  }
+
+  const appointmentsForCurrentMonth =
+    getAppointmentsForCurrentMonth(appointments);
 
   return (
     <div className="h-[100vh] w-[87vw]">
@@ -123,7 +146,9 @@ const Uberblick = () => {
                   >
                     <path d="M4.5 6.375a4.125 4.125 0 1 1 8.25 0 4.125 4.125 0 0 1-8.25 0ZM14.25 8.625a3.375 3.375 0 1 1 6.75 0 3.375 3.375 0 0 1-6.75 0ZM1.5 19.125a7.125 7.125 0 0 1 14.25 0v.003l-.001.119a.75.75 0 0 1-.363.63 13.067 13.067 0 0 1-6.761 1.873c-2.472 0-4.786-.684-6.76-1.873a.75.75 0 0 1-.364-.63l-.001-.122ZM17.25 19.128l-.001.144a2.25 2.25 0 0 1-.233.96 10.088 10.088 0 0 0 5.06-1.01.75.75 0 0 0 .42-.643 4.875 4.875 0 0 0-6.957-4.611 8.586 8.586 0 0 1 1.71 5.157v.003Z" />
                   </svg>
-                  <p className="text-3xl text-[#38638D] font-bold pl-3">111</p>
+                  <p className="text-3xl text-[#38638D] font-bold pl-3">
+                    {doctors?.number}
+                  </p>
                 </div>
               </div>
               <div className="flex flex-col justify-between  text-center bg-white p-3 max-h-[13rem] min-h-[13rem] max-w-[16rem] w-[16rem]">
@@ -139,7 +164,9 @@ const Uberblick = () => {
                   >
                     <path d="M4.5 6.375a4.125 4.125 0 1 1 8.25 0 4.125 4.125 0 0 1-8.25 0ZM14.25 8.625a3.375 3.375 0 1 1 6.75 0 3.375 3.375 0 0 1-6.75 0ZM1.5 19.125a7.125 7.125 0 0 1 14.25 0v.003l-.001.119a.75.75 0 0 1-.363.63 13.067 13.067 0 0 1-6.761 1.873c-2.472 0-4.786-.684-6.76-1.873a.75.75 0 0 1-.364-.63l-.001-.122ZM17.25 19.128l-.001.144a2.25 2.25 0 0 1-.233.96 10.088 10.088 0 0 0 5.06-1.01.75.75 0 0 0 .42-.643 4.875 4.875 0 0 0-6.957-4.611 8.586 8.586 0 0 1 1.71 5.157v.003Z" />
                   </svg>
-                  <p className="text-3xl text-[#38638D] font-bold pl-3">3234</p>
+                  <p className="text-3xl text-[#38638D] font-bold pl-3">
+                    {appointments?.length}
+                  </p>
                 </div>
               </div>
             </div>
@@ -171,7 +198,9 @@ const Uberblick = () => {
                       clipRule="evenodd"
                     />
                   </svg>
-                  <p className="text-3xl text-[#38638D] font-bold pl-3">21</p>
+                  <p className="text-3xl text-[#38638D] font-bold pl-3">
+                    {appointmentsForCurrentMonth?.length}
+                  </p>
                 </div>
               </div>
               <div className="col-span-1 rounded-tr-3xl row-span-2 bg-white flex flex-col justify-evenly text-center p-3 max-h-[13rem] min-h-[13rem] max-w-[15rem] min-w-[15rem]">
