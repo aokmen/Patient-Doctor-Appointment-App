@@ -120,7 +120,7 @@ const Events = ({ selectedDate}) => {
           <table className="mt-14 text-center w-[25vw] mx-auto">
             <tbody>
               <tr className="text-center text-xl font-bold py-3">
-                <td colSpan="4">Bevorstehende Ereignisse</td>
+                <td colSpan="4">Alle Ereignisse</td>
               </tr>
               {events?.map((eve, index) => {
                 return (
@@ -183,7 +183,7 @@ const Events = ({ selectedDate}) => {
           <table className="mt-14 w-[28vw] text-center mx-auto">
             <tbody>
               <tr className="text-center text-lg font-bold py-3">
-                <td colSpan="4">Bevorstehende Ereignisse</td>
+                <td colSpan="4">Alle Ereignisse</td>
               </tr>
               {events?.map((eve, index) => {
                 return (
