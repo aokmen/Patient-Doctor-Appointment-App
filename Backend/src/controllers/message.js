@@ -130,6 +130,7 @@ module.exports = {
             $or: [{ senderUserId: req.params.id }, { receiverUserId: req.params.id }]
         }).sort({ createdAt: 1 });
         
+
         res.status(200).send({
             error: false,
             data
