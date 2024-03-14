@@ -12,7 +12,6 @@ const Events = ({ selectedDate}) => {
  
   console.log(events)
 
-  let eventsOfThisUser = []
   let todayEventsOfThisUser = []
 
   if (userType === "doctor") {
