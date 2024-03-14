@@ -15,7 +15,7 @@ const PManagement = () => {
   useEffect(() => {
       getData("patients")
   }, [])
-console.log("patients:",patients);
+
   return (
     <>
 

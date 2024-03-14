@@ -6,22 +6,16 @@ import Loading from '../../../loading/Loading'
 
 const PatientProfile = () => {
   
-  const { getData } = useDataCall()
-  const { patients } = useSelector((state) => state.data)
-  const { currentUser } = useSelector((state) => state.auth)
 
-  useEffect(() => {
-    getData("patients")
-  }, [])
+  const { user } = useSelector((state) => state.auth)
 
-  const patientProfile = patients?.filter((item) => (currentUser === item.email))
+
+  
 
   return (
-    <>
-      {patientProfile ?
-        <div><PProfile {...patientProfile[0]}/></div>
-        : <Loading />}
-    </>
+        
+        <div><PProfile {...user}/></div>
+
   )
 }
 

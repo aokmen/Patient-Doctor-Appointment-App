@@ -9,11 +9,14 @@ import { useSelector } from "react-redux";
 
 const PatientPanel = () => {
 
-  const { getData } = useDataCall();
-  const { user } = useSelector((state) => state.auth);
+  const {getData, getSingleData} = useDataCall()
+  const { user, userId} = useSelector((state) => state.auth)
 
   useEffect(() => {
     getData("patients");
+    getData("doctors")
+    getSingleData("messages",userId)
+    
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

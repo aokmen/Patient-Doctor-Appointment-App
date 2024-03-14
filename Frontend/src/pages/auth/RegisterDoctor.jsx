@@ -11,7 +11,7 @@ const RegisterDoctor = () => {
   return (
     <>
     <Header/>
-    <div className="h-[100vh] md:h-[90vh] grid grid-rows-7 md:grid-cols-2 register-page">
+    <div className="h-[100vh] md:h-[90vh] grid grid-rows-7 md:grid-cols-2 register-page mt-[-38px]">
       <div className="block row-span-2 md:grid-cols-1">
         <div className='md:h-[90vh] md:flex md:flex-col md:items-center md:justify-center'>
           <img

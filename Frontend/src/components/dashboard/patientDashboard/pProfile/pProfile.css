@@ -4,7 +4,7 @@
 
 .p-panel-main-right{
 
-    height: 75vh;
+  
     width: 100%;
     display: flex;
     justify-content: center;
@@ -14,7 +14,7 @@
 .p-panel-main-right--content{
     background-color: white;
     height: 90%;
-    width: 90%;
+    width: 100%;
     border-radius: 26px;
 
 }
@@ -40,7 +40,7 @@
    
 }
 .p-panel-person--left{
-    border-right: 5px solid #F1F7FE;
+    border-right: 30px solid #F1F7FE;
 }
 /* -------------------------------------------------------------------------- */
 /*             Inputs on the Person's Profile in the Patient Panel             */
@@ -187,6 +187,7 @@
     box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.548);
     font-size: 20px;
     width: 200px;
+    margin-left: 50px
 }
 .p-panel-profile-save-btn:hover{
     background-color:#38638D !important;
@@ -205,3 +206,7 @@
     
     }
 
+    .p-panel-profile-save-main-btn{
+        text-align: center;
+        margin-left: -50px;
+    }

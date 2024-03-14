@@ -5,18 +5,10 @@ import useDataCall from '../../../../hooks/useDataCall'
 
 const DoctorSetting = () => {
 
-  const { getData } = useDataCall()
-  const { doctors } = useSelector((state) => state.data)
-  const { currentUser } = useSelector((state) => state.auth)
-
-  useEffect(() => {
-    getData("doctors")
-  }, [])
-
-   const doctorProfile = doctors?.data.filter((item) => (currentUser === item.email)) 
+  const { user } = useSelector((state) => state.auth)
 
   return (
-    <div><ManageAppo {...doctorProfile[0]}/></div>
+    <div><ManageAppo {...user}/></div>
   )
 }
 

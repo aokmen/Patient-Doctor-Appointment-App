@@ -6,11 +6,20 @@
     height: 100vh;
     overflow: scroll;
 }
+.d-profile-panel-person-main::-webkit-scrollbar {
+
+    width: 10px;
+}
+
+.d-profile-panel-person-main::-webkit-scrollbar-thumb {
+
+    background: #d9e4f0
+}
+
 
 .d-profile-panel-main-right{
 
     height: 150vh;
-
     display: flex;
     justify-content: center;
     align-items: center;
@@ -21,7 +30,6 @@
     height: 150vh;
     width: 100%;
     border-radius: 26px;
-
 }
 
 .d-profile-panel-person{
@@ -80,7 +88,6 @@
     background-color: #F1F7FE;
     font-size: 20px;
     color: #38638D;
-
 
 }
 
@@ -199,6 +206,7 @@
     box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.548);
     font-size: 20px;
     width: 200px;
+    margin-bottom: 70px;
 }
 .d-profile-panel-profile-save-btn:hover{
     background-color: #32f1c8 !important;

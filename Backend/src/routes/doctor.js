@@ -17,6 +17,7 @@ router.route('/')
 
 router.route('/:id')
     .get( doctor.read)
+
     .put(permissions.isAdminOrDoctor, upload.single('avatar'), (req, res) => {
     if (!req.file) {
         return res.status(400).send('No file uploaded.');
@@ -34,6 +35,9 @@ router.route('/:id')
 },
     
         doctor.update)
+
+    .put( upload.single('avatar'), doctor.update)
+
     .patch(permissions.isAdminOrDoctor, upload.single('avatar'), doctor.update)
     .delete(permissions.isAdminOrDoctor,  doctor.delete)
 

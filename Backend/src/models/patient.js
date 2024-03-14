@@ -83,12 +83,16 @@ const PatientSchema = new mongoose.Schema(
       },
     ],
     messageCount: {
-      type: Number,
-      default: 0,
+        type: Number,
+        default: 0
     },
-  },
-  { collection: "patients", timestamps: true }
-);
+    isChecked: {
+        type: Boolean,
+        default: true,
+    },
+    
+}, { collection: 'patients', timestamps: true })
+
 
 
 const validation = require('../helpers/validation')

@@ -3,34 +3,34 @@ import useDataCall from '../../../../hooks/useDataCall';
 
 import "./pProfile.css"
 import profilImage from "../../../../assets/profil_image2.png"
+import successImg from "../../../../assets/success.png"
+import { useSelector } from 'react-redux';
+import axios from 'axios';
 
 
 const PProfile = (patientProfile) => {
     const { putData, postData } = useDataCall()
-    const { id, firstName, lastName, email, birthDate, gender, street, zipCode, cityName, phone, profilePic} = patientProfile
+
+    const { id, firstName, lastName, email, birthDate, gender, street, zipCode, cityName, phone, profilePic } = patientProfile
     const [file, setFile] = useState(null)
     const URL = process.env.REACT_APP_BASE_URL
     let fileImage = profilImage
-
     const patientProfileRef = useRef({
 
         firstName: firstName,
         lastName: lastName,
         birthDate: birthDate,
-        street: street ,
-        zipCode: zipCode ,
+        street: street,
+        zipCode: zipCode,
         cityName: cityName,
         phone: phone,
         profilePic: profilePic,
 
     })
-     
-    if(profilePic) {
-        const avatarSplit = profilePic.split('\\')
-        const avatarFindName = avatarSplit[avatarSplit.length-1]
-        fileImage = `${URL}/img/${id}-${avatarFindName}`
-    }
 
+    if (profilePic) {
+        fileImage = `${URL}/img/${id.slice(-15)}.jpg`
+    }
 
     const handleInputChange = (field, value) => {
         patientProfileRef.current = {
@@ -38,14 +38,14 @@ const PProfile = (patientProfile) => {
             [field]: value
         }
     }
-
+    // const handleFileChange = (e) => {
+    //     setFile(e.target.files[0])
+    //     console.log("file:",file);
+    // }
     const handleFileChange = (e) => {
         setFile(e.target.files[0]);
         handleInputChange("profilePic", e.target.value)
     }
-    useEffect(() => {
-
-    }, [file])
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -56,14 +56,16 @@ const PProfile = (patientProfile) => {
         const formData = new FormData();
         formData.append('image', file);
         formData.append('userId', id);
-         // Her bir dosya için ayrı ayrı postData işlemi yapılıyor
+        // Her bir dosya için ayrı ayrı postData işlemi yapılıyor
         postData("files", formData);
+
+        window.location.reload();
     }
     return (
         <div className="p-panel-person-main">
 
             <div className="processbar">
-            
+
             </div>
 
             <div className="p-panel-main-right">
@@ -84,8 +86,8 @@ const PProfile = (patientProfile) => {
                                                 <label htmlFor="file-avatar">Profilbild hochladen:</label>
                                             </div>
                                             <div className="p-panel-p-profil-img-right-input">
-                                                <input type="file" id="p-avatar" name="p-avatar" accept="image/png, image/jpeg" 
-                                                 onChange={handleFileChange} 
+                                                <input type="file" id="p-avatar" name="p-avatar" accept="image/png, image/jpeg"
+                                                    onChange={handleFileChange}
                                                 />
                                             </div>
 
@@ -117,24 +119,24 @@ const PProfile = (patientProfile) => {
                                     <label className="gender2" >Geschlecht</label>
                                     <div className="radio-gender">
                                         <div>
-                                            <input required type="radio" id="p-männlich" name="drone" defaultValue="p-männlich"  defaultChecked={gender === "Male"} />
+                                            <input required type="radio" id="p-männlich" name="drone" defaultValue="p-männlich" defaultChecked={gender === "Male"} />
                                             <label htmlFor="p-männlich">Männlich</label>
                                         </div>
 
                                         <div>
-                                            <input required type="radio" id="p-weiblich" name="drone" defaultValue="p-weiblich"  defaultChecked={gender === "Female"}  />
+                                            <input required type="radio" id="p-weiblich" name="drone" defaultValue="p-weiblich" defaultChecked={gender === "Female"} />
                                             <label htmlFor="p-weiblich">Weiblich</label>
                                         </div>
 
                                         <div>
-                                            <input required type="radio" id="p-divers" name="drone"  defaultValue="p-divers" defaultChecked={gender === "Others"} />
+                                            <input required type="radio" id="p-divers" name="drone" defaultValue="p-divers" defaultChecked={gender === "Others"} />
                                             <label htmlFor="p-divers">Divers</label>
                                         </div>
-                                            
+
                                     </div>
 
-                                </div> </>: null}
-  
+                                </div> </> : null}
+
                                 <div className="p-p-input">
                                     <label className="p-panel-p-label" htmlFor="p-p-input6">Straße</label> <input required className="p-panel-p-p-input" id="p-p-input6" type="text" placeholder='Lange str' defaultValue={street} onChange={(e) => handleInputChange("street", e.target.value)} />
                                 </div>
@@ -144,16 +146,16 @@ const PProfile = (patientProfile) => {
                                 <div className="p-p-input">
                                     <label className="p-panel-p-label" htmlFor="p-p-input8">Ort</label> <input required className="p-panel-p-p-input" id="p-p-input8" type="text" placeholder='München' defaultValue={cityName} onChange={(e) => handleInputChange("cityName", e.target.value)} />
                                 </div>
-                                 <div className="p-p-input">
+                                <div className="p-p-input">
                                     <label className="p-panel-p-label" htmlFor="p-p-input10">Telefon</label> <input required className="p-panel-p-p-input" id="p-p-input10" type="text" placeholder='z.B. 1554212121' defaultValue={phone} onChange={(e) => handleInputChange("phone", e.target.value)} />
                                 </div>
 
                             </div>
                             {/* style={{transform: "translateY(-70vh)"}} */}
                         </div>
-                       
-                                <button type="submit" className="p-panel-profile-save-btn" >Speichern</button>
-                      
+                        <div className="p-panel-profile-save-main-btn"><button type="submit" className="p-panel-profile-save-btn" >Speichern</button></div>
+                        
+
                     </form>
                 </div>
             </div>

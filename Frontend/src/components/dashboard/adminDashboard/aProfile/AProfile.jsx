@@ -11,7 +11,7 @@ const AProfile = ({ id, firstName, lastName, email, avatar }) => {
     const [file, setFile] = useState(null)
     const URL = process.env.REACT_APP_BASE_URL
     let fileImage = profilImage
-    console.log("id:", id);
+
     const patientProfileRef = useRef({
 
         firstName: firstName,
@@ -20,12 +20,10 @@ const AProfile = ({ id, firstName, lastName, email, avatar }) => {
 
     })
 
-
-    if (avatar) {
-        const avatarSplit = avatar.split('\\')
-        const avatarFindName = avatarSplit[avatarSplit.length - 1]
-        fileImage = `${URL}/img/${id}-${avatarFindName}`
-    }
+    if(avatar) {
+        fileImage = `${URL}/img/${id.slice(-15)}.jpg`
+       }
+   
 
     const handleInputChange = (field, value) => {
         patientProfileRef.current = {
@@ -41,9 +39,6 @@ const AProfile = ({ id, firstName, lastName, email, avatar }) => {
         setFile(e.target.files[0]);
         handleInputChange("avatar", e.target.value)
     }
-    useEffect(() => {
-
-    }, [file])
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -56,6 +51,7 @@ const AProfile = ({ id, firstName, lastName, email, avatar }) => {
         formData.append('userId', id);
         // Her bir dosya için ayrı ayrı postData işlemi yapılıyor
         postData("files", formData);
+        window.location.reload();
     }
     return (
 

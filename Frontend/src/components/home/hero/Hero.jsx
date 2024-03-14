@@ -15,7 +15,7 @@ const Hero = () => {
 
   return (
     <>
-      <section className="bg-main-light-blue w-full h-[453px] mt-20">
+      <section className="bg-main-light-blue w-full h-[453px] mt-[-10px] ">
         <div className=" container flex flex-col px-6 py-10 mx-auto space-y-6 lg:h-[32rem] lg:py-16 lg:flex-row lg:items-center">
           <div className="w-full lg:w-1/2">
             <div className="lg:max-w-lg   ">
@@ -68,7 +68,7 @@ const Hero = () => {
           <div className="flex w-full  items-center justify-center   lg:w-1/2">
             <img
               alt="foto"
-              className=" object-cover w-full h-full mx-auto mr-[-100px]  mb-[120px] lg:max-w-5xl md:max-w-3xl sm:max-w-xl"
+              className=" object-cover w-full h-full mt-5 mx-auto mr-[-100px]  mb-[120px] lg:max-w-5xl md:max-w-3xl sm:max-w-xl"
               src={foto}
             />
           </div>

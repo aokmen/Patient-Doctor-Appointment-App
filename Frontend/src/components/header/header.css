@@ -14,7 +14,9 @@
   position: fixed;
   top: 0;
   left: 0;
+  padding-top: 10px;
   width: 100%;
   z-index: 999; /* Navbar'ın diğer içeriklerin üzerinde olmasını sağlar */
-  height: 110px;
+  min-height: 120px;
+  box-shadow: 0 0 20px #1515165b;
 }

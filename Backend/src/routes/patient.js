@@ -14,6 +14,7 @@ router.route('/')
     .get( patient.list)
     .post(patient.create)
 
+
 router
   .route("/:id")
   .get(patient.read)
@@ -37,6 +38,7 @@ router
   )
   .patch(permissions.isAdminOrPatient, patient.update)
   .delete(permissions.isAdminOrPatient, patient.delete);
+
 
 /* ------------------------------------------------------- */
 module.exports = router
