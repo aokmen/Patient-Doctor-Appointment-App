@@ -2,7 +2,6 @@ import { fetchFail, fetchStart, getDataSuccess } from "../features/dataSlice";
 import { useDispatch, useSelector } from "react-redux";
 import useAxios from "./useAxios";
 
-const url = process.env.REACT_APP_BASE_URL;
 
 const useDataCall = () => {
   const dispatch = useDispatch();
@@ -40,6 +39,14 @@ const useDataCall = () => {
           getDataSuccess({
             data: data?.data,
             url: "appointments",
+          })
+        );
+        //console.log(data.data)
+      } else if (url === "messages") {
+        dispatch(
+          getDataSuccess({
+            data: data?.data,
+            url: "messages",
           })
         );
         //console.log(data.data)

@@ -6,11 +6,11 @@ import useDataCall from '../../../../hooks/useDataCall';
 const PatientOverview = () => {
 
   const { userId } = useSelector((state) => state.auth);
-  const { getSingleData } = useDataCall();
+  const { getSingleData, getData } = useDataCall();
 
   useEffect(() => {
     getSingleData("appointments", userId);
-
+    getData("doctors")
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (

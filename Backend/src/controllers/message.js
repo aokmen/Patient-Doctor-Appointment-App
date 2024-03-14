@@ -125,7 +125,11 @@ module.exports = {
             #swagger.summary = "Get Single Message"
         */
 
-        const data = await Message.findOne({ _id: req.params.id });
+        //const data = await Message.findOne({ _id: req.params.id });
+
+        const data = await Message.find({
+          $or: [{ senderUserId: req.params.id }, { receiverUserId: req.params.id }],
+        });
 
         res.status(200).send({
             error: false,
