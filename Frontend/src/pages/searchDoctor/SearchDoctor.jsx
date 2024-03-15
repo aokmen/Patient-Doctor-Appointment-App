@@ -7,30 +7,37 @@ import Loading from '../loading/Loading';
 import Footer from '../../components/footer/Footer';
 import searchIcon from "../../assets/ic_baseline-search.png";
 import locationIcon from "../../assets/locationIcon.png";
+import searchUser from "../../assets/searchUser.png";
 import Header from '../../components/header/Header';
 import { useLocation } from 'react-router-dom';
 
 const SearchDoctor = () => {
+
+
+  const {state} = useLocation()  //Other method: URLSearchParams
+
   const { getData } = useDataCall();
   const { doctors, loading } = useSelector((state) => state.data);
 
   const [filteredDoctors, setfilteredDoctors] = useState([])
 
   const searchParamsRef = useRef({
-    name: "",
+    name: state?.name || "",
     branch: "",
-    city: "",
+    city: state?.city || "",
     zipCodes: "",
   });
 //  const {state} = useLocation()
-//  console.log(state);
+
 
   // const filteredDoctorsRef = useRef([]);
 
   useEffect(() => {
     getData("doctors");
+    handleSearch()
   }, []);
 
+ 
 
   const handleInputChange = (field, value) => {
     searchParamsRef.current = {
@@ -38,24 +45,27 @@ const SearchDoctor = () => {
       [field]: value,
     };
   };
-  //console.log("Render:");
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    handleSearch();
+  }
 
   const handleSearch = (event) => {
-    event.preventDefault();
-  
-    console.log("searchParamsRef:", searchParamsRef.current);
+
+    
     
     if (doctors && doctors.data) {
       const filteredResults = doctors.data.filter((doctor) => {
         // Önce doctor nesnesinin tanımlı olduğunu kontrol edin
         if (!doctor) return false;
-  
+        const paramsName = (searchParamsRef.current.name).toLowerCase()
+        const paramsCity = (searchParamsRef.current.city).toLowerCase()
         // Şimdi diğer özellikleri kontrol edin
-        const firstNameMatch = doctor.firstName.toLowerCase().includes(searchParamsRef.current.name?.toLowerCase() || "");
-        const lastNameMatch = doctor.lastName.toLowerCase().includes(searchParamsRef.current.name?.toLowerCase() || "");
-        const branchMatch = doctor.branchId && doctor.branchId.name.toLowerCase().includes(searchParamsRef.current.name?.toLowerCase() || "");
-        const cityMatch = doctor.cityId && doctor.cityId.name.toLowerCase().includes(searchParamsRef.current.city?.toLowerCase() || "");
-        const zipCodeMatch = doctor.zipCode == searchParamsRef.current?.city;
+        const firstNameMatch = doctor.firstName.toLowerCase().includes(paramsName || "");
+        const lastNameMatch = doctor.lastName.toLowerCase().includes(paramsName || "");
+        const branchMatch = doctor.branchId && doctor.branchId.name.toLowerCase().includes(paramsName || "");
+        const cityMatch = doctor.cityId && doctor.cityId.name.toLowerCase().includes(paramsCity || "");
+        const zipCodeMatch = doctor.zipCode == paramsCity;
   
         return (firstNameMatch || lastNameMatch || branchMatch) && (cityMatch || zipCodeMatch);
       });
@@ -63,16 +73,16 @@ const SearchDoctor = () => {
       //console.log("filteredResults:", filteredResults)
   
       setfilteredDoctors(filteredResults);
-      
     }
   }
-
+  
   return (
     <div className="main-container">
       <div className="nav">
         <Header />
       </div>
-      <form onSubmit={handleSearch}>
+      <div className="search-doctor-form mt-5">
+      <form onSubmit={handleSubmit}>
         <div className="input">
           <div className="input-left-box">
             <img src={searchIcon} alt="searchIcon" className='searchIcon' />
@@ -80,6 +90,7 @@ const SearchDoctor = () => {
               type="text"
               className="input-left"
               placeholder='Name oder Fachgebiet'
+              defaultValue={state?.name}
               // ref={searchParamsRef}
               onChange={(e) => handleInputChange('name', e.target.value)}
             />
@@ -91,6 +102,7 @@ const SearchDoctor = () => {
               type="text"
               className="input-right"
               placeholder='z.B. Berlin oder 12345'
+              defaultValue={state?.city}
               // ref={searchParamsRef}
               onChange={(e) => handleInputChange('city', e.target.value)}
             />
@@ -100,6 +112,7 @@ const SearchDoctor = () => {
           </div>
         </div>
       </form>
+      </div>
       <div className="input-fixed"></div>
       <div className="main-cardDoctor" >
         {loading ? (
@@ -107,7 +120,11 @@ const SearchDoctor = () => {
         ) : filteredDoctors?.length ? (
           filteredDoctors?.map((item, i) => <CardDoctor key={i} {...item} />)
         ) : (
-          <p className='h-full pt-[200px] text-sky-900'>No matching doctors found.</p>
+          <div className="flex flex-col xl:flex-row lg:flex-row  items-center">
+              <img className=" w-[70vw] xl:w-[50vw] lg:w-[60vw] " src={searchUser} alt="" />
+              <p className='notInfo text-[35px] mt-10 text-sky-900'>Keine passenden Ärzte gefunden.</p>
+          </div>
+   
         )}
       </div>
       <div className="search-doctor-footer">
@@ -118,5 +135,3 @@ const SearchDoctor = () => {
 };
 
 export default SearchDoctor;
-
-

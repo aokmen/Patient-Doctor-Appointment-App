@@ -9,7 +9,7 @@ const Login = () => {
   return (
     <>
      <Header/>
-     <div className="mt-[-130px] pt-20 min-h-screen md:mt-[-165px] md:pt-[200px] flex flex-col lg:flex-row bg-blue-200">
+     <div className="pt-20 min-h-screen flex flex-col lg:flex-row bg-blue-200">
      
      {/* Left side (Image) */}
      <div className=" order-2 lg:order-1 block m-auto   md:w-1/3">

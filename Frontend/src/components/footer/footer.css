@@ -16,3 +16,13 @@
 .footer-links button:hover {
 color:#5999D7 ;
 }
+
+@media screen and (max-width: 768px) { 
+
+    .footer{
+        flex-direction: column;
+        align-items: center;
+        padding: 10px 0;
+    }
+
+  }

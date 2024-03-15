@@ -11,8 +11,8 @@ import Clock from "./Clock.jsx";
 
 const Uberblick = () => {
 
-  const { appointments } = useSelector((state) => state.data);
 
+  const { appointments } = useSelector((state) => state.data);
   const [patient, setPatient] = useState("");
   const [holidayArray, setHolidayArray] = useState([]);
   
@@ -21,7 +21,6 @@ const Uberblick = () => {
   const [holidays, setHolidays] = useState([]);
 
   const dateToday = moment().format("YYYY-MM-DD");
-
 
 
 

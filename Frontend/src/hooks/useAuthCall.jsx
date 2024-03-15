@@ -10,7 +10,7 @@ const useAuthCall = () => {
 
     const navigate = useNavigate()
     const dispatch = useDispatch()
-    const { token} = useSelector(state => state.auth);
+    const { token, userType} = useSelector(state => state.auth);
 
     /* -------------------------------------------------------------------------- */
     /*                               The Login Process                            */

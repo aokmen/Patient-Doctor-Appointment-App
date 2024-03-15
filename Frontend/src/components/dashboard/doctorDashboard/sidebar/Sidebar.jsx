@@ -14,21 +14,20 @@ import message from "../../../../assets/message.png"
 import exit from "../../../../assets/logout.png"
 import home from "../../../../assets/home.png"
 import task from "../../../../assets/task.png"
+import { useSelector } from 'react-redux'
 
 
 
 
 
-const Sidebar = ({ avatar, id, firstName, lastName, title }) => {
+const Sidebar = () => {
+  const { user,userId } = useSelector((state) => state.auth);
   const { logout } = useAuthCall();
   const navigate = useNavigate();
   
   const URL = process.env.REACT_APP_BASE_URL
-  let fileImage = profil_image
+  const fileImage = user.avatar && `${URL}/img/${userId.slice(-15)}.jpg`
 
-  if(avatar) {
-    fileImage = `${URL}/img/${id.slice(-15)}.jpg`
-   }
 
   const closed = () => {
     logout();
@@ -39,7 +38,7 @@ const Sidebar = ({ avatar, id, firstName, lastName, title }) => {
     <div className="sidebar-main">
       <div className="topSlide">
         <div className="top">
-          <div className="sidebar-avatar-img"><img src={fileImage} alt="profil_image" /></div> <div className="sidebar-avatar-name"><h1>{title}. {firstName} {lastName}</h1></div>
+          <div className="sidebar-avatar-img"><img src={fileImage || profil_image} alt="profil_image" /></div> <div className="sidebar-avatar-name"><h1>{user.title}. {user.firstName} {user.lastName}</h1></div>
         </div>
 
       </div>

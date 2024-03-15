@@ -12,27 +12,21 @@ const About = () => {
       <div className="bg-main-light-blue w-full h-full py-2 lg:mt-[-40px] sm:py-32 "  id="about">
         <div className="mx-auto m-2 sm:max-w-7xl px-0 grid grid-flow-col-dense ">
           <div className="mx-auto lg:flex lg:justify-between grid max-w-xl items-start gap-x-8 gap-y-16 sm:gap-y-24 lg:mx-0 lg:ml-[-60px] lg:max-w-none lg:grid-cols-2">
-            <div className="grid grid-col w-[1000px] h-[640px]  border-2 border-main-light-blue2   overflow-hidden rounded-2xl  px-6 pb-9   sm:px-12  lg:px-8 lg:pb-8 xl:px-10 xl:pb-10">
+            <div className="grid grid-col w-full h-full  border-2 border-main-light-blue2   overflow-hidden rounded-2xl  px-6 pb-9   sm:px-12  lg:px-8 lg:pb-8 xl:px-10 xl:pb-10">
               <div className="font-sans  text-main-dark-blue ">
                 <div className="grid ">
                   {" "}
-                  <div className="flex  justify-start ">
-                    <h3 className=" mr-[40px] ml-[-45px] mt-[-5px] py-3 px-1 font-semibold sm:text-2xl   border bg-main-light-blue2 rounded-r-xl">
+                  <div className="flex  justify-center ">
+                    <h3 className=" p-2 border bg-main-light-blue2 rounded-xl">
                       Herzlich willkommen auf der Website der Patient Doctor
                       Appointment App!
                     </h3>
                   </div>
-                  <div className=" absolute  ">
-                    <img
-                      src={arzt}
-                      alt="arzt"
-                      className="w-[45px] h-[45px] p-2 ml-[925px] mt-[-20px] rounded-full bg-main-light-blue2 z-10"
-                    />
-                  </div>
+                
                 </div>
 
                 <div className="leading-[30px] font-medium	">
-                  <p className="mt-6">
+                  <p className="mt-6 p-4">
                     <span>Online-Terminbuchung:</span> Unser Online
                     Terminvereinbarungstool bietet eine benutzerfreundliche
                     Oberfläche für eine schnelle und einfache Terminplanung
@@ -75,16 +69,10 @@ const About = () => {
                 </div>
 
                 <div className="grid">
-                  <div>
-                    <img
-                      src={patient}
-                      alt="patient"
-                      className="absolute w-[40px] h-[40px] ml-[-50px] mt-[50px] p-2 rounded-full bg-main-light-blue2 z-10"
-                    />
-                  </div>
+                  
                   <div className="  flex  justify-end">
                     {" "}
-                    <h3 className=" text-center pb-3 mt-[20px] mr-[-45px] py-5  w-[200px] font-extrabold sm:text-xl   border bg-main-light-blue2 rounded-l-xl">
+                    <h3 className=" text-center mt-4 p-2 font-extrabold sm:text-xl   border bg-main-light-blue2 rounded-xl">
                       Terminuns Team
                     </h3>
                   </div>

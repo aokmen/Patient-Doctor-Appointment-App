@@ -31,16 +31,16 @@ const Services = () => {
   return (
     <>
     <Header/>
-    <div className='flex flex-col justify-center items-center w-full h-[140vh] md:h-[150vh] lg:h-[140vh] bg-[#F1F7FE]'>
-      <div className='w-[400px] mb-[55rem] md:mb-[58rem] md:w-[600px] xl:w-[900px] md:ml-[-15rem] lg:mb-[58rem] xl:mb-[47rem] lg:ml-[-65rem] xl:ml-[-65rem] absolute z-40'>
+    <div className='flex flex-wrap justify-center items-center w-full min-h-[140vh] bg-[#F1F7FE]'>
+      {/* <div className='w-[400px] mb-[55rem] md:mb-[58rem] md:w-[600px] xl:w-[900px] md:ml-[-15rem] lg:mb-[58rem] xl:mb-[47rem] lg:ml-[-65rem] xl:ml-[-65rem] absolute z-40'>
         <img className='w-[400px] md:w-[600px] xl:w-[900px] rounded-full border-b-4 lg:border-r-8 service1 bg-[#F1F7FE]' src={serviceImg1} alt="services1" />
-      </div>
+      </div> */}
       {/* <div className='absolute border-8 border-cyan-700 mt-[-78vh] rounded-full'></div>
       <div className='absolute border-2 border-cyan-700 h-[80vh] mt-8'></div>
       <div className='absolute border-8 border-cyan-700 mt-[85vh] rounded-full'>
 
       </div> */}
-      <div className='flex flex-wrap justify-center items-center border-r-8 md:border-l-8 md:border-r-0 lg:border-b-8 border-[#345b83] rounded-full lg:rounded-3xl py-[6rem] lg:py-0 lg:pb-[5rem] lg:pt-12 md:py[10rem] px-10 md:px-0 md:pl-3 w-[75vw] md:w-[90vw] lg:w-[70vw] lg:ml-[10rem] lg:pl-[5rem] xl:pl-[17rem] xl:mt-[-8rem] lg:mb-[17rem] xl:mb-[23rem] xl:pb-[15rem] xl:mr-[-20rem] md:h-[80vh] lg:h-[85vh] mt-[2rem] md:mt-[4rem] lg:absolute'>
+      {/* <div className='flex flex-wrap justify-center items-center border-r-8 md:border-l-8 md:border-r-0 lg:border-b-8 border-[#345b83] rounded-full lg:rounded-3xl py-[6rem] lg:py-0 lg:pb-[5rem] lg:pt-12 md:py[10rem] px-10 md:px-0 md:pl-3 w-[75vw] md:w-[90vw] lg:w-[70vw] lg:ml-[10rem] lg:pl-[5rem] xl:pl-[17rem] xl:mt-[-8rem] lg:mb-[17rem] xl:mb-[23rem] xl:pb-[15rem] xl:mr-[-20rem] md:h-[80vh] lg:h-[85vh] mt-[2rem] md:mt-[4rem] lg:absolute'>
         {
           
           serviceObjArr.map((item, index) => (
@@ -54,8 +54,23 @@ const Services = () => {
       </div>
       <div className='w-[400px] mt-[55rem] sm:mt-[58rem] md:mt-[65rem] lg:mt-[50rem] xl:mt-[30rem] md:w-[600px] xl:w-[900px] md:ml-[10rem] lg:ml-[50rem] xl:ml-[61rem] absolute'>
         <img className='service2 w-[400px] md:w-[600px] xl:w-[900px] rounded-full border-t-4 lg:border-l-8 bg-[#F1F7FE] ' src={serviceImg2} alt="services2" />
-      </div>
+      </div> */}
 
+      <div className='xl:flex-1 flex justify-center'> <img className='w-2/3 lg:w-[100%]' src={serviceImg1} alt="services1" /></div>
+
+         <div className="xl:flex-1 flex flex-wrap justify-center xl:w-1/2 ">
+        {
+          
+          serviceObjArr.map((item, index) => (
+            <div key={index} className='w-[130px] h-[125px] flex flex-col  bg-white items-center text-center rounded-lg service-card py-1 mx-1 sm:mx-3 sm:my-4 mt-3 md:mt-6 md:w-[150px] md:h-[150px] md:my-0 md:ml-12 lg:h-[160px]'>
+              <img src={item.serImg} alt="appointment" className='w-8 h-8 mt-3 lg:w-12 lg:h-12'/>
+              <h3 className='text-sm md:text-lg lg:text-lg mt-2 text-[#345b83]'>{item.serName}</h3>
+            </div>
+          ))
+        }
+        
+      </div>
+       <div className='xl:flex-1 flex justify-center'> <img className='w-2/3 lg:w-[100%]' src={serviceImg2} alt="services2" /></div>
     </div>
     <BottomLine/>
     </>
