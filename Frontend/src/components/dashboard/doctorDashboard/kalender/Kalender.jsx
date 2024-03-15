@@ -12,9 +12,9 @@ const Kalender = () => {
 
     const {appointments} = useSelector((state)=>state.data)
     const {getData} = useDataCall()
-    const {  userId, userType } = useSelector((state) => state.auth)
+    const { userId, userType } = useSelector((state) => state.auth);
+
   
-    
     let doctor_id = userId
 
   const dateToday = new Date().toISOString();
