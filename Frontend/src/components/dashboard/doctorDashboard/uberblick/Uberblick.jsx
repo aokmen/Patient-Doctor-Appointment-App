@@ -8,11 +8,12 @@ import PatientInfo from "./PatientInfo.jsx";
 import "../../../doctor/ReactCalendar.css";
 import Clock from "./Clock.jsx";
 
+
 const Uberblick = () => {
 
-  const { userId } = useSelector((state) => state.auth);
+
   const { appointments } = useSelector((state) => state.data);
-  const { getData } = useDataCall();
+
   const [patient, setPatient] = useState("");
   const [holidayArray, setHolidayArray] = useState([]);
   
@@ -21,10 +22,6 @@ const Uberblick = () => {
   const [holidays, setHolidays] = useState([]);
 
   const dateToday = moment().format("YYYY-MM-DD");
-
-
-  const { appointments } = useSelector((state) => state.data);
-
 
 
   let todayApps = appointments.filter((item) => {

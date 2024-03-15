@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react'
+import Sidebar0 from '../../components/doctor/sidebar/Sidebar'
 import Sidebar from '../../components/dashboard/patientDashboard/sidebar/Sidebar'
+import Sidebar2 from '../../components/dashboard/doctorDashboard/sidebar/Sidebar'
 import Services from '../../components/doctor/Services'
 import DoctorProfil from '../../components/doctor/ProfilDoctor'
 import AppointmentCalendar from '../../components/doctor/AppointmentCalendar'
@@ -14,6 +16,7 @@ const DetailDoctor = () => {
   const {id} = useParams();
   const {getData} = useDataCall()
   const {doctors} = useSelector((state)=>state.data)
+  const {userType} = useSelector((state)=>state.auth)
 
   const thisDoctor = doctors?.data?.filter((item, i) => {return item.id === id})
 
@@ -32,7 +35,9 @@ const DetailDoctor = () => {
     {
       !thisDoctor?.length ? <Loading/> : (
         <div className="grid grid-rows-5 grid-cols-8 w-100">
-          <div className="row-span-5 col-span-1"><Sidebar/></div>
+          <div className="row-span-5 col-span-1">
+            { !userType ? <Sidebar0/> :(userType==="patient" ? <Sidebar/> : <Sidebar2/>)}
+            </div>
           <div className="row-span-1 col-span-7 max-w-[88vw] ml-3"><Services {...thisDoctor[0]}/></div>
           <div className="row-span-4 col-span-2"><DoctorProfil {...thisDoctor[0]}/></div>
           <div className="row-span-4 col-span-3"><AppointmentCalendar {...thisDoctor[0]}/></div>

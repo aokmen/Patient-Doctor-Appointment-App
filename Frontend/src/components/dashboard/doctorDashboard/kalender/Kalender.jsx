@@ -9,23 +9,20 @@ import Feiertage from "./Feiertage";
 import moment from "moment";
 
 const Kalender = () => {
-  const { appointments } = useSelector((state) => state.data);
-  const { getData } = useDataCall();
-
 
     const {appointments} = useSelector((state)=>state.data)
     const {getData} = useDataCall()
-    const {  userId } = useSelector((state) => state.auth)
+    const {  userId, userType } = useSelector((state) => state.auth)
   
     
     let doctor_id = userId
 
   const dateToday = new Date().toISOString();
 
-  let appsThisDoctor = appointments.filter((item) => {
+  let appsThisDoctor = appointments?.filter((item) => {
     return item.doctorId === doctor_id;
   });
-  let todayAppsThisDoctor = appsThisDoctor.filter((item) => {
+  let todayAppsThisDoctor = appsThisDoctor?.filter((item) => {
     return item.date === dateToday.split("T")[0];
   });
 
@@ -41,7 +38,7 @@ const Kalender = () => {
 
   useEffect(() => {
     getData("appointments");
-    const AppsToday = appsThisDoctor.filter((item) => {
+    const AppsToday = appsThisDoctor?.filter((item) => {
       return item.date === dateToday.split("T")[0];
     });
     setAppsThisDoctorSelectedDate(AppsToday);
@@ -59,12 +56,12 @@ const Kalender = () => {
     //console.log(datum)
     //console.log("value:",value.toLocaleString())
     setSelectedDate(datum);
-    const AppsSelectedDate = appsThisDoctor.filter((item) => {
+    const AppsSelectedDate = appsThisDoctor?.filter((item) => {
       return item.date === datum;
     });
     setAppsThisDoctorSelectedDate(AppsSelectedDate);
 
-    dayData = await holidays.filter((item) => item.date.iso === datum);
+    dayData = await holidays?.filter((item) => item.date.iso === datum);
 
     setHolidayArray(dayData);
   };

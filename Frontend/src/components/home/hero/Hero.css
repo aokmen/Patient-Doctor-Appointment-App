@@ -1,4 +1,9 @@
-.input1 {
+
+/* -------------------------------------------------------------------------- */
+/*         Common classes and other css styles are in searchDoctor.css        */
+/* -------------------------------------------------------------------------- */
+
+.hero-search {
   margin-left: 0px;
   border: 1px solid #38638d;
   margin-top: 75px;
@@ -11,49 +16,69 @@
   position: relative;
   z-index: 2;
 }
-.input-fixed {
+
+/* -------------------------------------------------------------------------- */
+/*                                    Input                                   */
+/* -------------------------------------------------------------------------- */
+
+.input{
+    
+  margin-left: 100px;
+  border: 1px solid #38638D;
+  margin-top: 130px;
+  width: 807px;
+  height: 77.5px;
+  border-radius: 28px;
+  display: flex;
+  justify-content: center;
+  align-content: center ;
+  position: fixed;
+  z-index: 2;
+ 
+}
+.input-fixed{
   padding-top: 230px;
   height: 200px;
-  background-color: #b7d8f8;
+  background-color: #B7D8F8;
   width: 100%;
   z-index: 1;
   position: fixed;
 }
-.input-left,
-.input-right {
+.input-left, .input-right{
   height: 75px;
   width: 402px;
   padding-left: 70px;
   outline: none;
 }
-.input-left {
+.input-left{
   border-top-left-radius: 28px;
   border-bottom-left-radius: 28px;
-  /* border-right: 2px solid #38638d; */
+  /* border-right: 2px solid #38638D; */
 }
 
-.input-left-box {
+.input-left-box{
   position: relative;
 }
 
-.searchIcon,
-.locationIcon {
+.searchIcon, .locationIcon{
   position: absolute;
   margin: 20px 0 0 20px;
 }
 
-.input-middleLine {
+.input-middleLine{
   height: 80%;
-  /* border-right: 1px solid #6f92b4; */
+  border-right: 1px solid #6f92b4;
   margin: auto 0;
+  
+
 }
-/* .input-right {
+.input-right{
   border-top-right-radius: 28px;
   border-bottom-right-radius: 28px;
-} */
-.input-btn {
+}
+.input-btn{
   position: absolute;
-  background-color: #38638d !important;
+  background-color: #38638D !important;
   color: white;
   height: 100%;
   padding: 10px;
@@ -64,8 +89,123 @@
   margin-left: -120px;
   width: 125px;
 }
-.input-btn:hover {
-  background-color: #5999d7 !important;
-  border: #5999d7;
-  box-shadow: 0 0 5px #38638d;
+.input-btn:hover{
+  background-color: #5999D7 !important;
+  border: #5999D7;
+  box-shadow: 0 0 5px #38638D;
 }
+
+/* ----------------------------- Breakpoint: x3l ----------------------------- */
+   
+@media screen and (max-width: 1440px) { 
+  .hero-search, .input {  
+    width: 707px;
+  }
+  .input-left{width: 300px;}
+  .input-right{width: 400px;}
+}
+
+/* ----------------------------- Breakpoint: x2l ----------------------------- */
+   
+@media screen and (max-width: 1280px) { 
+  .hero-search {  
+    
+  }
+}
+
+/* ----------------------------- Breakpoint: xl ----------------------------- */
+   
+@media screen and (max-width: 1024px) { 
+  .hero-search, .input{  
+    width: 604px;
+  }
+  .input-left{width: 250px;}
+  .input-right{width: 350px;}
+}
+
+/* ----------------------------- Breakpoint: lg ----------------------------- */
+
+@media screen and (max-width: 768px) { 
+  .hero-search, .input{  
+    width: 544px;
+  }
+  .input-left{width: 240px;}
+  .input-right{width: 300px;}
+
+  .search-doctor-form{
+    margin-left: -50px;
+    }
+}
+
+/* ----------------------------- Breakpoint: md ----------------------------- */
+
+@media screen and (max-width: 640px) { 
+  .hero-search, .input{  
+    width: 504px;
+    height: 60px;
+  }
+  .input-left{width: 200px; height: 58px;  padding-left: 40px;}
+  .input-left::placeholder {font-size: 14px;}
+
+  .input-right{width: 300px; height: 58px;  padding-left: 40px;}
+  .input-right::placeholder {font-size: 14px;}
+  .searchIcon, .locationIcon{height: 30px;  margin-left: 10px; margin-top: 15px;}
+
+  .search-doctor-form{
+    margin-left: -80px;
+    }
+   .notInfo{
+    font-size: 24px !important;
+   } 
+
+}
+
+/* ----------------------------- Breakpoint: sm ----------------------------- */
+
+@media screen and (max-width: 550px) { 
+  .hero-search, .input{  
+    width: 354px;
+    height: 50px;
+  }
+  .input-left{width: 150px; height: 48px; }
+  .input-left::placeholder {font-size: 10px;}
+
+  .input-right{width: 200px;height: 48px; padding-left: 30px;}
+  .input-right::placeholder {font-size: 9px;}
+  .searchIcon, .locationIcon{height: 20px;  margin-left: 10px; margin-top: 15px;}
+  .input-btn{
+
+    
+    padding: 10px;
+    font-size: 16px;
+    border-top-right-radius: 28px;
+    border-bottom-right-radius: 28px;
+    margin-left: -78px;
+    width: 80px;
+  }
+
+  .notInfo{
+    margin-left: 0px;
+    font-size: 20px !important;
+   } 
+}
+
+
+/* .input-btn{
+  position: absolute;
+  background-color: #38638D !important;
+  color: white;
+  height: 100%;
+  padding: 10px;
+  font-size: 24px;
+  font-weight: bold;
+  border-top-right-radius: 28px;
+  border-bottom-right-radius: 28px;
+  margin-left: -120px;
+  width: 125px;
+}
+.input-btn:hover{
+  background-color: #5999D7 !important;
+  border: #5999D7;
+  box-shadow: 0 0 5px #38638D;
+} */

@@ -58,7 +58,7 @@ const Header = () => {
         return (
             <div className={`relative ${props.class}`}>
                 <div className="flex items-center mt-[-5px]">
-                    <button ref={profileRef} className="w-20 h-20 outline-none rounded-full ring-offset-2 ring-gray-200 ring-2 lg:focus:bg-main-light2-blue "
+                    <button ref={profileRef} className="w-20 h-20 outline-none rounded-full ring-offset-2 ring-gray-200 ring-2 lg:focus:bg-main-light2-blue"
                         onClick={() => setState(!state)}
                     >
                           
@@ -74,7 +74,7 @@ const Header = () => {
                     </div>
                 </div>
 
-                <ul className={`bg-white top-12 w-full p-3 left-[-20px] mt-100 lg:absolute lg:border lg:rounded-md lg:text-sm lg:w-[120] lg:shadow-md lg:space-y-0 lg:mt-0 md:absolute md:border md:rounded-md md:text-sm md:w-[120px] md:shadow-md md:space-y-0 md:mt-0  ${state ? '' : 'lg:hidden || md:hidden'}`}>
+                <ul className={`bg-white top-12 w-full p-3 left-[-20px] mt-100 lg:absolute lg:border lg:rounded-md lg:text-sm lg:w-[120] lg:shadow-md lg:space-y-0 lg:mt-0 md:absolute md:border md:rounded-md md:text-sm md:w-[120px] md:shadow-md md:space-y-0 md:mt-0 ${state ? '' : 'lg:hidden || md:hidden'}`}>
                     {
                         navigation.map((item, i) => (
                             <li key={i}>
@@ -119,7 +119,7 @@ const Header = () => {
                     </div>
                 </div>
                 <div className={`flex-1 flex  justify-space items-center mt-8 md:mt-4 md:flex ${state ? 'block' : 'hidden'}`}>
-                    <ul className="justify-center   mx-auto items-center g-main-dark-blue space-y-6 lg:gap-10  md:gap-0 md:flex md:space-x-4 md:space-y-0  md:border-0 md:mt-0 ">
+                    <ul className="justify-center mb-4 mx-auto items-center g-main-dark-blue space-y-6 lg:gap-10  md:gap-0 md:flex md:space-x-4 md:space-y-0  md:border-0 md:mt-0 ">
                     
    
                         {
