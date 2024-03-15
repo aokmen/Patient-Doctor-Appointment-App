@@ -9,13 +9,10 @@ import Feiertage from "./Feiertage";
 import moment from "moment";
 
 const Kalender = () => {
-  const { appointments } = useSelector((state) => state.data);
-  const { getData } = useDataCall();
-
 
     const {appointments} = useSelector((state)=>state.data)
     const {getData} = useDataCall()
-    const {  userId } = useSelector((state) => state.auth)
+    const {  userId, userType } = useSelector((state) => state.auth)
   
     
     let doctor_id = userId
