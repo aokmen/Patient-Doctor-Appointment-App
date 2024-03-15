@@ -27,11 +27,6 @@ const AppointmentSchema = new mongoose.Schema({
         trim: true,
         required: true
     },
-    // timeEnd: {
-    //     type: String,
-    //     trim: true,
-    //     required: true
-    // },
     patientId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Patient'

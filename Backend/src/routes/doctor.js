@@ -1,6 +1,7 @@
 "use strict"
 
 const router = require('express').Router()
+const fs = require("fs");
 /* ------------------------------------------------------- */
 // routes/doctor:
 
@@ -16,7 +17,9 @@ router.route('/')
 
 router.route('/:id')
     .get( doctor.read)
+    .put(permissions.isAdminOrDoctor, upload.single('avatar'), doctor.update)
     .put( upload.single('avatar'), doctor.update)
+
     .patch(permissions.isAdminOrDoctor, upload.single('avatar'), doctor.update)
     .delete(permissions.isAdminOrDoctor,  doctor.delete)
 
