@@ -19,23 +19,7 @@ router
   .route("/:id")
   .get(patient.read)
   .put(
-    permissions.isAdminOrPatient,
-    (req, res) => {
-      if (!req.file) {
-        return res.status(400).send("No file uploaded.");
-      }
-
-      const uploadFolder = "upload/";
-      const existingFilePath = path.join(uploadFolder, req.file.originalname);
-
-      if (fs.existsSync(existingFilePath)) {
-        fs.unlinkSync(existingFilePath);
-      }
-      res.send("File uploaded successfully!");
-    },
-
-    patient.update
-  )
+    permissions.isAdminOrPatient, patient.update)
   .patch(permissions.isAdminOrPatient, patient.update)
   .delete(permissions.isAdminOrPatient, patient.delete);
 
