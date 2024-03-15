@@ -33,7 +33,7 @@ uniqueIdsArray.forEach((element) => {
 
   return (
     <div className="d-header">
-       <img src={logo} alt="logo" />
+       <img className="d-header-img" src={logo} alt="logo" />
       <div className="d-navbar-icons ">
     
 
