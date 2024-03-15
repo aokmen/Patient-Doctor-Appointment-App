@@ -10,9 +10,6 @@ import Clock from "./Clock.jsx";
 
 const Uberblick = () => {
 
-  const { userId } = useSelector((state) => state.auth);
-  const { appointments } = useSelector((state) => state.data);
-  const { getData } = useDataCall();
   const [patient, setPatient] = useState("");
   const [holidayArray, setHolidayArray] = useState([]);
   
