@@ -7,7 +7,6 @@ const fs = require("fs");
 
 const permissions = require('../middlewares/permissions')
 const doctor = require('../controllers/doctor')
-
 const upload = require('../middlewares/upload')
 
    
@@ -17,9 +16,7 @@ router.route('/')
 
 router.route('/:id')
     .get( doctor.read)
-    .put(permissions.isAdminOrDoctor, upload.single('avatar'), doctor.update)
     .put( upload.single('avatar'), doctor.update)
-
     .patch(permissions.isAdminOrDoctor, upload.single('avatar'), doctor.update)
     .delete(permissions.isAdminOrDoctor,  doctor.delete)
 
