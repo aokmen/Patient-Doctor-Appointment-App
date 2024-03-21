@@ -9,7 +9,7 @@ const authSlice = createSlice({
     userId: "",
     error: false,
     token: null,
-    userType: null,
+    userType: null, 
   },
   reducers: {
     fetchStart: (state) => {
