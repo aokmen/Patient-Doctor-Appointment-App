@@ -31,7 +31,7 @@ const Uberblick = () => {
   //console.log(todayApps)
 
   let receivedAppThisDoctor = appointments.filter((app) => {
-    return app.patientId;
+    return app.patientId; 
   });
 
   useEffect(() => {
