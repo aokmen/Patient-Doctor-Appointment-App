@@ -3,19 +3,979 @@
 @tailwind utilities;
 
 
-*{
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
+
+/* -------------------------------- admin panel ------------------------------- */
+
+.apanel-view-doctor-info2::-webkit-scrollbar, .apanel-view::-webkit-scrollbar, .apanel-p-view::-webkit-scrollbar { width: 10px; }
+.apanel-view-doctor-info2::-webkit-scrollbar-thumb, .apanel-view::-webkit-scrollbar-thumb, .apanel-p-view::-webkit-scrollbar-thumb { background: #d9e4f0 }
+
+/* -------------------------------- Überblick ------------------------------- */
+
+.p-view::-webkit-scrollbar, .p-view-termin::-webkit-scrollbar, .p-view-daily-calendar::-webkit-scrollbar { width: 10px; }
+.p-view::-webkit-scrollbar-thumb, .p-view-termin::-webkit-scrollbar-thumb, .p-view-daily-calendar:-webkit-scrollbar-thumb { background: #d9e4f0 }
+
+.p-view-daily-calendar{
+    overflow: scroll;
+    margin-bottom: 120px;
+    height: 450px;
+ 
+}
+.p-view-btn{
+    width: 400px;
+}
+
+/* -------------------------------- Calender ------------------------------- */
+.react-calendar2 {
+       
+    height: 100%;
+}
+.p-calender-events{
+    height: 600px;
+    overflow: scroll;
+}
+
+.p-calender-events::-webkit-scrollbar { width: 10px; }
+.p-calender-events::-webkit-scrollbar-thumb { background: #d9e4f0 }
+
+.p-termin-info{
+    height: 680px;
+    width: 320px;
+   
+  padding-left: 20px;
+}
+.p-calender-termin{
+    width: 340px;
+    border-right: 10px solid #F1F7FE;
+}
+
+.p-d-view-termin::-webkit-scrollbar,.p-view-main::-webkit-scrollbar, .p-calender-termin::-webkit-scrollbar { width: 10px; }
+.p-d-view-termin::-webkit-scrollbar-thumb,.p-view-main::-webkit-scrollbar-thumb, .p-calender-termin::-webkit-scrollbar-thumb { background: #d9e4f0 }
+
+
+/* ---------------------------- Doctor Management --------------------------- */
+.d-man-main{
+    overflow: scroll;
+    height:100vh
+
+}
+.d-man-tag-main2{
+    height: 120px;
+}
+
+.d-man-tag-main{
+    display: flex;
+    justify-content: center;
+    align-items: center ;
+    height: 120px;
+    border: 1px solid #d9e4f0 !important;
+    margin-bottom: 20px !important;
+    width: 800px;
+    margin: 0 auto;
+}
+
+.d-man-main::-webkit-scrollbar { width: 10px; }
+.d-man-main::-webkit-scrollbar-thumb{ background: #d9e4f0 }
+
+.p-view-start{
+    width: 520px;
+}
+
 /* -------------------------------------------------------------------------- */
-/*                                   Navbar                                   */
+/*                               Breakpoint: x4l                              */
 /* -------------------------------------------------------------------------- */
-/* "bg-main-dark-blue self-stretch w-full px-20 py-5 max-md:max-w-full max-md:px-5" */
-@layer components {
-    /*
-    nav {
-        @apply bg-main-dark-blue self-stretch w-full px-20 py-5 max-md:max-w-full max-md:px-5 border border-solid border-[red] flex ;
+
+@media screen and (max-width: 1740px) {
+
+
+    /*TODO ---------------------------------Task---------------------------------- */
+    .task-main {
+        margin-right: 0;
+        margin-left: 15px;
+        border-bottom-left-radius: 1.5rem;
+        margin-bottom: 30px;
+        padding-top: 20px;
     }
-   */
+
+    .note-main {
+
+        border-top-left-radius: 1.5rem;
+        border-bottom-left-radius: 1.5rem;
+        padding-top: 20px;
+    }
+
+    .panel-task {
+        flex-wrap: wrap;
+        overflow: scroll;
+        height: 825px;
+    }
+
+    .panel-task::-webkit-scrollbar {
+
+        width: 10px;
+    }
+
+    .panel-task::-webkit-scrollbar-thumb {
+
+        background: #d9e4f0
+    }
+
+
+    /*TODO ----------------------------Panel Profile---------------------------- */
+
+    .d-profile-panel-person-profile,
+    .d-profile-panel-person-profile2 {
+
+        flex-wrap: wrap;
+
+    }
+
+    /*TODO ---------------------------- Panel Message --------------------------- */
+
+    .p-message-main-write-box {
+        width: 500px;
+    }
+
+    /*TODO ---------------------------- Panel Overview --------------------------- */
+    .p-view-main {
+        overflow: scroll;
+    }
+    
+    .p-view{
+        overflow: scroll;
+        flex-wrap: wrap;
+        padding-bottom: 100px;
+        border-radius:0;
+    }
+    .p-view-start, .p-view-info{
+        border-radius:0;
+    }
+    .p-view-start{
+        width: 500px;
+    }
+
+    /*TODO ---------------------------- Panel Calender --------------------------- */
+
+    .p-calender-box{
+     
+        overflow: scroll;
+        height: 100vh;
+        padding-bottom: 100px;
+        flex-wrap: wrap;
+        gap: 30px;
+    }
+    .p-calender-box::-webkit-scrollbar {
+
+        width: 10px;
+    }
+
+    .p-calender-box::-webkit-scrollbar-thumb {
+
+        background: #d9e4f0
+    }
+
+    .p-calender-left, .p-calender-right{
+        border-radius: 25px;
+        border: none;
+        height: 800px;
+    }
+
+    /*TODO ---------------------------- Panel Statistic --------------------------- */
+
+    .p-statistic{
+        flex-wrap: wrap;
+        height: 100vh;
+        overflow: scroll;
+        padding-bottom: 80px;
+    }
+    .p-statistic-left{
+        display: flex;
+        gap: 40px;
+        margin-bottom: -40px;
+    }
+    .p-statistic-left1, .p-statistic-left2{
+        padding: 0 ;
+    }
+
+    
+}
+
+
+
+/* -------------------------------------------------------------------------- */
+/*                               Breakpoint: x3l                              */
+/* -------------------------------------------------------------------------- */
+
+@media screen and (max-width: 1440px) {
+
+    /*TODO ------------------------Patient Panel Profile------------------------- */
+
+    .p-panel-person--left,
+    .d-profile-panel-person--left {
+        border-right: 0 solid #F1F7FE;
+    }
+
+    .d-header-img {
+        display: block;
+    }
+
+    /*TODO ---------------------------- Panel Message --------------------------- */
+
+    .p-message-main {
+        flex-wrap: wrap;
+        overflow: scroll;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .p-message-main::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    .p-message-main::-webkit-scrollbar-thumb {
+        background: #d9e4f0
+    }
+
+    .p-message-main-right,
+    .p-message-main-left {
+        height: 800px;
+        width: 650px;
+        flex: none;
+        border-left: 0;
+    }
+
+     /*TODO ---------------------------- Panel Statistic --------------------------- */
+    
+
+
+    .p-statistic-left{
+        display: flex;
+        flex-direction: column;
+    }
+    .p-statistic-left2{
+        margin:-40px 0 40px 0;
+    }
+    .p-statistic-right1{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /*TODO ---------------------------- Panel Overview --------------------------- */
+
+    .p-view-middle div:first-child  {        
+        order: 2;
+    }
+    .p-view-middle .p-view-info {        
+        margin: 30px 10px -40px 0;
+    }
+    .p-view-termin-info div:first-child{
+        order: 1;
+    }
+    .p-view-termin-info div:last-child{
+        order: 2; 
+    }
+     /*TODO --------------------------- Panel Management --------------------------- */
+
+ 
+     .d-man-tag-main2{
+
+       flex-direction: row;
+        flex-wrap: wrap;
+        width: 700px;
+     }
+            
+    .d-man-tag-main{
+
+       flex-direction: column;
+        flex-wrap: wrap;
+        margin: 0 auto;
+        flex-wrap: wrap;
+    }
+     .d-man-tag-create{
+
+        width: 700px;
+       
+    
+     }
+
+     .d-man-tag-main-title h3{
+        width: 100% ;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+}
+
+
+
+
+/* -------------------------------------------------------------------------- */
+/*                               Breakpoint: x2l                              */
+/* -------------------------------------------------------------------------- */
+
+
+@media screen and (max-width: 1280px) {
+
+    /*TODO ------------------------Patient Panel Profile------------------------- */
+
+    .p-panel-person-profile,
+    .d-profile-panel-person-profile {
+
+        overflow: scroll;
+        margin-top: 20px;
+
+    }
+
+    .p-panel-person-profile::-webkit-scrollbar,
+    .d-profile-panel-person-profile::-webkit-scrollbar {
+
+        width: 10px;
+    }
+
+    .p-panel-person-profile::-webkit-scrollbar-thumb,
+    .d-profile-panel-person-profile::-webkit-scrollbar-thumb {
+
+        background: #d9e4f0
+    }
+
+    .p-main-content-section-box {
+        width: 92% !important;
+    }
+
+    /*TODO ---------------------------- Panel Message --------------------------- */
+
+
+    .p-message-main-right,
+    .p-message-main-left {
+
+        border-left: 0;
+    }
+
+    /*TODO ---------------------------- Panel Calender --------------------------- */
+
+   
+    .p-termin-info{
+        /* height: 680px;
+        width: 320px;
+    
+    padding-left: 20px; */
+
+    width: 100%;
+    }
+    .p-calender-termin{
+        /* width: 340px;*/
+       border-right: 10px solid #F1F7FE; 
+
+    width: 60%;
+    }   
+
+  
+ 
+}
+
+
+
+/* -------------------------------------------------------------------------- */
+/*                               Breakpoint: xl                               */
+/* -------------------------------------------------------------------------- */
+
+@media screen and (max-width: 1024px) {
+
+    /*TODO ---------------------------------Task---------------------------------- */
+
+    .form-main,
+    .form-main form {
+        width: 460px !important;
+    }
+
+    .task-form,
+    .task-form input,
+    .task-add {
+        width: 460px !important;
+    }
+
+    .task-box,
+    .my-auto button {
+        width: 350px;
+    }
+
+    .task-text {
+        width: 250px;
+    }
+
+    /*TODO ---------------------------- Panel Message --------------------------- */
+
+
+    .p-message-main-content,
+    .p-message-main-content-right,
+    .p-message-main-show-box-right,
+    .p-message-main-show-box {
+        width: 300px;
+    }
+
+    .p-message-main-show-left,
+    .p-message-main-show-right {
+
+        width: 350px;
+    }
+
+    .p-message-main {
+        width: 500px;
+        margin: 0 auto;
+    }
+
+    .p-message-main-show-right {
+        width: 350px;
+        margin-right: 5px;
+    }
+
+    .p-message-main-show-left {
+        margin-left: 5px;
+    }
+
+    .p-message-main-write-box {
+        width: 400px;
+    }
+
+    .p-message-main-left-title h1 {
+        display: none;
+    }
+
+    .p-message-main-left, .p-message-main-right {
+        width: 490px;
+    }
+    .p-message-findDoctor-main{
+        width: 480px;
+        margin: 0 auto;
+    }
+    .messageFindDoctor, .p-message-input-box{
+        
+        width: 380px;
+    }
+
+    .p-message-input-btn{
+        margin-left: -30px !important;
+    }
+    .p-message-findDoctor-info-main{
+        width: 400px;
+    }
+
+    /*TODO ---------------------------- Panel Calender --------------------------- */
+
+    .react-calendar2 {
+        width: 500px;
+        margin: 20px auto !important;    
+
+    }
+    .p-calender-main-termin {
+        flex-direction: column;
+        /* border: 1px solid red; */
+        width: 100%;
+    }
+    .p-termin-info{
+        width: 300px;
+        margin-left:-20px !important;
+     }
+    .p-calender-termin{
+        width: 300px;
+        margin: 0 auto;
+     }
+     .p-calender-right-info{
+        width: 300px;
+     }
+      /*TODO --------------------------- Panel Management --------------------------- */
+
+       .d-man-tag-main2{
+  
+         flex-direction: row;
+          flex-wrap: wrap;
+          width: 400px;
+          height: 250px;
+   
+       }
+              
+      .d-man-tag-main{
+  
+         flex-direction: row;
+          flex-wrap: wrap;
+          margin: 0 auto;
+          flex-wrap: wrap;
+          height: 170px;
+          width: 400px;
+ 
+      }
+       .d-man-tag-create{
+        
+          width: 400px; 
+          flex-wrap: wrap;     
+       }
+
+       .d-man-tag-btn-del{
+        margin-top: 15px;
+       }
+       .d-man-tag-title{
+        width: 80px;
+       }
+
+}
+
+
+
+
+/* -------------------------------------------------------------------------- */
+/*                               Breakpoint: lg                               */
+/* -------------------------------------------------------------------------- */
+
+@media screen and (max-width: 768px) {
+
+    /*TODO ------------------------------- SideBar ------------------------------ */
+
+    .mid h1,
+    .bot h1,
+    .sidebar-avatar-img img,
+    .sidebar-avatar-name {
+        display: none;
+    }
+
+    .sidebar-main {
+        width: 80px !important;
+    }
+
+    .middleSlide {
+        margin-top: -150px;
+    }
+
+    .bottom3 {
+        margin-left: -2px;
+    }
+
+    /*TODO ----------------------------- Panel Main ---------------------------- */
+
+    .p-main-content-section-box {
+        width: 100%;
+    }
+
+
+    /*TODO --------------------------- Panel Management --------------------------- */
+    
+    .d-man-tag-create-sub{
+        margin-bottom: 10px;
+    }
+}
+
+
+
+
+
+/* -------------------------------------------------------------------------- */
+/*                               Breakpoint: md                               */
+/* -------------------------------------------------------------------------- */
+
+@media screen and (max-width: 640px) {
+
+    /*TODO ------------------------------- SideBar ------------------------------ */
+
+    .sidebar-main {
+        width: 40px !important;
+    }
+
+    .mid,
+    .bot {
+
+        width: 40px;
+        padding: 8px;
+
+    }
+
+    /*TODO ----------------------------- Panel Main ---------------------------- */
+
+    .p-main-content-section-box {
+        width: 95% !important;
+    }
+
+    /*TODO ----------------------- Patient Panel Profile ------------------------ */
+
+    .p-p-input,
+    .p-p-input-radio,
+    .d-p-input,
+    .d-p-input-radio,
+    .p-input-about,
+    #dr-textarea-about,
+    .p-input3-1,
+    .p-input3-2 {
+
+        width: 251px;
+        border-radius: 13px;
+        font-size: 12px;
+    }
+
+    .p-panel-p-label,
+    .d-profile-panel-p-label {
+        font-size: 12px;
+        padding-left: 15px;
+
+    }
+
+    .p-p-input-radio,
+    .d-p-input-radio,
+    .gender2 {
+        font-size: 12px !important;
+
+    }
+
+    .d-header-img {
+        display: none;
+    }
+
+    /*TODO ---------------------------------Task---------------------------------- */
+
+    .form-main,
+    .form-main form {
+        width: 410px !important;
+
+    }
+
+    .task-form,
+    .task-form input,
+    .task-add, #p-taskForm button, #p-noteForm button{
+        width: 390px !important;
+        font-size: 12px;
+    }
+
+    .task-box,
+    .my-auto button {
+        width: 300px;
+ 
+    }
+
+    .task-text {
+        width: 250px;
+    }
+
+    .task-main,
+    .note-main {
+        margin-left: 0;
+
+    }
+
+    .task-main-add span,
+    .note-main-add span {
+        font-size: 16px;
+
+    }
+
+    /*TODO ---------------------------- Panel Message --------------------------- */
+
+
+    .p-message-main-content,
+    .p-message-main-content-right,
+    .p-message-main-show-box-right,
+    .p-message-main-show-box {
+        width: 300px;
+    }
+
+    .p-message-main-show-left,
+    .p-message-main-show-right {
+
+        width: 300px;
+    }
+
+    .p-message-main {
+      
+        width: 400px;
+        margin: 0 auto;
+    }
+
+    .p-message-main-show-right {
+        width: 350px;
+        margin-right: 5px;
+    }
+
+    .p-message-main-show-left {
+        margin-left: 5px;
+    }
+
+    .p-message-main-write-box {
+        width: 300px;
+    }
+
+    .p-message-main-left-title h1 {
+        display: none;
+    }
+
+    .p-message-main-left {
+        width: 290px;
+    }
+    .p-message-main-write-box {
+        width: 400px;
+    }
+
+    .p-message-main-left, .p-message-main-right {
+        width: 400px;
+    }
+    .p-message-findDoctor-main{
+        width: 400px;
+        margin: 0 auto;
+    }
+    .messageFindDoctor, .p-message-input-box{
+        
+        width: 300px;
+    }
+
+    .p-message-input-btn{
+        margin-left: -50px !important;
+    }
+    .p-message-findDoctor-info-main{
+        width: 300px;
+    }
+    .p-message-input-field{
+        width: 210px !important;
+    }
+     /*TODO ---------------------------- Panel Overview --------------------------- */
+     .p-view-main{
+        margin-left: -20px;
+     }
+     .p-view{
+        overflow: scroll;
+        flex-wrap: wrap;
+        padding-bottom: 100px;
+    }
+    .p-view-info{
+        width: 9rem;
+        margin-right: 10px;
+    }
+    .p-view-info h1{
+        font-size: 1rem;
+    }
+    .p-view-info div{
+   
+     width: 100px;
+     margin: 0 auto;
+    
+    }
+    .p-view-info p{
+        width: 50px;
+    }
+    .p-view-start{
+        width: 320px;
+    }
+
+    .p-view-middle div:first-child, .p-view-end div:first-child{
+        gap: 0 ;
+      }
+
+    .p-view-termin-info{
+        
+        width: 300px;
+        margin: 0 auto;
+    }
+    .termin-info{
+        width: 250px;
+    }   
+    .termin-info h1{
+        font-size: 1.2em ;
+
+    }
+    .p-view-btn1, .p-view-btn2{
+        font-size: 10px;
+    
+    }
+    .p-view-btn{
+        width: 250px;
+
+    }
+    .p-view-calender{
+        width: 320px ;
+
+        margin: 0 auto;
+    }
+    .react-calendar{
+        
+        margin: 10px auto;
+        width: 300px ;
+        font-size: 1rem;
+    }
+    .p-view-calender-box {
+      margin: 0 auto;
+        
+    }
+    .p-view-clock{
+        width: 300px;
+        margin: 0 auto;
+    }
+    .clock{
+        margin-left: 150px !important;
+    }
+    /*TODO -------------------------------- Profile ------------------------------- */
+
+    .radio-gender{
+        gap: 2;
+    }  
+    .radio-gender label{
+        margin-left: -10px;
+    }
+    .gender2{
+        margin-right: 7px;
+
+    }
+     /*TODO ---------------------------- Panel Statistic --------------------------- */
+
+    .p-statistic-left1,.p-statistic-left2, .p-statistic-right1-1, .p-statistic-right1-2, .p-statistic-right2{
+        width: 300px !important;
+    }
+
+}
+
+
+
+/* -------------------------------------------------------------------------- */
+/*                               Breakpoint: sm                               */
+/* -------------------------------------------------------------------------- */
+
+
+@media screen and (max-width: 460px) {
+
+    /*TODO ---------------------------------Task---------------------------------- */
+
+    .form-main,
+    .form-main form {
+        width: 300px !important;
+    }
+    .form-main{
+        margin-left: -15px;
+    }
+    .task-form,
+    .task-form input,
+    .task-add, #p-taskForm button, #p-noteForm button {
+        width: 300px !important;
+        
+    }
+
+    .task-box,
+    .my-auto button {
+        width: 190px;
+    }
+
+    .task-text {
+        width: 150px;
+    }
+
+    /*TODO ---------------------------- Panel Message --------------------------- */
+
+    .p-message-main {
+        width: 400px;
+    }
+
+    .p-message-main-left-title {
+        display: none;
+    }
+
+  
+     .p-message-main-content,
+     .p-message-main-content-right,
+     .p-message-main-show-box-right,
+     .p-message-main-show-box {
+         width: 250px;
+     }
+ 
+     .p-message-main-show-left,
+     .p-message-main-show-right {
+ 
+         width: 250px;
+     }
+ 
+     .p-message-main {
+       
+         width: 310px;
+         margin: 0 auto;
+     }
+ 
+     .p-message-main-show-right {
+         width: 310px;
+         margin-right: 5px;
+     }
+ 
+     .p-message-main-show-left {
+         margin-left: 5px;
+     }
+ 
+     .p-message-main-write-box {
+         width: 250px;
+     }
+ 
+     .p-message-main-left-title h1 {
+         display: none;
+     }
+ 
+     .p-message-main-left {
+         width: 340px;
+     }
+    /*TODO ---------------------------- Panel Calender --------------------------- */
+
+    .p-calender-main{
+        width: 90%;
+    }
+    /*TODO --------------------------- Panel Management --------------------------- */
+
+    .d-man-tag-main2{
+        width: 320px;
+       }
+             
+     .d-man-tag-main{
+         height: 200px;
+         width: 320px;
+
+     }
+  
+      .d-man-tag-btn-del{
+       margin-top: 10px;
+      }
+      .d-man-tag-title{
+       width: 60px;
+      }
+      .d-man-tag-title label{
+        font-size: 9px;
+      }
+      .d-man-tag-title-box{
+        width: 50px;
+      }
+      .d-man-tag-title-pag{
+        font-size: 13px;
+      }
+  
+}
+
+
+/* -------------------------------------------------------------------------- */
+/*                               Breakpoint: xs                               */
+/* -------------------------------------------------------------------------- */
+
+
+@media screen and (max-width: 370px) {
+
+    /*TODO ---------------------------------Task---------------------------------- */
+
+    .form-main,
+    .form-main form {
+        width: 250px !important;
+    }
+
+    .task-form,
+    .task-form input,
+    .task-add, #p-taskForm button, #p-noteForm button {
+        width: 250px !important;
+    }
+
+    .task-box,
+    .my-auto button {
+        width: 150px;
+    }
+
+    .task-text {
+        width: 100px;
+    }
+
 }
