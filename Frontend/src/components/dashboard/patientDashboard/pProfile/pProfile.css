@@ -10,10 +10,11 @@
     justify-content: center;
     align-items: center;
 
+
   }
 .p-panel-main-right--content{
     background-color: white;
-    height: 90%;
+    height: 100%;
     width: 100%;
     border-radius: 26px;
 
@@ -23,12 +24,14 @@
     height: 210vh;
     display: flex;
     flex-direction: column;
+    
 }
 .p-panel-person-profile{
 
     height: 70vh;
     display: flex;
    /* transform: translateY(-70vh); */
+   flex-wrap: wrap;
 }
 
 .p-panel-person--left, .p-panel-person--right{
@@ -37,7 +40,7 @@
     justify-content: center;
     flex-direction: column;
     align-items: center;
-   
+
 }
 .p-panel-person--left{
     border-right: 30px solid #F1F7FE;
@@ -68,7 +71,6 @@
     background-color: #F1F7FE;
     font-size: 20px;
     color: #38638D;
-
 
 }
 
@@ -152,6 +154,7 @@
     font-size: 20px;
     color: #38638D;
     height: 50%;
+  
 }
 .p-panel-p-profil-img-right-input{
     display: flex;
@@ -210,3 +213,35 @@
         text-align: center;
         margin-left: -50px;
     }
+
+/* ----------------------------- Breakpoint: x3l ----------------------------- */
+   
+@media screen and (max-width: 1440px) { 
+  
+  }
+  
+  /* ----------------------------- Breakpoint: x2l ----------------------------- */
+     
+  @media screen and (max-width: 1280px) { 
+   
+   
+  }
+  
+  /* ----------------------------- Breakpoint: lg ----------------------------- */
+  
+  @media screen and (max-width: 768px) { 
+   
+  }
+  
+  /* ----------------------------- Breakpoint: md ----------------------------- */
+  
+  @media screen and (max-width: 640px) { 
+    
+  
+  }
+  
+  /* ----------------------------- Breakpoint: sm ----------------------------- */
+  
+  @media screen and (max-width: 550px) { 
+  
+  }

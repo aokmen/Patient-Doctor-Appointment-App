@@ -91,15 +91,12 @@ const DProfile = (doctorProfile) => {
         
         <div className="d-profile-panel-person-main">
 
-            <div className="processbar">
-
-            </div>
 
             <div className="d-profile-panel-main-right">
                 <div className="d-profile-panel-main-right--content">
 
-                    <form action="" id="dr-uploadForm" encType="multipart/form-data" className="d-profile-panel-person" onSubmit={handleSubmit}>
-                        <div className="d-profile-panel-person-profile mt-10">
+                    <form action="" id="dr-uploadForm" encType="multipart/form-data" className="d-profile-panel-person " onSubmit={handleSubmit}>
+                        <div className="d-profile-panel-person-profile mt-10 d-flex ">
                             <div className="d-profile-panel-person--left">
                                 <div className="d-p-input d-profile-panel-main--profil-image">
                                     <div className="d-p-input-image">
@@ -183,16 +180,16 @@ const DProfile = (doctorProfile) => {
                             {/* style={{transform: "translateY(-70vh)"}} */}
                         </div>
 
-                        <div className="d-profile-panel-person-profile2">
+                        <div className="d-profile-panel-person-profile2 d-flex">
                             <div className="d-profile-panel-person--left">
-                                <div className="p-input">
+                                <div className="d-p-input">
                                     <label className="d-profile-panel-p-label" htmlFor="dr-input9">Titel</label> <input required className="d-profile-panel-d-p-input" id="dr-input9" type="text" name='p-input1' placeholder='Dr.med' defaultValue={title} onChange={(e) => handleInputChange("title", e.target.value)}
                                     />
                                 </div>
-                                <div className="p-input">
+                                <div className="d-p-input">
                                     <label className="d-profile-panel-p-label" htmlFor="dr-input10">Telefon</label> <input required className="d-profile-panel-d-p-input" id="dr-input10" type="text" placeholder='z.B. 1554212121' defaultValue={phone} onChange={(e) => handleInputChange("phone", e.target.value)} />
                                 </div>
-                                <div className="p-input">
+                                <div className="d-p-input">
                                     <label className="d-profile-panel-p-label" htmlFor="dr-input11" >Fachgebiet</label>
                                     <input required className="d-profile-panel-d-p-input" id="dr-input11" type="text" placeholder='z.B. Augenarzt' defaultValue={branch} onChange={(e) => handleInputChange("branch", e.target.value)} />
 
@@ -202,10 +199,10 @@ const DProfile = (doctorProfile) => {
      
                                     </select> */}
                                 </div>
-                                <div className="p-input">
+                                <div className="d-p-input">
                                     <label className="d-profile-panel-p-label" htmlFor="dr-input12">Sprache</label> <input required className="d-profile-panel-d-p-input" id="dr-input12" type="text" placeholder='z.B. Deutsch, Englisch' defaultValue={languages} onChange={(e) => handleInputChange("languages", e.target.value)} />
                                 </div>
-                                <div className="p-input">
+                                <div className="d-p-input">
                                     <label className="d-profile-panel-p-label" htmlFor="dr-input13">Webseite</label> <input required className="d-profile-panel-d-p-input" id="dr-input13" type="text" placeholder='z.B. www.terminuns.com' defaultValue={website} onChange={(e) => handleInputChange("website", e.target.value)} />
                                 </div>
 

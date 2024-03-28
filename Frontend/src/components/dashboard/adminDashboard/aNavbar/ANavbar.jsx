@@ -10,8 +10,8 @@ const ANavbar = () => {
 
   return (
     <div className="a-header">
-       <img src={logo} alt="logo" />
-      <div className="a-navbar-icons">
+       <img className="d-header-img" src={logo} alt="logo" />
+      <div className="a-navbar-icons min-w-[200px]">
 
         <img src={letter} alt="letter" />
         <img src={notification2} alt="notification2" />

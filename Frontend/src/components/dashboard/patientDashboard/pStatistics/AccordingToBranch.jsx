@@ -54,12 +54,12 @@ const AccordingToBranch = () => {
     let data = countOccurrences(branchesOfthisDoctors)
 
       return (
-        <div>
+        <div> 
           <Chart
             chartType="PieChart"
             data={data}
             options={options}
-            width={"100%"}
+            width="100%"
             height={"360px"}
           />
         </div>

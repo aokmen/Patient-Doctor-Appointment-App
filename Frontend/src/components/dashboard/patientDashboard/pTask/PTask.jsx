@@ -51,8 +51,8 @@ const PTask = () => {
         <div className=" text-main-dark-blue py-4">
           <h3 className="text-3xl font-bold mx-4">Meine Aufgabe</h3>
         </div>
-        <div className="p-2 flex flex-col justify-center w-[650px] ">
-          <div className="flex flex-col border-2 rounded-lg border-main-light-blue2 py-10 mb-[15px] ">
+        <div className="form-main p-2 flex flex-col justify-center w-[650px] ">
+          <div className="task-form flex flex-col border-2 rounded-lg border-main-light-blue2 py-10 mb-[15px] ">
             <form action="" id="p-taskForm" onSubmit={handleSubmit}>
               <input
                 ref={inputRef} // Referansı input elementine atayın
@@ -78,7 +78,7 @@ const PTask = () => {
             {tasks?.map((task, index) => (
               <div
                 key={index}
-                className="flex mb-4 align-content-center justify-center border-2 w-[630px]  bg-main-light-blue  hover:bg-[white] hover:text-white rounded-lg border-main-light-blue2 cursor-pointer "
+                className=" task-add flex mb-4 align-content-center justify-center border-2 w-[630px]  bg-main-light-blue  hover:bg-[white] hover:text-white rounded-lg border-main-light-blue2 cursor-pointer "
               >
                 <span className={`font-medium flex-1 text-2xl text-main-dark-blue border-1 border-main-light-blue2 rounded-md p-3 px-4 bg-main-light-blue2 mr-3 w-full ${task.isCompleted || isTaskCompleted(task.id)
                     ? "bg-[#B7D8F8] text-gray-50"
@@ -94,8 +94,8 @@ const PTask = () => {
                       }`}
                     onClick={() => handleTaskClick(task)}
                   >
-                    <div className="flex justify-between w-[600px] ">
-                      <p className=" w-[500px] text-left">{task.task}</p>
+                    <div className="task-box flex justify-between w-[600px] ">
+                      <p className=" task-text w-[500px] text-left">{task.task}</p>
                       <img src={click} alt="click" className="w-6 h-6 my-auto"/>
                     </div>
                   </button>

@@ -32,54 +32,60 @@ const ShowDays = ({name, appointmentDuration, startHour, finishHour, lunchStart,
     }, [])
     
   return (
-    <div className='flex justify-center items-center w-full'>
-            
-        <h3 htmlFor="days" className='text-2xl w-[10rem]'>{name}</h3> 
-        <div className='w-full flex item-center ml-12 mt-5' id="days">
-            <div className="w-full md:w-1/6 pr-3 mb-6 md:mb-0">
-                <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-state">TAGESAnfang</label>
+    <div className='d-man-tag-main flex justify-center items-center'>
+
+         <div className='d-man-tag-main-title w-[120px]'>
+         <h3 htmlFor="days" className=' text-xl mr-3'>{name}:</h3> 
+        </div>   
+        
+        <div className='d-man-tag-create flex justify-center items-center' id="days">
+            <div className="d-man-tag-create-sub flex justify-center items-center">
+            <div className="d-man-tag-title w-24 flex flex-col justify-center items-center">
+                <label className="  text-gray-700 text-xs font-bold mb-2" htmlFor="grid-state">Tagesanfang</label>
                 <div className="relative">
-                    <div name="startHour" className="block appearance-none w-full bg-white border-2 border-[#38638D] text-gray-700 py-3 px-4 pr-8 rounded-lg leading-tight" id="grid-state">
+                    <div name="startHour" className="d-man-tag-title-box appearance-none  w-[70px]  bg-white border-2 text-center border-[#d9e4f0] text-gray-700 " id="grid-state">
                         <p>{startHour}</p>
                     </div>
                 </div>
             </div>
-            <div className="w-full md:w-1/6 px-3 mb-6 md:mb-0">
-                <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-state">tagesende</label>
+            <div className="d-man-tag-title w-24 flex flex-col justify-center items-center">
+                <label className="  text-gray-700 text-xs font-bold mb-2" htmlFor="grid-state">Tagesende</label>
                 <div className="relative">
-                    <div className="block appearance-none w-full bg-white border-2 border-[#38638D] text-gray-700 py-3 px-4 pr-8 rounded-lg leading-tight" id="grid-state">
+                    <div className="d-man-tag-title-box appearance-none  w-[70px]  bg-white border-2 text-center border-[#d9e4f0] text-gray-700 " id="grid-state">
                         <p>{finishHour}</p>
                     </div>
                 </div>
             </div>
-            <div className="w-full md:w-1/6 px-3 mb-6 md:mb-0">
-                <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-state">MITTAGSPAUSE</label>
+            <div className="d-man-tag-title w-24 flex flex-col justify-center items-center">
+                <label className="  text-gray-700 text-xs font-bold mb-2" htmlFor="grid-state"> Mittagspause</label>
                 <div className="relative">
-                    <div  className="block appearance-none w-full bg-white border-2 border-[#38638D] text-gray-700 py-3 px-4 pr-8 rounded-lg leading-tight" id="grid-state">
+                    <div  className="d-man-tag-title-box appearance-none  w-[70px]  bg-white border-2 text-center border-[#d9e4f0] text-gray-700 " id="grid-state">
                         {
                             lunchStart ? <p>{lunchStart}</p> : <p>-</p>
                         }
                     </div>
                 </div>
             </div>
-            <div className="w-full md:w-1/6 px-3 mb-6 md:mb-0">
-                <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-state">PAUSEENDE</label>
+            <div className="d-man-tag-title w-24 flex flex-col justify-center items-center">
+                <label className="d-man-tag-title-pause text-gray-700 text-xs font-bold mb-2" htmlFor="grid-state">Ende der Pause</label>
                 <div className="relative">
-                    <div  className="block appearance-none w-full bg-white border-2 border-[#38638D] text-gray-700 py-3 px-4 pr-8 rounded-lg leading-tight" id="grid-state">
+                    <div  className="d-man-tag-title-box appearance-none  w-[70px]  bg-white border-2 text-center border-[#d9e4f0] text-gray-700 " id="grid-state">
                         {
                             lunchFinish ? <p>{lunchFinish}</p> : <p>-</p>
                         }
                     </div>
                 </div>
             </div>
-            <div className="w-full md:w-1/5 px-3 mb-6 md:mb-0">
-                <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-state">Termin Dauer</label>
+            <div className="d-man-tag-title w-24 flex flex-col justify-center items-center">
+                <label className="  text-gray-700 text-xs font-bold mb-2" htmlFor="grid-state">Termindauer</label>
                 <div className="relative">
-                    <div className="block appearance-none w-full bg-white border-2 border-[#38638D] text-gray-700 py-3 px-4 pr-8 rounded-lg leading-tight" id="grid-state">
-                        <p>{appointmentDuration} Min</p>
+                    <div className="d-man-tag-title-box appearance-none  w-[70px] bg-white border-2 text-center border-[#d9e4f0] text-gray-700 " id="grid-state">
+                        <p className='d-man-tag-title-pag'>{appointmentDuration} Min</p>
                     </div>
                 </div>
               </div>
+            </div>
+            <div>
               {/* {
                   receivedAppThisDoctor.length !== 0 ?   //!Burasi normalde calisiyor ama istersen silemeyecek sekilde düzeltirsin
                       <div className=''>
@@ -87,8 +93,15 @@ const ShowDays = ({name, appointmentDuration, startHour, finishHour, lunchStart,
                           <p className='text-red-600'>Bevor Sie Ihre Termine löschen, müssen Sie alle vereinbarten Termine stornieren.</p>
                       </div>
                       : */}
-                      <button className='md:w-[10rem] md:h-[3rem] bg-red-600 rounded-xl text-white mt-5 hover:bg-red-500 duration-150' onClick={()=>delData("weekdays", id)}>LÖSCHEN</button>
+                      <button className='d-man-tag-btn-del w-[10rem] h-[3rem] ml-3 bg-red-600 rounded-xl text-white hover:bg-red-500 duration-150' onClick={()=>delData("weekdays", id)}>LÖSCHEN</button>
               {/* } */}
+            </div>
+           
+     
+ 
+               
+
+             
             
         </div>
     </div>

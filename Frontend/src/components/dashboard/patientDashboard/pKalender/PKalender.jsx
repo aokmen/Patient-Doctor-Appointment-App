@@ -61,9 +61,9 @@ const Kalender = () => {
   const [iSEventsShown, setiSEventsShown] = useState(false);
 
   return (
-    <div className="h-[100vh] w-[87vw]">
-      <div className="flex justify-center rounded-3xl">
-        <div className="bg-white rounded-l-3xl max-h-[86vh] w-[40vw] max-w-[40vw] border-r-[1.9rem] border-[#F1F7FE] min-h-[86vh] flex flex-col">
+    <div className="p-calender-main">
+      <div className="p-calender-box flex justify-center rounded-3xl">
+        <div className="p-calender-left bg-white w-[100%] rounded-l-3xl h-[820px] border-r-[1.9rem] border-[#F1F7FE] flex flex-col">
           <div className=" min-h-[10vh] text-4xl font-bold flex justify-center items-center border-b-8 border-[#38638D]">
             <h1 className="text-[#38638D]">Kalender</h1>
             <svg
@@ -86,8 +86,9 @@ const Kalender = () => {
           </div>
           <div>
             <Calendar
-              className="react-calendar2 mx-auto mt-12"
+              className="react-calendar2  mx-auto mt-12"
               defaultView="month"
+              width="100px"
               locale="de-DE"
               onChange={handleDateSelect}
               tileClassName={({ date, view }) => {
@@ -103,8 +104,8 @@ const Kalender = () => {
             />
           </div>
 
-          <div className=" rounded-3xl max-h-[33vh] min-h-[32vh] mt-5 flex flex-col">
-            <h1 className="text-3xl text-[#38638D] mx-auto border-b-2 border-[#38638D] px-10 my-3">
+          <div className=" rounded-3xl mt-5 flex flex-col">
+            <h1 className="text-3xl text-[#38638D] mx-auto border-b-2 border-[#38638D] px-10 mt-10 my-3">
               Feiertage
             </h1>
             <Feiertage
@@ -115,9 +116,9 @@ const Kalender = () => {
           </div>
         </div>
 
-        <div className=" bg-white rounded-r-3xl max-h-[86vh] min-h-[86vh] max-w-[50vw] w-[46vw] min-w-[46vw] flex flex-col">
-          <div className="py-3 rounded-3xl flex flex-col items-center">
-            <div className="flex justify-start items-center border-2 w-[32rem] border-[#38638D] rounded-lg bg-[#F1F7FE] mb-6 mt-3 ml-[-8rem]">
+        <div className="p-calender-right bg-white w-[100%] rounded-r-3xl flex flex-col">
+          <div className="p-calender-right-box py-3 rounded-3xl flex flex-col items-center mx-auto">
+            <div className="p-calender-right-info flex justify-start items-center border-2 w-[32rem] border-[#38638D] rounded-lg bg-[#F1F7FE] mb-6 mt-3 ">
               <button
                 onClick={() => setiSEventsShown(false)}
                 className={`w-1/2 py-2 px-3 flex justify-center items-center text-3xl  ${
@@ -137,8 +138,8 @@ const Kalender = () => {
             </div>
 
             {!iSEventsShown ? (
-              <div className="max-h-[72vh] min-h-[72vh] flex flex-row max-w-[44vw] min-w-[44vw]">
-                <div className="overflow-scroll rounded-3xl max-w-[18vw] min-w-[18vw]">
+              <div className="p-calender-main-termin flex flex-row ">
+                <div className="p-calender-termin overflow-scroll p-2 ">
                   {appsThisPatientSelectedDate?.map((appo, index) => {
                     return (
                       <div key={index}>
@@ -153,13 +154,13 @@ const Kalender = () => {
                     );
                   })}
                 </div>
-                <div className="rounded-3xl max-w-[17vw] min-w-[17vw] flex justify-center ml-4 px-4">
+                <div className="rounded-3xl  flex justify-center ml-4 ">
                   <TerminInfo termin={termin} />
                 </div>
               </div>
             ) : (
-              <div className="max-h-[71vh] min-h-[71vh] py-3 mt-6 rounded-3xl flex flex-col w-[35rem] ml-[-7rem]">
-                <div className="max-h-[38vh] min-h-[38vh]">
+              <div className=" rounded-3xl flex flex-col ">
+                <div>
                   <Events selectedDate={selectedDate} />
                 </div>
               </div>

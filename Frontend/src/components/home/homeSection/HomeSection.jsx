@@ -5,7 +5,7 @@ import security from "../../../assets/security.png";
 import "./HomeSection.css";
 const HomeSection = () => {
   return (
-    <div className="bg-main-dark-blue w-full min-h-[350px] ">
+    <div className="bg-main-dark-blue w-full min-h-[350px] mt-[-40px]">
       <h1 className="text-main-light-blue text-[40px] text-center 2xl:text-left 2xl:ml-32 p-5">
         Warum Sie uns{" "}
         <span className="text-main-light-blue2 font-medium">wählen sollten?</span>

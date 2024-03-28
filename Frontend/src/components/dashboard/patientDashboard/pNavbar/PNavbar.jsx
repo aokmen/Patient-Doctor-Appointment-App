@@ -32,7 +32,7 @@ uniqueIdsArray.forEach((element) => {
   return (
     <div className="d-header">
        <img className="d-header-img" src={logo} alt="logo" />
-      <div className="d-navbar-icons ">
+      <div className="d-navbar-icons min-w-[200px]">
     
         <div onClick={() => navigate("message")} className=" relative h-[35px] w-[35px] cursor-pointer"><span className={` absolute bottom-4 left-[-12px] ${findUser.length === 0 ? "hidden" : ""}`}>{findUser.length}</span>
         <img src={letter} alt="notification2" className="absolute top-[6.5px]"/>

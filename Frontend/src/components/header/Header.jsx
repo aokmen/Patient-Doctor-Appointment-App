@@ -10,7 +10,7 @@ import profilImage from "../../assets/profil_image2.png"
 import "./header.css";
 
 const Header = () => {
-    const { userId,user } = useSelector((state) => state.auth);
+    const { userId, user, userType } = useSelector((state) => state.auth);
     const { logout } = useAuthCall();
     const navigate = useNavigate();
     const [state, setState] = useState(false)
@@ -42,8 +42,8 @@ const Header = () => {
         const profileRef = useRef()
 
         const navigation = [
-            { title: "Mein Panel", onClick: () => navigate("/patient") },
-            { title: "Einstellung", onClick: () => navigate("/patient/profile") },
+            { title: "Mein Panel", onClick: () => navigate(`/${userType==="patient" ? "patient" : "doctor"}`) },
+            { title: "Einstellung", onClick: () => navigate(`/${userType==="patient" ? "patient" : "doctor"}/profile`) },
             { title: "Ausloggen", onClick: closed },
         ]
 

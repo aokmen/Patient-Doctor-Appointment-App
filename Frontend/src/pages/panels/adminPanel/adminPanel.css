@@ -7,9 +7,6 @@
    
 }
 
-.a-panel-sidebar {
-
-}
 
 .a-panel-main {
     display: flex;
@@ -40,8 +37,9 @@
     background-color: white;
     height: 92%;
     width: 90%;
-    border-radius: 26px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.199);
+    border-top-left-radius: 26px;
+    border-bottom-left-radius: 26px;
+
 
 }
 

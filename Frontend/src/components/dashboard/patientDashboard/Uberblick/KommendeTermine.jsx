@@ -10,7 +10,7 @@ const KommendeTermine = ({appointmentsOfThisPatient, setTermin}) => {
         {
             appointmentsOfThisPatient?.map((appo, index) => {
                 return <div key={index} >
-                             <div key={index} className='w-full hover:cursor-pointer' onClick={()=>setTermin(appo)}>
+                             <div key={index} className='mx-auto w-[300px] hover:cursor-pointer' onClick={()=>setTermin(appo)}>
                                     <Termine {...appo}/>
                             </div>
                             

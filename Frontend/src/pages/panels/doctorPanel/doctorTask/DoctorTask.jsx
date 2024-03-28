@@ -16,7 +16,7 @@ const DoctorTask = () => {
   }, []);
   
   return (
-    <div className="flex justify-between mx-auto">
+    <div className="panel-task flex justify-between mx-auto">
       <PTask/>
       <PNote/>
     </div>

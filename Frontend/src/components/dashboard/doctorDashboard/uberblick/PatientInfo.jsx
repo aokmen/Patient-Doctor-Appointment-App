@@ -51,15 +51,15 @@ const PatientInfo = ({patient, todayAppsThisDoctor}) => {
                                     <h1 className='text-red-600'>Stornierungsgrund: {termin[0]?.cancelReason}</h1>
                                 </div>
                             :
-                                <div className='flex justify-evenly items-center w-[20vw] ml-3'>
-                                    <button className='mt-10 bg-sky-600 text-white text-lg py-3 px-4 rounded-xl hover:bg-sky-700 duration-150'>SEND NACHRICHT</button>
-                                    <button onClick={()=>setShowModal(true)} className='mt-10 bg-red-600 text-white text-lg py-3 px-4 rounded-xl hover:bg-red-700 duration-150'>STORNIEREN</button>
+                                <div className='p-view-btn flex justify-evenly items-center w-[20vw] ml-3'>
+                                    <button className='p-view-btn1 mt-10 bg-sky-600 text-white text-lg py-3 px-4 rounded-xl hover:bg-sky-700 duration-150'>SEND NACHRICHT</button>
+                                    <button onClick={()=>setShowModal(true)} className='p-view-btn2 mt-10 bg-red-600 text-white text-lg py-3 px-4 rounded-xl hover:bg-red-700 duration-150'>STORNIEREN</button>
                                 </div>
                         }
  
             </>
             :
-            <div className='w-[30rem] text-center'>
+            <div className='text-center'>
 
                 <h1 className='mt-20 text-2xl'>Dieser Termin ist frei. Bitte klicken Sie auf eine Patient-Name links um ihre/seine Info zu sehen.</h1>
             </div>

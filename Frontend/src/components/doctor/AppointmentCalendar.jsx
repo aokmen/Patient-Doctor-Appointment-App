@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import Modal from './Appomodal.jsx'
 import 'react-calendar/dist/Calendar.css';
 import './ReactCalendar.css'
+import { useNavigate } from "react-router-dom";
 
 
 const AppointmentCalendar = ({id}) => {
@@ -17,6 +18,7 @@ const AppointmentCalendar = ({id}) => {
   const [datum, setDatum] = React.useState("");
 
   const {getData} = useDataCall()
+  const navigate = useNavigate()
   const {appointments} = useSelector((state) => state.data)                   
   const {doctors} = useSelector((state) => state.data)                   
   const {patients} = useSelector((state) => state.data)                   
@@ -27,16 +29,19 @@ const AppointmentCalendar = ({id}) => {
   const [appArr, setAppArr] = useState([])
   //const [appThisDoctorThisDay, setAppThisDoctorThisDay] = useState([])
   let appThisDoctorThisDay = []
-
-
+ 
   useEffect(() => {
     getData("appointments")
     getData("doctors")
     getData("patients")
-
+    handleDateSelect(new Date());
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
+  // useEffect(() => {
+  //   handleDateSelect(new Date()); // İlk yüklemede bugünün tarihini almak için
+  // }, [getData, id]); 
+  
   const thisDoc = doctors.data.filter((doc) => {return doc.id === id}) 
   const thisPatient = patients.filter((pat) => {return pat.email === currentUser}) 
   //console.log(thisPatient)
@@ -76,20 +81,27 @@ const AppointmentCalendar = ({id}) => {
     setAppArr(appThisDoctorThisDay)
   }
   
+
+
   const handleHourClick = (uhr, appoId) => {
+    if (currentUser) {
     //console.log(uhr)
     setShowModal(true)
     setUhrZeit(uhr)
     setAppoId(appoId)
+    }
+    else navigate("/login")
   }
   
 
   return <div className="appointments-calendar flex flex-col justify-center items-center">
     <Calendar className="react-calendar" defaultView="month" locale="de-DE" onChange={handleDateSelect}/>
-    <div className="hour-buttons text-center">
+    <div className="hour-buttons text-center h-[210px] overflow-y-scroll">
       {
         appArr?.map((app, index) => {
-          return <button onClick={() => handleHourClick(app.timeStart, app.id)} className={app.patientId ? "reserved" : "free duration-150"} key={index}>{app.timeStart}</button>
+          return <button disabled = {app.patientId ? true :false} onClick={() => handleHourClick(app.timeStart, app.id)} className={app.patientId ? "reserved" : "free duration-150"} key={index}>{app.timeStart}</button>
+          
+  
         })
       }
     </div>

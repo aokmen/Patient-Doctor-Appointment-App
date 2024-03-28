@@ -87,16 +87,16 @@ const ManageAppo = ({id}) => {
     
   return (
 
-    <div className='h-[100vh] w-[87vw]'>
-        <div className=' bg-white rounded-3xl max-h-[86vh] min-h-[86vh] flex flex-col ml-[-8rem]'>
+    <div className='d-man-main '>
+        <div className=' bg-white rounded-3xl pb-[120px] flex flex-col'>
         {weekDaysThisDoctor.length === 0 && <>
             <div className='flex justify-center items-center'>
                     <div className='bg-white w-[70vw] p-5 rounded-xl'>
                         <h3 className='text-lg'>Sobald Sie den Datumsbereich für Ihre Termine ausgewählt haben, können Sie ihn <span className='underline'>nicht mehr ändern</span>. Bevor Sie Ihre Termine anlegen, sollten Sie daher <span className='underline'>sorgfältig entscheiden</span>, in welchem Zeitraum Sie unsere Anwendung nutzen wollen. Die erstellten Termine werden erst wieder wählbar, wenn Ihr erster Terminzeitraum endet. Wenn Sie zum Beispiel einen Termin für einen 6-monatigen Projektzeitraum anlegen, können Sie innerhalb dieses Zeitraums keinen weiteren Termin anlegen. </h3>
                     </div>
                 </div>
-                <div className='flex justify-center items-center w-[24vw] mx-auto rounded-xl'>
-                    <div className=' w-[24vw] p-5'>
+                <div className='flex justify-center items-center min-w-[250px] mx-auto rounded-xl'>
+                    <div className=' min-w-[250px] p-5'>
                         <h3 className='text-red-600 text-lg'>Ich habe es gelesen und damit einverstanden.</h3>
                     </div>
             
@@ -104,7 +104,7 @@ const ManageAppo = ({id}) => {
             </div>
         </>
         }
-        <form className="w-full max-w-4xl mx-auto mt-8">
+        <form className=" mx-auto mt-8">
             <div className='flex justify-center items-center'>
                 {
                     weekDaysThisDoctor.length === 0 ? 
@@ -112,8 +112,8 @@ const ManageAppo = ({id}) => {
                     :
                     <label htmlFor="rangeDatum" className='max-w-md text-lg'>Ausgewählte Daten:</label>
                 }
-                <div className="flex flex-wrap -mx-3 mb-6 ml-3" id="rangeDatum">
-                    <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                <div className="flex flex-wrap " id="rangeDatum">
+                    <div className="w-full  ">
                         <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-von-datum">
                             Von
                         </label>
@@ -125,7 +125,7 @@ const ManageAppo = ({id}) => {
                         
                         
                     </div>
-                    <div className="w-full md:w-1/2 px-3">
+                    <div className="w-full ">
                         <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" htmlFor="grid-bis-datum">
                             Bis
                         </label>
@@ -149,13 +149,13 @@ const ManageAppo = ({id}) => {
                 
             </div>
             { (weekDaysThisDoctor || isDateSelected) &&
-            <div className="flex flex-wrap -mx-3 mb-2">
+            <div className="flex flex-wrap justify-center">
 
                 <h3 className='text-lg mx-auto'>Bitte geben Sie unten Ihre wöchentlichen Arbeitszeiten ein, um Ihre Termine zu erstellen:</h3>
                 <ManageDays hours={hours} dauer={dauer} days={days} doctor_id={doctor_id} firstDate={firstDate} secondDate={secondDate}/>
                 {
                     weekDaysThisDoctor.map((item, index) => {
-                        return <div key={index} className='w-full'>
+                        return <div key={index} className='w-[100%]'>
                                     <ShowDays {...item} doctor_id={doctor_id}/>
                                 </div>
                     

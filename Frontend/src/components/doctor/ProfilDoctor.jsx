@@ -2,24 +2,24 @@ import React from 'react'
 
 import locationIcon from '../../assets/locationIcon.png'
 import phoneIcon from '../../assets/phone.png'
+import profilImage from '../../assets/profil_image2.png'
 import webIcon from '../../assets/web.png'
-import { useSelector } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
 
 
 
-const DoctorProfil = ({ branchId, cityId, phone, website, title, firstName, lastName, avatar }) => {
+
+const DoctorProfil = ({ id, branchId, cityId, phone, website, title, firstName, lastName, avatar }) => {
+ 
   const URL = process.env.REACT_APP_BASE_URL
-  const { currentUser } = useSelector((state) => state.auth)
-  const navigate = useNavigate()
-  const check = () => {
-    currentUser ? navigate("/patient") : navigate("/login")
-  }
+  const fileImage = avatar && `${URL}/img/${id.slice(-15)}.jpg`
+
+
+
 
   return (
     <>
     <div className='flex flex-col justify-center items-center p-1 profil-doctor'>
-      <img className='doctor-image' src={'https://www.thewmch.com/wp-content/uploads/2023/02/female-doctor-using-her-digital-tablet-free-vector.jpg'} alt="doctor-pic"/>
+    <img className='doctor-image' src={fileImage || profilImage} alt="doctor-pic"/>
       <h1 className='text-xl font-bold doctor-profil-name'> {title}. {firstName} {lastName}</h1>
       <h2 className='text-xl doctor-profil-name'>{branchId?.name}</h2>
       </div>  
@@ -35,7 +35,7 @@ const DoctorProfil = ({ branchId, cityId, phone, website, title, firstName, last
       <img src={webIcon} className="mr-1 w-6 h-6" alt="webIcon" />
       {website ? <a href="www.example.com"> {website}</a> : "Keine Webseite Vorhanden"}
       </div>
-      <button className='flex justify-center termin-button duration-150 mx-auto' onClick={() => check()}>TERMIN VEREINBAREN</button>
+      <p className='w-[300px] text-center mx-auto mt-6 border-4 border-main-light-blue2 bg-main-light-blue text-main-dark-blue p-5 rounded-lg'>Bitte wählen Sie einen Zeitpunkt im Kalender aus, um einen Termin zu vereinbaren.</p>
       
     
     </>

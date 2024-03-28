@@ -124,7 +124,7 @@ const TerminZahl = () => {
   ];
 
   return (
-    <div className="pl-10 pt-10">
+    <div className="pt-10">
       <Chart
         chartType="Bar"
         width="100%"

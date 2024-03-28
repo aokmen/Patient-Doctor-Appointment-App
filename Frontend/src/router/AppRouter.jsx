@@ -37,6 +37,9 @@ import PatientStatistic from "../pages/panels/patientPanel/patientStatistic/Pati
 import PatientSetting from "../pages/panels/patientPanel/patientSetting/PatientSetting";
 import PatientAccount from "../pages/panels/patientPanel/patientAccount/PatientAccount";
 import Contact from "../pages/contact/Contact";
+import Impressum from "../pages/policies/Impressum";
+import Datenschutz from "../pages/policies/Datenschutz";
+import Hilfebereich from "../pages/policies/Hilfebereich";
 
 
 
@@ -53,6 +56,9 @@ const AppRouter = () => {
         <Route path="/services" element={<Services/>}/>
         <Route path="/about" element={<About/>}/>
         <Route path="/contact" element={<Contact/>}/>
+        <Route path="/impressum" element={<Impressum/>} />
+        <Route path="/datenschutz" element={<Datenschutz />} />
+        <Route path="/hilfebereich" element={<Hilfebereich />} />
 
         <Route path="" element={<PrivateAdminRouter/>}>
           <Route path="/admin" element={<AdminPanel/>}>

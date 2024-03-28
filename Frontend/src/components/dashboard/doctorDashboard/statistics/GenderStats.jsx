@@ -53,7 +53,7 @@ const GenderStats = () => {
   ];
 
   return (
-    <div className="mt-8">
+    <div>
       <Chart
         chartType="PieChart"
         width="100%"

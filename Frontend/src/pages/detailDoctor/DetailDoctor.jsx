@@ -34,14 +34,19 @@ const DetailDoctor = () => {
     <>
     {
       !thisDoctor?.length ? <Loading/> : (
-        <div className="grid grid-rows-5 grid-cols-8 w-100">
-          <div className="row-span-5 col-span-1">
+        <div className="detail-main flex h-[100vh]">
+          <div className=" border-cyan-500 flex-[3%]">
             { !userType ? <Sidebar0/> :(userType==="patient" ? <Sidebar/> : <Sidebar2/>)}
             </div>
-          <div className="row-span-1 col-span-7 max-w-[88vw] ml-3"><Services {...thisDoctor[0]}/></div>
-          <div className="row-span-4 col-span-2"><DoctorProfil {...thisDoctor[0]}/></div>
-          <div className="row-span-4 col-span-3"><AppointmentCalendar {...thisDoctor[0]}/></div>
-          <div className="row-span-4 col-span-2"><AboutDoctor {...thisDoctor[0]}/></div>
+
+          <div className="detail-main-box flex-[97%]" >
+            <div className='detail-a h-[200px]'><Services {...thisDoctor[0]}/></div>
+            <div className='detail-main-box-info flex'>
+              <div className='detail-b flex-1'><DoctorProfil {...thisDoctor[0]}/></div>
+              <div className='detail-c flex-1'><AppointmentCalendar {...thisDoctor[0]}/></div>
+              <div className='detail-d flex-1'><AboutDoctor {...thisDoctor[0]}/></div>
+            </div>
+          </div>
     
     </div>
       )

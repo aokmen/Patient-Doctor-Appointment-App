@@ -30,7 +30,7 @@ const Termine = ({date, timeStart, doctorId, isCancelled}) => {
               <h3 className='text-[#38638D] text-lg font-bold line-through decoration-red-500'>{doctorInfo[0]?.branch}</h3>
             </div>
             <div className='flex justify-evenly mt-1'>
-                <h3 className='mr-20 text-[#38638D] line-through decoration-red-500'>{date}</h3>
+                <h3 className='mr-10 text-[#38638D] line-through decoration-red-500'>{date}</h3>
                 <h3 className='text-[#38638D] font-bold line-through decoration-red-500'>Uhrzeit: {timeStart}</h3>
             </div>
           </div>

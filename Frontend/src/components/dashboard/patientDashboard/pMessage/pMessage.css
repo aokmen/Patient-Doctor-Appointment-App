@@ -1,8 +1,8 @@
 .p-message-main {
 
     height: 86.5vh;
-    display: flex;
 
+    display: flex;
 }
 
 
@@ -153,7 +153,8 @@
 }
 
 .p-message-main-write {
-    flex: 1;
+    flex: none;
+    height: 100px;
     display: flex;
     justify-content: center;
     align-items: center;

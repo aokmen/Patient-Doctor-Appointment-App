@@ -1,11 +1,8 @@
 import React from 'react'
 import "./cardDoctor.css"
-import doctorImage from './assets/doctor.png'
-import starIcon from './assets/star.png'
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import profil_image from "../../assets/profil_image.png"
-import dr1 from "../../assets/dr-avatar.png"
-import dr2 from "../../assets/dr2-avatar.png"
+
 
 
 const CardDoctor = ({id, street, title, firstName, lastName, zipCode, branchId, cityId, avatar, gender}) => {
@@ -17,7 +14,7 @@ const CardDoctor = ({id, street, title, firstName, lastName, zipCode, branchId, 
   return (
     <div className='cardDoctor'>
       <div className="doctorImage w-20 h-20 ml-2">
-        <img className="w-full h-full object-cover rounded-full ring-offset-2 ring-main-light-blue2 ring-2 " src={fileImage || (gender==="Male" ? dr1 : ((gender==="Female" ? dr2 : profil_image)))} alt="doctorImage" />
+        <img className="w-full h-full object-cover rounded-full ring-offset-2 ring-main-light-blue2 ring-2 " src={fileImage ||  profil_image} alt="doctorImage" />
       </div>
       <div className="doctorInfo">
 

@@ -14,7 +14,11 @@ const DoctorOverview = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
-    <div><Uberblick/></div>
+    <div>
+    {/* <div className='text-center border-2 mx-auto'>
+      <h1 className=' mt-[-50px] z-100 w-[80vw] text-3xl font-bold text-main-dark-blue block absolute border-2 mx-auto'>Uberblick</h1> */}
+      <Uberblick/>
+      </div>
   )
 }
 

@@ -64,14 +64,12 @@ const PProfile = (patientProfile) => {
     return (
         <div className="p-panel-person-main">
 
-            <div className="processbar">
-
-            </div>
+          
 
             <div className="p-panel-main-right">
                 <div className="p-panel-main-right--content">
 
-                    <form action="" id="p-uploadForm" encType="multipart/form-data" className="p-panel-person" onSubmit={handleSubmit}>
+                    <form action="" id="p-uploadForm" encType="multipart/form-data" className="p-panel-person " onSubmit={handleSubmit}>
                         <div className="p-panel-person-profile">
                             <div className="p-panel-person--left">
                                 <div className="p-p-input p-panel-main--profil-image">

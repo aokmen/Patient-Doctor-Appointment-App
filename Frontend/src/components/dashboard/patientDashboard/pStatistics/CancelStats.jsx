@@ -48,10 +48,10 @@ const CancelStats = () => {
 
   return (
     
-    <div className="flex justify-center">
+    <div >
         <Chart
           chartType="PieChart"
-          width="95%"
+          width="100%"
           height="280px"
           data={data}
           options={options}

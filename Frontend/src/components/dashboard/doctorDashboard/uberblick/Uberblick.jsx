@@ -97,10 +97,12 @@ const Uberblick = () => {
 
   return (
 
-    <div className="h-[100vh] w-[87vw]">
-      <div className="flex rounded-3xl">
-        <div className="flex flex-col w-[27%] bg-white max-h-[86vh] min-h-[86vh] overflow-scroll rounded-l-3xl border-r-[1.9rem] border-[#F1F7FE]">
-          <div className="min-h-[10vh] text-4xl font-bold flex justify-center items-center border-b-8 border-[#38638D]">
+    <div className="p-view-main h-[100vh] ">
+      <div className="p-view flex rounded-3xl gap-10  justify-center">
+
+
+        <div className="p-view-start flex flex-col pt-6 bg-white  w-[420px] rounded-l-3xl">
+          <div className="text-4xl font-bold flex justify-center items-center border-b-8 border-[#38638D]">
             <h1 className="text-[#38638D]">Überblick</h1>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -136,7 +138,7 @@ const Uberblick = () => {
             </svg>
             <h2 className="text-3xl text-[#38638D] my-4">Heutige Termine</h2>
           </div>
-          <div className="mt-8">
+          <div className="mt-8 p-view-daily-calendar">
             <DailyCalendar
               todayAppsThisDoctor={todayApps}
               dateToday={dateToday}
@@ -145,11 +147,11 @@ const Uberblick = () => {
           </div>
 
         </div>
-        <div className="flex flex-row gap-8 w-[73%]">
-          <div className="flex flex-col max-w-[35rem]">
-            <div className="flex flex-row gap-8 border-b-[1.9rem] border-[#F1F7FE]">
-              <div className="flex text-center flex-col justify-between bg-white p-3 max-h-[13rem] min-h-[13rem] max-w-[15rem] w-[16rem]">
-                <h1 className="text-3xl wrap text-[#38638D]">
+
+          <div className="p-view-middle flex flex-col w-[500px]">
+            <div className="flex flex-row gap-8 border-b-[1.9rem] justify-center  border-[#F1F7FE]">
+              <div className="p-view-info flex text-center flex-col justify-between bg-white p-3 w-[16rem]">
+                <h1 className="text-2xl wrap text-[#38638D]">
                   Gesamtzahl der Patienten
                 </h1>
                 <div className="flex justify-center items-center bg-[#F1F7FE] rounded-lg mx-6">
@@ -166,8 +168,8 @@ const Uberblick = () => {
                   </p>
                 </div>
               </div>
-              <div className="flex flex-col justify-between  text-center bg-white p-3 max-h-[13rem] min-h-[13rem] max-w-[16rem] w-[16rem]">
-                <h1 className="text-3xl wrap text-[#38638D]">
+              <div className="p-view-info flex flex-col justify-between  text-center bg-white p-3  w-[16rem]">
+                <h1 className="text-2xl wrap text-[#38638D]">
                   Gesamtzahl der Termine
                 </h1>
                 <div className="flex justify-center items-center bg-[#F1F7FE] rounded-lg mx-4">
@@ -187,27 +189,32 @@ const Uberblick = () => {
             </div>
 
             {
-              patient ? <div className="flex flex-col bg-white min-h-[62vh] max-w-[35rem]">
-              <div className="text-3xl w-[16rem] mt-3 text-[#38638D] border-b-2 border-[#38638D] mx-auto text-center">
+              patient ? <div className="p-view-termin-info flex flex-col bg-white h-full pt-20">
+              <div className="pt1 text-3xl text-[#38638D] border-[#38638D] mt-8 text-center">
                 <h1>Patient Info</h1>
               </div>
-              <PatientInfo
+              <div className="pt2 mx-auto mt-[-80px]"><PatientInfo
                 patient={patient}
                 todayAppsThisDoctor={todayApps}
-              />
+              /></div> 
               </div>
                 :
-                <div className="flex flex-col bg-white min-h-[62vh] max-w-[35rem] pt-20">
+                <div className="p-view-clock bg-white h-full text-center">
+                  {
+                    todayAppoThisDoctor?.length ? <h1 className="text-main-dark-blue text-xl mt-10 px-6"><span className="font-bold">Hinweis: </span>Sie haben heute {todayAppoThisDoctor?.length} {todayAppoThisDoctor?.length === 1 ? "Termin" : "Termine"}. Für detaillierte Informationen klicken Sie bitte auf den Namen im Bereich „Heutige Termine“. </h1> : <h1 className="text-main-dark-blue text-xl mt-10 px-6"> <span className="font-bold">Hinweis:</span> Wenn Sie heute einen Termin haben, klicken Sie bitte auf den Namen im Bereich „Heutige Termine“.</h1>
+                  }
+                  
+                  
                   <Clock/>
                   </div>
             }
             
           </div>
 
-          <div className="flex flex-col max-w-[36rem]">
-            <div className="flex flex-row gap-8 border-b-[1.9rem] border-[#F1F7FE]">
-              <div className="flex flex-col justify-between  text-center bg-white p-3 max-h-[13rem] min-h-[13rem] max-w-[15rem] w-[15rem]">
-                <h1 className="text-3xl wrap text-[#38638D]">
+          <div className="p-view-end flex flex-col w-[500px] ">
+            <div className="flex flex-row gap-8 border-b-[1.9rem] border-[#F1F7FE] justify-center">
+              <div className="p-view-info col-span-1 row-span-2 bg-white flex flex-col justify-evenly text-center p-3 w-[16rem] h-[170px]">
+                <h1 className="text-2xl wrap text-[#38638D]">
                   Heutige Termine
                 </h1>
                 <div className="flex justify-center items-center bg-[#F1F7FE] rounded-lg mx-8">
@@ -229,8 +236,8 @@ const Uberblick = () => {
                 </div>
               </div>
 
-              <div className="flex flex-col justify-between  text-center bg-white p-3 max-h-[13rem] min-h-[13rem] max-w-[16rem] w-[16rem] rounded-tr-3xl">
-                <h1 className="text-3xl wrap text-[#38638D]">
+              <div className="p-view-info col-span-1 rounded-tr-3xl row-span-2 bg-white flex flex-col justify-evenly text-center p-3 w-[16rem] h-[170px]">
+                <h1 className="text-2xl wrap text-[#38638D]">
                   Gesamtbewertung
                 </h1>
                 <div className="flex justify-center items-center bg-[#F1F7FE] rounded-lg mx-10">
@@ -251,8 +258,8 @@ const Uberblick = () => {
               </div>
             </div>
 
-            <div className="flex flex-col bg-white rounded-br-3xl min-h-[62vh]">
-              <div className="text-3xl w-[18rem] mt-3 text-[#38638D] border-b-2 border-[#38638D] mx-auto text-center">
+            <div className="p-view-calender flex flex-col bg-white rounded-br-3xl h-full">
+              <div className="p-view-calender-box text-3xl w-[18rem] ml-[6rem] mt-3 text-[#38638D] border-b-2 border-[#38638D] mx-auto text-center">
                 <h1>Kalender</h1>
               </div>
               <Calendar
@@ -271,7 +278,7 @@ const Uberblick = () => {
                   }
                 }}
               />
-              <table className="mt-5 text-start text-[#38638D] min-w-[27rem] max-w-[27rem] wrap">
+              <table className="mt-5 text-start text-[#38638D] wrap">
                 {holidayArray.map((item) => (
                   <>
                     <tr>
@@ -290,7 +297,7 @@ const Uberblick = () => {
               </table>
             </div>
           </div>
-        </div>
+
       </div>
     </div>
   );
