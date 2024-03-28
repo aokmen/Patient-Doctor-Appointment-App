@@ -19,10 +19,10 @@ const Home = () => {
     <div className="flex flex-col items-start">
       <Header />
       <div className="mt-[130px] w-full">
-        <Hero />
-        <Services />
-        <About />
-        <Contact />
+      <div><Hero/></div>
+      <div><Services/></div>
+      <div><About/></div>
+      <div><Contact/></div>
       </div>
 
     </div>

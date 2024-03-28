@@ -111,9 +111,12 @@ const DoctorSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref:'Message'
     }],
+    // services: [{            
+    //     type: mongoose.Schema.Types.ObjectId,
+    //     ref:'Service'
+    // }],
     services: [{            
-        type: mongoose.Schema.Types.ObjectId,
-        ref:'Service'
+        type: String
     }],
     appointments:[{
         type: mongoose.Schema.Types.ObjectId,

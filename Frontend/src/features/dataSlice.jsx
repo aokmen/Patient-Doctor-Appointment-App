@@ -20,7 +20,7 @@ const dataSlice = createSlice({
     weekdays: [],
     files:[],
     tasks:[],
-    notes:[],
+    notes:[], 
   },
   reducers:{
     fetchStart: (state) => {

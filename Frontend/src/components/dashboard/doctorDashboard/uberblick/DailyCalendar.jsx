@@ -4,7 +4,6 @@ import React from 'react'
 const DailyCalendar = ({todayAppsThisDoctor, dateToday, setPatient}) => {
 
   
-console.log(todayAppsThisDoctor)
 
   return (
     <div >

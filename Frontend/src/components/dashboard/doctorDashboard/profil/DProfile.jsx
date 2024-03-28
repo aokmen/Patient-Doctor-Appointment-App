@@ -82,6 +82,7 @@ const DProfile = (doctorProfile) => {
         postData("files", formData1);
         postData("files", formData2);
         window.location.reload();
+        console.log("services:",services);
     }
 
 
@@ -224,7 +225,7 @@ const DProfile = (doctorProfile) => {
                         <div className="d-profile-panel-person-profile3">
                             <div className="d-profile-panel-person--left person3">
                                 <div className="p-input p-input3-1">
-                                    <label className="d-profile-panel-p-label" htmlFor="p-input14">Leistungsspektrum</label>
+                                    <label className="d-profile-panel-p-label" htmlFor="p-input14">Services</label>
                                     <textarea required name="" id="dr-textarea-complaints" cols="50" rows="10" placeholder="z.B. Altersbedingte Makuladegeneration AMD, Augenschmerzen, Diabetische Retinopathie, Grüner Star / Glaukom, Kurzsichtigkeit / Myopie, Katarakt, Laser bei Nachsta" defaultValue={services} onChange={(e) => handleInputChange("services", e.target.value)}>
                                     </textarea>
                                 </div>

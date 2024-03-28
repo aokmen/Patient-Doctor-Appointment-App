@@ -54,7 +54,7 @@ const Contact = () => {
   return (
     <>
        <Header/>
-        <div className='grid grid-rows-2 pt-12 lg:pt-0 bg-[#F1F7FE] w-full lg:grid-cols-2 lg:h-[75vh]' id="contact">
+        <div className='grid grid-rows-2  lg:pt-0 bg-[#F1F7FE] w-full lg:grid-cols-2 lg:h-[75vh] ' id="contact">
         {!isSent ?
           <form onSubmit={handleSubmit} className='rows-span-1 my-8 md:mt-6 lg:mt-0 flex items-center justify-center lg:cols-span-1 lg:h-[65vh]'>
             <fieldset className='border-2 rounded-lg w-[330px] p-5 border-[#567fa9]'>

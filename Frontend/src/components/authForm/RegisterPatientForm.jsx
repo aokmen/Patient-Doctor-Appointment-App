@@ -59,7 +59,6 @@ const RegisterPatientForm = () => {
 
   const onSubmit = (data) => {
     regPatient(data)
-    console.log(data)
   }
 
   const [isPasswordHidden, setPasswordHidden] = useState(true)

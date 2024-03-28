@@ -62,9 +62,6 @@ const Sidebar = () => {
         <div className="mid middle6" onClick={() => navigate("/doctor/statistic")}>
           <img src={statistic} alt="statistic" /> <h1>Statistik</h1>
         </div>
-        <div className="mid middle7" onClick={() => navigate("/doctor/patient-info")}>
-          <img src={patient2} alt="patient2" /> <h1>Patienten-Infos</h1>
-        </div>
         <div className="mid middle8" onClick={() => navigate("/doctor/setting")}>
           <img src={setting} alt="setting" /> <h1>Einstellung</h1>
 

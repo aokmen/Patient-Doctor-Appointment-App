@@ -11,7 +11,7 @@ import axios from 'axios';
 const Main = (doctorProfile) => {
     const { putData, getData, postData } = useDataCall()
     const { branches, files } = useSelector((state) => state.data)
-    const { id, avatar, doc, firstName, lastName, email, birthDate, gender, street, zipCode, cityName, title, phone, branch, languages, website, about, complaints } = doctorProfile
+    const { id, avatar, doc, firstName, lastName, email, birthDate, gender, street, zipCode, cityName, title, phone, branch, languages, website, about, services } = doctorProfile
     const [count, setCount] = useState(0)
     const [file, setFile] = useState(null)
     const [secondFile, setSecondFile] = useState(null);
@@ -36,7 +36,7 @@ const Main = (doctorProfile) => {
         languages: languages || "",
         website: website || "",
         about: about || "",
-        complaints: complaints || "",
+        services: services || "",
         doc: doc || "",
     })
      
@@ -207,7 +207,7 @@ const Main = (doctorProfile) => {
                             <div className="dpanel-person--left person3">
                                 <div className="p-input p-input3-1">
                                     <label className="dpanel-p-label" htmlFor="p-input14">Symptome</label>
-                                    <textarea required name="" id="textarea-complaints" cols="50" rows="10" placeholder="z.B. Altersbedingte Makuladegeneration AMD, Augenschmerzen, Diabetische Retinopathie, Grüner Star / Glaukom, Kurzsichtigkeit / Myopie, Katarakt, Laser bei Nachsta" defaultValue={complaints} onChange={(e) => handleInputChange("complaints", e.target.value)}>
+                                    <textarea required name="" id="textarea-services" cols="50" rows="10" placeholder="z.B. Altersbedingte Makuladegeneration AMD, Augenschmerzen, Diabetische Retinopathie, Grüner Star / Glaukom, Kurzsichtigkeit / Myopie, Katarakt, Laser bei Nachsta" defaultValue={services} onChange={(e) => handleInputChange("services", e.target.value)}>
                                     </textarea>
                                 </div>
                                 <div className="p-input p-input3-2">

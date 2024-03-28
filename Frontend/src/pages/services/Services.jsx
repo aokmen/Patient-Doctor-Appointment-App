@@ -31,7 +31,7 @@ const Services = () => {
   return (
     <>
     <Header/>
-    <div className='flex flex-wrap justify-center items-center w-full min-h-[140vh] bg-[#F1F7FE]'>
+    <div className='flex flex-wrap justify-center items-center w-full h-[89vh] bg-[#F1F7FE]'>
       {/* <div className='w-[400px] mb-[55rem] md:mb-[58rem] md:w-[600px] xl:w-[900px] md:ml-[-15rem] lg:mb-[58rem] xl:mb-[47rem] lg:ml-[-65rem] xl:ml-[-65rem] absolute z-40'>
         <img className='w-[400px] md:w-[600px] xl:w-[900px] rounded-full border-b-4 lg:border-r-8 service1 bg-[#F1F7FE]' src={serviceImg1} alt="services1" />
       </div> */}
