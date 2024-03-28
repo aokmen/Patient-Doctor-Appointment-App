@@ -7,7 +7,7 @@ const useDataCall = () => {
 
   const dispatch = useDispatch();
   const { axiosWithToken } = useAxios();
-  const { userId } = useSelector((state) => state.auth);
+  const { userId } = useSelector((state) => state.auth); 
 
   /* -------------------------------------------------------------------------- */
   /*                             Get Data with Axios                            */
@@ -17,7 +17,7 @@ const useDataCall = () => {
     // url is the parameter added to the end of the URL. For example: url=doctors, url= patients, url= messages
     dispatch(fetchStart());
     try {
-      const { data } = await axiosWithToken(`/${url}`);
+      const { data } = await axiosWithToken(`/${url}`); 
       dispatch(getDataSuccess({ data, url }));
     } catch (error) {
       dispatch(fetchFail());
