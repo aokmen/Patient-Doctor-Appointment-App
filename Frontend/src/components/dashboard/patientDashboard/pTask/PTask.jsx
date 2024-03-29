@@ -15,7 +15,6 @@ const PTask = () => {
   const [newTask, setNewTask] = useState(""); // Yeni Task girişi için state
   const [completedTasks, setCompletedTasks] = useState([]);
 
-
   const handleDeleteTask = (id) => {
     delData("tasks", id);
     window.location.reload();
@@ -46,9 +45,9 @@ const PTask = () => {
   };
 
   return (
-    <div className="task-main container flex justify-center mr-4 h-[825px] bg-white rounded-l-3xl ">
+    <div className="task-main container flex justify-center mr-4 h-[825px] bg-white dark:bg-secondary-panel-backgrounds rounded-l-3xl ">
       <div>
-        <div className=" text-main-dark-blue py-4">
+        <div className=" text-main-dark-blue dark:text-main-light-blue py-4">
           <h3 className="text-3xl font-bold mx-4">Meine Aufgabe</h3>
         </div>
         <div className="p-2 flex flex-col justify-center w-[650px] ">
@@ -58,7 +57,7 @@ const PTask = () => {
                 ref={inputRef} // Referansı input elementine atayın
                 type="text"
                 className=" bg-transparent w-[630px] text-main-dark-blue mr-2 py-5 px-2 leading-tight focus:outline-none"
-                placeholder="Add Task"
+                placeholder="Aufgabe hinzufügen"
                 value={newTask}
                 onChange={handleChange} // Değişikliklerde handleChange'i çağırın
               />
@@ -80,26 +79,34 @@ const PTask = () => {
                 key={index}
                 className="flex mb-4 align-content-center justify-center border-2 w-[630px]  bg-main-light-blue  hover:bg-[white] hover:text-white rounded-lg border-main-light-blue2 cursor-pointer "
               >
-                <span className={`font-medium flex-1 text-2xl text-main-dark-blue border-1 border-main-light-blue2 rounded-md p-3 px-4 bg-main-light-blue2 mr-3 w-full ${task.isCompleted || isTaskCompleted(task.id)
-                    ? "bg-[#B7D8F8] text-gray-50"
-                    : ""
-                  }`} >
+                <span
+                  className={`font-medium flex-1 text-2xl text-main-dark-blue border-1 border-main-light-blue2 rounded-md p-3 px-4 bg-main-light-blue2 mr-3 w-full ${
+                    task.isCompleted || isTaskCompleted(task.id)
+                      ? "bg-main-light-blue2 text-gray-50"
+                      : ""
+                  }`}
+                >
                   {index + 1}.
                 </span>{" "}
-                <div className="my-auto"> 
+                <div className="my-auto">
                   <button
-                    className={`text-main-dark-blue w-[520px] flex justify-between my-auto ${task.isCompleted || isTaskCompleted(task.id)
+                    className={`text-main-dark-blue w-[520px] flex justify-between my-auto ${
+                      task.isCompleted || isTaskCompleted(task.id)
                         ? "line-through"
                         : ""
-                      }`}
+                    }`}
                     onClick={() => handleTaskClick(task)}
                   >
                     <div className="flex justify-between w-[600px] ">
                       <p className=" w-[500px] text-left">{task.task}</p>
-                      <img src={click} alt="click" className="w-6 h-6 my-auto"/>
+                      <img
+                        src={click}
+                        alt="click"
+                        className="w-6 h-6 my-auto"
+                      />
                     </div>
                   </button>
-                </div> 
+                </div>
                 <button
                   className="flex-shrink-0 flex-2 border-transparent border-4 text-sm py-1 px-2 rounded"
                   onClick={() => handleDeleteTask(task.id)}

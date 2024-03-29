@@ -62,109 +62,279 @@ const PProfile = (patientProfile) => {
         window.location.reload();
     }
     return (
-        <div className="p-panel-person-main">
+      <div className="p-panel-person-main">
+        <div className="processbar"></div>
 
-            <div className="processbar">
-
-            </div>
-
-            <div className="p-panel-main-right">
-                <div className="p-panel-main-right--content">
-
-                    <form action="" id="p-uploadForm" encType="multipart/form-data" className="p-panel-person" onSubmit={handleSubmit}>
-                        <div className="p-panel-person-profile">
-                            <div className="p-panel-person--left">
-                                <div className="p-p-input p-panel-main--profil-image">
-                                    <div className="p-p-input-image">
-                                        <img src={fileImage} alt="profilImage" />
-                                    </div>
-                                    {/* <input  className="p-panel-p-p-input" type="text" name='p-p-input1' placeholder='Profilbild hochladen' /> */}
-                                    <div className="p-panel-p-profil-img">
-                                        <div className="p-panel-p-profil-img-right">
-
-                                            <div className="p-panel-p-profil-img-right-label">
-                                                <label htmlFor="file-avatar">Profilbild hochladen:</label>
-                                            </div>
-                                            <div className="p-panel-p-profil-img-right-input">
-                                                <input type="file" id="p-avatar" name="p-avatar" accept="image/png, image/jpeg"
-                                                    onChange={handleFileChange}
-                                                />
-                                            </div>
-
-                                        </div>
-                                    </div>
-
-
-                                </div>
-                                <div className="p-p-input">
-                                    <label className="p-panel-p-label" htmlFor="p-p-input">Vorname</label> <input required className="p-panel-p-p-input" id="p-p-input" type="text" placeholder='Max' defaultValue={firstName} onChange={(e) => handleInputChange("firstName", e.target.value)} />
-                                </div>
-                                <div className="p-p-input">
-                                    <label className="p-panel-p-label" htmlFor="p-p-input3">Nachname</label> <input required className="p-panel-p-p-input" id="p-p-input3" type="text" placeholder='Doe' defaultValue={lastName} onChange={(e) => handleInputChange("lastName", e.target.value)} />
-                                </div>
-                                <div className="p-p-input">
-                                    <label className="p-panel-p-label" htmlFor="p-p-input4">Email</label> <input className="p-panel-p-p-input" id="p-p-input4" type="email" placeholder={email} onChange={(e) => handleInputChange("email", e.target.value)} readOnly />
-                                </div>
-                                <div className="p-p-input">
-                                    <label className="p-panel-p-label" htmlFor="p-p-input5">Password</label> <input className="p-panel-p-p-input" id="p-p-input5" type="password" placeholder='****************' onChange={(e) => handleInputChange("password", e.target.value)} readOnly />
-                                </div>
-
-
-                            </div>
-                            <div className="p-panel-person--right">
-                                <div className="p-p-input">
-                                    <label className="p-panel-p-label" htmlFor="p-p-input1">Geburtstag</label> <input required className="p-panel-p-p-input p-panel-p-p-input-birthdate" id="p-p-input2" type="date" name='p-p-input1' defaultValue={birthDate} onChange={(e) => handleInputChange("birthDate", e.target.value)} />
-                                </div>
-                                {gender ? <> <div className="p-p-input-radio">
-                                    <label className="gender2" >Geschlecht</label>
-                                    <div className="radio-gender">
-                                        <div>
-                                            <input required type="radio" id="p-männlich" name="drone" defaultValue="p-männlich" defaultChecked={gender === "Male"} />
-                                            <label htmlFor="p-männlich">Männlich</label>
-                                        </div>
-
-                                        <div>
-                                            <input required type="radio" id="p-weiblich" name="drone" defaultValue="p-weiblich" defaultChecked={gender === "Female"} />
-                                            <label htmlFor="p-weiblich">Weiblich</label>
-                                        </div>
-
-                                        <div>
-                                            <input required type="radio" id="p-divers" name="drone" defaultValue="p-divers" defaultChecked={gender === "Others"} />
-                                            <label htmlFor="p-divers">Divers</label>
-                                        </div>
-
-                                    </div>
-
-                                </div> </> : null}
-
-                                <div className="p-p-input">
-                                    <label className="p-panel-p-label" htmlFor="p-p-input6">Straße</label> <input required className="p-panel-p-p-input" id="p-p-input6" type="text" placeholder='Lange str' defaultValue={street} onChange={(e) => handleInputChange("street", e.target.value)} />
-                                </div>
-                                <div className="p-p-input">
-                                    <label className="p-panel-p-label" htmlFor="p-p-input7">Postleizahl</label> <input required className="p-panel-p-p-input" id="p-p-input7" type="number" placeholder='43226' defaultValue={zipCode} onChange={(e) => handleInputChange("zipCode", e.target.value)} />
-                                </div>
-                                <div className="p-p-input">
-                                    <label className="p-panel-p-label" htmlFor="p-p-input8">Ort</label> <input required className="p-panel-p-p-input" id="p-p-input8" type="text" placeholder='München' defaultValue={cityName} onChange={(e) => handleInputChange("cityName", e.target.value)} />
-                                </div>
-                                <div className="p-p-input">
-                                    <label className="p-panel-p-label" htmlFor="p-p-input10">Telefon</label> <input required className="p-panel-p-p-input" id="p-p-input10" type="text" placeholder='z.B. 1554212121' defaultValue={phone} onChange={(e) => handleInputChange("phone", e.target.value)} />
-                                </div>
-
-                            </div>
-                            {/* style={{transform: "translateY(-70vh)"}} */}
+        <div className="p-panel-main-right">
+          <div className="p-panel-main-right--content dark:bg-secondary-panel-backgrounds">
+            <form
+              action=""
+              id="p-uploadForm"
+              encType="multipart/form-data"
+              className="p-panel-person"
+              onSubmit={handleSubmit}
+            >
+              <div className="p-panel-person-profile">
+                <div className="p-panel-person--left dark:border-main-panel-backgrounds">
+                  <div className="p-p-input p-panel-main--profil-image dark:bg-main-blue">
+                    <div className="p-p-input-image dark:bg-main-blue">
+                      <img src={fileImage} alt="profilImage" />
+                    </div>
+                    {/* <input  className="p-panel-p-p-input" type="text" name='p-p-input1' placeholder='Profilbild hochladen' /> */}
+                    <div className="p-panel-p-profil-img">
+                      <div className="p-panel-p-profil-img-right">
+                        <div className="p-panel-p-profil-img-right-label">
+                          <label htmlFor="file-avatar">
+                            Profilbild hochladen:
+                          </label>
                         </div>
-                        <div className="p-panel-profile-save-main-btn"><button type="submit" className="p-panel-profile-save-btn" >Speichern</button></div>
-                        
-
-                    </form>
+                        <div className="p-panel-p-profil-img-right-input">
+                          <input
+                            type="file"
+                            id="p-avatar"
+                            name="p-avatar"
+                            accept="image/png, image/jpeg"
+                            onChange={handleFileChange}
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="p-p-input">
+                    <label
+                      className="p-panel-p-label dark:bg-main-blue dark:text-main-light-blue"
+                      htmlFor="p-p-input"
+                    >
+                      Vorname
+                    </label>{" "}
+                    <input
+                      required
+                      className="p-panel-p-p-input dark:bg-sky-200"
+                      id="p-p-input"
+                      type="text"
+                      placeholder="Max"
+                      defaultValue={firstName}
+                      onChange={(e) =>
+                        handleInputChange("firstName", e.target.value)
+                      }
+                    />
+                  </div>
+                  <div className="p-p-input">
+                    <label
+                      className="p-panel-p-label dark:bg-main-blue dark:text-main-light-blue"
+                      htmlFor="p-p-input3"
+                    >
+                      Nachname
+                    </label>{" "}
+                    <input
+                      required
+                      className="p-panel-p-p-input dark:bg-sky-200"
+                      id="p-p-input3"
+                      type="text"
+                      placeholder="Doe"
+                      defaultValue={lastName}
+                      onChange={(e) =>
+                        handleInputChange("lastName", e.target.value)
+                      }
+                    />
+                  </div>
+                  <div className="p-p-input">
+                    <label
+                      className="p-panel-p-label dark:bg-main-blue dark:text-main-light-blue"
+                      htmlFor="p-p-input4"
+                    >
+                      Email
+                    </label>{" "}
+                    <input
+                      className="p-panel-p-p-input dark:bg-sky-200"
+                      id="p-p-input4"
+                      type="email"
+                      placeholder={email}
+                      onChange={(e) =>
+                        handleInputChange("email", e.target.value)
+                      }
+                      readOnly
+                    />
+                  </div>
+                  <div className="p-p-input">
+                    <label
+                      className="p-panel-p-label dark:bg-main-blue dark:text-main-light-blue"
+                      htmlFor="p-p-input5"
+                    >
+                      Password
+                    </label>{" "}
+                    <input
+                      className="p-panel-p-p-input dark:bg-sky-200"
+                      id="p-p-input5"
+                      type="password"
+                      placeholder="****************"
+                      onChange={(e) =>
+                        handleInputChange("password", e.target.value)
+                      }
+                      readOnly
+                    />
+                  </div>
                 </div>
-            </div>
+                <div className="p-panel-person--right">
+                  <div className="p-p-input">
+                    <label
+                      className="p-panel-p-label dark:bg-main-blue dark:text-main-light-blue"
+                      htmlFor="p-p-input1"
+                    >
+                      Geburtstag
+                    </label>{" "}
+                    <input
+                      required
+                      className="p-panel-p-p-input dark:bg-sky-200 p-panel-p-p-input-birthdate"
+                      id="p-p-input2"
+                      type="date"
+                      name="p-p-input1"
+                      defaultValue={birthDate}
+                      onChange={(e) =>
+                        handleInputChange("birthDate", e.target.value)
+                      }
+                    />
+                  </div>
+                  {gender ? (
+                    <>
+                      {" "}
+                      <div className="p-p-input-radio dark:bg-sky-200">
+                        <label className="gender2 dark:bg-main-blue dark:text-main-light-blue">
+                          Geschlecht
+                        </label>
+                        <div className="radio-gender">
+                          <div>
+                            <input
+                              required
+                              type="radio"
+                              id="p-männlich"
+                              name="drone"
+                              defaultValue="p-männlich"
+                              defaultChecked={gender === "Male"}
+                            />
+                            <label htmlFor="p-männlich">Männlich</label>
+                          </div>
 
+                          <div>
+                            <input
+                              required
+                              type="radio"
+                              id="p-weiblich"
+                              name="drone"
+                              defaultValue="p-weiblich"
+                              defaultChecked={gender === "Female"}
+                            />
+                            <label htmlFor="p-weiblich">Weiblich</label>
+                          </div>
 
+                          <div>
+                            <input
+                              required
+                              type="radio"
+                              id="p-divers"
+                              name="drone"
+                              defaultValue="p-divers"
+                              defaultChecked={gender === "Others"}
+                            />
+                            <label htmlFor="p-divers">Divers</label>
+                          </div>
+                        </div>
+                      </div>{" "}
+                    </>
+                  ) : null}
 
+                  <div className="p-p-input">
+                    <label
+                      className="p-panel-p-label dark:bg-main-blue dark:text-main-light-blue"
+                      htmlFor="p-p-input6"
+                    >
+                      Straße
+                    </label>{" "}
+                    <input
+                      required
+                      className="p-panel-p-p-input dark:bg-sky-200"
+                      id="p-p-input6"
+                      type="text"
+                      placeholder="Lange str"
+                      defaultValue={street}
+                      onChange={(e) =>
+                        handleInputChange("street", e.target.value)
+                      }
+                    />
+                  </div>
+                  <div className="p-p-input">
+                    <label
+                      className="p-panel-p-label dark:bg-main-blue dark:text-main-light-blue"
+                      htmlFor="p-p-input7"
+                    >
+                      Postleizahl
+                    </label>{" "}
+                    <input
+                      required
+                      className="p-panel-p-p-input dark:bg-sky-200"
+                      id="p-p-input7"
+                      type="number"
+                      placeholder="43226"
+                      defaultValue={zipCode}
+                      onChange={(e) =>
+                        handleInputChange("zipCode", e.target.value)
+                      }
+                    />
+                  </div>
+                  <div className="p-p-input">
+                    <label
+                      className="p-panel-p-label dark:bg-main-blue dark:text-main-light-blue"
+                      htmlFor="p-p-input8"
+                    >
+                      Ort
+                    </label>{" "}
+                    <input
+                      required
+                      className="p-panel-p-p-input dark:bg-sky-200"
+                      id="p-p-input8"
+                      type="text"
+                      placeholder="München"
+                      defaultValue={cityName}
+                      onChange={(e) =>
+                        handleInputChange("cityName", e.target.value)
+                      }
+                    />
+                  </div>
+                  <div className="p-p-input">
+                    <label
+                      className="p-panel-p-label dark:bg-main-blue dark:text-main-light-blue"
+                      htmlFor="p-p-input10"
+                    >
+                      Telefon
+                    </label>{" "}
+                    <input
+                      required
+                      className="p-panel-p-p-input dark:bg-sky-200"
+                      id="p-p-input10"
+                      type="text"
+                      placeholder="z.B. 1554212121"
+                      defaultValue={phone}
+                      onChange={(e) =>
+                        handleInputChange("phone", e.target.value)
+                      }
+                    />
+                  </div>
+                </div>
+                {/* style={{transform: "translateY(-70vh)"}} */}
+              </div>
+              <div className="p-panel-profile-save-main-btn">
+                <button
+                  type="submit"
+                  className="p-panel-profile-save-btn dark:bg-sky-500 duration-200"
+                >
+                  Speichern
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
-
-    )
+      </div>
+    );
 }
 
 export default PProfile

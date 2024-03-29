@@ -104,142 +104,183 @@ const PMessage = ({ patientProfile }) => {
     }, [messages, doctorInfo]);
 
     return (
-
-        <div className="p-message-main">
-            <div className="p-message-main-left">
-                <div className="p-message-main-left-title"><span>{patientProfile?.firstName} {patientProfile?.lastName}</span> <h1>Nachrichten</h1>
-                    <span>{doctorInfo?.title} {doctorInfo?.firstName} {doctorInfo?.lastName}</span>
-                </div>
-                <div className="p-message-main-show" ref={messageContainerRef}>
-                    {messages?.map((item, i) => (
-                        <div key={i}>
-                            {
-                                item.senderUserId === userId && item.receiverUserId === doctorInfo.id ?
-                                    <div className="p-message-main-show-left">
-                                        <p className="p-message-main-content">{item.content}</p>
-                                        <div className="p-message-main-show-box">
-                                            <div className="p-message-main-show-img-box"><img src={messageAvatar || avatar} alt="" /></div>
-                                            <div className="p-message-main-show-date-box">
-                                                <p className="p-message-date">{item.createdAt.split('T')[0]}&nbsp; &nbsp; {item.createdAt.split('T')[1].substring(0, 8)}
-                                                </p>
-                                                <img src={okIcon} alt="okIcon" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    : null}
-                            {item.senderUserId === doctorInfo.id && item.receiverUserId === userId ?
-                                <>
-                                    <div className="p-message-main-show-right-main">
-                                        <div className="p-message-main-show-right">
-                                            <p className="p-message-main-content-right">{item.content}</p>
-                                            <div className="p-message-main-show-box-right">
-
-                                                <div className="p-message-main-show-date-box-right">
-                                                    <img src={okIcon} alt="okIcon-right" />
-                                                    <p className="p-message-date">{item.createdAt.split('T')[0]}&nbsp; &nbsp; {item.createdAt.split('T')[1].substring(0, 8)}
-                                                    </p>
-
-                                                </div>
-                                                <div className="p-message-main-show-img-box-right"><img src={messageAvatar2 || avatar} alt="" /></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </>
-                                : null
-                            }
-
+      <div className="p-message-main ">
+        <div className="p-message-main-left dark:bg-secondary-panel-backgrounds">
+          <div className="p-message-main-left-title">
+            <span className="dark:text-white">
+              {patientProfile?.firstName} {patientProfile?.lastName}
+            </span>{" "}
+            <h1 className="dark:text-main-light-blue">Nachrichten</h1>
+            <span className="dark:text-white">
+              {doctorInfo?.title} {doctorInfo?.firstName} {doctorInfo?.lastName}
+            </span>
+          </div>
+          <div className="p-message-main-show" ref={messageContainerRef}>
+            {messages?.map((item, i) => (
+              <div key={i}>
+                {item.senderUserId === userId &&
+                item.receiverUserId === doctorInfo.id ? (
+                  <div className="p-message-main-show-left">
+                    <p className="p-message-main-content dark:bg-main-dark-navbar-bg dark:text-main-light-blue">
+                      {item.content}
+                    </p>
+                    <div className="p-message-main-show-box">
+                      <div className="p-message-main-show-img-box">
+                        <img src={messageAvatar || avatar} alt="" />
+                      </div>
+                      <div className="p-message-main-show-date-box">
+                        <p className="p-message-date">
+                          {item.createdAt.split("T")[0]}&nbsp; &nbsp;{" "}
+                          {item.createdAt.split("T")[1].substring(0, 8)}
+                        </p>
+                        <img src={okIcon} alt="okIcon" />
+                      </div>
+                    </div>
+                  </div>
+                ) : null}
+                {item.senderUserId === doctorInfo.id &&
+                item.receiverUserId === userId ? (
+                  <>
+                    <div className="p-message-main-show-right-main">
+                      <div className="p-message-main-show-right">
+                        <p className="p-message-main-content-right dark:bg-main-dark-navbar-bg dark:text-main-light-blue">
+                          {item.content}
+                        </p>
+                        <div className="p-message-main-show-box-right">
+                          <div className="p-message-main-show-date-box-right">
+                            <img src={okIcon} alt="okIcon-right" />
+                            <p className="p-message-date">
+                              {item.createdAt.split("T")[0]}&nbsp; &nbsp;{" "}
+                              {item.createdAt.split("T")[1].substring(0, 8)}
+                            </p>
+                          </div>
+                          <div className="p-message-main-show-img-box-right">
+                            <img src={messageAvatar2 || avatar} alt="" />
+                          </div>
                         </div>
-                    ))}
+                      </div>
+                    </div>
+                  </>
+                ) : null}
+              </div>
+            ))}
+          </div>
+          <div className="p-message-main-write">
+            <form action="" onSubmit={handleSubmit}>
+              <div className="p-message-main-write-box">
+                <div className="p-message-main-write-box-left">
+                  <img src={messageIcon} alt="" />
                 </div>
-                <div className="p-message-main-write">
-                    <form action="" onSubmit={handleSubmit}>
-                        <div className="p-message-main-write-box">
-                            <div className="p-message-main-write-box-left">
-                                <img src={messageIcon} alt="" />
-                            </div>
-                            {/* <input type="text" placeholder='Nachrichten...'
+                {/* <input type="text" placeholder='Nachrichten...'
                                 ref={messageInputRef}
                                 onChange={(e) => handleInputChange(e.target.value)}
                             /> */}
-                            <input
-                                type="text"
-                                placeholder={!doctorInfo || Object.keys(doctorInfo).length === 0 ? 'Bitte wählen Sie einen Arzt aus, dem Sie eine Nachricht senden möchten.' : 'Nachrichten...'}
-                                ref={messageInputRef}
-                                onChange={(e) => handleInputChange(e.target.value)}
-                                onBlur={(e) => {
-                                    if (!e.target.value.trim() && doctorInfo && Object.keys(doctorInfo).length !== 0) {
-                                        e.target.placeholder = "Nachrichten...";
-                                    }
-                                }}
-                            />
+                <input
+                  type="text"
+                  placeholder={
+                    !doctorInfo || Object.keys(doctorInfo).length === 0
+                      ? "Bitte wählen Sie einen Arzt aus, dem Sie eine Nachricht senden möchten."
+                      : "Nachrichten..."
+                  }
+                  ref={messageInputRef}
+                  onChange={(e) => handleInputChange(e.target.value)}
+                  onBlur={(e) => {
+                    if (
+                      !e.target.value.trim() &&
+                      doctorInfo &&
+                      Object.keys(doctorInfo).length !== 0
+                    ) {
+                      e.target.placeholder = "Nachrichten...";
+                    }
+                  }}
+                />
 
-                            <div className="p-message-main-write-box-right">
-                                <button type='submit'><img src={send} alt="" /></button>
-                            </div>
-                        </div>
-                    </form>
+                <div className="p-message-main-write-box-right">
+                  <button type="submit">
+                    <img src={send} alt="" />
+                  </button>
                 </div>
-            </div>
-            <div className="p-message-main-right">
-                <form onSubmit={handleSearch}>
-                    <div className="p-message-input">
-                        <div className="p-message-input-box">
-                            <div><img src={searchIcon} alt="searchIcon" />
-                            </div>
-                            <div>
-                                <input
-                                    type="text"
-                                    className="p-message-input-field"
-                                    placeholder='Name'
-                                    // ref={searchParamsRef}
-                                    onChange={(e) => handleInputChange2('name', e.target.value)}
-                                />
-                            </div>
-                            <div>
-                                <button type="submit" className="p-message-input-btn" >Suchen</button>
-                            </div>
-                        </div>
-
-                    </div>
-                </form>
-
-                <div className="p-message-findDoctor-main" >
-                    {loading ? (
-                        <Loading />
-                    ) : filteredDoctors?.length ? (
-                        <div className="p-message-findDoctor">
-                            {filteredDoctors?.map((item, i) => <MessageFindDoctor setDoctorInfo={setDoctorInfo} key={i} {...item} />)}
-                        </div>
-
-                    ) : (
-                        <div className="p-message-findDoctor-info-main">
-                            <div className="p-message-findDoctor-info-title">  <h1 >Nachrichten Service</h1></div>
-
-                            <div className="p-message-findDoctor-info">
-
-                                <div className="p-message-findDoctor-info-left">
-                                    <img src={messageImg} alt="" />
-                                </div>
-                                <div className="p-message-findDoctor-info-right">
-                                    <p className="p-message-findDoctor-info-text">
-
-                                        Den Arzt, den Sie suchen, können Sie in der Suchmaschine finden.
-                                    </p><p className="p-message-findDoctor-info-text">
-                                        Unten können Sie auf Ihre neuesten Nachrichten zugreifen und schnell die Ärzte finden, von denen Sie Nachrichten gesendet und empfangen haben.
-                                    </p>
-                                </div>
-
-
-                            </div>
-                        </div>
-
-                    )}
+              </div>
+            </form>
+          </div>
+        </div>
+        <div className="p-message-main-right dark:border-main-panel-backgrounds dark:bg-secondary-panel-backgrounds">
+          <form onSubmit={handleSearch}>
+            <div className="p-message-input">
+              <div className="p-message-input-box">
+                <div>
+                  <img src={searchIcon} alt="searchIcon" />
                 </div>
                 <div>
-                    <LastMessageDoctor setDoctorInfo={setDoctorInfo} messages={messages} doctors={doctors} patientId={patientId} />
+                  <input
+                    type="text"
+                    className="p-message-input-field"
+                    placeholder="Name"
+                    // ref={searchParamsRef}
+                    onChange={(e) => handleInputChange2("name", e.target.value)}
+                  />
                 </div>
+                <div>
+                  <button
+                    type="submit"
+                    className="p-message-input-btn duration-200"
+                  >
+                    Suchen
+                  </button>
+                </div>
+              </div>
             </div>
+          </form>
+
+          <div className="p-message-findDoctor-main">
+            {loading ? (
+              <Loading />
+            ) : filteredDoctors?.length ? (
+              <div className="p-message-findDoctor">
+                {filteredDoctors?.map((item, i) => (
+                  <MessageFindDoctor
+                    setDoctorInfo={setDoctorInfo}
+                    key={i}
+                    {...item}
+                  />
+                ))}
+              </div>
+            ) : (
+              <div className="p-message-findDoctor-info-main">
+                <div className="p-message-findDoctor-info-title">
+                  {" "}
+                  <h1 className="dark:text-white">Nachrichten Service</h1>
+                </div>
+
+                <div className="p-message-findDoctor-info">
+                  <div className="p-message-findDoctor-info-left">
+                    <img src={messageImg} alt="" />
+                  </div>
+                  <div className="p-message-findDoctor-info-right">
+                    <p className="p-message-findDoctor-info-text dark:text-white">
+                      Den Arzt, den Sie suchen, können Sie in der Suchmaschine
+                      finden.
+                    </p>
+                    <p className="p-message-findDoctor-info-text dark:text-white">
+                      Unten können Sie auf Ihre neuesten Nachrichten zugreifen
+                      und schnell die Ärzte finden, von denen Sie Nachrichten
+                      gesendet und empfangen haben.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+          <div>
+            <LastMessageDoctor
+              setDoctorInfo={setDoctorInfo}
+              messages={messages}
+              doctors={doctors}
+              patientId={patientId}
+            />
+          </div>
         </div>
+      </div>
     );
 };
 

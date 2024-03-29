@@ -22,6 +22,7 @@ export default function DeleteAppoModal({setShowModal, showModal, termin}) {
             cancelUserType: "doctor",
             cancelReason: cancelReason
         })
+      window.location.reload();
     }
   
   return (

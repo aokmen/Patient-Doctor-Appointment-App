@@ -5,9 +5,13 @@ import { useSelector } from 'react-redux';
 
 export const options = {
   legend: { position: "bottom" },
-  chartArea: { left: 15, top: 15, right: 15, bottom: 15 },
+  chartArea: { left: 15, top: 15, right:15, bottom:25 },
   pieSliceText: "label",
-  colors: ["#59D4D4" , "#38638D", "#204060", "#5999D7"],
+  colors: ["#59D4D4", "#38638D", "#204060", "#5999D7"],
+  backgroundColor: {
+    fill: "#fff",
+    fillOpacity: 0.7,
+  },
 };
 
 export let data = [
@@ -51,8 +55,8 @@ const CancelStats = () => {
     <div className="flex justify-center">
         <Chart
           chartType="PieChart"
-          width="95%"
-          height="280px"
+          width="100%"
+          height="296px"
           data={data}
           options={options}
           chartWrapperParams={{ view: { columns: [0, 3] } }}

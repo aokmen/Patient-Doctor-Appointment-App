@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import Modal from './Appomodal.jsx'
 import 'react-calendar/dist/Calendar.css';
 import './ReactCalendar.css'
+import moment from "moment";
 
 
 const AppointmentCalendar = ({id}) => {
@@ -15,6 +16,8 @@ const AppointmentCalendar = ({id}) => {
   const [uhrZeit, setUhrZeit] = React.useState("");
   const [appoId, setAppoId] = React.useState("");
   const [datum, setDatum] = React.useState("");
+
+  let dateToday = moment().format("YYYY-MM-DD");
 
   const {getData} = useDataCall()
   const {appointments} = useSelector((state) => state.data)                   
@@ -30,9 +33,19 @@ const AppointmentCalendar = ({id}) => {
 
 
   useEffect(() => {
-    getData("appointments")
-    getData("doctors")
-    getData("patients")
+    getData("appointments");
+    getData("doctors");
+    getData("patients");
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    appThisDoctorThisDay = appointments
+      .filter((sch) => {
+        return sch.doctorId === id;
+      })
+      .filter((app) => {
+        return app.date === dateToday;
+      });
+      setAppArr(appThisDoctorThisDay)
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
@@ -47,7 +60,8 @@ const AppointmentCalendar = ({id}) => {
   const doctorName = thisDoc[0]?.title+ ". " + thisDoc[0]?.firstName + " " + thisDoc[0]?.lastName
   const doctorAdress = thisDoc[0]?.street + ", " + thisDoc[0]?.zipCode/*  + thisDoc[0]?.cityId */
   //console.log(doctorName)
-  
+
+
 
   const handleDateSelect = async (value) => {
     
