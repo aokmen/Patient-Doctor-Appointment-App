@@ -27,7 +27,7 @@ const PatientPanel = () => {
         <div className="p-panel-sidebar">
           <Sidebar {...user} />
         </div>
-        <div className="p-panel-main">
+        <div className="p-panel-main dark:bg-main-panel-backgrounds">
           <div className="p-navbar">
             <PNavbar />
           </div>

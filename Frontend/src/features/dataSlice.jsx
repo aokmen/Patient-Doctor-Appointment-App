@@ -21,6 +21,7 @@ const dataSlice = createSlice({
     files:[],
     tasks:[],
     notes:[],
+    notifications:[],
   },
   reducers:{
     fetchStart: (state) => {

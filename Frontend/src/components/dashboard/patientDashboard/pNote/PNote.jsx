@@ -15,7 +15,6 @@ const PNote = () => {
   const [newNote, setNewNote] = useState(""); // Yeni Note girişi için state
   const [completedNotes, setCompletedNotes] = useState([]);
 
-
   const handleDeleteNote = (id) => {
     delData("notes", id);
     window.location.reload();
@@ -47,9 +46,9 @@ const PNote = () => {
   };
 
   return (
-    <div className="note-main container flex justify-center ml-4 h-[825px] bg-white  ">
+    <div className="note-main container flex justify-center ml-4 h-[825px] bg-white dark:bg-secondary-panel-backgrounds ">
       <div>
-        <div className=" text-main-dark-blue py-4">
+        <div className=" text-main-dark-blue dark:text-main-light-blue py-4">
           <h3 className="text-3xl font-bold mx-4">Meine Notizen</h3>
         </div>
         <div className="p-2 flex flex-col justify-center w-[650px] ">
@@ -59,7 +58,7 @@ const PNote = () => {
                 ref={inputRef} // Referansı input elementine atayın
                 type="text"
                 className=" bg-transparent w-[630px] text-main-dark-blue mr-2 py-5 px-2 leading-tight focus:outline-none"
-                placeholder="Add Note"
+                placeholder="Notiz Hinzufügen"
                 value={newNote}
                 onChange={handleChange} // Değişikliklerde handleChange'i çağırın
               />
@@ -81,26 +80,34 @@ const PNote = () => {
                 key={index}
                 className="flex mb-4 align-content-center justify-center border-2 w-[630px]  bg-main-light-blue  hover:bg-[white] hover:text-white rounded-lg border-main-light-blue2 cursor-pointer "
               >
-                <span className={`font-medium flex-1 text-2xl text-main-dark-blue border-1 border-main-light-blue2 rounded-md p-3 px-4 bg-main-light-blue2 mr-3 w-full ${note.isCompleted || isNoteCompleted(note.id)
-                    ? "bg-[#B7D8F8] text-gray-50"
-                    : ""
-                  }`} >
+                <span
+                  className={`font-medium flex-1 text-2xl text-main-dark-blue border-1 border-main-light-blue2 rounded-md p-3 px-4 bg-main-light-blue2 mr-3 w-full ${
+                    note.isCompleted || isNoteCompleted(note.id)
+                      ? "bg-main-light-blue2 text-gray-50"
+                      : ""
+                  }`}
+                >
                   {index + 1}.
                 </span>{" "}
-                <div className="my-auto"> 
+                <div className="my-auto">
                   <button
-                    className={`text-main-dark-blue w-[520px] flex justify-between my-auto ${note.isCompleted || isNoteCompleted(note.id)
+                    className={`text-main-dark-blue w-[520px] flex justify-between my-auto ${
+                      note.isCompleted || isNoteCompleted(note.id)
                         ? "line-through"
                         : ""
-                      }`}
+                    }`}
                     onClick={() => handleNoteClick(note)}
                   >
                     <div className="flex justify-between w-[600px] ">
                       <p className=" w-[500px] text-left">{note.note}</p>
-                      <img src={click} alt="click" className="w-6 h-6 my-auto"/>
+                      <img
+                        src={click}
+                        alt="click"
+                        className="w-6 h-6 my-auto"
+                      />
                     </div>
                   </button>
-                </div> 
+                </div>
                 <button
                   className="flex-shrink-0 flex-2 border-transparent border-4 text-sm py-1 px-2 rounded"
                   onClick={() => handleDeleteNote(note.id)}

@@ -2,17 +2,15 @@ import React, { useEffect, useState } from "react";
 import Calendar from "react-calendar";
 import "../../doctorDashboard/kalender/calendar.css";
 import { useSelector } from "react-redux";
-import Events from "../../doctorDashboard/kalender/Events";
+import Events from "./Events";
 import Feiertage from "../../doctorDashboard/kalender/Feiertage";
 import moment from "moment";
 import TerminInfo from "../Uberblick/TerminInfo";
 import Termine from "../Uberblick/Termine";
 
 const Kalender = () => {
-  
-
   const { appointments } = useSelector((state) => state.data);
-  
+
   //console.log(events);
 
   const [termin, setTermin] = useState([]);
@@ -63,14 +61,16 @@ const Kalender = () => {
   return (
     <div className="h-[100vh] w-[87vw]">
       <div className="flex justify-center rounded-3xl">
-        <div className="bg-white rounded-l-3xl max-h-[86vh] w-[40vw] max-w-[40vw] border-r-[1.9rem] border-[#F1F7FE] min-h-[86vh] flex flex-col">
-          <div className=" min-h-[10vh] text-4xl font-bold flex justify-center items-center border-b-8 border-[#38638D]">
-            <h1 className="text-[#38638D]">Kalender</h1>
+        <div className="bg-white dark:bg-secondary-panel-backgrounds rounded-l-3xl max-h-[86vh] w-[40vw] max-w-[40vw] border-r-[1.9rem] border-main-light-blue dark:border-main-panel-backgrounds min-h-[86vh] flex flex-col">
+          <div className=" min-h-[10vh] text-4xl font-bold flex justify-center items-center border-b-8 border-main-dark-blue dark:border-main-light-blue">
+            <h1 className="text-main-dark-blue dark:text-main-light-blue">
+              Kalender
+            </h1>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
               fill="currentColor"
-              className="w-10 h-10 ml-5 text-[#38638D]"
+              className="w-10 h-10 ml-5 text-main-dark-blue dark:text-main-light-blue"
             >
               <path
                 fillRule="evenodd"
@@ -104,7 +104,7 @@ const Kalender = () => {
           </div>
 
           <div className=" rounded-3xl max-h-[33vh] min-h-[32vh] mt-5 flex flex-col">
-            <h1 className="text-3xl text-[#38638D] mx-auto border-b-2 border-[#38638D] px-10 my-3">
+            <h1 className="text-3xl text-main-dark-blue dark:text-main-light-blue mx-auto border-b-2 border-main-dark-blue dark:border-main-light-blue px-10 my-3">
               Feiertage
             </h1>
             <Feiertage
@@ -115,22 +115,22 @@ const Kalender = () => {
           </div>
         </div>
 
-        <div className=" bg-white rounded-r-3xl max-h-[86vh] min-h-[86vh] max-w-[50vw] w-[46vw] min-w-[46vw] flex flex-col">
+        <div className=" bg-white dark:bg-secondary-panel-backgrounds rounded-r-3xl max-h-[86vh] min-h-[86vh] max-w-[50vw] w-[46vw] min-w-[46vw] flex flex-col">
           <div className="py-3 rounded-3xl flex flex-col items-center">
-            <div className="flex justify-start items-center border-2 w-[32rem] border-[#38638D] rounded-lg bg-[#F1F7FE] mb-6 mt-3 ml-[-8rem]">
+            <div className="flex justify-start items-center border-2 w-[32rem] border-main-dark-blue rounded-lg bg-main-light-blue mb-6 mt-3 ml-[-8rem]">
               <button
                 onClick={() => setiSEventsShown(false)}
                 className={`w-1/2 py-2 px-3 flex justify-center items-center text-3xl  ${
-                  !iSEventsShown ? "bg-[#38638D]" : ""
-                } ${!iSEventsShown ? "text-white" : "text-[#38638D]"}`}
+                  !iSEventsShown ? "bg-main-dark-blue dark:bg-main-green rounded-l-md" : ""
+                } ${!iSEventsShown ? "text-white" : "text-main-dark-blue"}`}
               >
                 Termine
               </button>
               <button
                 onClick={() => setiSEventsShown(true)}
-                className={`flex-1 py-2 px-3 border-l-2 border-[#38638D] flex justify-center items-center text-3xl ${
-                  iSEventsShown ? "bg-[#38638D]" : ""
-                } ${iSEventsShown ? "text-white" : "text-[#38638D]"}`}
+                className={`flex-1 py-2 px-3 border-l-2 border-main-dark-blue flex justify-center items-center text-3xl ${
+                  iSEventsShown ? "bg-main-dark-blue dark:bg-main-green rounded-r-md" : ""
+                } ${iSEventsShown ? "text-white" : "text-main-dark-blue"}`}
               >
                 Events
               </button>

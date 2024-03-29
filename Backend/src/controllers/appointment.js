@@ -29,6 +29,8 @@ module.exports = {
         //     details: await res.getModelListDetails(Appointment),
         //     data
         // })
+
+        
         
         // FOR REACT PROJECT:
         res.status(200).send(data)

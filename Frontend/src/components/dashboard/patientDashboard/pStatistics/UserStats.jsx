@@ -6,10 +6,17 @@ import { useSelector } from "react-redux";
 export let data = [];
 
 export const options = {
-  title: "Benutzer Statistik",
+  title: "Neu Benutzer Statistik - Letzte 6 Monate",
   curveType: "function",
-  legend: { position: "bottom" },
-  colors: ["#38638D", "#59D4D4", "#204060", "#5999D7", "#237979"],
+  legend: { position: "right" },
+  colors: ["#204060", "#59D4D4", "#38638D", "#5999D7", "#237979"],
+  backgroundColor: {
+    fill: "#fff",
+    fillOpacity: 0.7,
+  },
+  chartArea: {
+    left: 15,
+  },
 };
 
 const UserStats = () => {
@@ -105,13 +112,16 @@ const UserStats = () => {
   ];
 
   return (
-    <Chart
+    <div className="">
+      <Chart
       chartType="LineChart"
-      width="100%"
-      height="400px"
       data={data}
       options={options}
+      width="1000px"
+      height="357px"
     />
+    </div>
+    
   );
 };
 export default UserStats;

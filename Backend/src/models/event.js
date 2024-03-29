@@ -7,11 +7,7 @@ const { mongoose } = require('../configs/dbConnection')
 
 const EventSchema = new mongoose.Schema({
 
-    doctorId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Doctor'
-    },
-    patientId: {
+    userId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Patient'
     },

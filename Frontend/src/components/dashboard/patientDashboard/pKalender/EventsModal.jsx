@@ -1,13 +1,8 @@
-import React from "react";
-import useDataCall from "../../../../hooks/useDataCall";
-import { useSelector } from "react-redux";
+import React from 'react'
+import useDataCall from '../../../../hooks/useDataCall'
+import { useSelector } from 'react-redux';
 
-export default function Modal({
-  showModal,
-  info,
-  setInfo,
-  handleClose
-}) {
+export default function Modal({ showModal, info, setInfo, handleClose }) {
   const { postData, putData } = useDataCall();
   const { userId, userType } = useSelector((state) => state.auth);
 
@@ -18,6 +13,7 @@ export default function Modal({
       userType: userType,
       [e.target.name]: e.target.value,
     });
+    
   };
   //console.log(info)
 
@@ -30,7 +26,7 @@ export default function Modal({
     }
     handleClose();
   };
-
+  
   const hours = [
     "00.00",
     "00.15",
@@ -137,7 +133,7 @@ export default function Modal({
           <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
             <div className="relative w-auto my-6 mx-auto max-w-3xl">
               {/*content*/}
-              <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+              <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white dark:bg-slate-400 outline-none focus:outline-none">
                 {/*header*/}
                 <div className="flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t">
                   {info.day ? (
@@ -175,7 +171,7 @@ export default function Modal({
                   <div className="border-2 flex justify-evenly items-center  rounded-lg">
                     <label
                       className="text-xl font-bold mr-16"
-                      htmlFor="eventDay"
+                      htmlFor="eventHour"
                     >
                       Datum:{" "}
                     </label>
@@ -183,16 +179,16 @@ export default function Modal({
                       name="day"
                       value={info?.day}
                       onChange={handleChange}
-                      id="eventDay"
+                      id="eventHour"
                       placeholder="dd.mm.yyy"
-                      className="outline-none my-4 text-blueGray-500 text-lg leading-relaxed"
+                      className="outline-none my-4 text-blueGray-500 text-lg leading-relaxed dark:bg-slate-400"
                       type="date"
                     ></input>
                   </div>
                   <div className="border-2 flex justify-evenly items-center mt-3  rounded-lg">
                     <label
                       className="text-xl font-bold mr-28"
-                      htmlFor="eventHour"
+                      htmlFor="eventDate"
                     >
                       Uhrzeit:{" "}
                     </label>
@@ -200,10 +196,10 @@ export default function Modal({
                       name="hour"
                       value={info?.hour}
                       onChange={handleChange}
-                      id="eventHour"
+                      id="eventDate"
                       placeholder="dd.mm.yyy"
-                      className="outline-none my-4 pr-8 text-blueGray-500 text-lg leading-relaxed"
-                      type="hour"
+                      className="outline-none my-4 pr-8 text-blueGray-500 text-lg leading-relaxed dark:bg-slate-400"
+                      type="date"
                     >
                       {hours.map((hour, index) => {
                         return (
@@ -224,7 +220,7 @@ export default function Modal({
                       onChange={handleChange}
                       id="eventName"
                       placeholder="Event Name"
-                      className="outline-none my-4 pr-8 text-blueGray-500 text-lg leading-relaxed"
+                      className="outline-none my-4 pr-8 text-blueGray-500 text-lg leading-relaxed dark:bg-slate-400"
                       type="text"
                     ></input>
                   </div>

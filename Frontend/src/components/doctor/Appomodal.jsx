@@ -15,6 +15,7 @@ export default function Modal({showModal, setShowModal, date, doctorName, uhrZei
       complaints: symptoms
     })
     setSymptoms("")
+    window.location.reload();
   }
   
   return (

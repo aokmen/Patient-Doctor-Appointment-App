@@ -36,31 +36,50 @@ const uniqueIdsArray = Array.from(uniqueIds);
 
 
 return (
-    <>
-        <h1 className="p-last-message-title">Meine letzten Nachrichten</h1>
-        <div className="p-last-message-doctor-container">
-            {uniqueIdsArray.map((element, i) => {
-                const findDoctor = doctors?.data?.find(item => item.id === element);
-                const doctorClassName = findDoctor?.isChecked ? "p-d-last-message" : "isChecked";
-                const imgSrc =  findDoctor?.avatar && `${URL}/img/${findDoctor?.id.slice(-15)}.jpg`
-                const messagesReverse = messages.slice().reverse()
-                const lastDate = messagesReverse.find(item => item.senderUserId === findDoctor?.id || item.receiverUserId === findDoctor?.id)
-                return (
-                    findDoctor && (
-                        <div onClick={() => handleClick(findDoctor)} key={i} className={doctorClassName}>
-                            <div className="p-d-last-message-img">
-                                <img className="h-[60px]" src={imgSrc || avatar} alt="" />
-                            </div>
-                            <div className="p-d-last-message-info">
-                                <h1 className='font-bold'>{findDoctor.title} {findDoctor.firstName} {findDoctor.lastName}</h1>
-                                <p>{lastDate.updatedAt.split('T')[0]} -- {lastDate.updatedAt.split('T')[1].substring(0, 8)}</p>
-                            </div>
-                        </div>
-                    )
-                );
-            })}
-        </div>
-    </>
+  <>
+    <h1 className="p-last-message-title dark:text-white">
+      Meine letzten Nachrichten
+    </h1>
+    <div className="p-last-message-doctor-container">
+      {uniqueIdsArray.map((element, i) => {
+        const findDoctor = doctors?.data?.find((item) => item.id === element);
+        const doctorClassName = findDoctor?.isChecked
+          ? "p-d-last-message dark:border-secondary-panel-backgrounds dark:hover:bg-main-blue duration-200"
+          : "isChecked";
+        const imgSrc =
+          findDoctor?.avatar && `${URL}/img/${findDoctor?.id.slice(-15)}.jpg`;
+        const messagesReverse = messages.slice().reverse();
+        const lastDate = messagesReverse.find(
+          (item) =>
+            item.senderUserId === findDoctor?.id ||
+            item.receiverUserId === findDoctor?.id
+        );
+        return (
+          findDoctor && (
+            <div
+              onClick={() => handleClick(findDoctor)}
+              key={i}
+              className={doctorClassName}
+            >
+              <div className="p-d-last-message-img">
+                <img className="h-[60px]" src={imgSrc || avatar} alt="" />
+              </div>
+              <div className="p-d-last-message-info">
+                <h1 className="font-bold dark:text-white">
+                  {findDoctor.title} {findDoctor.firstName}{" "}
+                  {findDoctor.lastName}
+                </h1>
+                <p className="dark:text-white">
+                  {lastDate.updatedAt.split("T")[0]} --{" "}
+                  {lastDate.updatedAt.split("T")[1].substring(0, 8)}
+                </p>
+              </div>
+            </div>
+          )
+        );
+      })}
+    </div>
+  </>
 );
 
     

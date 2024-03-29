@@ -10,61 +10,70 @@ const { mongoose } = require('../configs/dbConnection')
 const { userTypes } = require('../configs/constraints')
 const { insurance } = require('../configs/constraints')
 
-const AppointmentSchema = new mongoose.Schema({
-
+const AppointmentSchema = new mongoose.Schema(
+  {
     doctorId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Doctor',
-        required: true
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Doctor",
+      required: true,
     },
     date: {
-        type: String,
-        trim: true,
-        required: true
+      type: String,
+      trim: true,
+      required: true,
     },
     timeStart: {
-        type: String,
-        trim: true,
-        required: true
+      type: String,
+      trim: true,
+      required: true,
     },
     patientId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Patient'
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Patient",
     },
     complaints: {
-        type: String,
+      type: String,
     },
     insurance: {
-        type: String,
-        enum: insurance,
+      type: String,
+      enum: insurance,
     },
-    files: [{
+    files: [
+      {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'File'
-    }],
-    doctorOpinion: [{
+        ref: "File",
+      },
+    ],
+    doctorOpinion: [
+      {
         type: String,
-    }],
+      },
+    ],
     isCancelled: {
-        type: Boolean,
-        default: false
+      type: Boolean,
+      default: false,
     },
-    cancelUserId:{
-        type: mongoose.Schema.Types.ObjectId,
+    cancelUserId: {
+      type: mongoose.Schema.Types.ObjectId,
     },
-    cancelUserType:{
-        type: String,
-        enum: userTypes
-    }, 
+    cancelUserType: {
+      type: String,
+      enum: userTypes,
+    },
     cancelDate: {
-        type: Date,
+      type: Date,
     },
     cancelReason: {
-        type: String,
-        trim: true
-    }
-    
-}, { collection: 'appointments', timestamps: true })
+      type: String,
+      trim: true,
+    },
+    isDeleted: {
+      type: Boolean,
+      default: false,
+    },
+  },
+  { collection: "appointments", timestamps: true }
+);
 
 
 // FOR REACT PROJECT:

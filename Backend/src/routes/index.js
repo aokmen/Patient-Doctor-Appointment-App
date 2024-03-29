@@ -63,6 +63,9 @@ router.use("/messages", require("./message"))
 //events
 router.use("/events", require("./event"))
 
+//notifications
+router.use("/notifications", require("./notification"))
+
 
 
 /* ------------------------------------------------------- */

@@ -10,7 +10,19 @@ export const options = {
   legend: { position: "bottom" },
   pieHole: 0.4,
   is3D: false,
+  backgroundColor: {
+    fill: "#fff",
+    fillOpacity: 0.7,
+  },
 };
+// export const options2 = {
+//   title: "Meine Termine per Branche",
+//   colors: ["#96bde5", "#2beaea", "#B7D8F8", "#fff", "#6b7d7d"],
+//   legend: { position: "bottom" },
+//   pieHole: 0.7,
+//   is3D: false,
+//   backgroundColor: "#38638D",
+// };
 
 const AccordingToBranch = () => {
     const { doctors, appointments } = useSelector((state) => state.data);
@@ -60,7 +72,7 @@ const AccordingToBranch = () => {
             data={data}
             options={options}
             width={"100%"}
-            height={"360px"}
+            height={"366px"}
           />
         </div>
       );
