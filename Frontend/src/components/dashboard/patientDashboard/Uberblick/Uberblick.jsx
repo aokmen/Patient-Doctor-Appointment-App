@@ -80,13 +80,13 @@ const Uberblick = () => {
       <div className="p-view flex rounded-3xl gap-10 h-[100vh] justify-center">
 
         <div className="p-view-start flex flex-col pt-6 bg-white  w-[420px] rounded-l-3xl">
-          <div className=" text-4xl font-bold flex justify-center items-center  border-[#38638D]">
-            <h1 className="text-[#38638D]">Überblick</h1>
+          <div className=" text-4xl font-bold flex justify-center items-center  border-main-dark-blue">
+            <h1 className="text-main-dark-blue">Überblick</h1>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
               fill="currentColor"
-              className="w-10 h-10 ml-5 text-[#38638D]"
+              className="w-10 h-10 ml-5 text-main-dark-blue"
             >
               <path
                 fillRule="evenodd"
@@ -100,12 +100,12 @@ const Uberblick = () => {
               />
             </svg>
           </div>
-          <div className="flex flex-col  justify-center items-center border-b-4 border-[#38638D] mx-auto">
+          <div className="flex flex-col  justify-center items-center border-b-4 border-main-dark-blue mx-auto">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
               fill="currentColor"
-              className="w-16 h-16 text-[#38638D] mt-4"
+              className="w-16 h-16 text-main-dark-blue mt-4"
             >
               <path d="M12.75 12.75a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM7.5 15.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5ZM8.25 17.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM9.75 15.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5ZM10.5 17.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM12 15.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5ZM12.75 17.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM14.25 15.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5ZM15 17.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM16.5 15.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5ZM15 12.75a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0ZM16.5 13.5a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Z" />
               <path
@@ -115,7 +115,7 @@ const Uberblick = () => {
               />
             </svg>
 
-            <h2 className="text-3xl text-[#38638D] my-4">Kommende Termine</h2>
+            <h2 className="text-3xl text-main-dark-blue my-4">Kommende Termine</h2>
           </div>
           <div className="p-view-termin mt-8 h-[400px] overflow-scroll">
             <KommendeTermine
@@ -135,7 +135,7 @@ const Uberblick = () => {
         <div className="p-view-middle flex flex-col w-[500px]">
           <div className="flex flex-row gap-8 border-b-[1.9rem] border-[#F1F7FE] justify-center">
             <div className="p-view-info flex text-center flex-col justify-between bg-white p-3 w-[16rem]">
-              <h1 className="text-2xl wrap text-[#38638D]">
+              <h1 className="text-2xl wrap text-main-dark-blue">
                 Gesamtzahl der Arzten
               </h1>
               <div className="flex justify-center items-center bg-[#F1F7FE] rounded-lg mx-6">
@@ -143,17 +143,17 @@ const Uberblick = () => {
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
                   fill="currentColor"
-                  className="w-20 h-20 border-r-4 border-[#B7D8F8] text-[#B7D8F8]  pr-3"
+                  className="w-20 h-20 border-r-4 border-main-light-blue text-main-light-blue  pr-3"
                 >
                   <path d="M4.5 6.375a4.125 4.125 0 1 1 8.25 0 4.125 4.125 0 0 1-8.25 0ZM14.25 8.625a3.375 3.375 0 1 1 6.75 0 3.375 3.375 0 0 1-6.75 0ZM1.5 19.125a7.125 7.125 0 0 1 14.25 0v.003l-.001.119a.75.75 0 0 1-.363.63 13.067 13.067 0 0 1-6.761 1.873c-2.472 0-4.786-.684-6.76-1.873a.75.75 0 0 1-.364-.63l-.001-.122ZM17.25 19.128l-.001.144a2.25 2.25 0 0 1-.233.96 10.088 10.088 0 0 0 5.06-1.01.75.75 0 0 0 .42-.643 4.875 4.875 0 0 0-6.957-4.611 8.586 8.586 0 0 1 1.71 5.157v.003Z" />
                 </svg>
-                <p className="text-3xl text-[#38638D] font-bold pl-3">
+                <p className="text-3xl text-main-dark-blue font-bold pl-3">
                   {doctors?.number}
                 </p>
               </div>
             </div>
             <div className="p-view-info flex flex-col justify-between  text-center bg-white p-3  w-[16rem]">
-              <h1 className="text-2xl wrap text-[#38638D]">
+              <h1 className="text-2xl wrap text-main-dark-blue">
                 Gesamtzahl der Termine
               </h1>
               <div className="flex justify-center items-center bg-[#F1F7FE] rounded-lg mx-4">
@@ -161,11 +161,11 @@ const Uberblick = () => {
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
                   fill="currentColor"
-                  className="w-20 h-20 border-r-4 border-[#B7D8F8] text-[#B7D8F8] pr-3"
+                  className="w-20 h-20 border-r-4 border-main-light-blue text-main-light-blue pr-3"
                 >
                   <path d="M4.5 6.375a4.125 4.125 0 1 1 8.25 0 4.125 4.125 0 0 1-8.25 0ZM14.25 8.625a3.375 3.375 0 1 1 6.75 0 3.375 3.375 0 0 1-6.75 0ZM1.5 19.125a7.125 7.125 0 0 1 14.25 0v.003l-.001.119a.75.75 0 0 1-.363.63 13.067 13.067 0 0 1-6.761 1.873c-2.472 0-4.786-.684-6.76-1.873a.75.75 0 0 1-.364-.63l-.001-.122ZM17.25 19.128l-.001.144a2.25 2.25 0 0 1-.233.96 10.088 10.088 0 0 0 5.06-1.01.75.75 0 0 0 .42-.643 4.875 4.875 0 0 0-6.957-4.611 8.586 8.586 0 0 1 1.71 5.157v.003Z" />
                 </svg>
-                <p className="text-3xl text-[#38638D] font-bold pl-3">
+                <p className="text-3xl text-main-dark-blue font-bold pl-3">
                   {appointments?.length}
                 </p>
               </div>
@@ -173,7 +173,7 @@ const Uberblick = () => {
           </div>
 
           <div className="p-view-termin-info flex flex-col bg-white h-full ">
-            <div className="pt1 text-3xl  text-[#38638D]  border-[#38638D] mt-8  text-center">
+            <div className="pt1 text-3xl  text-main-dark-blue  border-main-dark-blue mt-8  text-center">
               <h1>Termin Info</h1>
             </div>
            <div className="pt2 mx-auto mt-[-80px]"><TerminInfo termin={termin} /></div> 
@@ -183,7 +183,7 @@ const Uberblick = () => {
         <div className="p-view-end flex flex-col w-[500px]">
           <div className="flex flex-row gap-8 border-b-[1.9rem] border-[#F1F7FE] justify-center">
             <div className="p-view-info  col-span-1 row-span-2 bg-white flex flex-col justify-evenly text-center p-3 ">
-              <h1 className="text-2xl wrap text-[#38638D]">
+              <h1 className="text-2xl wrap text-main-dark-blue">
                 Termine in diesem Monat
               </h1>
               <div className="flex justify-center items-center bg-[#F1F7FE] rounded-lg mx-8">
@@ -191,7 +191,7 @@ const Uberblick = () => {
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
                   fill="currentColor"
-                  className="w-20 h-20 border-r-4 border-[#B7D8F8] text-[#B7D8F8] pr-3"
+                  className="w-20 h-20 border-r-4 border-main-light-blue text-main-light-blue pr-3"
                 >
                   <path
                     fillRule="evenodd"
@@ -199,13 +199,13 @@ const Uberblick = () => {
                     clipRule="evenodd"
                   />
                 </svg>
-                <p className="text-3xl text-[#38638D] font-bold pl-3">
+                <p className="text-3xl text-main-dark-blue font-bold pl-3">
                   {appointmentsForCurrentMonth?.length}
                 </p>
               </div>
             </div>
             <div className="p-view-info col-span-1 rounded-tr-3xl row-span-2 bg-white flex flex-col justify-evenly text-center p-3">
-              <h1 className="text-2xl wrap text-[#38638D]">
+              <h1 className="text-2xl wrap text-main-dark-blue">
                 Letzte Bewertung
               </h1>
               <div className="flex justify-center items-center bg-[#F1F7FE] rounded-lg mx-10">
@@ -213,7 +213,7 @@ const Uberblick = () => {
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
                   fill="currentColor"
-                  className="w-20 h-20 border-r-4 border-[#B7D8F8] text-[#B7D8F8] pr-3"
+                  className="w-20 h-20 border-r-4 border-main-light-blue text-main-light-blue pr-3"
                 >
                   <path
                     fillRule="evenodd"
@@ -221,13 +221,13 @@ const Uberblick = () => {
                     clipRule="evenodd"
                   />
                 </svg>
-                <p className="text-3xl text-[#38638D] font-bold pl-3">4.7</p>
+                <p className="text-3xl text-main-dark-blue font-bold pl-3">4.7</p>
               </div>
             </div>
           </div>
 
           <div className="p-view-calender flex flex-col bg-white rounded-br-3xl h-full ">
-            <div className="p-view-calender-box text-3xl w-[18rem] ml-[6rem] mt-3 text-[#38638D] border-b-2 border-[#38638D] mx-auto text-center">
+            <div className="p-view-calender-box text-3xl w-[18rem] ml-[6rem] mt-3 text-main-dark-blue border-b-2 border-main-dark-blue mx-auto text-center">
               <h1>Kalender</h1>
             </div>
             <Calendar
@@ -250,7 +250,7 @@ const Uberblick = () => {
                 // }
               }}
             />
-            <table className="mt-5 text-start text-[#38638D]  wrap">
+            <table className="mt-5 text-start text-main-dark-blue  wrap">
               {holidayArray.map((item) => {
                 return (
                   <>

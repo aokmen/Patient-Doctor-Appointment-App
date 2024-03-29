@@ -7,14 +7,10 @@ const { mongoose } = require('../configs/dbConnection')
 
 const EventSchema = new mongoose.Schema({
 
-    doctorId: {
+    userId: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Doctor'
     },
-    patientId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Patient'
-    },
+    
     day: {
         type: String,
         trim: true,

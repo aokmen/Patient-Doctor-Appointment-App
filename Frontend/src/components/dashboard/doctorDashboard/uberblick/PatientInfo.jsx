@@ -5,18 +5,23 @@ import phoneIcon from '../../../../assets/phone.png'
 import DeleteAppoModal from '../kalender/DeleteAppoModal'
 
 const PatientInfo = ({patient, todayAppsThisDoctor}) => {
-
-    const termin = todayAppsThisDoctor.filter((item) => item.patientId === patient)
-    //console.log(termin)
-
-    const [showModal, setShowModal] = React.useState(false);
+    const termin = todayAppsThisDoctor.filter(
+        (item) => item.patientId === patient
+      );
+      //console.log(termin)
+    
+      const URL = process.env.REACT_APP_BASE_URL;
+      const fileImage =
+        patient?.profilePic && `${URL}/img/${patient.id.slice(-15)}.jpg`;
+    
+      const [showModal, setShowModal] = React.useState(false);
 
   return (
     <div className='flex flex-col justify-center items-center'>
         {
             patient ? 
             <>
-                <img src={patient?.profilePic || UserPNG} alt="Patient" className='w-[7rem] h-[7rem] mt-3'/>
+                <img src={fileImage || UserPNG} alt="Patient" className='w-[7rem] h-[7rem] mt-3'/>
                 <div className='flex flex-col justify-center items-center'>
                     <h1 className='text-2xl mb-5 text-[#38638D]'>{patient?.firstName} {patient?.lastName}</h1>
                     <h1 className='text-xl mb-2'>Termin: {termin[0]?.timeStart}</h1>

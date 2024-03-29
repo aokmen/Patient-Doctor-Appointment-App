@@ -14,6 +14,10 @@ export const options = {
   },
   colors: ["#38638D", "#5999D7", "#59D4D4", "#204060", "#237979"],
   legend: { position: "bottom" },
+  backgroundColor: {
+    fill: "#fff",
+    fillOpacity: 0.7,
+  },
 };
 
 const MessageStats = () => {

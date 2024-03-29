@@ -8,6 +8,10 @@ export const options = {
   chartArea: { left: 15, top: 15, right: 15, bottom: 15 },
   pieSliceText: "label",
   colors: ["#59D4D4" , "#38638D", "#204060", "#5999D7"],
+  backgroundColor: {
+    fill: "#fff",
+    fillOpacity: 0.7,
+  }
 };
 
 export let data = [
@@ -52,7 +56,7 @@ const CancelStats = () => {
         <Chart
           chartType="PieChart"
           width="100%"
-          height="280px"
+          height="296px"
           data={data}
           options={options}
           chartWrapperParams={{ view: { columns: [0, 3] } }}

@@ -42,7 +42,7 @@ const PatientInfo = ({patient, appsThisDoctor, appsThisDoctorSelectedDate, selec
                     <>
                         <img src={patient?.profilePic || UserPNG} alt="Patient" className='w-[7rem] h-[7rem]'/>
                         <div className='flex flex-col justify-center items-center'>
-                            <h1 className='text-2xl mb-5 text-[#38638D]'>{patient?.firstName} {patient?.lastName}</h1>
+                            <h1 className='text-2xl mb-5 text-main-dark-blue'>{patient?.firstName} {patient?.lastName}</h1>
                             <h1 className='text-xl mb-2'>Datum: {termin[0]?.date}</h1>
                             <h1 className='text-xl mb-2'>Uhrzeit: {termin[0]?.timeStart}</h1>
                             <h1 className='text-xl mb-5'>Complaints: {termin[0]?.complaints}</h1>

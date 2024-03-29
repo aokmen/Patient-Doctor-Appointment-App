@@ -59,7 +59,7 @@ const PNote = () => {
                 ref={inputRef} // Referansı input elementine atayın
                 type="text"
                 className=" bg-transparent w-[630px] text-main-dark-blue mr-2 py-5 px-2 leading-tight focus:outline-none"
-                placeholder="Add Note"
+                placeholder="Notiz Hinzufügen"
                 value={newNote}
                 onChange={handleChange} // Değişikliklerde handleChange'i çağırın
               />

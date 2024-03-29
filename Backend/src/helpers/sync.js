@@ -16,7 +16,9 @@ module.exports = async function () {
     const Appointment = require('../models/appointment')
     await Appointment.deleteMany()
 
-
+    // const Notification = require('../models/notification')
+    // await Notification.deleteMany()
+    
     /* Admin */
     const Token = require('../models/token')
     await Token.deleteMany() // !!! Clear collection.

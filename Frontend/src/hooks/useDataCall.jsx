@@ -102,7 +102,7 @@ const useDataCall = () => {
         dispatch(fetchStart())
         try {
             await axiosWithToken.delete(`/${url}/${id}`)
-            if(url==="tasks" || url==="notes" || url === "events" || url === "appointments") getSingleData(url,id)
+            if(url==="tasks" || url==="notes" || url === "events" || url === "appointments") getSingleData(url,userId)
             else getData(url)
 
         } catch (error) {

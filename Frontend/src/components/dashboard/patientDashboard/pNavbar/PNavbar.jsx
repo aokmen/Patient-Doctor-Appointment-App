@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import "./pNavbar.css"
 import setting from "../../../../assets/setting2.png"
 import letter from "../../../../assets/letter.png"
@@ -7,28 +7,48 @@ import help from "../../../../assets/help.png"
 import logo from "../../../../assets/logo3.png"
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router'
+import useDataCall from "../../../../hooks/useDataCall";
+import NotificationModal from "./NotificationModal";
 
 const PNavbar = () => {
+
   const { doctors, messages} = useSelector((state) => state.data);
-  const navigate = useNavigate();
-
-let findUser =[]
-
-let messageArray= []
-
-messages.forEach((item) => {
-  messageArray.push(item.senderUserId) 
-  messageArray.push(item.receiverUserId)
-});
-const uniqueIds = new Set(messageArray)
-
-const uniqueIdsArray = Array.from(uniqueIds); // Set nesnesini bir diziye dönüştür
-
-uniqueIdsArray.forEach((element) => {
-  const users = doctors?.data?.filter(item => item.id === element && !item.isChecked );
-  users && findUser.push(...users);
-});
-
+    const { getSingleData, getData } = useDataCall();
+    const { userId } = useSelector((state) => state.auth);
+    const [notificationNumber, setNotificationNumber] = useState(0)
+    let notificationsArray = []
+    const [showModal, setShowModal] = React.useState(false);
+    
+  
+    useEffect(() => {
+      getSingleData("appointments", userId);
+      getData("notifications");
+  
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+  
+    
+  
+    const navigate = useNavigate();
+  
+    let findUser = [];
+  
+    let messageArray = [];
+  
+    messages.forEach((item) => {
+      messageArray.push(item.senderUserId);
+      messageArray.push(item.receiverUserId);
+    });
+    const uniqueIds = new Set(messageArray);
+  
+    const uniqueIdsArray = Array.from(uniqueIds); // Set nesnesini bir diziye dönüştür
+  
+    uniqueIdsArray.forEach((element) => {
+      const users = doctors?.data?.filter(
+        (item) => item.id === element && !item.isChecked
+      );
+      users && findUser.push(...users);
+    });
   return (
     <div className="d-header">
        <img className="d-header-img" src={logo} alt="logo" />
@@ -42,6 +62,12 @@ uniqueIdsArray.forEach((element) => {
         <img src={setting} alt="setting" />
 
         </div>
+        <NotificationModal
+        showModal={showModal}
+        setShowModal={setShowModal}
+        setNotificationNumber={setNotificationNumber}
+        notificationsArray={notificationsArray}
+      />
       </div>
 
   )

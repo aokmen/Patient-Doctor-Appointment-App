@@ -8,8 +8,15 @@ export let data = [];
 export const options = {
   title: "Benutzer Statistik",
   curveType: "function",
-  legend: { position: "bottom" },
+  legend: { position: "right" },
   colors: ["#38638D", "#59D4D4", "#204060", "#5999D7", "#237979"],
+  backgroundColor: {
+    fill: "#fff",
+    fillOpacity: 0.7,
+  },
+  chartArea:{
+    left:15
+  }
 };
 
 const UserStats = () => {

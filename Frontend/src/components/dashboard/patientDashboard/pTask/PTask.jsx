@@ -58,7 +58,7 @@ const PTask = () => {
                 ref={inputRef} // Referansı input elementine atayın
                 type="text"
                 className=" bg-transparent w-[630px] text-main-dark-blue mr-2 py-5 px-2 leading-tight focus:outline-none"
-                placeholder="Add Task"
+                placeholder="Aufgabe hinzufügen"
                 value={newTask}
                 onChange={handleChange} // Değişikliklerde handleChange'i çağırın
               />

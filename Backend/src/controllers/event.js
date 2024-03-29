@@ -48,13 +48,13 @@ module.exports = {
 
         const data = await Event.create(req.body);
 
-        if (req.body.patientId) {
+        if (req.body.userType = "patient") {
           await Patient.updateOne(
             { _id: data.patientId },
             { $push: { events: data.id } }
           );
         } else {
-          if (req.body.doctorId) {
+          if (req.body.userType = "doctor") {
             await Doctor.updateOne(
               { _id: data.doctorId },
               { $push: { events: data.id } }
@@ -77,7 +77,7 @@ module.exports = {
         */
 
         const data = await Event.find({
-          $or: [{ patientId: req.params.id }, { doctorId: req.params.id }],
+           userId: req.params.id
         });
         
 

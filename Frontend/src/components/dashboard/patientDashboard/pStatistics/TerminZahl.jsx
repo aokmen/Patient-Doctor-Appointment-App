@@ -7,11 +7,14 @@ export let data = [];
 
 export const options = {
   title: "Termine per Zeit und Branche",
-  chartArea: { width: "60%" },
+  chartArea: { width: "75%" },
 
   colors: ["#38638D", "#59D4D4", "#5999D7", "#204060"],
   legend: { position: "none" },
-  
+  backgroundColor: {
+    fill: "#fff",
+    fillOpacity: 0.7,
+  },
 };
 
 const TerminZahl = () => {
@@ -126,8 +129,7 @@ const TerminZahl = () => {
   return (
     <div className="pt-10">
       <Chart
-        chartType="Bar"
-        width="100%"
+        chartType="ColumnChart"
         height="360px"
         data={data}
         options={options}

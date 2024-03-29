@@ -26,7 +26,7 @@ const Sidebar = () => {
   const navigate = useNavigate();
   
   const URL = process.env.REACT_APP_BASE_URL
-  const fileImage = user.avatar && `${URL}/img/${userId.slice(-15)}.jpg`
+  const fileImage = user?.avatar && `${URL}/img/${userId.slice(-15)}.jpg`
 
 
   const closed = () => {

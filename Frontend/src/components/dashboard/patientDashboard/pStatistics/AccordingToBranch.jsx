@@ -10,6 +10,10 @@ export const options = {
   legend: { position: "bottom" },
   pieHole: 0.4,
   is3D: false,
+  backgroundColor: {
+    fill: "#fff",
+    fillOpacity: 0.7,
+  },
 };
 
 const AccordingToBranch = () => {
@@ -60,7 +64,7 @@ const AccordingToBranch = () => {
             data={data}
             options={options}
             width="100%"
-            height={"360px"}
+            height={"366px"}
           />
         </div>
       );

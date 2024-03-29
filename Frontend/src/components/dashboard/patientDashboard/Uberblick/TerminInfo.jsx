@@ -9,7 +9,7 @@ import CancelAppoModal from './CancelAppoModal'
 const TerminInfo = ({termin}) => {
 
     const { doctors } = useSelector((state) => state.data)
-    const {getData} = useDataCall()
+    const {getData, putData} = useDataCall()
 
   
     useEffect(() => {
@@ -26,7 +26,13 @@ const TerminInfo = ({termin}) => {
 
     //const termin = todayAppsThisDoctor.filter((item) => item.patientId === patient)
 
-    const [showModal, setShowModal] = React.useState(false);
+  const [showModal, setShowModal] = React.useState(false);
+  
+  const handleAppointmentDelete = () => {
+    putData("appointments", termin.id, {
+      isDeleted: true
+    })
+  }
 
   return (
     <div className='p-termin-info flex flex-col justify-center items-center'>
