@@ -62,7 +62,11 @@ const AppointmentSchema = new mongoose.Schema({
     cancelReason: {
         type: String,
         trim: true
-    }
+    },
+    weekDays:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'WeekDay'
+    },
     
 }, { collection: 'appointments', timestamps: true })
 
