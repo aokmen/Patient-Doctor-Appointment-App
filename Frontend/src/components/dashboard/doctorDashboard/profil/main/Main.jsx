@@ -206,7 +206,7 @@ const Main = (doctorProfile) => {
                         <div className={count === 0 ? "dpanel-person-profile" : (count === 1 ? "dpanel-person-profile2" : (count >= 2 ? "dpanel-person-profile3" : null))}>
                             <div className="dpanel-person--left person3">
                                 <div className="p-input p-input3-1">
-                                    <label className="dpanel-p-label" htmlFor="p-input14">Symptome</label>
+                                    <label className="dpanel-p-label" htmlFor="p-input14">Services</label>
                                     <textarea required name="" id="textarea-services" cols="50" rows="10" placeholder="z.B. Altersbedingte Makuladegeneration AMD, Augenschmerzen, Diabetische Retinopathie, Grüner Star / Glaukom, Kurzsichtigkeit / Myopie, Katarakt, Laser bei Nachsta" defaultValue={services} onChange={(e) => handleInputChange("services", e.target.value)}>
                                     </textarea>
                                 </div>

@@ -1,4 +1,5 @@
 import { fetchFail, fetchStart, getDataSuccess } from "../features/dataSlice";
+import { putSuccess} from "../features/authSlice";
 import { useDispatch, useSelector } from "react-redux";
 import useAxios from "./useAxios";
 
@@ -88,6 +89,7 @@ const useDataCall = () => {
       await axiosWithToken.put(`/${url}/${id}`, info);
       if (url === "events" || url === "appointments" || url==="tasks" || url==="notes") getSingleData(url, userId);
       else getData(url);
+      if(url==="doctors" || url==="patients" || url==="admins") { dispatch(putSuccess({info})); getData(url);}
     } catch (error) {
       dispatch(fetchFail());
       console.log(error);
@@ -102,7 +104,7 @@ const useDataCall = () => {
         dispatch(fetchStart())
         try {
             await axiosWithToken.delete(`/${url}/${id}`)
-            if(url==="tasks" || url==="notes" || url === "events" || url === "appointments") getSingleData(url,userId)
+            if(url==="tasks" || url==="notes" || url === "events" || url === "appointments") getSingleData(url,id)
             else getData(url)
 
         } catch (error) {

@@ -46,6 +46,11 @@ const authSlice = createSlice({
       state.error = false;
       state.userType = payload?.userType;
     },
+    putSuccess: (state, action) => {
+      state.loading = false;
+      state.user = { ...state.user, ...action?.payload?.info }; // Güncellenmiş bilgileri eski bilgilere birleştiriyoruz
+    console.log("ACTION:",action?.payload?.info);
+    },
     fetchFail: (state) => {
       state.loading = false;
       state.error = true;
@@ -68,6 +73,7 @@ export const {
     loginSuccess,
     logoutSuccess,
     registerSuccess,
+    putSuccess,
     fetchFail,
   },
 } = authSlice;

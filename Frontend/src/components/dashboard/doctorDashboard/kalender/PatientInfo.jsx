@@ -56,15 +56,15 @@ const PatientInfo = ({patient, appsThisDoctor, appsThisDoctorSelectedDate, selec
                                 <h1 className='text-lg'>{patient?.phone} </h1>
                             </div>
                             {
-                                termin[0].isCancelled && <h1 className='absolute text-5xl text-red-600 font-bold opacity-50'>STORNIERT</h1>
+                                termin[0]?.isCancelled  && <h1 className='absolute text-5xl text-red-600 font-bold opacity-50'>STORNIERT</h1>
                             }
                         </div>
                         {
-                            termin[0].isCancelled ? 
+                            termin[0]?.isCancelled ? 
                                 <div className='w-[18vw] ml-3'>
                                     {
                                         termin[0].cancelUserType === "patient" ? 
-                                            <h1 className='text-red-600 mt-10 text-lg font-bold mx-auto'>Termin ist von dem Patient/der Patientin storniert worden.</h1>
+                                            <h1 className='text-red-600 mt-10 text-lg font-bold mx-auto px-10'>Termin ist von dem Patient/der Patientin storniert worden.</h1>
                                         :
                                             (
                                                 termin[0].cancelUserType === "admin" ?
@@ -73,7 +73,7 @@ const PatientInfo = ({patient, appsThisDoctor, appsThisDoctorSelectedDate, selec
                                                     <h1 className='text-red-600 mt-10 text-lg font-bold'>Termin ist von Ihnen storniert worden.</h1>
                                             )
                                     }
-                                    <h1 className='text-red-600'>Stornierungsgrund: {termin[0]?.cancelReason}</h1>
+                                    <h1 className='text-red-600 px-10'>Stornierungsgrund: {termin[0]?.cancelReason}</h1>
                                 </div>
                             :
                                 <div className='flex justify-evenly items-center w-[20vw] ml-3'>

@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import useDataCall from "../../hooks/useDataCall";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Modal({showModal, setShowModal, date, doctorName, uhrZeit, address, patientName, appoId, patientId}) {
 
@@ -15,7 +17,12 @@ export default function Modal({showModal, setShowModal, date, doctorName, uhrZei
       complaints: symptoms
     })
     setSymptoms("")
-    window.location.reload();
+    // If there is a user who is not logged in, show an error message and redirect to the login page after a certain period of time
+    toast.success("Termin erfolgreich erstellt.");
+    setTimeout(() => {
+      window.location.reload();
+    }, 2000); // Redirect after 3000 milliseconds (3 seconds)
+
   }
   
   return (

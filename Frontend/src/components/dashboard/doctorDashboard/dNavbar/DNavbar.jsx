@@ -9,9 +9,10 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 import useDataCall from "../../../../hooks/useDataCall";
 import DNotificationModal from "./DNotificationModal";
+import moment from "moment";
 
 const DNavbar = () => {
-  const { patients, messages } = useSelector((state) => state.data);
+  const { patients, messages,appointments } = useSelector((state) => state.data);
 
   const { getSingleData, getData } = useDataCall();
   const { userId } = useSelector((state) => state.auth);
@@ -25,11 +26,10 @@ const DNavbar = () => {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
+  const tomorrow  = moment().add(1, 'days');
+  const findAppo = appointments?.filter(item=>(item.date===tomorrow.format('YYYY-MM-DD') && item.isReadDr===false && item.patientId) || (item.isCancelledPat && item.patientId && item.isReadDr===false))
   const navigate = useNavigate();
-
   let findUser = [];
-
   let messageArray = [];
 
   messages.forEach((item) => {
@@ -49,54 +49,23 @@ const DNavbar = () => {
 
   return (
     <div className="d-header">
-      <img src={logo} alt="logo" />
-      <div className="d-navbar-icons min-w-[200px]"> 
-        <div
-          onClick={() => navigate("message")}
-          className=" relative h-[35px] w-[35px] cursor-pointer"
-        >
-          <span
-            className={` absolute bottom-4 left-[-12px] ${
-              findUser.length === 0 ? "hidden" : ""
-            }`}
-          >
-            {findUser.length}
-          </span>
-          <img
-            src={letter}
-            alt="notification2"
-            className="absolute top-[6.5px]"
-          />
+       <img className="d-header-img" src={logo} alt="logo" />
+      <div className="d-navbar-icons min-w-[200px]">
+    
+        <div onClick={() => navigate("message")} className=" relative h-[35px] w-[35px] cursor-pointer"><span className={` absolute bottom-4 left-[-12px] ${findUser?.length === 0 ? "hidden" : ""}`}>{findUser?.length}</span>
+        <img src={letter} alt="letter" className="absolute top-[6.5px]"/>
         </div>
-
-        <div
-          onClick={() => setShowModal(!showModal)}
-          className=" relative h-[35px] w-[35px] cursor-pointer"
-        >
-          <span
-            className={` absolute bottom-4 left-[-12px] ${
-              notificationNumber === 0 ? "hidden" : ""
-            }`}
-          >
-            {notificationNumber}
-          </span>
-          <img
-            src={notification2}
-            alt="notification2"
-            className="absolute top-[6.5px]"
-          />
-        </div>
-
+        <div  onClick={() => setShowModal(!showModal)} className=" relative cursor-pointer"><span className={` absolute bottom-4 left-[-12px] ${findAppo?.length === 0 ? "hidden" : ""}`}>{findAppo?.length}</span><img src={notification2} alt="notification2" /></div>
         <img src={help} alt="help" />
         <img src={setting} alt="setting" />
-      </div>
-      <DNotificationModal
+
+        </div>
+        <DNotificationModal
         showModal={showModal}
         setShowModal={setShowModal}
-        setNotificationNumber={setNotificationNumber}
-        notificationsArray={notificationsArray}
+        notifications={findAppo}
       />
-    </div>
+      </div>
   );
 };
 

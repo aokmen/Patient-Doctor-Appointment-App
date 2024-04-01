@@ -1,3 +1,4 @@
+// Header.jsx
 import React, { useEffect, useRef, useState } from "react";
 import logo from "../../assets/Logo2.png";
 import userImg from "../../assets/user3.png";
@@ -6,54 +7,68 @@ import patient from "../../assets/patient.png";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import useAuthCall from "../../hooks/useAuthCall";
-import profilImage from "../../assets/profil_image2.png"
+import profilImage from "../../assets/profil_image2.png";
 import "./header.css";
 
 const Header = () => {
     const { userId, user, userType } = useSelector((state) => state.auth);
     const { logout } = useAuthCall();
     const navigate = useNavigate();
-    const [state, setState] = useState(false)
-    const URL = process.env.REACT_APP_BASE_URL
-    let fileImage = profilImage
+    const [state, setState] = useState(false);
+    const URL = process.env.REACT_APP_BASE_URL;
+    let fileImage = profilImage;
     const closed = () => {
         logout();
         navigate("/");
     };
 
-    // Replace javascript:void(0) paths with your paths
+    const scrollToHome = (sectionId) => {
+        navigate("/");
+        setTimeout(() => {
+            scrollToSection(sectionId)   
+          }, 100); // Redirect after 3000 milliseconds (3 seconds)
+
+    }
+
+    const scrollToSection = (sectionId) => {
+        const section = document.getElementById(sectionId);
+        if (section) {
+            section.scrollIntoView({ behavior: "smooth" });
+        }
+    };
+
     const navigation = [
-        { title: "Home", onClick: () => navigate("/") },
-        { title: "Service", onClick: () => navigate("/services") },
-        { title: "Über uns", onClick: () => navigate("/about") },
-        { title: "Kontakt", onClick: () => navigate("/contact") }
-    ]
+        { title: "Home", onClick: () => scrollToHome("home") },
+        { title: "Service", onClick: () => scrollToHome("services") },
+        { title: "Über uns", onClick: () => scrollToHome("about") },
+        { title: "Kontakt", onClick: () => scrollToHome("contact") }
+    ];
 
     useEffect(() => {
         document.onclick = (e) => {
             const target = e.target;
             if (!target.closest(".menu-btn")) setState(false);
         };
-    }, [])
+    }, []);
 
     const ProfileDropDown = (props) => {
-
-        const [state, setState] = useState(false)
-        const profileRef = useRef()
+        const [state, setState] = useState(false);
+        const profileRef = useRef();
 
         const navigation = [
-            { title: "Mein Panel", onClick: () => navigate(`/${userType==="patient" ? "patient" : "doctor"}`) },
-            { title: "Einstellung", onClick: () => navigate(`/${userType==="patient" ? "patient" : "doctor"}/profile`) },
+            { title: "Mein Panel", onClick: () => navigate(`/${userType === "patient" ? "patient" : "doctor"}`) },
+            { title: "Einstellung", onClick: () => navigate(`/${userType === "patient" ? "patient" : "doctor"}/profile`) },
             { title: "Ausloggen", onClick: closed },
-        ]
+        ];
 
-        fileImage = (user.profilePic || user.avatar) && `${URL}/img/${userId.slice(-15)}.jpg` 
+        fileImage = (user.profilePic || user.avatar) && `${URL}/img/${userId.slice(-15)}.jpg`;
+        
         useEffect(() => {
             const handleDropDown = (e) => {
-                if (profileRef.current && !profileRef.current.contains(e.target)) setState(false)
+                if (profileRef.current && !profileRef.current.contains(e.target)) setState(false);
             }
-            document.addEventListener('click', handleDropDown)
-        }, [])
+            document.addEventListener('click', handleDropDown);
+        }, []);
 
         return (
             <div className={`relative ${props.class}`}>
@@ -61,12 +76,11 @@ const Header = () => {
                     <button ref={profileRef} className="w-20 h-20 outline-none rounded-full ring-offset-2 ring-gray-200 ring-2 lg:focus:bg-main-light2-blue"
                         onClick={() => setState(!state)}
                     >
-                          
-                            <img
-                                src= {fileImage}
-                                className="w-full h-full object-cover rounded-full "
-                                alt="fileImage"
-                            />
+                        <img
+                            src={fileImage}
+                            className="w-full h-full object-cover rounded-full"
+                            alt="fileImage"
+                        />
                     </button>
                     <div className="lg:hidden">
                         {/* <span className="block">Micheal John</span>
@@ -87,7 +101,8 @@ const Header = () => {
                 </ul>
             </div>
         )
-    }
+    };
+
     return (
         <nav className={`flex-no-wrap  relative  w-full text-lg ${state ? "shadow-lg rounded-xl border mx-2 mt-2 md:shadow-none md:border-none md:mx-2 md:mt-0" : ""}`}>
            <div className="fixed-navbar bg-main-dark-blue">
@@ -120,8 +135,6 @@ const Header = () => {
                 </div>
                 <div className={`flex-1 flex  justify-space items-center mt-8 md:mt-4 md:flex ${state ? 'block' : 'hidden'}`}>
                     <ul className="justify-center mb-4 mx-auto items-center g-main-dark-blue space-y-6 lg:gap-10  md:gap-0 md:flex md:space-x-4 md:space-y-0  md:border-0 md:mt-0 ">
-                    
-   
                         {
                             navigation.map((item, i) => {
                                 return (
@@ -133,7 +146,6 @@ const Header = () => {
                                 )
                             })
                         }
-
                     </ul>
                     <div className="flex-2 gap-x-6 items-center mt-6 ml-4 space-y-6 md:flex md:space-y-0 md:mt-0  ">
                         <div className="relative flex items-center">
@@ -143,13 +155,10 @@ const Header = () => {
                                         <img src={patient} alt="patient" className="mb-5"/>
                                         <p className="pt-3 pl-3 text-main-dark-blue">  Patient  </p>
                                     </button>
-
                                     <div  className="absolute hover:cursor-default bg-main-dark-blue text-white font-light text-xl rounded-b-xl p-2 px-6 z-10 top-4 left-1/2 transform -translate-x-1/2 -translate-y-1/2">  Einloggen  </div>                             
-                                                                         
                                     <button className="bg-main-light-blue hover:bg-main-light-blue2 w-[126px] h-[70px] rounded-r-3xl flex pt-5 items-center justify-center" onClick={() => navigate("/login")}>
                                         <p className=" pt-3 pr-4 text-main-dark-blue">  Arzt  </p>
                                         <img src={doctor} alt="patient" className="mb-5"/>
-                                        
                                     </button>
                                 </div>
                                 :
@@ -158,14 +167,12 @@ const Header = () => {
                                 </>
                             }
                         </div>
-
-
                     </div>
                 </div>
             </div>
           </div> 
         </nav>
-    )
-}
+    );
+};
 
 export default Header;

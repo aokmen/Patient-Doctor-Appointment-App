@@ -51,7 +51,7 @@ const AProfile = ({ id, firstName, lastName, email, avatar }) => {
         formData.append('userId', id);
         // Her bir dosya için ayrı ayrı postData işlemi yapılıyor
         postData("files", formData);
-        window.location.reload();
+    
     }
     return (
 

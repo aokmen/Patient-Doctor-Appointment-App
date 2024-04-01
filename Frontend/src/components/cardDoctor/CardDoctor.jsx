@@ -5,7 +5,7 @@ import profil_image from "../../assets/profil_image.png"
 
 
 
-const CardDoctor = ({id, street, title, firstName, lastName, zipCode, branchId, cityId, avatar, gender}) => {
+const CardDoctor = ({id, street, title, firstName, lastName, zipCode, branchId, cityId, avatar, gender, cityName, branch}) => {
   const navigate = useNavigate()
   const URL = process.env.REACT_APP_BASE_URL
   const fileImage = avatar && `${URL}/img/${id.slice(-15)}.jpg`
@@ -21,9 +21,9 @@ const CardDoctor = ({id, street, title, firstName, lastName, zipCode, branchId, 
         <div className="doctor-middleInfo">
           <div className="doctorName">
             <h2><span>{title}.</span>  {firstName} {lastName}</h2>
-            <h3>{branchId?.name}</h3>
+            <h3>{branchId?.name || branch}</h3>
             <p className='address'><span>Adresse: </span>{street.split(" ").slice(0, 2).join(" ")} </p>
-            <p className='city'>{zipCode}, {cityId?.name} </p>
+            <p className='city'>{zipCode}, {cityId?.name || cityName || zipCode % 2=== 0 ? "Berlin" : "Köln"} </p>
           </div>
 
           {/* <div className="doctorRate">

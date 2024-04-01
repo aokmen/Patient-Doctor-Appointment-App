@@ -59,7 +59,7 @@ const PProfile = (patientProfile) => {
         // Her bir dosya için ayrı ayrı postData işlemi yapılıyor
         postData("files", formData);
 
-        window.location.reload();
+   
     }
     return (
         <div className="p-panel-person-main">

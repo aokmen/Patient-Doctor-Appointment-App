@@ -8,7 +8,7 @@ import webIcon from '../../assets/web.png'
 
 
 
-const DoctorProfil = ({ id, branchId, cityId, phone, website, title, firstName, lastName, avatar }) => {
+const DoctorProfil = ({ id, branchId,zipCode, cityId, phone, website, title, firstName, lastName, avatar,cityName }) => {
  
   const URL = process.env.REACT_APP_BASE_URL
   const fileImage = avatar && `${URL}/img/${id.slice(-15)}.jpg`
@@ -25,7 +25,7 @@ const DoctorProfil = ({ id, branchId, cityId, phone, website, title, firstName, 
       </div>  
       <div className='flex justify-start doctor-profil-location'>
         <img src={locationIcon} className="mr-3 w-4 h-6" alt="locationIcon" />
-        <h3>{cityId?.name}</h3>
+        <h3>{cityId?.name || cityName || zipCode % 2=== 0 ? "Berlin" : "Köln"}</h3>
       </div>
       <div className='flex doctor-profil-phone'>
         <img src={phoneIcon} className="mr-1 w-5 h-5" alt="phoneIcon" />

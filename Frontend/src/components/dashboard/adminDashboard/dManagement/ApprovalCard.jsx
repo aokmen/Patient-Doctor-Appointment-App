@@ -13,17 +13,18 @@ const ApprovalCard = ({ id, firstName, lastName, title, branch, cityName, street
 }) => {
 
   const { delData, putData } = useDataCall()
-  const [show, setShow] = useState(false)
-  const [show2, setShow2] = useState(true)
+
   const URL = process.env.REACT_APP_BASE_URL
 
   let fileImage = profileImg
-  const handleShow = () => {
-    setShow(!show)
-    setShow2(!show2)
+  const handleDownload = () => {
+    const downloadUrl = `${process.env.REACT_APP_BASE_URL}/img/${id.slice(-15)}.pdf`; // Varsayılan olarak pdf dosyası indirilecek
+
+    // Dosyayı indirin
+    window.open(downloadUrl, '_blank');
   }
   if(avatar) {fileImage = `${URL}/img/${id.slice(-15)}.jpg`}
-  const fileDoc = `${URL}/img/${id.slice(-15)}.jpg` || fileImg
+  const fileDoc = `${URL}/img/${id.slice(-15)}.pdf` || fileImg
    
   return (
     <div className="apanel-view--main">
@@ -44,18 +45,13 @@ const ApprovalCard = ({ id, firstName, lastName, title, branch, cityName, street
               </div>
 
               <div className="apanel-view-doctor-right">
-                {
-                  show && !show2 && <div className='apanel-view-doctor-file'><img src={fileDoc} alt="fileImg" /></div>
-                }
-                {
-                  show2 && !show && <div className='apanel-view-doctor-info2'>
+              <div className='apanel-view-doctor-info2'>
                     <h1>Webseite: </h1> <p> {website}</p>
                     <h1>Sprache: </h1> <p>{languages}</p>
                     <h1>Symptome: </h1> <p>{complaints}</p>
-                    <h1>Über mich: </h1> <p> {about}
-                    </p>
+                    <h1>Über mich: </h1> <p> {about} </p>
                   </div>
-                }
+          
               </div>
             </ul>
 
@@ -63,7 +59,7 @@ const ApprovalCard = ({ id, firstName, lastName, title, branch, cityName, street
         </div>
         <div className="apanel-view-doctor-right-btn">
         <div className="apanel-view-doctor-btn">
-            <button onClick={() => handleShow()}>Zulassungsurkunde</button>
+            <button onClick={() => handleDownload()}>Zulassungsurkunde</button>
    
           </div>
           <div className="apanel-view-doctorInfo-Ok">

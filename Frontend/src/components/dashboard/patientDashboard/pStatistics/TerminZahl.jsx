@@ -82,7 +82,7 @@ const TerminZahl = () => {
   let thisYearCancelled = 0;
   let lastMonthCancelled = 0;
   let lastWeekCancelled = 0;
-
+  
   // eslint-disable-next-line array-callback-return
   AppsThisYear.map((element) => {
     if (element.isCancelled === true) {
@@ -92,14 +92,14 @@ const TerminZahl = () => {
   });
   // eslint-disable-next-line array-callback-return
   AppsThisWeek.map((element) => {
-    if (element.isCancelled) {
+    if (element.isCancelled === true) {
       lastWeekCancelled += 1;
     }
     return lastWeekCancelled;
   });
     // eslint-disable-next-line array-callback-return
     AppsThisMonth.map((element) => {
-      if (element.isCancelled) {
+      if (element.isCancelled === true) {
         //console.log(lastMonthCancelled);
         (lastMonthCancelled += 1);
       }

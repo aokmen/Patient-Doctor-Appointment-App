@@ -45,9 +45,25 @@ const AppointmentSchema = new mongoose.Schema({
     doctorOpinion: [{
         type: String,
     }],
-    isCancelled: {
+    isReadPat: {
         type: Boolean,
         default: false
+    },
+    isReadDr: {
+        type: Boolean,
+        default: false
+    },
+    isCancelledPat: {
+        type: Boolean,
+        default: false
+    },
+    isCancelledDr: {
+        type: Boolean,
+        default: false
+    },
+    isCancelled:{
+        type: Boolean,
+        default: false 
     },
     cancelUserId:{
         type: mongoose.Schema.Types.ObjectId,

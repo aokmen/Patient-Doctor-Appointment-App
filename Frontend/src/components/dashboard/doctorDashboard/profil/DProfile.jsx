@@ -17,7 +17,7 @@ const DProfile = (doctorProfile) => {
     const doctorProfileRef = useRef({
 
         avatar: avatar || "",
-        firstName: firstName || "",
+        firstName: firstName,
         lastName: lastName || "",
         birthDate: birthDate || "",
         street: street || "",
@@ -81,8 +81,7 @@ const DProfile = (doctorProfile) => {
         // Her bir dosya için ayrı ayrı postData işlemi yapılıyor
         postData("files", formData1);
         postData("files", formData2);
-        window.location.reload();
-        console.log("services:",services);
+
     }
 
 

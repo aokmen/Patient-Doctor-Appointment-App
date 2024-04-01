@@ -68,7 +68,7 @@ const Kalender = () => {
   };
 
   const [iSEventsShown, setiSEventsShown] = useState(false);
-
+console.log("todayAppsThisDoctor:",todayAppsThisDoctor);
   return (
     <div className="p-calender-main">
       <div className="p-calender-box flex justify-center rounded-3xl">
@@ -163,7 +163,7 @@ const Kalender = () => {
                           Uhrzeit
                         </th>
                         <th className=" text-center border-2 border-main-dark-blue p-2">
-                          Patient
+                          Termin
                         </th>
                       </tr>
                     </thead>
@@ -203,9 +203,7 @@ const Kalender = () => {
                                 ></p>
                                 {!item.patientId
                                   ? "frei"
-                                  : item?.patientId?.firstName +
-                                    " " +
-                                    item.patientId?.lastName}
+                                  : "besetzt"}
                               </td>
                             </tr>
                           );

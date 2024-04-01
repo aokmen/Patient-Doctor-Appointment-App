@@ -8,6 +8,7 @@ const ShowDays = ({name, appointmentDuration, startHour, finishHour, lunchStart,
 
     // const { appointments } = useSelector((state) => state.data);
     const { getData, delData } = useDataCall()
+    // const {weekdays} = useSelector()
     // const { userId } = useSelector((state) => state.auth);
 
     // useEffect(() => {
@@ -26,10 +27,17 @@ const ShowDays = ({name, appointmentDuration, startHour, finishHour, lunchStart,
 
     useEffect(() => {
         getData("weekdays")
-
+     
         
     // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
+    const removeData = () => {
+        delData("weekdays", id)
+        window.location.reload();
+        console.log("week-Id:",id);
+        // console.log("weekdays:",weekdays);
+    }
+
     
   return (
     <div className='d-man-tag-main flex justify-center items-center'>

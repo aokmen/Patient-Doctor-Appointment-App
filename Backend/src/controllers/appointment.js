@@ -22,7 +22,7 @@ module.exports = {
             `
         */
 
-        const data = await res.getModelList(Appointment, [], ["patientId"])
+        const data = await res.getModelList(Appointment)
 
         // res.status(200).send({
         //     error: false,
@@ -64,7 +64,7 @@ module.exports = {
             { patientId: req.params.id },
             { doctorId: req.params.id },
           ],
-        }).populate("patientId");
+        });
         
 
         res.status(200).send({

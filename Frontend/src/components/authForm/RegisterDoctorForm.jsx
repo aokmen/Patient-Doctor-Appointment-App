@@ -136,6 +136,20 @@ const RegisterDoctorForm = () => {
               <option value="Zahnarzt/ärztin">Zahnarzt/ärztin</option>
               <option value="Hausarzt/ärztin">Hausarzt/ärztin</option>
               <option value="HNO">HNO</option>
+              <option value="Augenarzt/ärztin">Augenarzt/ärztin</option>
+              <option value="Kinderarzt/ärztin">Kinderarzt/ärztin</option>
+              <option value="Allgemeinarzt/ärztin">Allgemeinarzt/ärztin</option>
+              <option value="Orthopäde/Orthopädin">Orthopäde/Orthopädin</option>
+              <option value="Gynäkologe/Gynäkologin">Gynäkologe/Gynäkologin</option>
+              <option value="Dermatologe/Dermatologin">Dermatologe/Dermatologin</option>
+              <option value="Neurologe/Neurologin">Neurologe/Neurologin</option>
+              <option value="Urologe/Urologin">Urologe/Urologin</option>
+              <option value="Psychiater/Psychiaterin">Psychiater/Psychiaterin</option>
+              <option value="Kardiologe/Kardiologin">Kardiologe/Kardiologin</option>
+              <option value="Onkologe/Onkologin">Onkologe/Onkologin</option>
+              <option value="Radiologe/Radiologin">Radiologe/Radiologin</option>
+              <option value="Internist/Internistin">Internist/Internistin</option>
+              <option value="Chirurg/Chirurgin">Chirurg/Chirurgin</option>
               <option value="Andere">Andere</option>
             </select>
             {errors.branch && (

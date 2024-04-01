@@ -6,12 +6,12 @@ import profilImage from "../../../../assets/profil_image2.png"
 import successImg from "../../../../assets/success.png"
 import { useSelector } from 'react-redux';
 import axios from 'axios';
-
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const ApprovalForm = (doctorProfile) => {
     const { putData, getData, postData } = useDataCall()
-    const { id, avatar, doc, firstName, lastName, email, birthDate, gender, street, zipCode, cityName, title, phone, branch, languages, website, about, complaints } = doctorProfile
+    const { id, avatar, doc, firstName, lastName, email, birthDate, gender, street, zipCode, cityName, title, phone, branch, languages, website, about, services } = doctorProfile
     const [count, setCount] = useState(0)
     const [file, setFile] = useState(null)
     const [secondFile, setSecondFile] = useState(null);
@@ -36,7 +36,7 @@ const ApprovalForm = (doctorProfile) => {
         languages: languages || "",
         website: website || "",
         about: about || "",
-        complaints: complaints || "",
+        services: services || "",
         doc: doc || "",
     })
     const fileImage = `${URL}/img/${id.slice(-15)}.jpg`
@@ -75,6 +75,7 @@ const ApprovalForm = (doctorProfile) => {
         // Her bir dosya için ayrı ayrı postData işlemi yapılıyor
         postData("files", formData1);
         postData("files", formData2);
+        toast.success("Erfolgreiche Anmeldung. Vielen Dank für Ihre Registrierung. Wir werden Ihre Unterlagen so schnell wie möglich prüfen und Ihnen eine Rückmeldung geben.");
     }
 
     return (
@@ -195,8 +196,7 @@ const ApprovalForm = (doctorProfile) => {
                                 <div className="p-input-about">
                                     <p>Über mich</p> <textarea required name="" id="d-textarea-about" cols="50" rows="10" placeholder=" z.B. Gesunde Augen sind das visuelle Tor zur Welt – und die Basis, um aktiv und selbstbestimmt das Leben zu genießen. Das gilt bereits für Kinder-Augen, besonders aber mit zunehmendem Alter sollte gesteigerter Wert auf eine gute Gesundheit der Augen gelegt werden..." defaultValue={about} onChange={(e) => handleInputChange("about", e.target.value)}>
                                     </textarea>
-                                    {/* <button>Speichern</button> */}
-                                    {/* <button type="submit" className="input-btn" >Senden</button> */}
+
                                 </div>
 
                             </div>
@@ -204,8 +204,8 @@ const ApprovalForm = (doctorProfile) => {
                         <div className={count === 0 ? "dpanel-person-profile" : (count === 1 ? "dpanel-person-profile2" : (count >= 2 ? "dpanel-person-profile3" : null))}>
                             <div className="dpanel-person--left person3">
                                 <div className="p-input p-input3-1">
-                                    <label className="dpanel-p-label" htmlFor="p-input14">Symptome</label>
-                                    <textarea required name="" id="d-textarea-complaints" cols="50" rows="10" placeholder="z.B. Altersbedingte Makuladegeneration AMD, Augenschmerzen, Diabetische Retinopathie, Grüner Star / Glaukom, Kurzsichtigkeit / Myopie, Katarakt, Laser bei Nachsta" defaultValue={complaints} onChange={(e) => handleInputChange("complaints", e.target.value)}>
+                                    <label className="dpanel-p-label" htmlFor="p-input14">Services</label>
+                                    <textarea required name="" id="d-textarea-services" cols="50" rows="10" placeholder="z.B. Altersbedingte Makuladegeneration AMD, Augenschmerzen, Diabetische Retinopathie, Grüner Star / Glaukom, Kurzsichtigkeit / Myopie, Katarakt, Laser bei Nachsta" defaultValue={services} onChange={(e) => handleInputChange("services", e.target.value)}>
                                     </textarea>
                                 </div>
                                 <div className="p-input p-input3-2">
@@ -215,11 +215,11 @@ const ApprovalForm = (doctorProfile) => {
 
                                     <div className="dpanel-p-profil-data-upload-right">
                                         <div className="dpanel-p-profil-data-upload-right-label">
-                                            <label htmlFor="avatar">Laden Sie Ihre medizinischen Unterlagen hoch:</label>
+                                            <label htmlFor="avatar">Bitte laden Sie medizinische Dateien nur im PDF-Format hoch:</label>
                                         </div>
                                         <div className="dpanel-p-profil-data-upload-right-input">
 
-                                            <input type="file" id="branchFile" name="branchFile" multiple accept="image/png, image/jpeg" onChange={(e) => handleSecondFileChange(e)} />
+                                            <input type="file" id="branchFile" name="branchFile" multiple accept=".pdf" onChange={(e) => handleSecondFileChange(e)} />
                                         </div>
 
                                     </div>
@@ -237,19 +237,10 @@ const ApprovalForm = (doctorProfile) => {
                 {count === 3 ? (<button className="dpanel-main-btn--left" onClick={() => setCount(count - 3)}>Zurück</button>) :
                     <button className="dpanel-main-btn--left" style={{ visibility: (count > 0 || count === 2) ? "visible" : "hidden" }} onClick={() => setCount(count - 1)}>Vorherige Schritt</button>}
                 {count < 2 ? <button className="dpanel-main-btn--right" onClick={() => setCount(count + 1)}>Nächster Schritt</button>
-                    : <button className="dpanel-main-btn--right" onClick={() => setCount(count + 1)} style={{ visibility: count === 3 ? "hidden" : "visible" }}>Senden</button>}
-                {count === 3 ?
-                    <div className="main-content-success">
-
-                        <div className="main-content-success-text">
-                            <img src={successImg} alt="" />
-                            <p>Erfolgreiche Anmeldung. Vielen Dank für Ihre Registrierung. Wir werden Ihre Unterlagen so schnell wie möglich prüfen und Ihnen eine Rückmeldung geben.</p>
-                        </div>
-                        <div className="main-content-success-text2"></div>
-                    </div>
-                    : null}
+                    : <button className="dpanel-main-btn--right" onClick={() => setCount(count + 1)} style={{ visibility: count === 3 ? "hidden" : "hidden" }}>Senden</button>}
+                
             </div>
-
+            <ToastContainer />
         </div>
 
     )

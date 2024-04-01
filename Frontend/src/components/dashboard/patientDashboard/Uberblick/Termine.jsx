@@ -5,7 +5,7 @@ import useDataCall from "../../../../hooks/useDataCall";
 const Termine = ({ date, timeStart, doctorId, isCancelled }) => {
   const { doctors } = useSelector((state) => state.data);
   const { getData } = useDataCall();
-
+  
   useEffect(() => {
     getData("doctors");
 

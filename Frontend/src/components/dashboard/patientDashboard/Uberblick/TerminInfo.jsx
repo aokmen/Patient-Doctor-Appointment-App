@@ -28,11 +28,15 @@ const TerminInfo = ({termin}) => {
 
   const [showModal, setShowModal] = React.useState(false);
   
-  const handleAppointmentDelete = () => {
+  const handleAppointmentCancel = () => {
     putData("appointments", termin.id, {
-      isDeleted: true
+        isCancelledPat: true,
+        isCancelled:true,
     })
+    setShowModal(true)
   }
+
+
 
   return (
     <div className='p-termin-info flex flex-col justify-center items-center'>
@@ -78,7 +82,7 @@ const TerminInfo = ({termin}) => {
                     :
                     <div className='p-view-btn flex justify-center gap-2 items-center ml-3'>
                     <button className='p-view-btn1 mt-10 bg-sky-600 text-white text-lg py-3 px-4 rounded-xl hover:bg-sky-700 duration-150'>SEND NACHRICHT</button>
-                    <button onClick={()=>setShowModal(true)} className='p-view-btn2 mt-10 bg-red-600 text-white text-lg py-3 px-4 rounded-xl hover:bg-red-700 duration-150'>STORNIEREN</button>
+                    <button onClick={handleAppointmentCancel} className='p-view-btn2 mt-10 bg-red-600 text-white text-lg py-3 px-4 rounded-xl hover:bg-red-700 duration-150'>STORNIEREN</button>
                 </div>
                 }
                 <CancelAppoModal showModal={showModal} setShowModal={setShowModal} termin={termin} doctorInfo={doctorInfo}/>

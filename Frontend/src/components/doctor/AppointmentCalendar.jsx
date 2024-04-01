@@ -8,7 +8,8 @@ import Modal from './Appomodal.jsx'
 import 'react-calendar/dist/Calendar.css';
 import './ReactCalendar.css'
 import { useNavigate } from "react-router-dom";
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const AppointmentCalendar = ({id}) => {
 
@@ -90,7 +91,13 @@ const AppointmentCalendar = ({id}) => {
     setUhrZeit(uhr)
     setAppoId(appoId)
     }
-    else navigate("/login")
+    else {
+      // If there is a user who is not logged in, show an error message and redirect to the login page after a certain period of time
+      toast.error("Bitte melden Sie sich an, um einen Termin auswählen.");
+      setTimeout(() => {
+        navigate("/login");
+      }, 3000); // Redirect after 3000 milliseconds (3 seconds)
+    }
   }
   
 
@@ -108,7 +115,7 @@ const AppointmentCalendar = ({id}) => {
     <Modal showModal={showModal} setShowModal={setShowModal} doctorName={doctorName} date={datum} address={doctorAdress} uhrZeit={uhrZeit} appoId={appoId} patientName={patientName} patientId={patientId}/>
     
     
-    
+    <ToastContainer />
   </div>;
 };
 

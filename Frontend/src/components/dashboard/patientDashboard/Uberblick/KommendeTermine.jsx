@@ -20,7 +20,7 @@ const KommendeTermine = ({
   );
   pastAppointments.push(
     ...appointmentsOfThisPatient.filter((item) => {
-      return item.date < dateToday && item.isDeleted === false;
+      return item.date < dateToday && (item.isCancelled === false);
     })
   );
   //console.log(pastAppointments);

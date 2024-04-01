@@ -17,10 +17,11 @@ export default function DeleteAppoModal({setShowModal, showModal, termin}) {
     const handleTerminCancel = () => {
         setShowModal(false)
         putData("appointments", termin[0].id, {
-            isCancelled: true,
+          isCancelledDr: true,
             cancelUserId: userId,
             cancelUserType: "doctor",
-            cancelReason: cancelReason
+            cancelReason: cancelReason,
+            isCancelled:true,
         })
         window.location.reload();
     }
