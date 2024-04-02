@@ -32,6 +32,10 @@ const MessageSchema = new mongoose.Schema({
         type: String,
         trim: true,
     },
+    from: {
+        type: String,
+        trim: true,
+    },
     subject: {
         type: String,
         trim: true,
