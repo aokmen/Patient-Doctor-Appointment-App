@@ -104,7 +104,6 @@ module.exports = {
         //console.log(dataNew)
         sendMail(
             "hakkioglu19@gmail.com",    //from
-            /* data?.patientId?.email */"hakkioglu19@gmail.com",
             "Termin Bestätigung",     //subject
             `
                 <h2>Arzt/Ärztin:</h2> <p>${dataNew?.doctorId?.title}. ${dataNew?.doctorId?.firstName} ${dataNew?.doctorId?.lastName}</p>

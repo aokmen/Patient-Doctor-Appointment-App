@@ -7,13 +7,14 @@ const Feiertage = ({ setHolidays, holidayArray }) => {
       try {
         const holidayData = await getGermanHolidays();
         setHolidays(holidayData);
+        console.log("holidayData:",holidayData);
       } catch (error) {
         console.error("Error fetching holidays:", error);
       }
     };
 
     //fetchHolidays();
-
+  
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (

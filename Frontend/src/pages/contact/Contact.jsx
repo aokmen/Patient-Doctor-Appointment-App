@@ -50,6 +50,10 @@ const Contact = () => {
       subject: "",
       content: ""
     }
+    setTimeout(() => {
+      setIsSent(false);
+      window.location.reload(); // Refresh the page
+    }, 3000);
   }
   return (
     <>

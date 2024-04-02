@@ -26,6 +26,7 @@ const Events = ({ selectedDate}) => {
 
   const handleEventDelete = (id) => {
     delData("events", id);
+    window.location.reload();
   };
 
   const handleEventEdit = (eventInfo) => {
@@ -101,16 +102,16 @@ const Events = ({ selectedDate}) => {
           </table>
           <table className="mt-14 text-center  mx-auto ">
             <tbody>
-              <tr className="text-center text-xl font-bold py-3">
+              <tr className="text-center text-xl font-bold py-3 w-20 ">
                 <td colSpan="4">Alle Ereignisse</td>
               </tr>
               {events?.map((eve, index) => {
                 return (
                   <tr key={index} >
-                    <td className="border-2 border-main-dark-blue">{eve.day}</td>
-                    <td className="border-2 border-main-dark-blue">{eve.hour}</td>
-                    <td className="border-2 border-main-dark-blue">{eve.note}</td>
-                    <td className="border-2 border-main-dark-blue flex justify-evenly items-center">
+                    <td className="border-2 border-main-dark-blue p-1">{eve.day}</td>
+                    <td className="border-2 border-main-dark-blue p-1">{eve.hour}</td>
+                    <td className="border-2 border-main-dark-blue p-1">{eve.note}</td>
+                    <td className="border-2 border-main-dark-blue p-1 flex justify-evenly items-center">
                       <button
                         onClick={() => handleEventDelete(eve.id)}
                         className="hover:scale-[1.05] duration-150"
@@ -164,7 +165,7 @@ const Events = ({ selectedDate}) => {
           </table>
           <table className="mt-14 text-center mx-auto">
             <tbody>
-              <tr className="text-center text-lg font-bold py-3">
+              <tr className="text-center text-lg font-bold py-3 w-20">
                 <td colSpan="4">Alle Ereignisse</td>
               </tr>
               {events?.map((eve, index) => {

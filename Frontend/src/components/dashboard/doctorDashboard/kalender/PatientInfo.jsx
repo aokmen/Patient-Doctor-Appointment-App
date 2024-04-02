@@ -56,7 +56,7 @@ const PatientInfo = ({patient, appsThisDoctor, appsThisDoctorSelectedDate, selec
                                 <h1 className='text-lg'>{patient?.phone} </h1>
                             </div>
                             {
-                                termin[0]?.isCancelled  && <h1 className='absolute text-5xl text-red-600 font-bold opacity-50'>STORNIERT</h1>
+                                termin[0]?.isCancelled  && <h1 className='absolute text-5xl text-red-600 font-bold opacity-10'>STORNIERT</h1>
                             }
                         </div>
                         {
@@ -92,7 +92,7 @@ const PatientInfo = ({patient, appsThisDoctor, appsThisDoctorSelectedDate, selec
             )
             
         }
-        <DeleteAppoModal showModal={showModal} setShowModal={setShowModal} termin={termin}/>
+        <DeleteAppoModal showModal={showModal} setShowModal={setShowModal} termin={termin} patient={patient}/>
            </div>
   )
 }

@@ -54,7 +54,7 @@ const Kalender = () => {
       .slice(0, 1)[0]
       .split("/");
     const datum = dateArray[2] + "-" + dateArray[1] + "-" + dateArray[0];
-    //console.log(datum)
+   
     //console.log("value:",value.toLocaleString())
     setSelectedDate(datum);
     const AppsSelectedDate = appsThisDoctor?.filter((item) => {
@@ -68,7 +68,7 @@ const Kalender = () => {
   };
 
   const [iSEventsShown, setiSEventsShown] = useState(false);
-console.log("todayAppsThisDoctor:",todayAppsThisDoctor);
+
   return (
     <div className="p-calender-main">
       <div className="p-calender-box flex justify-center rounded-3xl">
@@ -163,7 +163,7 @@ console.log("todayAppsThisDoctor:",todayAppsThisDoctor);
                           Uhrzeit
                         </th>
                         <th className=" text-center border-2 border-main-dark-blue p-2">
-                          Termin
+                          Patient
                         </th>
                       </tr>
                     </thead>
@@ -203,7 +203,9 @@ console.log("todayAppsThisDoctor:",todayAppsThisDoctor);
                                 ></p>
                                 {!item.patientId
                                   ? "frei"
-                                  : "besetzt"}
+                                  : item?.patientId?.firstName +
+                                    " " +
+                                    item.patientId?.lastName}
                               </td>
                             </tr>
                           );

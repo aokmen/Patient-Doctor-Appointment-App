@@ -39,7 +39,11 @@ const MessageSchema = new mongoose.Schema({
     content: {
         type: String,
         required: true,
-    }
+    },
+    from: {
+        type: String,
+        trim: true,
+    },
 
 }, { collection: 'messages', timestamps: true });
 

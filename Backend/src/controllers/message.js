@@ -52,11 +52,11 @@ module.exports = {
         if(req.body.from){
             sendMail(
                 req.body.from,    //from
-                "",
                 req.body.subject,     //subject
                 req.body.content
             )
         }
+        
         else{
            if(req.body.senderUserType === "admin"){
             await Admin.updateOne({_id: data.senderUserId}, {$push: {messages: data.id}})

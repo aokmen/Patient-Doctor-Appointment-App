@@ -14,7 +14,7 @@ import BottomLine from '../../components/footer/BottomLine'
 import Header from '../../components/header/Header'
 
 const Services = () => {
-  let servicesNameArr = ["Online Terminebuchung", "Arzt - Anmeldung & Profilverwaltung", "Patienten - Anmeldung & Profilverwaltung", "Kommunikation zwischen Patient und Arzt", "Benachrichtiguns- & Erinnerungsdienst", "Bewertung & Kommentare von Ärzten", "Datensichereit & Gewährleistung der Sicherheit", "Datenschutz Vertraulichkeit von Patientendaten"]
+  let servicesNameArr = ["Online Terminebuchung", "Arzt - Anmeldung & Profilverwaltung", "Patienten - Anmeldung & Profilverwaltung", "Kommunikation zwischen Patient und Arzt", "Benachrichtiguns- & Erinnerungsdienst", "Notizen und Aufgabe hinzufügen", "Datensichereit & Gewährleistung der Sicherheit", "Datenschutz Vertraulichkeit von Patientendaten"]
   let serviceImgArr = [appoint, doctor, patient, communi, notification, comment, seclock, dataLock]
 
   let serviceObjArr = []

@@ -108,7 +108,7 @@ const Header = () => {
            <div className="fixed-navbar bg-main-dark-blue">
             <div className="    gap-x-14 items-center max-w-screen-2xl mx-auto px-4 md:flex md:px-8  ">
                 <div className="flex items-center justify-between py-2 lg:block md:hidden ">
-                    <button onClick={() => navigate("/")} >
+                    <button onClick={() => scrollToHome("home")}>
                         <img
                             src={logo}
                             alt="Float UI logo"

@@ -35,11 +35,9 @@ const About = () => {
                     des Termins sowie sofortige Benachrichtigungen über
                     Terminänderungen oder -stornierungen.{" "}
                     <span>
-                      Bewertung und Kommentare von Ärzten durch Patienten:
+                    Notizen und Aufgabe hinzufügen:
                     </span>{" "}
-                    Patienten haben die Möglichkeit, ihre Ärzte zu bewerten und
-                    Kommentare abzugeben. Zudem können sie Rückmeldungen anderer
-                    Patienten einsehen.{" "}
+                    Patienten und Ärzte können tägliche Aufgaben und allgemeine Notizen hinzufügen.{" "}
                     <span>Datensicherheit und Datenschutz:</span> Die Sicherheit
                     und Vertraulichkeit Ihrer Patientendaten sind für uns von
                     höchster Priorität. Wir wenden Verschlüsselungs- und

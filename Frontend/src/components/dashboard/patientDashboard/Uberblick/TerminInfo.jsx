@@ -46,10 +46,11 @@ const TerminInfo = ({termin}) => {
                 <img src={doctorInfo[0]?.profilePic || UserPNG} alt="termin" className='w-[7rem] h-[7rem] mt-3'/>
                 <div className='flex flex-col justify-center items-center'>
                     
-                    <h1 className='text-xl mb-2'>Datum: {termin?.date}</h1>
-                    <h1 className='text-xl mb-2'>Uhrzeit: {termin?.timeStart}</h1>
-                    <h1 className='text-xl mb-2'>Name der Arzt/in: {doctorInfo[0]?.title}. {doctorInfo[0]?.firstName} {doctorInfo[0]?.lastName}</h1>
-                    <h1 className='text-xl mb-5'>Complaints: {termin?.complaints}</h1>
+                    <h1 className='text-xl mb-2'><span className='font-bold text-main-dark-blue'>Datum:</span> {termin?.date}</h1>
+                    <h1 className='text-xl mb-2'><span className='font-bold text-main-dark-blue'>Uhrzeit:</span> {termin?.timeStart}</h1>
+                    <h1 className='text-xl mb-2'><span className='font-bold text-main-dark-blue'>Name der Arzt/in:</span></h1>
+                    <h1 className='text-xl mb-2'>{doctorInfo[0]?.title}. {doctorInfo[0]?.firstName} {doctorInfo[0]?.lastName}</h1>
+                    <h1 className='text-xl mb-5'><span className='font-bold text-main-dark-blue'>Complaints:</span> {termin?.complaints}</h1>
 
                     <div className='flex justify-start'>
                         <img src={locationIcon} className="mr-2 w-4 h-6" alt="locationIcon" />
@@ -60,7 +61,7 @@ const TerminInfo = ({termin}) => {
                         <h1 className='text-lg'>{doctorInfo[0]?.phone} </h1>
                     </div>
                     {
-                        termin.isCancelled && <h1 className='absolute text-5xl text-red-600 font-bold opacity-50'>STORNIERT</h1>
+                        termin.isCancelled && <h1 className='absolute text-5xl text-red-600 font-bold opacity-10'>STORNIERT</h1>
                     }
                 </div>
                 {
@@ -74,10 +75,10 @@ const TerminInfo = ({termin}) => {
                                 termin.cancelUserType === "admin" ?
                                 <h1 className='text-red-600 mt-10 text-lg font-bold'>Termin ist von Website Admin storniert worden.</h1>
                                 :
-                                <h1 className='text-red-600 mt-10 text-lg font-bold'>Termin ist von Ihnen storniert worden.</h1>
+                                <h1 className='text-red-600 mt-10 text-md font-bold'>Termin ist von Ihnen storniert worden.</h1>
                             )
                         }
-                        <h1 className='text-red-600'>Stornierungsgrund: {termin?.cancelReason}</h1>
+                        <h1 className='text-main-dark-blue text-xl'><span className='font-bold text-main-dark-blue'>Stornierungsgrund:</span> {termin?.cancelReason}</h1>
                     </div>
                     :
                     <div className='p-view-btn flex justify-center gap-2 items-center ml-3'>

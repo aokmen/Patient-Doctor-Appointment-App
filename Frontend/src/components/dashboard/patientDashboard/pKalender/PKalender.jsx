@@ -34,7 +34,7 @@ const Kalender = () => {
 
   useEffect(() => {
     setAppsThisPatientSelectedDate(todayAppsThisPatient);
-
+console.log("appsThisPatientSelectedDate:",appsThisPatientSelectedDate);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

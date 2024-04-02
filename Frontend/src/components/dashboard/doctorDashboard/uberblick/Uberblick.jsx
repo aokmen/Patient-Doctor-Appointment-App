@@ -6,7 +6,8 @@ import moment from "moment";
 import { getGermanHolidays } from "./HolidayService.js";
 import PatientInfo from "./PatientInfo.jsx";
 import "../../../doctor/ReactCalendar.css";
-import Clock from "./Clock.jsx";
+
+
 
 
 const Uberblick = () => {
@@ -104,7 +105,7 @@ const Uberblick = () => {
   const todayAppoThisDoctor = receivedAppThisDoctor.filter((element) => {
     return element.date === dateToday;
   });
-  //console.log(todayAppoThisDoctor)
+  console.log("patient:",patient)
 
   return (
 
@@ -162,7 +163,7 @@ const Uberblick = () => {
           <div className="p-view-middle flex flex-col w-[500px]">
             <div className="flex flex-row gap-8 border-b-[1.9rem] justify-center  border-main-light-blue">
               <div className="p-view-info flex text-center flex-col justify-between bg-white p-3 w-[16rem]">
-                <h1 className="text-2xl wrap text-main-dark-blue">
+                <h1 className="text-2xl mb-2 wrap text-main-dark-blue">
                   Gesamtzahl der Patienten
                 </h1>
                 <div className="flex justify-center items-center bg-main-light-blue rounded-lg mx-6">
@@ -170,7 +171,7 @@ const Uberblick = () => {
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
                     fill="currentColor"
-                    className="w-20 h-20 border-r-4 border-main-light-blue2 text-main-light-blue2 pr-3"
+                    className="w-12 h-16 border-r-4 border-main-light-blue2 text-main-light-blue2 pr-3"
                   >
                     <path d="M4.5 6.375a4.125 4.125 0 1 1 8.25 0 4.125 4.125 0 0 1-8.25 0ZM14.25 8.625a3.375 3.375 0 1 1 6.75 0 3.375 3.375 0 0 1-6.75 0ZM1.5 19.125a7.125 7.125 0 0 1 14.25 0v.003l-.001.119a.75.75 0 0 1-.363.63 13.067 13.067 0 0 1-6.761 1.873c-2.472 0-4.786-.684-6.76-1.873a.75.75 0 0 1-.364-.63l-.001-.122ZM17.25 19.128l-.001.144a2.25 2.25 0 0 1-.233.96 10.088 10.088 0 0 0 5.06-1.01.75.75 0 0 0 .42-.643 4.875 4.875 0 0 0-6.957-4.611 8.586 8.586 0 0 1 1.71 5.157v.003Z" />
                   </svg>
@@ -180,7 +181,7 @@ const Uberblick = () => {
                 </div>
               </div>
               <div className="p-view-info flex flex-col justify-between  text-center bg-white p-3  w-[16rem]">
-                <h1 className="text-2xl wrap text-main-dark-blue">
+                <h1 className="text-2xl mb-2 wrap text-main-dark-blue">
                   Gesamtzahl der Termine
                 </h1>
                 <div className="flex justify-center items-center bg-main-light-blue rounded-lg mx-4">
@@ -188,7 +189,7 @@ const Uberblick = () => {
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
                     fill="currentColor"
-                    className="w-20 h-20 border-r-4 border-main-light-blue2 text-main-light-blue2 pr-3"
+                    className="w-12 h-16 border-r-4 border-main-light-blue2 text-main-light-blue2 pr-3"
                   >
                     <path d="M4.5 6.375a4.125 4.125 0 1 1 8.25 0 4.125 4.125 0 0 1-8.25 0ZM14.25 8.625a3.375 3.375 0 1 1 6.75 0 3.375 3.375 0 0 1-6.75 0ZM1.5 19.125a7.125 7.125 0 0 1 14.25 0v.003l-.001.119a.75.75 0 0 1-.363.63 13.067 13.067 0 0 1-6.761 1.873c-2.472 0-4.786-.684-6.76-1.873a.75.75 0 0 1-.364-.63l-.001-.122ZM17.25 19.128l-.001.144a2.25 2.25 0 0 1-.233.96 10.088 10.088 0 0 0 5.06-1.01.75.75 0 0 0 .42-.643 4.875 4.875 0 0 0-6.957-4.611 8.586 8.586 0 0 1 1.71 5.157v.003Z" />
                   </svg>
@@ -201,7 +202,7 @@ const Uberblick = () => {
 
             {
               patient ? <div className="p-view-termin-info flex flex-col bg-white h-full pt-20">
-              <div className="pt1 text-3xl text-main-dark-blue border-main-dark-blue mt-8 text-center">
+              <div className="pt1 text-3xl text-main-dark-blue border-main-dark-blue mb-20 mt-[-40px] text-center">
                 <h1>Patient Info</h1>
               </div>
               <div className="pt2 mx-auto mt-[-80px]"><PatientInfo
@@ -215,8 +216,9 @@ const Uberblick = () => {
                     todayAppoThisDoctor?.length ? <h1 className="text-main-dark-blue text-xl mt-10 px-6"><span className="font-bold">Hinweis: </span>Sie haben heute {todayAppoThisDoctor?.length} {todayAppoThisDoctor?.length === 1 ? "Termin" : "Termine"}. Für detaillierte Informationen klicken Sie bitte auf den Namen im Bereich „Heutige Termine“. </h1> : <h1 className="text-main-dark-blue text-xl mt-10 px-6"> <span className="font-bold">Hinweis:</span> Wenn Sie heute einen Termin haben, klicken Sie bitte auf den Namen im Bereich „Heutige Termine“.</h1>
                   }
                   
+                  <div className="flex mt-10 justify-center items-center"><svg xmlns="http://www.w3.org/2000/svg" width="20em" height="20em" viewBox="0 0 48 48"><g fill="currentColor"  className=" border-main-light-blue2 text-main-light-blue2"><path fill-rule="evenodd" d="M12 21a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2zm0 2v2h2v-2zm6 0a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2zm2 0h2v2h-2zm8-2a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2zm0 2v2h2v-2zm-18 8a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2zm4 0v2h-2v-2zm6-2a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2zm2 2h-2v2h2z" clip-rule="evenodd"/><path d="M36 32.5a1 1 0 1 0-2 0v2.914l1.293 1.293a1 1 0 0 0 1.414-1.414L36 34.586z"/><path fill-rule="evenodd" d="M12 7a1 1 0 1 1 2 0v5a1 1 0 1 0 2 0V9h10V7a1 1 0 1 1 2 0v5a1 1 0 1 0 2 0V9h3a3 3 0 0 1 3 3v16.07A7.001 7.001 0 0 1 35 42a6.992 6.992 0 0 1-5.745-3H9a3 3 0 0 1-3-3V12a3 3 0 0 1 3-3h3zm16 28a7.001 7.001 0 0 1 6-6.93V18H8v18a1 1 0 0 0 1 1h19.29a7.001 7.001 0 0 1-.29-2m12 0a5 5 0 1 1-10 0a5 5 0 0 1 10 0" clip-rule="evenodd"/></g></svg>
+                  {/* <Clock/> */}</div>
                   
-                  <Clock/>
                   </div>
             }
             
@@ -225,7 +227,7 @@ const Uberblick = () => {
           <div className="p-view-end flex flex-col w-[500px] ">
             <div className="flex flex-row gap-8 border-b-[1.9rem] border-main-light-blue justify-center">
               <div className="p-view-info col-span-1 row-span-2 bg-white flex flex-col justify-evenly text-center p-3 w-[16rem] h-[170px]">
-                <h1 className="text-2xl wrap text-main-dark-blue">
+                <h1 className="text-2xl mb-2 wrap text-main-dark-blue">
                   Heutige Termine
                 </h1>
                 <div className="flex justify-center items-center bg-main-light-blue rounded-lg mx-8">
@@ -233,7 +235,7 @@ const Uberblick = () => {
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
                     fill="currentColor"
-                    className="w-20 h-20 border-r-4 border-main-light-blue2 text-main-light-blue2 pr-3"
+                    className="w-12 h-16 border-r-4 border-main-light-blue2 text-main-light-blue2 pr-3"
                   >
                     <path
                       fillRule="evenodd"
@@ -248,7 +250,7 @@ const Uberblick = () => {
               </div>
 
               <div className="p-view-info col-span-1 rounded-tr-3xl row-span-2 bg-white flex flex-col justify-evenly text-center p-3 w-[16rem] h-[170px]">
-                <h1 className="text-2xl wrap text-main-dark-blue">
+                <h1 className="text-2xl mb-2 wrap text-main-dark-blue">
                   Gesamtbewertung
                 </h1>
                 <div className="flex justify-center items-center bg-main-light-blue rounded-lg mx-10">
@@ -256,7 +258,7 @@ const Uberblick = () => {
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
                     fill="currentColor"
-                    className="w-20 h-20 border-r-4 border-main-light-blue2 text-main-light-blue2 pr-3"
+                    className="w-12 h-16 border-r-4 border-main-light-blue2 text-main-light-blue2 pr-3"
                   >
                     <path
                       fillRule="evenodd"
@@ -269,7 +271,7 @@ const Uberblick = () => {
               </div>
             </div>
 
-            <div className="p-view-calender flex flex-col bg-white rounded-br-3xl h-full border-2">
+            <div className="p-view-calender flex flex-col bg-white rounded-br-3xl h-full">
               <div className="p-view-calender-box text-3xl w-[18rem] ml-[6rem] mt-3 text-main-dark-blue border-b-2 border-main-dark-blue mx-auto text-center">
                 <h1>Kalender</h1>
               </div>
