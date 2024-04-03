@@ -51,12 +51,8 @@ const Uberblick = () => {
 
   const handleDateSelect = async (value) => {
     //console.log("Hello")
-    const dateArray = value
-      .toLocaleString()
-      .split(",")
-      .slice(0, 1)[0]
-      .split("/");
-    const datum = dateArray[2] + "-" + dateArray[1] + "-" + dateArray[0];
+    
+    const datum = moment(value).format("YYYY-MM-DD");
 
     dayData = await holidays.filter((item) => item.date.iso === datum);
 
@@ -69,24 +65,7 @@ const Uberblick = () => {
   let patientsArray = appointments.filter((item) => {
     return item.patientId;
   });
-  //console.log(patientsArray)
-  // let patientsArray2 = [];
 
-  // for (let i = 0; i < patientsArray.length - 1; i++) {
-  //   for (let j = i + 1; j < patientsArray.length; j++) {
-  //     if (
-  //       patientsArray[i]?.patientId.email !== patientsArray[j]?.patientId.email
-  //     ) {
-  //       if (!patientsArray2.includes(patientsArray[i]?.patientId.email)) {
-  //         patientsArray2.push(patientsArray[i]?.patientId.email);
-  //       }
-  //       if (!patientsArray2.includes(patientsArray[j]?.patientId.email)) {
-  //         patientsArray2.push(patientsArray[j]?.patientId.email);
-  //       }
-  //     }
-  //   }
-  // }
-  // console.log(patientsArray2)
 
   function removeDuplicates(array) {
     const seen = new Set();

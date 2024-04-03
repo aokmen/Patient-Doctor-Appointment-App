@@ -37,19 +37,14 @@ const Uberblick = () => {
       }
     };
 
-    //fetchHolidays();
+    fetchHolidays();
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleDateSelect = async (value) => {
     //console.log("Hello")
-    const dateArray = value
-      .toLocaleString()
-      .split(",")
-      .slice(0, 1)[0]
-      .split("/");
-    const datum = dateArray[2] + "-" + dateArray[1] + "-" + dateArray[0];
+    const datum = moment(value).format("YYYY-MM-DD");
 
     dayData = await holidays.filter((item) => item.date.iso === datum);
 

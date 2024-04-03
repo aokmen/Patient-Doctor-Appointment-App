@@ -13,7 +13,7 @@ const Feiertage = ({ setHolidays, holidayArray }) => {
       }
     };
 
-    //fetchHolidays();
+    fetchHolidays();
   
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

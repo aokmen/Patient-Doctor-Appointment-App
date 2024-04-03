@@ -109,7 +109,7 @@ const Hilfebereich = () => {
           </span>
           <ul className="list-decimal">
             <li>
-              Stellen Sie sicher, dass Sie in Ihrem Doctolib-Konto eingeloggt
+              Stellen Sie sicher, dass Sie in Ihrem Terminuns-Konto eingeloggt
               sind.
             </li>
             <li>
