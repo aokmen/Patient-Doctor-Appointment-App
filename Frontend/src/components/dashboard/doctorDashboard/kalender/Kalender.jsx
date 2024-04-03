@@ -48,12 +48,8 @@ const Kalender = () => {
   }, []);
 
   const handleDateSelect = async (value) => {
-    const dateArray = value
-      .toLocaleString()
-      .split(",")
-      .slice(0, 1)[0]
-      .split("/");
-    const datum = dateArray[2] + "-" + dateArray[1] + "-" + dateArray[0];
+
+    const datum = moment(value).format("YYYY-MM-DD");
    
     //console.log("value:",value.toLocaleString())
     setSelectedDate(datum);

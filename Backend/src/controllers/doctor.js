@@ -1,7 +1,7 @@
 "use strict"
 
 // Doctor Controller:
-
+const sendMail = require('../helpers/sendMail')
 const Doctor = require('../models/doctor')
 
 module.exports = {
@@ -97,7 +97,34 @@ module.exports = {
         */
 
         
-           const data = await Doctor.updateOne({ _id: req.params.id }, req.body, { runValidators: true }) 
+           const data = await Doctor.updateOne({ _id: req.params.id }, req.body, { runValidators: true })
+           const dataNew = await Doctor.findOne({ _id: req.params.id }) 
+ 
+           if(req.body.isApproved){
+            sendMail(
+                "hakkioglu19@gmail.com",    //from
+                "Termin Bestätigung",     //subject
+                `
+                    <h2>Arzt/Ärztin:</h2> <p>${dataNew?.title}. ${dataNew?.firstName} ${dataNew?.lastName}</p>
+                    <h2>Zeit:</h2> <p>${(dataNew?.updatedAt)}</p>
+            
+                    <hr/>
+                    <h2>Mitteilung:</h2> <p>Ihre TerminUns-App Konto ist bestätigt worden. Sie können jetzt anfangen, TerminUns-App zu verwenden</p>
+                `
+            )
+           }
+           else if((!req.body.isApproved)) 
+           sendMail(
+            "hakkioglu19@gmail.com",    //from
+            "Termin Bestätigung",     //subject
+            `
+                <h2>Arzt/Ärztin:</h2> <p>${dataNew?.title}. ${dataNew?.firstName} ${dataNew?.lastName}</p>
+                <h2>Zeit:</h2> <p>${(dataNew?.updatedAt)}</p>
+        
+                <hr/>
+                <h2>Mitteilung:</h2> <p>Ihre TerminUns-App Konto Genehmigung ist abgesagt worden. </p>
+            `
+        )
            res.status(202).send({
             error: false,
             data,
