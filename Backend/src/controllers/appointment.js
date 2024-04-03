@@ -5,6 +5,7 @@
 const Appointment = require('../models/appointment')
 const Patient = require('../models/patient')
 const sendMail = require('../helpers/sendMail')
+const EMAIL = process.env.EMAIL;
 
 module.exports = {
 
@@ -103,10 +104,9 @@ module.exports = {
         }
         
 
-        //console.log(dataNew)
+        //console.log(dataNew?.doctorId?.firstName);
         sendMail(
-            "hakkioglu19@gmail.com",    //from
-            /* data?.patientId?.email */"hakkioglu19@gmail.com",
+            `${EMAIL}`,    //from
             "Termin Bestätigung",     //subject
             `
                 <h2>Arzt/Ärztin:</h2> <p>${dataNew?.doctorId?.title}. ${dataNew?.doctorId?.firstName} ${dataNew?.doctorId?.lastName}</p>
