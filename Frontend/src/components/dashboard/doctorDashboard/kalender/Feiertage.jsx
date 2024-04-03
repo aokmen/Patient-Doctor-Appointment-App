@@ -13,13 +13,13 @@ const Feiertage = ({ setHolidays, holidayArray }) => {
       }
     };
 
-    fetchHolidays();
+    // fetchHolidays();
   
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
-    <div className="overflow-scroll max-h-[20vh] min-h-[20vh] ml-8">
-      <table className="mt-5 text-start text-main-dark-blue dark:text-white min-w-[27rem] max-w-[27rem] wrap">
+    <div className="overflow-scroll max-h-[20vh] min-h-[20vh] ml-8 ">
+      <table className="mt-5 text-start text-main-dark-blue dark:text-white min-w-[27rem] max-w-[27rem] wrap mx-auto">
         {holidayArray.map((item) => {
           return (
             <>

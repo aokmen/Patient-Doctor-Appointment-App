@@ -21,7 +21,7 @@ const NotificationCard = ({ id, doctorId, isReadPat, isCancelledDr, date, timeSt
   return (
     <div className="relative px-6 py-3 flex-auto ">
       {isOpened === false ? (
-        <div className={` ${!isCancelledDr ? "bg-sky-200" : "bg-red-300"} dark:bg-main-dark-blue py-6 px-3 rounded-lg flex justify-between`}>
+        <div className={` ${!isCancelledDr ? "bg-sky-200" : "bg-red-100"} dark:bg-main-dark-blue py-6 px-3 rounded-lg flex justify-between`}>
           <p className="dark:text-white"> { !isCancelledDr ? "Morgen haben Sie einen Termin." :"Ihr Termin wurde vom Arzt abgesagt."}</p>
 
           <button
@@ -36,7 +36,7 @@ const NotificationCard = ({ id, doctorId, isReadPat, isCancelledDr, date, timeSt
           )}
         </div>
       ) : (
-        <div className={`${!isCancelledDr ? "dark:bg-sky-600" : "bg-red-300"} bg-sky-100  dark:bg-sky-600 dark:text-main-light-blue p-2 rounded-lg`}>
+        <div className={`${!isCancelledDr ? "bg-sky-200" : "bg-red-100"}  dark:bg-sky-600 dark:text-main-light-blue p-2 rounded-lg`}>
           <p className="my-2 text-blueGray-500 text-lg leading-relaxed">
             Name von Arzt/Ärztin:{" "}
             <span className="font-bold">

@@ -28,11 +28,11 @@ a.view-profile:hover{
     box-shadow: 0px 3px 7px lightgray;
 }
 .service-buttons{
-    padding: 0.5rem 1rem;
+    padding: 1rem;
     background-color: #38638D;
     color: white;
     border-radius: 10px;
-    margin: .5rem 1rem;
+    margin: 1rem;
 }
 .services-title{
     margin: 1rem 0 0 0;

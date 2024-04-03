@@ -42,9 +42,9 @@ const Sidebar = () => {
         
       </div>
       <div className="middleSlide">
-        <div className="mid a-middle1" onClick={() => navigate("/admin")}>
+        {/* <div className="mid a-middle1" onClick={() => navigate("/admin")}>
           <img src={dashboard} alt="dashboard"/> <h1>Überblick</h1>
-        </div>
+        </div> */}
         <div className="mid a-middle4" onClick={() => navigate("/admin/profile")}>
           <img src={profil_image2} alt="profil_image2"/> <h1>Mein Profil</h1>
         </div>
@@ -55,16 +55,16 @@ const Sidebar = () => {
           <img src={calender} alt="calender"/> <h1>Patient Management</h1>
         </div>
   
-        <div className="mid a-middle5" onClick={() => navigate("/admin/message")}>
+        {/* <div className="mid a-middle5" onClick={() => navigate("/admin/message")}>
           <img src={message} alt="message"/> <h1>Nachrichten</h1>
-        </div>
+        </div> */}
         <div className="mid a-middle6" onClick={() => navigate("/admin/task")}>
           <img src={task} alt="task"/> <h1>Aufgaben</h1>
         </div>
 
-        <div className="mid a-middle7" onClick={() => navigate("/admin/setting")}>
+        {/* <div className="mid a-middle7" onClick={() => navigate("/admin/setting")}>
           <img src={setting} alt="setting"/> <h1>Einstellung</h1>
-        </div>
+        </div> */}
 
 
 
@@ -72,9 +72,9 @@ const Sidebar = () => {
       </div>
 
       <div className="bottomSlide">
-        <div className="bot bottom1" onClick={() => navigate("/admin/account")}>
+        {/* <div className="bot bottom1" onClick={() => navigate("/admin/account")}>
           <img src={account} alt="account"/> <h1>Mein Konto</h1>
-        </div>
+        </div> */}
         <div className="bot bottom2" onClick={() => closed()}>
           <img src={exit} alt="logout"/> <h1>Ausloggen</h1>
         </div>

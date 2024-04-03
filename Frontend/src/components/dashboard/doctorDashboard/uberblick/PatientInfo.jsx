@@ -6,17 +6,15 @@ import DeleteAppoModal from '../kalender/DeleteAppoModal'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
-const PatientInfo = ({patient, todayAppsThisDoctor}) => {
+const PatientInfo = ({patient, todayAppsThisDoctor, termin}) => {
     
     const navigate = useNavigate()
     const {patients} = useSelector(state=>state.data)
-    const termin = todayAppsThisDoctor.filter(
-        (item) => item.patientId === patient
-      );
+   
       //console.log(termin)
     const patientInfo = patients?.filter(item =>item.id===patient.patientId)
 
-    console.log("patientInfo:",patientInfo);
+    console.log("PATIENT:",patient);
 
       const URL = process.env.REACT_APP_BASE_URL;
       const fileImage =
@@ -78,7 +76,7 @@ const PatientInfo = ({patient, todayAppsThisDoctor}) => {
             </div>
             
         }
-            <DeleteAppoModal showModal={showModal} setShowModal={setShowModal} termin={termin} patient={patient}/>
+            <DeleteAppoModal showModal={showModal} setShowModal={setShowModal} termin={patient} patientInfo={patientInfo}/>
            </div>
   )
 }

@@ -22,7 +22,7 @@ console.log("patpat:", patient);
   return (
     <div className="relative px-6 py-3 flex-auto ">
       {isOpened === false ? (
-        <div className={` ${!isCancelledPat ? "bg-sky-200" : "bg-red-300"} dark:bg-main-dark-blue py-6 px-3 rounded-lg flex justify-between`}>
+        <div className={` ${!isCancelledPat ? "bg-sky-200" : "bg-red-200"} dark:bg-main-dark-blue py-6 px-3 rounded-lg flex justify-between`}>
           <p className="dark:text-white">{ !isCancelledPat ? "Morgen haben Sie einen Termin." :"Ihr Termin wurde vom Patient abgesagt."}</p>
           <button
             className="font-bold uppercase text-sm rounded hover:cursor-pointer hover:scale-[1.1] outline-none focus:outline-none ease-linear transition-all duration-150 dark:text-main-light-blue"
@@ -36,7 +36,7 @@ console.log("patpat:", patient);
           )}
         </div>
       ) : (
-        <div className={`${!isCancelledPat ? "bg-sky-100" : "bg-red-300"} dark:bg-sky-600 dark:text-main-light-blue p-2 rounded-lg`}>
+        <div className={`${!isCancelledPat ? "bg-sky-100" : "bg-red-100"} dark:bg-sky-600 dark:text-main-light-blue p-2 rounded-lg`}>
           <p className="my-2 text-blueGray-500 text-lg leading-relaxed">
             Name von Patient/in:{" "}
             <span className="font-bold">

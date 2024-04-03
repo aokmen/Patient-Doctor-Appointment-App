@@ -108,7 +108,7 @@ console.log("ppppp:",patient);
             />
           </div>
 
-          <div className=" rounded-3xl  mt-5 flex flex-col">
+          <div className=" rounded-3xl  mt-5 flex flex-col justify-center">
             <h1 className="text-3xl text-main-dark-blue mx-auto border-b-2 border-main-dark-blue px-10 mt-10 my-3">
               Feiertage
             </h1>
@@ -159,7 +159,7 @@ console.log("ppppp:",patient);
                           Uhrzeit
                         </th>
                         <th className=" text-center border-2 border-main-dark-blue p-2">
-                          Patient
+                          Termin
                         </th>
                       </tr>
                     </thead>
@@ -178,7 +178,7 @@ console.log("ppppp:",patient);
                                 {item.timeStart}
                               </td>
                               <td
-                                onClick={() => setPatient(item.patientId)}
+                                onClick={() => setPatient(item)}
                                 className={` flex items-center justify-center text-center p-1 ${
                                   item.patientId &&
                                   "hover:underline hover:cursor-pointer"
@@ -229,6 +229,7 @@ console.log("ppppp:",patient);
                                 }`}
                               >
                                 <p
+
                                   className={`w-[15px] h-[15px] mr-2 rounded-full ${
                                     item.patientId && !item.isCancelled
                                       ? "bg-green-500"

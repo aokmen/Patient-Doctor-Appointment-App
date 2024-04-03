@@ -63,7 +63,7 @@ const AppRouter = () => {
         <Route path="" element={<PrivateAdminRouter/>}>
           <Route path="/admin" element={<AdminPanel/>}>
 
-            <Route index element={<AdminOverview/>}/>
+            <Route index element={<DoctorManagement/>}/>
             <Route path="profile" index element={<AdminProfile/>}/>
             <Route path="doctor-management" index element={<DoctorManagement/>}/>
             <Route path="patient-management" element={<PatientManagement/>}/>

@@ -1,11 +1,12 @@
 import React from "react";
 import Header from "../../components/header/Header";
+import Footer from "../../components/footer/Footer";
 
 const Datenschutz = () => {
   return (
     <>
     <Header/>
-    <div className="flex items-center justify-center min-h-screen pt-[150px] text-main-dark-blue bg-main-light-blue">
+    <div className="flex items-center justify-center  pt-[150px] text-main-dark-blue bg-main-light-blue">
       <div className="w-full max-w-6xl px-10 py-8 mx-auto bg-white rounded-lg shadow-xl">
         <div className="max-w-2xl mx-auto space-y-4">
           <h1 className="font-bold text-3xl">Datenschutzerklärung</h1>
@@ -122,6 +123,7 @@ const Datenschutz = () => {
         </div>
       </div>
     </div>
+    <Footer/>
     </>
     
   );

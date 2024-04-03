@@ -59,9 +59,9 @@ const Events = ({ selectedDate}) => {
               {todayEventsOfThisUser?.map((eve, index) => {
                 return (
                   <tr key={index}>
-                    <td className="border-2 border-main-dark-blue">{eve.hour}</td>
-                    <td className="border-2 border-main-dark-blue">{eve.note}</td>
-                    <td className="border-2 border-main-dark-blue flex justify-evenly items-center">
+                    <td className="border-2 border-[#F1F7FE] p-2">{eve.hour}</td>
+                    <td className="border-2 border-[#F1F7FE] p-2">{eve.note}</td>
+                    <td className="border-2 border-[#F1F7FE] flex justify-evenly items-center p-2">
                       <button
                         onClick={() => handleEventDelete(eve.id)}
                         className="hover:scale-[1.05] duration-150"
@@ -108,10 +108,10 @@ const Events = ({ selectedDate}) => {
               {events?.map((eve, index) => {
                 return (
                   <tr key={index} >
-                    <td className="border-2 border-main-dark-blue p-1">{eve.day}</td>
-                    <td className="border-2 border-main-dark-blue p-1">{eve.hour}</td>
-                    <td className="border-2 border-main-dark-blue p-1">{eve.note}</td>
-                    <td className="border-2 border-main-dark-blue p-1 flex justify-evenly items-center">
+                    <td className="border-2 border-[#F1F7FE] p-2">{eve.day}</td>
+                    <td className="border-2 border-[#F1F7FE] p-2">{eve.hour}</td>
+                    <td className="border-2 border-[#F1F7FE] p-2">{eve.note}</td>
+                    <td className="border-2 border-[#F1F7FE] flex justify-evenly items-center p-2">
                       <button
                         onClick={() => handleEventDelete(eve.id)}
                         className="hover:scale-[1.05] duration-150"

@@ -59,7 +59,6 @@ const PNavbar = () => {
         <div  onClick={() => setShowModal(!showModal)} className=" relative cursor-pointer"><span className={` absolute bottom-4 left-[-12px] ${findAppo?.length === 0 ? "hidden" : ""}`}>{findAppo?.length}</span><img src={notification2} alt="notification2" /></div>
         <img src={help} alt="help" />
         <img src={setting} alt="setting" />
-
         </div>
         <NotificationModal
         showModal={showModal}

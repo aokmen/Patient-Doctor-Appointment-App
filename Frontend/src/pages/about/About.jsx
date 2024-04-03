@@ -28,7 +28,7 @@ const About = () => {
                     <span>Kommunikation zwischen Arzt und Patient:</span> Unsere
                     Plattform ermöglicht eine effektive Kommunikation zwischen
                     Arzt und Patient durch verschiedene Optionen wie
-                    Nachrichtenaustausch oder Videoanrufe. Fragen können sowohl
+                    Nachrichtenaustausch. Fragen können sowohl
                     vor als auch nach dem Termin geklärt werden.
                     <span>Benachrichtigungs- und Erinnerungsdienst:</span> Mit
                     unserem Dienst erhalten Sie Erinnerungsnachrichten am Tag

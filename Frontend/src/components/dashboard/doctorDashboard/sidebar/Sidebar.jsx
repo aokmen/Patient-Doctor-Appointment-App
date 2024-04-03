@@ -70,9 +70,9 @@ const Sidebar = () => {
       </div>
 
       <div className="bottomSlide">
-        <div className="bot bottom1" onClick={() => navigate("/doctor/account")}>
+        {/* <div className="bot bottom1" onClick={() => navigate("/doctor/account")}>
           <img src={account} alt="account" /> <h1>Mein Konto</h1>
-        </div>
+        </div> */}
         <div className="bot bottom2" onClick={() => closed()}>
           <img src={exit} alt="logout" /> <h1>Ausloggen</h1>
         </div>

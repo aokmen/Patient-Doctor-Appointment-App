@@ -99,7 +99,7 @@ const Kalender = () => {
             />
           </div>
 
-          <div className=" rounded-3xl mt-5 flex flex-col">
+          <div className=" rounded-3xl mt-5 flex flex-col justify-center">
             <h1 className="text-3xl text-main-dark-blue mx-auto border-b-2 border-main-dark-blue px-10 mt-10 my-3">
               Feiertage
             </h1>

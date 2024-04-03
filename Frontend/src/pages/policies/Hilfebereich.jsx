@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-
+import Header from "../../components/header/Header";
+import Footer from "../../components/footer/Footer";
 const Hilfebereich = () => {
   const [faqStates, setFaqStates] = useState({});
 
@@ -125,7 +126,8 @@ const Hilfebereich = () => {
   ];
   return (
     <>
-      <div className="flex items-center justify-center min-h-screen text-main-dark-blue bg-main-light-blue">
+    <Header/>
+      <div className="flex items-center justify-center  pt-[150px] text-main-dark-blue bg-main-light-blue">
         <div className="w-full max-w-6xl h-[890px] px-10 py-8 mx-auto bg-white rounded-lg shadow-xl">
           <h2 className="font-bold text-5xl mt-5 tracking-tight">
             Terminuns Hilfebereich
@@ -172,6 +174,7 @@ const Hilfebereich = () => {
           </div>
         </div>
       </div>
+      <Footer/>
     </>
   );
 };

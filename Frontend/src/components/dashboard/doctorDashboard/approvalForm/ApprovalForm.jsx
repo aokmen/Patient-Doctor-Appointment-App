@@ -3,9 +3,7 @@ import ProcessBar from '../processBar/ProcessBar';
 import useDataCall from '../../../../hooks/useDataCall';
 import "./approvalForm.css"
 import profilImage from "../../../../assets/profil_image2.png"
-import successImg from "../../../../assets/success.png"
-import { useSelector } from 'react-redux';
-import axios from 'axios';
+
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -39,7 +37,7 @@ const ApprovalForm = (doctorProfile) => {
         services: services || "",
         doc: doc || "",
     })
-    const fileImage = `${URL}/img/${id.slice(-15)}.jpg`
+    const fileImage = avatar ? `${URL}/img/${id.slice(-15)}.jpg` : profilImage
 
     const handleInputChange = (field, value) => {
         doctorProfileRef.current = {
@@ -93,7 +91,7 @@ const ApprovalForm = (doctorProfile) => {
                             <div className="dpanel-person--left">
                                 <div className="p-input dpanel-main--profil-image">
                                     <div className="p-input-image">
-                                        <img src={fileImage || profilImage} alt="profilImage" />
+                                        <img src={fileImage} alt="profilImage" />
 
                                     </div>
                                     {/* <input  className="dpanel-p-input" type="text" name='p-input1' placeholder='Profilbild hochladen' /> */}

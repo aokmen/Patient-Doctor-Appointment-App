@@ -5,7 +5,8 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm } from 'react-hook-form'
 import useAuthCall from '../../hooks/useAuthCall'
 import patient from '../../assets/patient.png'
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 export const registerSchema = object().shape({
@@ -35,17 +36,7 @@ export const registerSchema = object().shape({
 
 
 const RegisterPatientForm = () => {
-  // const initiallVal = {
-  //   firstName: "",
-  //   lastName: "",
-  //   email: "",
-  //   password: "",
-  //   birthDate: "",
-  //   gender: "",
-  //   zipCode: "",
-  //   cityName: "",
-  //   street: ""
-  // }
+
 
   const { regPatient } = useAuthCall()
 
@@ -58,7 +49,11 @@ const RegisterPatientForm = () => {
   })
 
   const onSubmit = (data) => {
-    regPatient(data)
+    
+    toast.success("Die Anmeldung wurde erfolgreich erstellt.");
+    setTimeout(() => {
+      regPatient(data)
+    }, 4000);
   }
 
   const [isPasswordHidden, setPasswordHidden] = useState(true)
@@ -254,6 +249,7 @@ const RegisterPatientForm = () => {
         <button type='submit' className='flex justify-center register-button duration-150 mx-auto md:mt-6'>REGISTRIEREN</button>
         
       </form>
+      <ToastContainer />
     </div>
     
   )
