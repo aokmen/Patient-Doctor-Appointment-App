@@ -67,7 +67,7 @@ const CancelTerminNoti = ({
             Uhrzeit: <span className="font-bold">{timeStart}</span>
           </p>
           <p className="my-4 text-blueGray-500 text-lg leading-relaxed">
-            Stornierungsgrund: <span className="font-bold">{cancelReason}</span>
+            Stornierungsgrund: <span className="font-bold mb-10">{cancelReason}</span>
           </p>
           <hr />
 

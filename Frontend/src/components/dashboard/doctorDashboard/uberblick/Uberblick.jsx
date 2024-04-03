@@ -184,7 +184,7 @@ const Uberblick = () => {
                 <h1 className="text-2xl mb-2 wrap text-main-dark-blue">
                   Gesamtzahl der Termine
                 </h1>
-                <div className="flex justify-center items-center bg-main-light-blue rounded-lg mx-4">
+                <div className="flex justify-center items-center bg-main-light-blue rounded-lg mx-auto w-40 ">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
@@ -253,7 +253,7 @@ const Uberblick = () => {
                 <h1 className="text-2xl mb-2 wrap text-main-dark-blue">
                   Gesamtbewertung
                 </h1>
-                <div className="flex justify-center items-center bg-main-light-blue rounded-lg mx-10">
+                <div className="flex justify-center items-center bg-main-light-blue rounded-lg mx-auto w-40 ">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"

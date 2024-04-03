@@ -138,7 +138,7 @@ const Uberblick = () => {
               <h1 className="text-2xl mb-2 wrap text-main-dark-blue">
                 Gesamtzahl der Arzten
               </h1>
-              <div className="flex justify-center items-center bg-[#F1F7FE] rounded-lg mx-6">
+              <div className="flex justify-center items-center bg-[#F1F7FE] rounded-lg mx-auto w-40">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
@@ -152,11 +152,11 @@ const Uberblick = () => {
                 </p>
               </div>
             </div>
-            <div className="p-view-info flex flex-col justify-between  text-center bg-white p-3  w-[16rem]">
+            <div className="p-view-info flex flex-col justify-between  text-center bg-white p-3 w-[16rem]">
               <h1 className="text-2xl mb-2 wrap text-main-dark-blue">
                 Gesamtzahl der Termine
               </h1>
-              <div className="flex justify-center items-center bg-[#F1F7FE] rounded-lg mx-4">
+              <div className="flex justify-center items-center bg-[#F1F7FE] rounded-lg mx-auto w-40 " >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
@@ -186,7 +186,7 @@ const Uberblick = () => {
               <h1 className="text-2xl mb-2 wrap text-main-dark-blue">
                 Termine in diesem Monat
               </h1>
-              <div className="flex justify-center items-center bg-[#F1F7FE] rounded-lg mx-8">
+              <div className="flex justify-center items-center bg-[#F1F7FE] rounded-lg mx-auto w-40 ">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
@@ -208,7 +208,7 @@ const Uberblick = () => {
               <h1 className="text-2xl mb-2 wrap text-main-dark-blue">
                 Letzte Bewertung
               </h1>
-              <div className="flex justify-center items-center bg-[#F1F7FE] rounded-lg mx-10">
+              <div className="flex justify-center items-center bg-[#F1F7FE] rounded-lg mx-auto w-36 ">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   viewBox="0 0 24 24"
@@ -231,7 +231,7 @@ const Uberblick = () => {
               <h1>Kalender</h1>
             </div>
             <Calendar
-              className="react-calendar mx-auto mt-5 ml-[3rem]"
+              className="react-calendar mx-auto mt-5"
               defaultView="month"
               locale="de-DE"
               onChange={handleDateSelect}

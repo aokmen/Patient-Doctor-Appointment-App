@@ -68,7 +68,7 @@ const Kalender = () => {
   };
 
   const [iSEventsShown, setiSEventsShown] = useState(false);
-
+console.log("ppppp:",patient);
   return (
     <div className="p-calender-main">
       <div className="p-calender-box flex justify-center rounded-3xl">
@@ -203,9 +203,7 @@ const Kalender = () => {
                                 ></p>
                                 {!item.patientId
                                   ? "frei"
-                                  : item?.patientId?.firstName +
-                                    " " +
-                                    item.patientId?.lastName}
+                                  : (item.patientId && !item.isCancelled ? "besetzt" : "abgesagt")}
                               </td>
                             </tr>
                           );
@@ -245,9 +243,7 @@ const Kalender = () => {
                                 ></p>
                                 {!item.patientId
                                   ? "frei"
-                                  : item?.patientId?.firstName +
-                                    " " +
-                                    item.patientId?.lastName}
+                                  : (item.patientId && !item.isCancelled ? "besetzt" : "abgesagt")}
                               </td>
                             </tr>
                           );

@@ -26,7 +26,7 @@ const Termine = ({ date, timeStart, doctorId, isCancelled }) => {
         <div className="flex flex-col justify-center items-center border-x-8 border-y-2 border-red-500 mt-4 min-w-[12rem] max-w-[22rem] mx-auto">
           <div className="flex flex-row justify-evenly">
             <h3 className="text-main-dark-blue dark:text-main-light-blue text-lg font-bold line-through decoration-red-500">
-              {doctorInfo[0]?.branch}
+              Termin
             </h3>
           </div>
           <div className="flex justify-evenly mt-1">
@@ -42,7 +42,7 @@ const Termine = ({ date, timeStart, doctorId, isCancelled }) => {
         <div className="flex flex-col justify-center items-center border-x-8 border-y-2 border-main-light-blue2 mt-4 min-w-[12rem] max-w-[22rem] mx-auto">
           <div className="flex flex-row justify-evenly">
             <h3 className="text-main-dark-blue dark:text-main-light-blue text-lg font-bold">
-              {doctorInfo[0]?.branch}
+              Termin
             </h3>
           </div>
           <div className="flex justify-evenly mt-1">

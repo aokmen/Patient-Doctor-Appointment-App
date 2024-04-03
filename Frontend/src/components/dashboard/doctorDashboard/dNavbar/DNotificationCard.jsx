@@ -36,7 +36,7 @@ console.log("patpat:", patient);
           )}
         </div>
       ) : (
-        <div className={`${!isCancelledPat ? "dark:bg-sky-600" : "bg-red-300"} bg-sky-100  dark:bg-sky-600 dark:text-main-light-blue p-2 rounded-lg`}>
+        <div className={`${!isCancelledPat ? "bg-sky-100" : "bg-red-300"} dark:bg-sky-600 dark:text-main-light-blue p-2 rounded-lg`}>
           <p className="my-2 text-blueGray-500 text-lg leading-relaxed">
             Name von Patient/in:{" "}
             <span className="font-bold">

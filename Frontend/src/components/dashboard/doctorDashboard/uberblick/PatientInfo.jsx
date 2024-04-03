@@ -4,8 +4,11 @@ import locationIcon from '../../../../assets/locationIcon.png'
 import phoneIcon from '../../../../assets/phone.png'
 import DeleteAppoModal from '../kalender/DeleteAppoModal'
 import { useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 
 const PatientInfo = ({patient, todayAppsThisDoctor}) => {
+    
+    const navigate = useNavigate()
     const {patients} = useSelector(state=>state.data)
     const termin = todayAppsThisDoctor.filter(
         (item) => item.patientId === patient
@@ -58,11 +61,11 @@ const PatientInfo = ({patient, todayAppsThisDoctor}) => {
                                                     <h1 className='text-red-600 mt-10 text-lg font-bold'>Termin ist von Ihnen storniert worden.</h1>
                                             )
                                     }
-                                    <h1 className='text-main-dark-blue text-xl ml-10 mt-5'><span className='font-bold text-main-dark-blue'>Stornierungsgrund:</span> {patient?.cancelReason}</h1>
+                                    <h1 className='text-main-dark-blue text-xl ml-10 mt-5 mb-10'><span className='font-bold text-main-dark-blue'>Stornierungsgrund:</span> {patient?.cancelReason}</h1>
                                 </div>
                             :
                                 <div className='p-view-btn flex justify-evenly items-center w-[20vw] ml-3'>
-                                    <button className='p-view-btn1 mt-10 bg-sky-600 text-white text-lg py-3 px-4 rounded-xl hover:bg-sky-700 duration-150'>SEND NACHRICHT</button>
+                                    <button onClick={() => navigate("message")} className='p-view-btn1 mt-10 bg-sky-600 text-white text-lg py-3 px-4 rounded-xl hover:bg-sky-700 duration-150'>SEND NACHRICHT</button>
                                     <button onClick={()=>setShowModal(true)} className='p-view-btn2 mt-10 bg-red-600 text-white text-lg py-3 px-4 rounded-xl hover:bg-red-700 duration-150'>STORNIEREN</button>
                                 </div>
                         }

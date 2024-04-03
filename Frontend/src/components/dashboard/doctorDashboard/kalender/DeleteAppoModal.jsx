@@ -17,7 +17,7 @@ export default function DeleteAppoModal({setShowModal, showModal, termin,patient
     const handleTerminCancel = () => {
         setShowModal(false)
         putData("appointments", termin.id, {
-          isCancelledPat: true,
+          isCancelledDr: true,
             cancelUserId: userId,
             cancelUserType: "doctor",
             cancelReason: cancelReason,

@@ -5,9 +5,11 @@ import phoneIcon from '../../../../assets/phone.png'
 import { useSelector } from 'react-redux'
 import useDataCall from '../../../../hooks/useDataCall'
 import CancelAppoModal from './CancelAppoModal'
+import { useNavigate } from 'react-router-dom'
 
 const TerminInfo = ({termin}) => {
 
+    const navigate = useNavigate()
     const { doctors } = useSelector((state) => state.data)
     const {getData, putData} = useDataCall()
 
@@ -82,8 +84,8 @@ const TerminInfo = ({termin}) => {
                     </div>
                     :
                     <div className='p-view-btn flex justify-center gap-2 items-center ml-3'>
-                    <button className='p-view-btn1 mt-10 bg-sky-600 text-white text-lg py-3 px-4 rounded-xl hover:bg-sky-700 duration-150'>SEND NACHRICHT</button>
-                    <button onClick={handleAppointmentCancel} className='p-view-btn2 mt-10 bg-red-600 text-white text-lg py-3 px-4 rounded-xl hover:bg-red-700 duration-150'>STORNIEREN</button>
+                    <button onClick={() => navigate("message")} className='p-view-btn1 mt-10 bg-sky-600 text-white text-lg py-3 px-4 rounded-xl hover:bg-sky-700 duration-150'>SEND NACHRICHT</button>
+                    <button onClick={()=>setShowModal(true)} className='p-view-btn2 mt-10 bg-red-600 text-white text-lg py-3 px-4 rounded-xl hover:bg-red-700 duration-150'>STORNIEREN</button>
                 </div>
                 }
                 <CancelAppoModal showModal={showModal} setShowModal={setShowModal} termin={termin} doctorInfo={doctorInfo}/>
