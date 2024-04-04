@@ -146,4 +146,6 @@ dist
 # Upload folder and files
 Upload/
 
+# helpers sync
+helpers/sync.js
 # End of https://www.toptal.com/developers/gitignore/api/node
