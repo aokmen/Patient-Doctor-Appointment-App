@@ -81,7 +81,7 @@ const patientInfo = patients?.filter(item =>item.id===patient.patientId)
                             :
                                 <div className='flex justify-evenly items-center w-[20vw] ml-3'>
                                     <button onClick={() => navigate("message")} className='mt-10 bg-sky-600 text-white text-lg py-3 px-4 rounded-xl hover:bg-sky-700 duration-150'>SEND NACHRICHT</button>
-                                    <button onClick={()=>setShowModal(true)} className='mt-10 bg-red-600 text-white text-lg py-3 px-4 rounded-xl hover:bg-red-700 duration-150'>STORNIEREN</button>
+                                    {/* <button onClick={()=>setShowModal(true)} className='mt-10 bg-red-600 text-white text-lg py-3 px-4 rounded-xl hover:bg-red-700 duration-150'>STORNIEREN</button> */}
                                 </div>
                         }
                         
