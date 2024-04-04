@@ -44,6 +44,7 @@ const ManageDays = ({hours, dauer, days, doctor_id, firstDate, secondDate}) => {
         setAppointmentDuration("")
 
         getData("weekdays")
+        window.location.reload();
     }
 
     useEffect(() => {
