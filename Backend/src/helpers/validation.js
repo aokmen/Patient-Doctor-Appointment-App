@@ -28,7 +28,7 @@ module.exports = function (next) {
 
             } else {
 
-                next(new Error('Password not validated.'))
+                next(new Error('Password not validated.')) 
             }
             
         }
