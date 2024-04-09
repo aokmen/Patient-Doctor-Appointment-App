@@ -33,7 +33,7 @@ const Uberblick = () => {
         const holidayData = await getGermanHolidays();
         setHolidays(holidayData);
       } catch (error) {
-        console.error("Error fetching holidays:", error);
+        console.error("Error fetching holidays:", error); 
       }
     };
 
