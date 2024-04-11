@@ -26,7 +26,7 @@ const PTask = () => {
     if (newTask) {
       const newTaskData = {
         userId: userId,
-        task: newTask,
+        task: newTask, 
       };
       postData("tasks", newTaskData);
       setNewTask("");
