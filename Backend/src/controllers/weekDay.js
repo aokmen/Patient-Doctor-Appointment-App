@@ -62,7 +62,7 @@ module.exports = {
         let daylist = getDaysArray(req.body.startingDate, req.body.endingDate);
         const dayArray = daylist.map((v)=>v.toISOString().slice(0,10)) 
 
-        //console.log(dayArray)
+        // console.log(dayArray)
         
 
         function getDayName(dateStr, locale){
@@ -76,7 +76,7 @@ module.exports = {
 
 
         for(let i = 0; i < dayArray.length; i++){
-            getDayName(dayArray[i], "de-DE")
+            getDayName(dayArray[i], "de-DE") 
             
         }
 
