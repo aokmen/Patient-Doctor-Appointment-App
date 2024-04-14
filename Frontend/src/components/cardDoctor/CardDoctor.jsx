@@ -18,7 +18,7 @@ const CardDoctor = ({id, street, title, firstName, lastName, zipCode, branchId, 
       </div>
       <div className="doctorInfo">
 
-        <div className="doctor-middleInfo">
+        <div className="doctor-middleInfo"> 
           <div className="doctorName">
             <h2><span>{title}.</span>  {firstName} {lastName}</h2>
             <h3>{branchId?.name || branch || "Praxis"}</h3>
