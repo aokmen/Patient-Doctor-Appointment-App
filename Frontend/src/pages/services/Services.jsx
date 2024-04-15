@@ -37,8 +37,8 @@ const Services = () => {
           {
             serviceObjArr.map((item, index) => (
               <div key={index} className='w-[130px] h-[125px] flex flex-col  bg-white items-center text-center rounded-lg service-card py-1 mx-1 sm:mx-3 sm:my-4 mt-3 md:mt-6 md:w-[150px] md:h-[150px] md:my-0 md:ml-12 lg:h-[160px]'>
-                <img src={item.serImg} alt="appointment" className='w-9 h-9 object-contain mt-3 ' />
-                <h3 className='p-2 mt-2 text-[#345b83]'>{item.serName}</h3>
+                <img src={item.serImg} alt="appointment" className='w-8 h-8 mt-3 lg:w-12 lg:h-12' />
+                <h3 className='text-sm md:text-lg lg:text-lg mt-2 text-[#345b83]'>{item.serName}</h3>
               </div>
             ))
           }
