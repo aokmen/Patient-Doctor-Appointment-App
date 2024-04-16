@@ -29,7 +29,7 @@ const PTask = () => {
         task: newTask, 
       };
       postData("tasks", newTaskData);
-      setNewTask("");
+      setNewTask(""); 
     }
   };
 
