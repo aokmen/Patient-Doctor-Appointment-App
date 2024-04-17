@@ -3,7 +3,7 @@
 // Doctor Controller:
 const sendMail = require('../helpers/sendMail')
 const Doctor = require('../models/doctor')
-
+const EMAIL = process.env.EMAIL
 module.exports = {
 
     list: async (req, res) => {
@@ -102,7 +102,7 @@ module.exports = {
  
            if(req.body.isApproved){
             sendMail(
-                "hakkioglu19@gmail.com",    //from
+                `${EMAIL}`,    //from
                 "Termin Bestätigung",     //subject
                 `
                     <h2>Arzt/Ärztin:</h2> <p>${dataNew?.title}. ${dataNew?.firstName} ${dataNew?.lastName}</p>
@@ -115,7 +115,7 @@ module.exports = {
            }
            else if((!req.body.isApproved)) 
            sendMail(
-            "hakkioglu19@gmail.com",    //from
+            `${EMAIL}`,    //from
             "Termin Bestätigung",     //subject
             `
                 <h2>Arzt/Ärztin:</h2> <p>${dataNew?.title}. ${dataNew?.firstName} ${dataNew?.lastName}</p>
