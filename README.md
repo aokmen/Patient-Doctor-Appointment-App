@@ -8,7 +8,7 @@ This project includes a full-stack web application that allows patients and doct
 <img alt="alt_text" src="./Frontend/projectIMG3.jpg"/>
 
 ## Technologies used - tools
-
+ 
 **Frontend:**
 - React
 - Redux Toolkit
