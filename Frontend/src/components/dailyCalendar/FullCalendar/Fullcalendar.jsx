@@ -37,7 +37,7 @@ class DemoApp extends React.Component {
             eventClick={this.handleEventClick}
             eventAdd={this.handleEventAdd}
             eventChange={this.handleEventChange} // called for drag-n-drop/resize
-            eventRemove={this.handleEventRemove}
+            eventRemove={this.handleEventRemove} //remove Event
           />
         </div>
       </div>
