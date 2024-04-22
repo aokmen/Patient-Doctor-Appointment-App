@@ -4,10 +4,10 @@
     "version": "1.0.0",
     "title": "Doctor Appointment API",
     "description": "Doctor Appointment System",
-    "termsOfService": "http://www.clarusway.com/#",
+    "termsOfService": "http://www.terminuns.com/#",
     "contact": {
-      "name": "Clarusway",
-      "email": "qadir@clarusway.com"
+      "name": "Terminuns",
+      "email": "termin@terminuns.com"
     },
     "license": {
       "name": "ISC Licence"
