@@ -25,7 +25,7 @@ This project includes a full-stack web application that allows patients and doct
 - React-Scripts
 - Redux-Persist
 - Fullcalendar
-- React-Hook-Form
+- React-Hook-Form 
 
 **Backend:**
 - Node.js
