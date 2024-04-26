@@ -115,7 +115,7 @@ Patient dashboards - Doctor dashboards - Admin dashboards
 
 **Project Structure:**
 
-- **client:** Frontend code
+- **client:** Frontend code 
   - **src:**
     - **components:** React components
     - **pages:** Application pages
