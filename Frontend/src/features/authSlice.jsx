@@ -14,7 +14,7 @@ const authSlice = createSlice({
   reducers: {
     fetchStart: (state) => {
       state.loading = true;
-      state.error = false;
+      state.error = false; 
     },
     loginSuccess: (state, action) => {
       state.loading = false;
