@@ -20,7 +20,7 @@ const useAuthCall = () => {
         dispatch(fetchStart())
         try {
             const { data } = await axios.post(`${url}/auth/login`,userData)
-            dispatch(loginSuccess(data))
+            dispatch(loginSuccess(data)) 
             
             navigate(`/${data.userType}`)
         } catch (error) {
