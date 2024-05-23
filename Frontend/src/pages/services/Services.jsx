@@ -19,7 +19,7 @@ const Services = () => {
 
   let serviceObjArr = []
 
-  for (let i = 0; i < servicesNameArr.length; i++) {
+  for (let i = 0; i < servicesNameArr.length; i++) { 
     serviceObjArr.push({
       serName: servicesNameArr[i],
       serImg: serviceImgArr[i]
