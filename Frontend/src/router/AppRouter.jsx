@@ -101,7 +101,7 @@ const AppRouter = () => {
             <Route path="task" element={<PatientTask/>}/>
             <Route path="statistic" element={<PatientStatistic/>}/>
             <Route path="setting" element={<PatientSetting/>}/>
-            <Route path="account" element={<PatientAccount/>}/>
+            <Route path="account" element={<PatientAccount/>}/> 
 
           </Route>
         </Route>
