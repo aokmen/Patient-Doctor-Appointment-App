@@ -17,7 +17,7 @@ const store = configureStore({
     reducer:{
         auth: persistedReducer,
         data: dataReducer
-    },
+    }, 
     middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
       immutableCheck: false,
